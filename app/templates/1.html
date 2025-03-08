@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Pago</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #f5eaea;
+            --secondary-color: #8c8c8c;
+            --button-color: #d1d1d1;
+            --highlight-color: #ff4d4d;
+            --dark-color: #4a4a4a;
+            --purple: #b45fd4;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--primary-color);
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px var(--secondary-color);
+        }
+        .btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+        }
+        .red { background: var(--highlight-color); }
+        .dark { background: var(--dark-color); }
+        .purple { background: var(--purple); }
+        .top-bar {
+            width: 80%;
+            height: 20px;
+            background: var(--secondary-color);
+            display: inline-block;
+            margin: 10px 0;
+        }
+        input, .confirm {
+            display: block;
+            width: calc(100% - 20px);
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid var(--secondary-color);
+            border-radius: 5px;
+        }
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .input-group input {
+            width: 48%;
+        }
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .method {
+            width: 50px;
+            height: 50px;
+            background: var(--button-color);
+            border-radius: 50%;
+            border: none;
+        }
+        .confirm {
+            background: var(--dark-color);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="btn red"></button>
+            <div class="top-bar"></div>
+            <button class="btn dark"></button>
+            <button class="btn dark"></button>
+            <button class="btn purple"></button>
+        </header>
+        <h2>Página de Pago</h2>
+        <form>
+            <div class="input-group">
+                <input type="text" placeholder="Nombre(s)">
+                <input type="text" placeholder="Apellido(s)">
+                <input type="text" placeholder="Apellido(s)">
+            </div>
+            <input type="text" placeholder="Ubicación del hospital">
+            <input type="text" placeholder="No. cuenta">
+            <input type="text" placeholder="Confirmación No. cuenta">
+            <input type="email" placeholder="Correo electrónico">
+            <div class="input-group">
+                <input type="text" placeholder="Concepto">
+                <input type="text" placeholder="Monto $">
+            </div>
+            <h3>Seleccionar método de pago</h3>
+            <div class="payment-methods">
+                <button class="method"></button>
+                <button class="method"></button>
+                <button class="method"></button>
+                <button class="method"></button>
+            </div>
+            <button class="confirm">Confirmar Pago</button>
+        </form>
+    </div>
+</body>
+</html>
