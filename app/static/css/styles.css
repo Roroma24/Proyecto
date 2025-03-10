@@ -1,0 +1,28 @@
+body {
+    background-color: #fff;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1850px;
+    margin: 20px auto;
+}
+
+.icon {
+    width: 90px;
+    height: 90px;
+    background-color: #ff4a4a;
+    border-radius: 40%;
+}
+
+.btn{
+    width: 90px;
+    height: 90px;
+    background-color: #b45fd4;
+    border-radius: 40%;
+    border: none;
+    cursor: pointer;
+}
