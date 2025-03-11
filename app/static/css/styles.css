@@ -1,4 +1,4 @@
-body {
+body{
     background-color: #fff;
 }
 
@@ -8,10 +8,16 @@ body {
     justify-content: space-between;
     width: 100%;
     max-width: 1850px;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 
-.icon {
+.icon-bar{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon{
     width: 90px;
     height: 90px;
     background-color: #ff4a4a;
@@ -25,4 +31,17 @@ body {
     border-radius: 40%;
     border: none;
     cursor: pointer;
+}
+
+.bar{
+    width: 400px;
+    height: 50px;
+    background-color: #8c8c8c;
+    border-radius: 10px;
+}
+
+.image{
+    width: 1480px;
+    height: 160px;
+    background-color: #f7ecec;
 }
