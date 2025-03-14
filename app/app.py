@@ -22,9 +22,5 @@ def exit():
 def cancel():
     return render_template('cancelacion.html')
 
-@app.route('/reservar')
-def reservar():
-    return render_template('reservar.html')
-
 if __name__ == '__main__': 
     app.run(debug=True, port=5000)
