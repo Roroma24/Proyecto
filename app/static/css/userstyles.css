@@ -1,17 +1,12 @@
 body{
     background-color: #fff;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 .container{
     background: #f9ecec;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    width: 50%;
+    width: auto;
 }
 .exit-button{
     width: 90px;
