@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/userstyles.css') }}">
-    <title>Registro</title>
+    <title>New user</title>
 </head>
 <body>
-    <a href="{{ url_for('exit') }}">
-        <button class="exit-button"></button>
-    </a>
     <div class="container">
+        <a href="{{ url_for('exit') }}">
+            <div class="exit_btn"></div>
+        </a>
+    </div>
+    <div class="container_fondo">
         <div class="profile"></div>
         <div class="bar"></div>
         <input type="text" class="input-long" placeholder="Ingrese datos">

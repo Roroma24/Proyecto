@@ -2,19 +2,30 @@ body{
     background-color: #fff;
 }
 .container{
-    background: #f9ecec;
-    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 1850px;
+    margin: 10px auto;
+}
+
+.container_fondo {
+    width: auto;
+    height: auto;
+    background: #f7ecec;
     border-radius: 10px;
     text-align: center;
-    width: auto;
 }
-.exit-button{
-    width: 90px;
-    height: 90px;
-    background-color: #b45fd4;
-    border-radius: 40%;
+
+.exit_btn{
+    width: 180px;
+    height: 40px;
+    background-color: #494949;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
+    margin: 10px auto;
 }
 .profile{
     width: 50px;
