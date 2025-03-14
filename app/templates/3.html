@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Citas</title>
+    <style>
+        :root {
+            --primary-color: #fbeff0;
+            --secondary-color: #8c8c8c;
+            --button-color: #4a4a4a;
+            --highlight-color: #ff4d4d;
+            --extra-color: #d19fff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--primary-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px var(--secondary-color);
+            text-align: center;
+            position: relative;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: var(--primary-color);
+            border-radius: 10px 10px 0 0;
+            align-items: center;
+            position: absolute;
+            top: -60px;
+            left: 0;
+            width: 100%;
+        }
+
+        .header div {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .header .red { background-color: #ff4d4d; }
+        .header .grey { background-color: #8c8c8c; }
+        .header .purple { background-color: #d19fff; }
+
+        .nav {
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .nav button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .icon {
+            width: 80px;
+            height: 50px;
+            background-color: #ced4da;
+            border-radius: 25px;
+            margin: 60px auto 20px;
+        }
+
+        .form-input {
+            display: block;
+            width: calc(100% - 20px);
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid var(--secondary-color);
+            border-radius: 5px;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-row input {
+            width: 48%;
+        }
+
+        .cancel {
+            background-color: var(--button-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="red"></div>
+            <div class="nav">
+                <button>Inicio</button>
+                <button>Regresar</button>
+                <button>Salir</button>
+            </div>
+            <div class="purple"></div>
+        </div>
+
+        <div class="icon"></div>
+
+        <input type="text" class="form-input" placeholder="Nombre completo">
+        <div class="form-row">
+            <input type="text" placeholder="Teléfono">
+            <input type="text" placeholder="Edad">
+        </div>
+        <input type="email" class="form-input" placeholder="Correo">
+        <div class="form-row">
+            <input type="text" placeholder="Hora">
+            <input type="text" placeholder="DD/MM/AA">
+        </div>
+
+        <button class="cancel">Cancelar cita</button>
+    </div>
+</body>
+</html>
