@@ -1,11 +1,20 @@
+<<<<<<< HEAD
 body{
+=======
+body {
+>>>>>>> bd91574cebdacf74c4cc9f71efe9b3359dcff529
   background-color: #fefefe;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
+<<<<<<< HEAD
   
 .container{
+=======
+
+.container {
+>>>>>>> bd91574cebdacf74c4cc9f71efe9b3359dcff529
   width: 95%;
   max-width: 1400px;
   margin: 60px auto;
@@ -14,7 +23,11 @@ body{
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.1);
 }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> bd91574cebdacf74c4cc9f71efe9b3359dcff529
 .header {
   display: flex;
   justify-content: space-between;
@@ -22,13 +35,18 @@ body{
   margin-bottom: 40px;
   flex-wrap: wrap;
 }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> bd91574cebdacf74c4cc9f71efe9b3359dcff529
 .header-left {
   display: flex;
   align-items: center;
   gap: 20px;
   flex-grow: 1;
 }
+<<<<<<< HEAD
   
 .circle {
     width: 30px;
@@ -191,3 +209,166 @@ body{
     background-color: #777;
   }
   
+=======
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.circle.red { background-color: #ff5b5b; }
+.circle.purple { background-color: #d187ff; }
+
+.search-bar {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 60vw;    
+  min-width: 250px; 
+  max-width: 600px; 
+  outline: none;
+  box-sizing: border-box;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.header button:hover {
+  background-color: #555;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  margin: 40px auto 30px;
+  border-radius: 50%;
+  background-color: #d1dcdc;
+}
+
+.upload-area {
+  width: 95%;
+  height: 140px;
+  border: 2px dashed #000;
+  margin: 30px auto 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.form-row {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-group {
+  flex: 1 1 calc(25% - 30px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.left-column .form-group input {
+  width: 95%;
+}
+
+.bottom-section {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.left-column {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-container {
+  width: 100%;
+  background-color: #fff;
+  border: 2px solid #333;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.calendar-container label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.submit-btn {
+  display: block;
+  width: 180px;
+  padding: 14px;
+  margin: 40px auto 0;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #777;
+}
+>>>>>>> bd91574cebdacf74c4cc9f71efe9b3359dcff529
