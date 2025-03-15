@@ -6,8 +6,8 @@ body{
     align-items: center;
     background-color: #fff;
     justify-content: flex-end;
-    width: 1850px;
-    max-width: 1850px;
+    width: auto;
+    max-width: auto;
     margin: 10px auto;
 }
 
