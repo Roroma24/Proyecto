@@ -105,6 +105,7 @@ body {
   gap: 40px;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .form-group {
@@ -190,4 +191,3 @@ select {
 .submit-btn:hover {
   background-color: #777;
 }
-
