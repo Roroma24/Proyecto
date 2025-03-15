@@ -1,0 +1,89 @@
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #ffffff;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.left-side {
+    flex: 0.4; 
+    background-image: url('image.png'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right-side {
+    flex: 0.6;  
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    position: relative;
+}
+.container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 15px; 
+}
+.icon {
+    width: 50px;
+    height: 50px;
+    background-color: #ff4a4a;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+}
+.dashed-box {
+width: 500px;
+height: 50px;
+border: 2px dashed black;
+background: transparent;
+display: flex;
+align-items: center; 
+justify-content: center; 
+font-size: 16px;
+font-weight: bold;
+color: black;
+}
+.login-box {
+background-color: #808080;
+border-radius: 15px;
+padding: 20px;
+width: 300px;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+input[type="text"],
+input[type="password"] {
+width: 100%;
+padding: 10px;
+margin: 5px 0;
+border: 2px solid #ccc;
+border-radius: 5px;
+text-align: center;
+}
+button.btn-continue {
+background-color: #5c5a5a;
+color: white;
+padding: 10px;
+width: 100px;
+border-radius: 20px;
+border: none;
+box-shadow: none;
+}
+.btn-exit {
+background-color: rgb(92, 90, 90);
+color: white;
+position: absolute;
+top: 20px;
+right: 20px;
+width: 100px;
+height: 40px;
+font-size: 16px;
+border-radius: 20px;
+border: none;
+box-shadow: none;
+}

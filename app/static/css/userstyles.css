@@ -1,21 +1,14 @@
 body{
-    background-color: #fff;
+    background-color: #f7ecec;
 }
 .container{
     display: flex;
     align-items: center;
+    background-color: #fff;
     justify-content: flex-end;
-    width: 100%;
+    width: 1850px;
     max-width: 1850px;
     margin: 10px auto;
-}
-
-.container_fondo {
-    width: auto;
-    height: auto;
-    background: #f7ecec;
-    border-radius: 10px;
-    text-align: center;
 }
 
 .exit_btn{
