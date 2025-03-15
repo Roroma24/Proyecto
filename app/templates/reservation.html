@@ -3,25 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/reservation.css') }}" >
-=======
   <link rel="stylesheet" href="{{ url_for('static', filename='css/reservation.css') }}">
->>>>>>> a637f715d9bf34edb846803c631e0a9503ae67a8
   <title>Formulario de Reserva</title>
-
+ 
 </head>
 <body>
-
+ 
   <div class="container">
-
+ 
     <div class="header">
-
+ 
       <div class="header-left">
         <div class="circle red"></div>
         <input type="text" class="search-bar" placeholder="Buscar...">
       </div>
-
+ 
       <div class="header-right">
         <button>Método de Pago</button>
         <a href="{{ url_for('exit') }}">
@@ -29,45 +25,45 @@
         </a>
         <div class="circle purple"></div>
       </div>
-
+ 
     </div>
-
+ 
     <div class="profile-pic"></div>
-
+ 
     <div class="upload-area">
       Arrastra aquí tu archivo o haz clic para subir
     </div>
-
+ 
     <form>
-
+ 
       <div class="form-row">
         <div class="form-group">
           <label for="nombre">Nombres</label>
           <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" />
         </div>
-
+ 
         <div class="form-group">
           <label for="apellido1">Primer Apellido</label>
           <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa primer apellido" />
         </div>
-
+ 
         <div class="form-group">
           <label for="apellido2">Segundo Apellido</label>
           <input type="text" id="apellido2" name="apellido2" placeholder="Ingresa segundo apellido" />
         </div>
-
+ 
         <div class="form-group">
           <label for="edad">Edad</label>
           <input type="number" id="edad" name="edad" placeholder="Edad" />
         </div>
       </div>
-
+ 
       <div class="form-row">
         <div class="form-group">
           <label for="telefono">Teléfono</label>
           <input type="text" id="telefono" name="telefono" placeholder="Número de teléfono" />
         </div>
-
+ 
         <div class="form-group">
           <label for="alergias">Alergias</label>
           <select id="alergias" name="alergias">
@@ -78,7 +74,7 @@
             <option value="otros">Otros</option>
           </select>
         </div>
-
+ 
         <div class="form-group">
           <label for="discapacidad">Discapacidad</label>
           <select id="discapacidad" name="discapacidad">
@@ -89,7 +85,7 @@
             <option value="auditiva">Auditiva</option>
           </select>
         </div>
-
+ 
         <div class="form-group">
           <label for="horarios">Horarios</label>
           <select id="horarios" name="horarios">
@@ -100,39 +96,40 @@
           </select>
         </div>
       </div>
-
+ 
       <div class="bottom-section">
-
+ 
         <div class="left-column">
           <div class="form-group">
             <label for="direccion">Dirección</label>
             <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección" />
           </div>
-
+ 
           <div class="form-group">
             <label for="correo">Correo</label>
             <input type="email" id="correo" name="correo" placeholder="Correo electrónico" />
           </div>
-
+ 
           <div class="form-group">
             <label for="confirmacion">Confirmación de Correo</label>
             <input type="email" id="confirmacion" name="confirmacion" placeholder="Confirma tu correo" />
           </div>
         </div>
-
+ 
         <div class="right-column">
           <div class="calendar-container">
             <label for="fecha">Selecciona Fecha</label>
             <input type="date" id="fecha" name="fecha" />
           </div>
         </div>
-
+ 
       </div>
-
+ 
       <button class="submit-btn" type="submit">Reservar</button>
-
+ 
     </form>
   </div>
-
+ 
 </body>
 </html>
+ 
