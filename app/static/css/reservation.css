@@ -94,7 +94,7 @@ body {
   background-color: #fff;
 }
 
-form {
+.form {
   display: flex;
   flex-direction: column;
   gap: 40px;
