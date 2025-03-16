@@ -1,13 +1,21 @@
 body{
     background-color: #f7ecec;
 }
+
 .container{
     display: flex;
     align-items: center;
     background-color: #fff;
     justify-content: flex-end;
     width: auto;
-    max-width: auto;
+    margin: 10px auto;
+}
+
+.info{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: auto;
     margin: 10px auto;
 }
 
@@ -20,40 +28,54 @@ body{
     cursor: pointer;
     margin: 10px auto;
 }
+
 .profile{
-    width: 50px;
-    height: 50px;
-    background-color: red;
+    width: 100px;
+    height: 100px;
+    background-color: #ff0000;
     border-radius: 50%;
-    margin: 10px auto;
+    margin: 3% auto;
 }
+
 .bar{
-    width: 60%;
-    height: 20px;
-    background-color: gray;
-    border-radius: 10px;
-    margin: 10px auto;
+    width: 40%;
+    height: 50px;
+    background-color: #808080;
+    border-radius: 25px;
+    margin: 2% auto;
 }
+
+.dashed-box {
+    width: 1400px;
+    height: 150px;
+    border: 2px dashed #000000;
+    margin: 3% auto;
+}
+
 .input-box{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 10px 0;
 }
+
 input{
     padding: 8px;
     border: 1px solid black;
     border-radius: 5px;
     width: 30%;
 }
+
 .input-long{
     width: 80%;
     margin-top: 10px;
 }
+
 .buttons{
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
+
 .btn{
     background: #555;
     color: white;

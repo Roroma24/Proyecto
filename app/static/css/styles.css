@@ -7,7 +7,6 @@ body{
     align-items: center;
     justify-content: space-between;
     width: auto;
-    max-width: auto;
     margin: 10px auto;
 }
 
@@ -15,8 +14,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 100%;
-    max-width: 1850px;
+    width: auto;
     margin: 10px auto;
 }
 
@@ -29,7 +27,7 @@ body{
 .icon{
     width: 90px;
     height: 90px;
-    background-color: #ff4a4a;
+    background-color: #ff0000;
     border-radius: 40%;
 }
 
@@ -45,7 +43,7 @@ body{
 .bar{
     width: 400px;
     height: 50px;
-    background-color: #8c8c8c;
+    background-color: #808080;
     border-radius: 10px;
 }
 
