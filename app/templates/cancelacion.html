@@ -1,140 +1,185 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Citas</title>
-    <style>
-        :root {
-            --primary-color: #fbeff0;
-            --secondary-color: #8c8c8c;
-            --button-color: #4a4a4a;
-            --highlight-color: #ff4d4d;
-            --extra-color: #d19fff;
-        }
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cancelación de Citas</title>
+        <style>
+            body {
+                background-color: #f7ecec;
+                margin: 0;
+                font-family: Arial, sans-serif;
+            }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--primary-color);
-            margin: 0;
-            padding: 0;
-        }
+            .header {
+                background-color: #fff;
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
 
-        .container {
-            width: 90%;
-            max-width: 500px;
-            margin: 50px auto;
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px var(--secondary-color);
-            text-align: center;
-            position: relative;
-        }
+            .icon {
+                width: 90px;
+                height: 90px;
+                background-color: #ff4a4a;
+                border-radius: 40%;
+            }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            background-color: var(--primary-color);
-            border-radius: 10px 10px 0 0;
-            align-items: center;
-            position: absolute;
-            top: -60px;
-            left: 0;
-            width: 100%;
-        }
+            .bar {
+                flex: 1;
+                height: 50px;
+                background-color: #8c8c8c;
+                border-radius: 10px;
+                margin: 0 10px;
+            }
 
-        .header div {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
+            .next {
+                width: 200px;
+                height: 50px;
+                background-color: #494949;
+                border-radius: 50px;
+                border: none;
+                cursor: pointer;
+                text-align: center;
+                line-height: 50px;
+                color: #fff;
+            }
 
-        .header .red { background-color: #ff4d4d; }
-        .header .grey { background-color: #8c8c8c; }
-        .header .purple { background-color: #d19fff; }
+            .btn {
+                width: 90px;
+                height: 90px;
+                background-color: #b45fd4;
+                border-radius: 40%;
+                border: none;
+                cursor: pointer;
+            }
 
-        .nav {
-            margin: 10px 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
+            .container {
+                width: 100%;
+                max-width: 1100px;
+                margin: 20px auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
 
-        .nav button {
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+            .dashed-box {
+                width: 1000px;
+                height: 120px;
+                border: 2px dashed #000000;
+                margin: 10px auto;
+            }
 
-        .icon {
-            width: 80px;
-            height: 50px;
-            background-color: #ced4da;
-            border-radius: 25px;
-            margin: 60px auto 20px;
-        }
+            .oval {
+                width: 200px;
+                height: 120px;
+                background-color: #d3d3d3;
+                border-radius: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+            }
 
-        .form-input {
-            display: block;
-            width: calc(100% - 20px);
-            margin: 10px auto;
-            padding: 10px;
-            border: 1px solid var(--secondary-color);
-            border-radius: 5px;
-        }
+            .inner-oval {
+                width: 150px;
+                height: 100px;
+                background-color: #f7ecec;
+                border-radius: 50px;
+            }
 
-        .form-row {
-            display: flex;
-            justify-content: space-between;
-        }
+            .form-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                width: 100%;
+                max-width: 1000px;
+            }
 
-        .form-row input {
-            width: 48%;
-        }
+            .form-container input {
+                width: 200px;
+                height: 30px;
+                margin: 5px;
+                padding: 5px;
+                border: 1px solid #000;
+                border-radius: 5px;
+                text-align: justify;
+            }
 
-        .cancel {
-            background-color: var(--button-color);
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100px;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
+            .form-container button {
+                width: 200px;
+                height: 40px;
+                background-color: #494949;
+                color: #fff;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                text-align: center;
+                line-height: 40px;
+            }
+
+            .form-row {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                max-width: 1000px;
+            }
+
+            .form-row input {
+                flex: 1;
+                margin: 5px;
+                text-align: justify;
+            }
+
+            .button-row {
+                display: flex;
+                justify-content: flex-end;
+                width: 100%;
+                max-width: 1000px;
+            }
+        </style>
+    </head>
+    <body>
         <div class="header">
-            <div class="red"></div>
-            <div class="nav">
-                <button>Inicio</button>
-                <button>Regresar</button>
-                <button>Salir</button>
+            <div class="icon"></div>
+            <div class="bar"></div>
+            <div class="next">Inicio</div>
+            <div class="next">Regresar</div>
+            <div class="next">Salir</div>
+            <a href="#">
+                <button class="btn"></button>
+            </a>
+        </div>
+        <div class="container">
+            <div class="form-container">
+                <div class="oval">
+                    <div class="inner-oval"></div>
+                </div>
+                <div class="dashed-box"></div>
+                <div class="form-row">
+                    <input type="text" placeholder="Nombre Completo">
+                    <input type="text" placeholder="Telefono">
+                    <input type="text" placeholder="Edad">
+                </div>
+                <div class="form-row">
+                    <input type="text" placeholder="Correo">
+                    <input type="text" placeholder="Hora">
+                    <input type="text" placeholder="DD/MM/AA">
+                </div>
+                <div class="button-row">
+                    <button>Cancelar Cita</button>
+                </div>
             </div>
-            <div class="purple"></div>
         </div>
-
-        <div class="icon"></div>
-
-        <input type="text" class="form-input" placeholder="Nombre completo">
-        <div class="form-row">
-            <input type="text" placeholder="Teléfono">
-            <input type="text" placeholder="Edad">
-        </div>
-        <input type="email" class="form-input" placeholder="Correo">
-        <div class="form-row">
-            <input type="text" placeholder="Hora">
-            <input type="text" placeholder="DD/MM/AA">
-        </div>
-
-        <button class="cancel">Cancelar cita</button>
-    </div>
-</body>
+    </body>
 </html>
