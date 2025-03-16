@@ -19,7 +19,13 @@
         <a href="{{ url_for('exit') }}">
           <button>Salir</button>
         </a>
-        <div class="circle purple"></div>
+        <div class="dropdown">
+          <button class="circle purple"></button>
+          <div class="dropdown-content">
+              <a href="{{ url_for('login') }}">Login</a>
+              <a href="{{ url_for('registro') }}">New user</a>
+          </div>
+      </div>
       </div>
     </div>
   </div>

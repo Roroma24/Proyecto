@@ -56,11 +56,48 @@ body {
 }
 
 .circle.red {
+  width: 90px;
+  height: 90px;
   background-color: #ff5b5b;
+  border-radius: 40%;
 }
 
 .circle.purple {
-  background-color: #d187ff;
+  width: 90px;
+  height: 90px;
+  background-color: #b45fd4;
+  border-radius: 40%;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .search-bar {

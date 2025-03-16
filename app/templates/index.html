@@ -12,9 +12,13 @@
             <div class="icon"></div>
             <div class="bar"></div>
         </div>
-        <a href="{{ url_for('registro') }}">
+        <div class="dropdown">
             <button class="btn"></button>
-        </a>
+            <div class="dropdown-content">
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('registro') }}">New user</a>
+            </div>
+        </div>                
     </div>
     <div class="image"></div>
     <div class="dashed-box"></div>
