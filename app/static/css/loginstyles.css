@@ -39,8 +39,7 @@ body {
     border-radius: 50%;
     margin: 0 auto 10px;
   }
-  
-  /* Elemento para el título, sin líneas decorativas */
+
   .login-text {
     width: 500px;
     text-align: center;
@@ -62,7 +61,6 @@ body {
     color: black;
   }
   
-  /* Si no se utiliza, puedes eliminarlo o reubicarlo según sea necesario */
   .login-box {
     background-color: #808080;
     border-radius: 15px;
