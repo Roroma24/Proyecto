@@ -1,185 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cancelación de Citas</title>
-        <style>
-            body {
-                background-color: #f7ecec;
-                margin: 0;
-                font-family: Arial, sans-serif;
-            }
-
-            .header {
-                background-color: #fff;
-                padding: 10px;
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                margin-bottom: 20px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            .icon {
-                width: 90px;
-                height: 90px;
-                background-color: #ff4a4a;
-                border-radius: 40%;
-            }
-
-            .bar {
-                flex: 1;
-                height: 50px;
-                background-color: #8c8c8c;
-                border-radius: 10px;
-                margin: 0 10px;
-            }
-
-            .next {
-                width: 200px;
-                height: 50px;
-                background-color: #494949;
-                border-radius: 50px;
-                border: none;
-                cursor: pointer;
-                text-align: center;
-                line-height: 50px;
-                color: #fff;
-            }
-
-            .btn {
-                width: 90px;
-                height: 90px;
-                background-color: #b45fd4;
-                border-radius: 40%;
-                border: none;
-                cursor: pointer;
-            }
-
-            .container {
-                width: 100%;
-                max-width: 1100px;
-                margin: 20px auto;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                padding: 20px;
-                background-color: #fff;
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .dashed-box {
-                width: 1000px;
-                height: 120px;
-                border: 2px dashed #000000;
-                margin: 10px auto;
-            }
-
-            .oval {
-                width: 200px;
-                height: 120px;
-                background-color: #d3d3d3;
-                border-radius: 50px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin: 0 auto;
-            }
-
-            .inner-oval {
-                width: 150px;
-                height: 100px;
-                background-color: #f7ecec;
-                border-radius: 50px;
-            }
-
-            .form-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-                width: 100%;
-                max-width: 1000px;
-            }
-
-            .form-container input {
-                width: 200px;
-                height: 30px;
-                margin: 5px;
-                padding: 5px;
-                border: 1px solid #000;
-                border-radius: 5px;
-                text-align: justify;
-            }
-
-            .form-container button {
-                width: 200px;
-                height: 40px;
-                background-color: #494949;
-                color: #fff;
-                border: none;
-                border-radius: 10px;
-                cursor: pointer;
-                text-align: center;
-                line-height: 40px;
-            }
-
-            .form-row {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                max-width: 1000px;
-            }
-
-            .form-row input {
-                flex: 1;
-                margin: 5px;
-                text-align: justify;
-            }
-
-            .button-row {
-                display: flex;
-                justify-content: flex-end;
-                width: 100%;
-                max-width: 1000px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="header">
-            <div class="icon"></div>
-            <div class="bar"></div>
-            <div class="next">Inicio</div>
-            <div class="next">Regresar</div>
-            <div class="next">Salir</div>
-            <a href="#">
-                <button class="btn"></button>
-            </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="cancelacion.css" />
+    <title>Cancelar cita</title>
+  </head>
+  <body>
+    <section>
+      <div class="container_1">
+        <div class="icon-bar">
+          <div class="icon"></div>
+          <div class="bar"></div>
         </div>
-        <div class="container">
-            <div class="form-container">
-                <div class="oval">
-                    <div class="inner-oval"></div>
-                </div>
-                <div class="dashed-box"></div>
-                <div class="form-row">
-                    <input type="text" placeholder="Nombre Completo">
-                    <input type="text" placeholder="Telefono">
-                    <input type="text" placeholder="Edad">
-                </div>
-                <div class="form-row">
-                    <input type="text" placeholder="Correo">
-                    <input type="text" placeholder="Hora">
-                    <input type="text" placeholder="DD/MM/AA">
-                </div>
-                <div class="button-row">
-                    <button>Cancelar Cita</button>
-                </div>
+        <div class="container_2">
+          <div class="nexttop">
+            <button class="next">Inicio</button>
+            <button class="next">Regresar</button>
+            <button class="next">Salir</button>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="btn"></button>
+          <div class="dropdown-content">
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('registro') }}">New user</a>
+          </div>
+        </div>
+      </div>
+      <div class="image">
+        <div class="container_1">
+          <div class="container_3">
+            <div class="logo_1">
+              <div class="logo_2"></div>
             </div>
+            <div class="dashed-box">
+              <div class="title"></div>
+            </div>
+            <div class="formulario">
+              <div class="campo nombre">
+                <input type="text" id="nombre" placeholder="Nombre completo" />
+              </div>
+              <div class="campos-dobles">
+                <div class="campo">
+                  <input type="tel" id="telefono" placeholder="Teléfono" />
+                </div>
+                <div class="campo">
+                  <input type="number" id="edad" placeholder="Edad" />
+                </div>
+                <div class="campo">
+                  <input type="email" id="correo" placeholder="Correo" />
+                </div>
+              </div>
+              <div class="campos-dobles">
+                <div class="campo">
+                  <input type="time" id="hora" />
+                </div>
+                <div class="campo">
+                  <input type="date" id="fecha" />
+                </div>
+              </div>
+              <button class="next_1">Cancelar Cita</button>
+            </div>
+          </div>
         </div>
-    </body>
+      </div>
+    </section>
+  </body>
 </html>
