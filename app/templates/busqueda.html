@@ -1,100 +1,79 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        :root {
-            --primary-color: #f8eded;
-            --secondary-color: #8c8c8c;
-            --button-color: #4a4a4a;
-            --highlight-color: #ff4d4d;
-            --toggle-bg: #c4cfd4;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--primary-color);
-            text-align: center;
-        }
-        .container {
-            width: 90%;
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px var(--secondary-color);
-        }
-        .btn {
-            width: 60px;
-            height: 30px;
-            border-radius: 15px;
-            border: none;
-            cursor: pointer;
-            background: var(--button-color);
-            color: white;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-        .toggle {
-            width: 50px;
-            height: 25px;
-            border-radius: 15px;
-            background: var(--toggle-bg);
-            margin: auto;
-            position: relative;
-        }
-        .bar {
-            width: 80%;
-            height: 20px;
-            background: var(--secondary-color);
-            display: inline-block;
-            margin: 10px 0;
-            border-radius: 10px;
-        }
-        input {
-            display: inline-block;
-            width: calc(30% - 10px);
-            margin: 10px 5px;
-            padding: 10px;
-            border: 1px solid var(--secondary-color);
-            border-radius: 5px;
-            text-align: center;
-        }
-        .full-width {
-            width: calc(100% - 20px);
-            display: block;
-        }
-        .confirm {
-            width: 40%;
-            background: var(--button-color);
-            color: white;
-            font-size: 16px;
-            padding: 10px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <button class="btn">Salir</button>
-    <div class="container">
-        <button class="btn">Salir</button>
-        <div class="toggle"></div>
-        <div class="bar"></div>
-        <input type="text" class="full-width" placeholder="Número de documento">
-        <input type="text" placeholder="Nombres">
-        <input type="text" placeholder="Primer Apellido">
-        <input type="text" placeholder="Segundo Apellido">
-        <input type="text" class="full-width" placeholder="Folio de cita">
-        <input type="email" class="full-width" placeholder="Correo">
-        <button class="confirm">Continuar</button>
-    </div>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="busqueda.css" />
+    <title>Busqueda de citas</title>
+  </head>
+  <body>
+    <section>
+      <div class="container_1">
+        <div class="icon-bar">
+          <div class="icon"></div>
+          <div class="bar"></div>
+        </div>
+        <div class="container_2">
+          <div class="nexttop">
+            <button class="next">Inicio</button>
+            <button class="next">Regresar</button>
+            <button class="next">Salir</button>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="btn"></button>
+          <div class="dropdown-content">
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('registro') }}">New user</a>
+          </div>
+        </div>
+      </div>
+      <div class="image">
+        <div class="container_1">
+          <div class="container_3">
+            <div class="logo_1">
+              <div class="logo_2"></div>
+            </div>
+            <div class="dashed-box">
+              <div class="title"></div>
+            </div>
+            <div class="formulario">
+              <div class="campos-dobles">
+                <div class="campo">
+                  <input type="nombre" id="nombres" placeholder="Nombres" />
+                </div>
+                <div class="campo">
+                  <input
+                    type="apellidos"
+                    id="primerapellido"
+                    placeholder="Primer Apellido"
+                  />
+                </div>
+                <div class="campo">
+                  <input
+                    type="apelidos"
+                    id="segundoapellido"
+                    placeholder="Segundo Apellido"
+                  />
+                </div>
+              </div>
+              <div class="campos-dobles">
+                <div class="campo">
+                  <input
+                    type="folio"
+                    id="foliodecita"
+                    placeholder="Folio de cita"
+                  />
+                </div>
+                <div class="campo">
+                  <input type="correo" id="correo" placeholder="Correo" />
+                </div>
+              </div>
+              <button class="next_1">Buscar citas</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
