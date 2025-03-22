@@ -1,73 +1,84 @@
-body{
-    background-color: #f7ecec;
+body { 
+    background-color: #f7ecec; /* Establece el color de fondo de la página en un tono rosa claro */
 }
 
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: auto;
-    margin: 10px auto;
+/* CONTENEDOR PRINCIPAL */
+.container { 
+    display: flex; /* Usa flexbox para organizar los elementos en fila */
+    align-items: center; /* Alinea los elementos verticalmente en el centro */
+    justify-content: space-between; /* Distribuye los elementos uniformemente en la fila */
+    width: auto; /* El ancho se ajusta automáticamente al contenido */
+    margin: 10px auto; /* Centra el contenedor con un margen de 10px arriba y abajo */
 }
 
-.icon-title{
-    display: flex;
-    align-items: center;
-    gap: 15px;
+/* ICONO Y TÍTULO: Alineación de elementos con espacio entre ellos */
+.icon-title { 
+    display: flex; /* Usa flexbox para alinear icono y título */
+    align-items: center; /* Alinea los elementos verticalmente */
+    gap: 15px; /* Espacio de 15px entre los elementos */
 }
 
-.icon{
-    width: 90px;
-    height: 90px;
-    background-color: #ff0000;
-    border-radius: 40%;
+/* ICONO: Estilos para un icono redondeado */
+.icon { 
+    width: 90px; /* Ancho del icono */
+    height: 90px; /* Altura del icono */
+    background-color: #ff0000; /* Fondo rojo */
+    border-radius: 40%; /* Bordes redondeados para hacer un círculo */
 }
 
-.btn{
-    width: 90px;
-    height: 90px;
-    background-color: #b45fd4;
-    border-radius: 40%;
-    border: none;
-    cursor: pointer;
+/* BOTÓN: Botón circular con color púrpura */
+.btn { 
+    width: 90px; /* Ancho del botón */
+    height: 90px; /* Altura del botón */
+    background-color: #b45fd4; /* Fondo color púrpura */
+    border-radius: 40%; /* Bordes redondeados */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
+/* CONTENEDOR DESPLEGABLE */
+.dropdown { 
+    position: relative; /* Permite posicionar los elementos internos de manera relativa */
+    display: inline-block; /* Mantiene el tamaño según el contenido */
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 120px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    z-index: 1;
+/* CONTENIDO DEL DESPLEGABLE (OCULTO POR DEFECTO) */
+.dropdown-content { 
+    display: none; /* Oculta el contenido del menú desplegable por defecto */
+    position: absolute; /* Posiciona el menú de forma absoluta respecto al padre */
+    background-color: #f9f9f9; /* Color de fondo gris claro */
+    min-width: 120px; /* Ancho mínimo de 120px */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Agrega sombra al menú */
+    z-index: 1; /* Asegura que el menú se muestre por encima de otros elementos */
 }
 
-.dropdown-content a {
-    display: block;
-    padding: 8px 12px;
-    text-decoration: none;
-    color: black;
+/* ENLACES DENTRO DEL DESPLEGABLE */
+.dropdown-content a { 
+    display: block; /* Hace que los enlaces ocupen todo el ancho disponible */
+    padding: 8px 12px; /* Espaciado interno */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: black; /* Color del texto en negro */
 }
 
-.dropdown-content a:hover {
-    background-color: #ddd;
+/* CAMBIO DE COLOR AL PASAR EL CURSOR SOBRE UN ENLACE */
+.dropdown-content a:hover { 
+    background-color: #ddd; /* Cambia el fondo a gris claro */
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
+/* MOSTRAR EL MENÚ CUANDO SE PASA EL CURSOR SOBRE EL CONTENEDOR */
+.dropdown:hover .dropdown-content { 
+    display: block; /* Muestra el contenido del menú */
 }
 
-.bar{
-    width: 400px;
-    height: 50px;
-    background-color: #808080;
-    border-radius: 10px;
+/* BARRA: Elemento rectangular con bordes redondeados */
+.bar { 
+    width: 400px; /* Ancho de la barra */
+    height: 50px; /* Altura de la barra */
+    background-color: #808080; /* Color de fondo gris */
+    border-radius: 10px; /* Bordes redondeados */
 }
 
-.titulo-principal{
-    margin: 0;
+/* TÍTULO PRINCIPAL */
+.titulo-principal { 
+    margin: 0; /* Elimina el margen exterior del título */
 }
