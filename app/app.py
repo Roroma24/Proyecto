@@ -1,3 +1,16 @@
+"""
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:
+Este archivo contiene el código para la creación de la aplicación web con Flask.
+"""
+
 from flask import Flask, render_template  # Importamos Flask y render_template para manejar nuestra aplicación web.
 
 app = Flask(__name__)  # Creamos una instancia de Flask.
