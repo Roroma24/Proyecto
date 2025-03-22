@@ -1,47 +1,96 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Página de inicio. Permite navegar a las vistas de login, registro, reserva y cancelación de citas médicas.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Enlace a la hoja de estilos CSS del menú principal -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Título de la página que aparece en la pestaña del navegador -->
     <title>Menu principal</title>
 </head>
 <body>
+
+    <!-- Contenedor principal -->
     <div class="container">
+
+        <!-- Barra superior con un ícono y una barra decorativa -->
         <div class="icon-bar">
-            <div class="icon"></div>
-            <div class="bar"></div>
+            <div class="icon"></div> 
+            <div class="bar"></div>   
         </div>
+
+        <!-- Menú desplegable con botones y enlaces -->
         <div class="dropdown">
+            <!-- Botón que activa el menú desplegable -->
             <button class="btn"></button>
+
+            <!-- Contenido del menú desplegable -->
             <div class="dropdown-content">
+                <!-- Enlace a la vista de login -->
                 <a href="{{ url_for('login') }}">Login</a>
+
+                <!-- Enlace a la vista de registro de un nuevo usuario -->
                 <a href="{{ url_for('registro') }}">New user</a>
             </div>
-        </div>                
-    </div>
+        </div>
+
+    </div> <!-- Fin del contenedor principal -->
+
+    <!-- Imagen o fondo decorativo que puede ocupar una parte destacada de la página -->
     <div class="image"></div>
+
+    <!-- Caja de texto -->
     <div class="dashed-box"></div>
+
+    <!-- Segundo contenedor principal -->
     <div class="container">
+        <!-- Tres logos que se estilizan en CSS -->
         <div class="logo"></div>
         <div class="logo"></div>
         <div class="logo"></div>
     </div>
+
+    <!-- Contenedor para los títulos o nombres de las secciones -->
     <div class="container">
+        <!-- Títulos o encabezados -->
         <div class="title"></div>
         <div class="title"></div>
         <div class="title"></div>
     </div>
+
+    <!-- Contenedor para los botones o accesos rápidos -->
     <div class="container_a">
+        <!-- Primer botón/enlace que lleva a la página de reserva -->
         <a href="{{ url_for('reserva') }}">
-            <div class="next"></div>
+            <div class="next"></div> <!-- Botón o ícono para continuar/reservar -->
         </a>
+
+        <!-- Segundo botón/enlace, actualmente vacío -->
         <a href="">
-            <div class="next"></div>
+            <div class="next"></div> 
         </a>
+
+        <!-- Tercer botón/enlace que lleva a la página de cancelación -->
         <a href="{{ url_for('cancel') }}">
-            <div class="next"></div>
+            <div class="next"></div> <!-- Botón o ícono para cancelar -->
         </a>
     </div>
+
 </body>
 </html>

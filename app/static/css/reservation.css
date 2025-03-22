@@ -1,3 +1,17 @@
+/* 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Este archivo contiene los estilos CSS para la página de reservación de la aplicación web.
+*/
+
+/* Estilo general para todo el cuerpo de la página */
 body {
   background-color: #fefefe;
   font-family: Arial, sans-serif;
@@ -5,13 +19,15 @@ body {
   padding: 0;
 }
 
+/* Contenedor del encabezado de la página */
 .header-container {
   background-color: #ffffff;
   padding: 20px 0;
   margin-bottom: 0;
-  box-shadow: none;
+  box-shadow: none; /* No se aplica sombra */
 }
 
+/* Estilo del contenido principal del encabezado */
 .header {
   width: 95%;
   max-width: 1400px;
@@ -19,63 +35,72 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Permite que el contenido baje si es necesario */
 }
 
+/* Sección izquierda del header (logotipo y otros elementos) */
 .header-left {
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-grow: 1;
+  flex-grow: 1; /* Toma el espacio sobrante si es necesario */
 }
 
+/* Sección derecha del header (botones, iconos, etc.) */
 .header-right {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
+/* Título principal, usualmente h1 o similar */
 .titulo-principal {
-  margin: 0;
+  margin: 0; /* Quita margen por defecto */
 }
 
+/* Contenedor principal del contenido de la página */
 .container {
   width: 95%;
   max-width: 1400px;
   margin: 20px auto;  
-  background-color: #f8ebe9;
+  background-color: #f8ebe9; /* Color de fondo rosado claro */
   padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1); /* Sombra suave */
 }
 
+/* Elementos circulares básicos */
 .circle {
   width: 30px;
   height: 30px;
   border-radius: 50%;
 }
 
+/* Círculo rojo personalizado */
 .circle.red {
   width: 90px;
   height: 90px;
   background-color: #ff5b5b;
-  border-radius: 40%;
+  border-radius: 40%; /* NO es completamente circular, es más un óvalo redondeado */
 }
 
+/* Círculo morado personalizado */
 .circle.purple {
   width: 90px;
   height: 90px;
   background-color: #b45fd4;
   border-radius: 40%;
   border: none;
-  cursor: pointer;
+  cursor: pointer; /* Cambia el cursor a mano al pasar encima */
 }
 
+/* Contenedor para el dropdown */
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
+/* Contenido del dropdown, oculto por defecto */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -85,6 +110,7 @@ body {
   z-index: 1;
 }
 
+/* Links dentro del dropdown */
 .dropdown-content a {
   display: block;
   padding: 8px 12px;
@@ -92,25 +118,29 @@ body {
   color: black;
 }
 
+/* Hover en cada link del dropdown */
 .dropdown-content a:hover {
   background-color: #ddd;
 }
 
+/* Muestra el contenido del dropdown cuando se pasa el mouse sobre el contenedor */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
+/* Barra de búsqueda */
 .search-bar {
   padding: 10px 15px;
   border: 1px solid #ccc;
   border-radius: 20px;
-  width: 60vw;
+  width: 60vw; /* 60% del ancho de la ventana */
   min-width: 250px;
   max-width: 600px;
-  outline: none;
+  outline: none; /* Elimina el borde azul al hacer clic */
   box-sizing: border-box;
 }
 
+/* Botones dentro del header */
 .header button {
   padding: 10px 20px;
   background-color: #333;
@@ -122,10 +152,12 @@ body {
   transition: background-color 0.3s ease;
 }
 
+/* Efecto hover para los botones del header */
 .header button:hover {
   background-color: #555;
 }
 
+/* Imagen de perfil */
 .profile-pic {
   width: 100px;
   height: 100px;
@@ -134,7 +166,8 @@ body {
   background-color: #d1dcdc;
 }
 
-.upload-area {
+/* Caja de texto */
+.textbox {
   width: 95%;
   height: 140px;
   border: 2px dashed #000;
@@ -149,31 +182,36 @@ body {
   background-color: #fff;
 }
 
+/* Contenedor principal del formulario */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 40px; /* Espaciado vertical entre elementos */
 }
 
+/* Fila del formulario para organizar inputs horizontalmente */
 .form-row {
   display: flex;
   gap: 40px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Salta a nueva línea si no hay espacio */
   justify-content: space-between;
   margin-bottom: 40px;
 }
 
+/* Grupo de campos individuales dentro de una fila */
 .form-group {
-  flex: 1 1 calc(25% - 30px);
+  flex: 1 1 calc(25% - 30px); /* Responsive: ocupa 25% menos margen */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 10px; /* Espacio entre label e input */
 }
 
+/* Etiqueta de cada campo */
 .form-group label {
   font-weight: bold;
 }
 
+/* Inputs estándar y selectores de tipo texto, email, número, fecha, etc. */
 input[type="text"],
 input[type="email"],
 input[type="number"],
@@ -186,23 +224,27 @@ select {
   font-size: 14px;
 }
 
+/* Inputs dentro de la columna izquierda del formulario */
 .left-column .form-group input {
   width: 95%;
 }
 
+/* Sección inferior, usualmente para dividir en columnas */
 .bottom-section {
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
 }
 
+/* Columna izquierda, parte de la sección inferior */
 .left-column {
-  flex: 2;
+  flex: 2; /* Toma el doble de espacio que la columna derecha */
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
+/* Columna derecha, para contenido auxiliar */
 .right-column {
   flex: 1;
   display: flex;
@@ -211,6 +253,7 @@ select {
   align-items: center;
 }
 
+/* Contenedor del calendario, puede usarse para mostrar un selector de fechas */
 .calendar-container {
   width: 100%;
   background-color: #fff;
@@ -224,11 +267,13 @@ select {
   gap: 10px;
 }
 
+/* Etiqueta dentro del contenedor del calendario */
 .calendar-container label {
   font-weight: bold;
   font-size: 16px;
 }
 
+/* Botón de envío al final del formulario */
 .submit-btn {
   display: block;
   width: 180px;
@@ -243,6 +288,7 @@ select {
   transition: background-color 0.3s ease;
 }
 
+/* Hover para el botón de envío */
 .submit-btn:hover {
   background-color: #777;
 }

@@ -1,71 +1,122 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:
+Página de reservación de citas médicas. Se solicitan datos personales del paciente, así como información sobre alergias, 
+discapacidades y horarios disponibles. Se incluye un calendario para seleccionar la fecha de la cita.
+-->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- Metadatos del documento -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Enlace a la hoja de estilos CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/reservation.css') }}">
+
   <title>Formulario de Reserva</title>
 </head>
 <body>
 
+  <!-- ===========================================
+       ENCABEZADO PRINCIPAL DEL FORMULARIO
+  ============================================ -->
   <div class="header-container">
     <div class="header">
       <div class="header-left">
+        <!-- Icono de círculo  -->
         <div class="circle red"></div>
+
+        <!-- Título principal de la página -->
         <h1 class="titulo-principal">Reservación de Citas</h1>
       </div>
+
+      <!-- Contenedor de botones en el encabezado derecho -->
       <div class="header-right">
+        <!-- Botón para método de pago -->
         <button>Método de Pago</button>
+
+        <!-- Botón para salir, lleva a la ruta 'exit' -->
         <a href="{{ url_for('exit') }}">
           <button>Salir</button>
         </a>
+
+        <!-- Menú desplegable para login o registro -->
         <div class="dropdown">
           <button class="circle purple"></button>
           <div class="dropdown-content">
               <a href="{{ url_for('login') }}">Login</a>
               <a href="{{ url_for('registro') }}">New user</a>
           </div>
-      </div>
+        </div>
       </div>
     </div>
   </div>
 
+  <!-- ===========================================
+       CONTENEDOR PRINCIPAL DEL FORMULARIO
+  ============================================ -->
   <div class="container">
+
+    <!-- Imagen de perfil del usuario (puede personalizarse) -->
     <div class="profile-pic"></div>
 
-    <div class="upload-area">
+    <!-- Área de texto -->
+    <div class="textbox">
       Arrastra aquí tu archivo o haz clic para subir
     </div>
 
+    <!-- ===========================================
+         FORMULARIO DE RESERVA DE CITAS
+    ============================================ -->
     <form>
+
+      <!-- ========== FILA DE DATOS PERSONALES ========== -->
       <div class="form-row">
+
+        <!-- Campo para nombres del usuario -->
         <div class="form-group">
           <label for="nombre">Nombres</label>
           <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" />
         </div>
 
+        <!-- Primer apellido -->
         <div class="form-group">
           <label for="apellido1">Primer Apellido</label>
           <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa primer apellido" />
         </div>
 
+        <!-- Segundo apellido -->
         <div class="form-group">
           <label for="apellido2">Segundo Apellido</label>
           <input type="text" id="apellido2" name="apellido2" placeholder="Ingresa segundo apellido" />
         </div>
 
+        <!-- Edad del usuario -->
         <div class="form-group">
           <label for="edad">Edad</label>
           <input type="number" id="edad" name="edad" placeholder="Edad" />
         </div>
       </div>
 
+      <!-- ========== FILA DE INFORMACIÓN ADICIONAL ========== -->
       <div class="form-row">
+
+        <!-- Teléfono de contacto -->
         <div class="form-group">
           <label for="telefono">Teléfono</label>
           <input type="text" id="telefono" name="telefono" placeholder="Número de teléfono" />
         </div>
 
+        <!-- Alergias: opciones desplegables -->
         <div class="form-group">
           <label for="alergias">Alergias</label>
           <select id="alergias" name="alergias">
@@ -77,6 +128,7 @@
           </select>
         </div>
 
+        <!-- Discapacidad: opciones desplegables -->
         <div class="form-group">
           <label for="discapacidad">Discapacidad</label>
           <select id="discapacidad" name="discapacidad">
@@ -88,6 +140,7 @@
           </select>
         </div>
 
+        <!-- Horario disponible para la cita -->
         <div class="form-group">
           <label for="horarios">Horarios</label>
           <select id="horarios" name="horarios">
@@ -110,24 +163,32 @@
         </div>
       </div>
 
+      <!-- ========== SECCIÓN INFERIOR DEL FORMULARIO ========== -->
       <div class="bottom-section">
+
+        <!-- Columna izquierda: Dirección y correo -->
         <div class="left-column">
+
+          <!-- Dirección del usuario -->
           <div class="form-group">
             <label for="direccion">Dirección</label>
             <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección" />
           </div>
 
+          <!-- Correo electrónico -->
           <div class="form-group">
             <label for="correo">Correo</label>
             <input type="email" id="correo" name="correo" placeholder="Correo electrónico" />
           </div>
 
+          <!-- Confirmación de correo electrónico -->
           <div class="form-group">
             <label for="confirmacion">Confirmación de Correo</label>
             <input type="email" id="confirmacion" name="confirmacion" placeholder="Confirma tu correo" />
           </div>
         </div>
 
+        <!-- Columna derecha: Fecha de la cita -->
         <div class="right-column">
           <div class="calendar-container">
             <label for="fecha">Selecciona Fecha</label>
@@ -136,7 +197,9 @@
         </div>
       </div>
 
+      <!-- Botón para enviar el formulario y realizar la reserva -->
       <button class="submit-btn" type="submit">Reservar</button>
+
     </form>
   </div>
 

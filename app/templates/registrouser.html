@@ -1,34 +1,74 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Página de registro de usuario. Se solicitan datos personales del usuario, como nombre, apellidos y correo electrónico. 
+Se incluye un botón para continuar con el registro y otro para registrarse como doctor.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Enlace al archivo CSS de estilos para el usuario -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/userstyles.css') }}">
+
+    <!-- Título de la página -->
     <title>New user</title>
 </head>
 <body>
+
+    <!-- Contenedor principal -->
     <div class="container">
+
+        <!-- Botón de salida que redirige a la función 'exit' -->
         <a href="{{ url_for('exit') }}">
-            <div class="exit_btn"></div>
+            <div class="exit_btn"></div> <!-- Botón estilizado para salir -->
         </a>
+
     </div>
+
+    <!-- Sección de imagen del perfil -->
     <div class="profile"></div>
-        <div class="bar"></div>
-        <div class="dashed-box"></div>
-        <div class="info">
-            <div class="input-box">
-                <input type="text" placeholder="Nombres">
-                <input type="text" placeholder="Primer Apellido">
-                <input type="text" placeholder="Segundo Apellido">
-            </div>
-        </div>
+
+    <!-- Barra decorativa o de progreso -->
+    <div class="bar"></div>
+
+    <!-- Caja de texto -->
+    <div class="dashed-box"></div>
+
+    <!-- Sección de información de usuario -->
+    <div class="info">
+
+        <!-- Grupo de campos de texto para nombres y apellidos -->
         <div class="input-box">
-            <input type="text" class="input-long" placeholder="Correo">
-            <input type="text" class="input-long" placeholder="Confirmación de correo">
+            <input type="text" placeholder="Nombres"> <!-- Campo para nombres -->
+            <input type="text" placeholder="Primer Apellido"> <!-- Campo para primer apellido -->
+            <input type="text" placeholder="Segundo Apellido"> <!-- Campo para segundo apellido -->
         </div>
-        <div class="buttons">
-            <button class="btn">Continuar</button>
-            <button class="btn">Registro como doctor</button>
-        </div>
+
+    </div>
+
+    <!-- Campos de texto para correo y su confirmación -->
+    <div class="input-box">
+        <input type="text" class="input-long" placeholder="Correo"> <!-- Campo de correo electrónico -->
+        <input type="text" class="input-long" placeholder="Confirmación de correo"> <!-- Campo para confirmar correo -->
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="buttons">
+        <button class="btn">Continuar</button> <!-- Botón para continuar el proceso -->
+        <button class="btn">Registro como doctor</button> <!-- Botón alternativo para registrarse como doctor -->
+    </div>
+
 </body>
 </html>
