@@ -1,66 +1,95 @@
+/* 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Este archivo contiene los estilos CSS para la página de perfil de la aplicación web.
+*/
+/* Configuración del fondo de la página */
+
 body{
-    background-color: #f7ecec;
+    background-color: #f7ecec; /* Color de fondo suave */
 }
 
+/* Contenedor principal de la página */
 .container{
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    justify-content: flex-end;
-    width: auto;
-    margin: 10px auto;
+    display: flex; /* Usamos flexbox para el layout */
+    align-items: center; /* Alinea los elementos verticalmente en el centro */
+    background-color: #fff; /* Fondo blanco para el contenedor */
+    justify-content: flex-end; /* Alinea el contenido a la derecha */
+    width: auto; /* El contenedor se ajusta al tamaño del contenido */
+    margin: 10px auto; /* Márgenes automáticos para centrarlo en la página */
 }
 
+/* Contenedor para la información */
 .info{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    display: flex; /* Usamos flexbox para los elementos dentro */
+    align-items: center; /* Alineación vertical al centro */
+    justify-content: space-around; /* Espaciado uniforme entre los elementos */
     width: auto;
-    margin: 10px auto;
+    margin: 10px auto; /* Márgenes automáticos para centrar */
 }
 
+/* Estilo para el botón de salida */
 .exit_btn{
-    width: 180px;
-    height: 40px;
-    background-color: #494949;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    margin: 10px auto;
+    width: 180px; /* Ancho del botón */
+    height: 40px; /* Alto del botón */
+    background-color: #494949; /* Color de fondo gris oscuro */
+    border-radius: 10px; /* Bordes redondeados */
+    border: none; /* Sin borde por defecto */
+    cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
+    margin: 10px auto; /* Márgenes para centrarlo */
 }
 
+/* Estilo para la imagen de perfil */
 .profile{
-    width: 100px;
-    height: 100px;
-    background-color: #ff0000;
-    border-radius: 50%;
-    margin: 3% auto;
+    width: 100px; /* Ancho de la imagen de perfil */
+    height: 100px; /* Alto de la imagen de perfil */
+    background-color: #ff0000; /* Fondo rojo como marcador */
+    border-radius: 50%; /* Hace la imagen circular */
+    margin: 3% auto; /* Márgenes automáticos para centrarla */
 }
 
+/* Barra gris */
 .bar{
-    width: 40%;
-    height: 50px;
-    background-color: #808080;
-    border-radius: 25px;
-    margin: 2% auto;
+    width: 40%; /* Ancho de la barra, 40% del contenedor */
+    height: 50px; /* Alto de la barra */
+    background-color: #808080; /* Color de la barra gris */
+    border-radius: 25px; /* Bordes redondeados */
+    margin: 2% auto; /* Márgenes automáticos para centrar */
 }
 
+/* Caja con borde punteado */
 .dashed-box {
-    width: 1400px;
-    height: 150px;
-    border: 2px dashed #000000;
-    margin: 3% auto;
+    width: 1400px; /* Ancho de la caja */
+    height: 150px; /* Alto de la caja */
+    border: 2px dashed #000000; /* Borde punteado negro */
+    margin: 3% auto; /* Márgenes automáticos para centrarla */
 }
 
+/* Caja para los inputs, se organiza con flexbox */
 .input-box{
+<<<<<<< HEAD
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 900px;
     margin: 10px 0;
+=======
+    display: flex; /* Usamos flexbox para los elementos dentro */
+    justify-content: space-around; /* Espaciado uniforme entre los elementos */
+    margin: 10px 0; /* Márgenes de separación arriba y abajo */
+>>>>>>> 643bdc13029ed472aaeefdc8c95fab140dd41c70
 }
 
+/* Estilo para los inputs */
 input{
+<<<<<<< HEAD
     padding: 8px;
     border: 1px solid #000000;
     justify-content: space-between;
@@ -68,13 +97,30 @@ input{
     width: 30%;
 }
 
-.buttons{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+=======
+    padding: 8px; /* Espaciado interno del input */
+    border: 1px solid black; /* Borde negro */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    width: 30%; /* El input ocupará el 30% del ancho */
 }
 
+/* Input más largo */
+.input-long{
+    width: 80%; /* El input ocupa el 80% del ancho */
+    margin-top: 10px; /* Márgenes superiores para separar de los demás elementos */
+}
+
+/* Contenedor para los botones, organizado con flexbox */
+>>>>>>> 643bdc13029ed472aaeefdc8c95fab140dd41c70
+.buttons{
+    display: flex; /* Usamos flexbox para los elementos dentro */
+    justify-content: space-between; /* Espaciado uniforme entre los botones */
+    margin-top: 20px; /* Márgenes superiores para separar de los elementos previos */
+}
+
+/* Estilo para los botones */
 .btn{
+<<<<<<< HEAD
     width: 180px;
     height: 40px;
     background: #555;
@@ -83,4 +129,13 @@ input{
     border-radius: 10px;
     border: none;
     cursor: pointer;
+=======
+    background: #555; /* Fondo gris oscuro */
+    color: white; /* Texto blanco */
+    padding: 10px 20px; /* Espaciado interno de los botones */
+    border-radius: 10px; /* Bordes redondeados */
+    border: none; /* Sin borde por defecto */
+    cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
+>>>>>>> 643bdc13029ed472aaeefdc8c95fab140dd41c70
 }
+
