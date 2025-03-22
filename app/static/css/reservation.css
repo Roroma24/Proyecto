@@ -12,7 +12,7 @@ Este archivo contiene los estilos CSS para la página de reservación de la apli
 */
 
 /* Estilo general para todo el cuerpo de la página */
-body {
+body { 
   background-color: #fefefe;
   font-family: Arial, sans-serif;
   margin: 0;
@@ -62,11 +62,15 @@ body {
 .container {
   width: 95%;
   max-width: 1400px;
-  margin: 20px auto;  
-  background-color: #f8ebe9; /* Color de fondo rosado claro */
+  margin: 20px auto;
   padding: 40px;
   border-radius: 12px; /* Bordes redondeados */
   box-shadow: 0 6px 12px rgba(0,0,0,0.1); /* Sombra suave */
+
+  /* Establecer imagen de fondo */
+  background-image: url('./imagen/Reservation.jpeg');
+  background-size: cover; /* Ajusta la imagen para cubrir el área */
+  background-position: center; /* Centra la imagen */
 }
 
 /* Elementos circulares básicos */
@@ -200,10 +204,15 @@ body {
 
 /* Grupo de campos individuales dentro de una fila */
 .form-group {
-  flex: 1 1 calc(25% - 30px); /* Responsive: ocupa 25% menos margen */
+  flex: 1 1 calc(25% - 30px); /* Mantiene la distribución horizontal original */
   display: flex;
   flex-direction: column;
   gap: 10px; /* Espacio entre label e input */
+  background-color: #fff;         /* Fondo blanco que cubre título e input */
+  border: 1px solid #333;         /* Borde para delimitar el área del grupo */
+  border-radius: 4px;             /* Bordes redondeados */
+  padding: 10px;                  /* Espaciado interno */
+  box-sizing: border-box;         /* Asegura que el padding no modifique el tamaño total */
 }
 
 /* Etiqueta de cada campo */
@@ -222,11 +231,12 @@ select {
   border: 1px solid #333;
   border-radius: 4px;
   font-size: 14px;
+  box-sizing: border-box; /* Asegura compatibilidad con padding */
 }
 
 /* Inputs dentro de la columna izquierda del formulario */
 .left-column .form-group input {
-  width: 95%;
+  width: 100%; /* Sin cambios en los tamaños horizontales */
 }
 
 /* Sección inferior, usualmente para dividir en columnas */
