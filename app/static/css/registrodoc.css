@@ -1,77 +1,95 @@
 :root {
-    --primary-color: #f5eaea;
-    --secondary-color: #8c8c8c;
-    --button-color: #d1d1d1;
-    --highlight-color: #ff4d4d;
-    --dark-color: #4a4a4a;
+    /* Definición de variables de colores para reutilizar en el código */
+    --primary-color: #f5eaea;  /* Color de fondo principal */
+    --secondary-color: #8c8c8c; /* Color secundario (gris) */
+    --button-color: #d1d1d1;  /* Color de los botones */
+    --highlight-color: #ff4d4d; /* Color de resaltado (rojo) */
+    --dark-color: #4a4a4a;  /* Color oscuro para texto o botones */
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--primary-color);
-    text-align: center;
+    /* Configuración del cuerpo de la página */
+    font-family: Arial, sans-serif; /* Tipo de letra */
+    background-color: var(--primary-color); /* Color de fondo */
+    text-align: center; /* Centra el texto */
 }
+
 .container {
-    width: 90%;
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px var(--secondary-color);
+    /* Contenedor principal de la página */
+    width: 90%; /* Ocupa el 90% del ancho disponible */
+    max-width: 600px; /* Máximo ancho de 600px */
+    margin: auto; /* Centrado horizontal */
+    padding: 20px; /* Espaciado interno */
+    background: white; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px var(--secondary-color); /* Sombra alrededor */
 }
+
 .btn {
+    /* Botón flotante en la esquina superior derecha */
     width: 60px;
     height: 30px;
-    border-radius: 15px;
-    border: none;
-    cursor: pointer;
-    background: var(--dark-color);
-    color: white;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    border-radius: 15px; /* Bordes redondeados */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor a un puntero */
+    background: var(--dark-color); /* Color de fondo oscuro */
+    color: white; /* Texto en blanco */
+    position: absolute; /* Posición absoluta respecto al contenedor padre */
+    top: 10px; /* Ubicado a 10px de la parte superior */
+    right: 10px; /* Ubicado a 10px de la derecha */
 }
+
 .circle {
+    /* Círculo de color rojo de 50x50px */
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    background: var(--highlight-color);
-    margin: auto;
+    border-radius: 50%; /* Hace que el div sea un círculo */
+    background: var(--highlight-color); /* Color de resaltado (rojo) */
+    margin: auto; /* Centrado horizontalmente */
 }
+
 .bar {
-    width: 80%;
-    height: 20px;
-    background: var(--secondary-color);
-    display: inline-block;
-    margin: 10px 0;
-    border-radius: 10px;
+    /* Barra horizontal de color gris */
+    width: 80%; /* Ocupa el 80% del ancho disponible */
+    height: 20px; /* Altura de 20px */
+    background: var(--secondary-color); /* Color gris */
+    display: inline-block; /* Se comporta como un bloque en línea */
+    margin: 10px 0; /* Margen arriba y abajo de 10px */
+    border-radius: 10px; /* Bordes redondeados */
 }
+
 input {
-    display: inline-block;
-    width: calc(30% - 10px);
-    margin: 10px 5px;
-    padding: 10px;
-    border: 1px solid var(--secondary-color);
-    border-radius: 5px;
-    text-align: center;
+    /* Estilos para los campos de entrada */
+    display: inline-block; /* Se mantiene en línea con otros elementos */
+    width: calc(30% - 10px); /* Ocupa el 30% menos 10px para ajuste de espacio */
+    margin: 10px 5px; /* Margen arriba y abajo de 10px, y a los lados de 5px */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid var(--secondary-color); /* Borde de 1px de color gris */
+    border-radius: 5px; /* Bordes redondeados */
+    text-align: center; /* Texto centrado dentro del input */
 }
+
 .full-width {
-    width: calc(100% - 20px);
-    display: block;
+    /* Estilo para inputs que ocupan todo el ancho */
+    width: calc(100% - 20px); /* Ancho completo menos 20px de margen */
+    display: block; /* Se muestra como un bloque completo */
 }
+
 .confirm-buttons {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+    /* Contenedor de los botones de confirmación */
+    display: flex; /* Usa flexbox para distribuir los botones */
+    justify-content: space-around; /* Distribuye los botones equitativamente */
+    margin-top: 20px; /* Margen superior de 20px */
 }
+
 .confirm {
-    width: 40%;
-    background: var(--dark-color);
-    color: white;
-    font-size: 16px;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+    /* Estilos para los botones de confirmación */
+    width: 40%; /* Cada botón ocupa el 40% del ancho disponible */
+    background: var(--dark-color); /* Color de fondo oscuro */
+    color: white; /* Texto en blanco */
+    font-size: 16px; /* Tamaño del texto */
+    padding: 10px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 10px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a un puntero al pasar sobre el botón */
 }
