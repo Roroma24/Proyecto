@@ -8,9 +8,9 @@
 </head>
 <body>
     <div class="container">
-        <div class="icon-bar">
+        <div class="icon-title">
             <div class="icon"></div>
-            <div class="bar"></div>
+            <h1 class="titulo-principal">Hospital</h1>
         </div>
         <div class="dropdown">
             <button class="btn"></button>
@@ -33,14 +33,14 @@
         <div class="title"></div>
     </div>
     <div class="container_a">
-        <a href="{{ url_for('reserva') }}">
-            <div class="next"></div>
+        <a href="{{ url_for('reserva') }}" style="text-decoration: none;">
+            <div class="next" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</div>
         </a>
-        <a href="">
-            <div class="next"></div>
+        <a href="{{ url_for('file', opcion='modification') }}" style="text-decoration: none;">
+            <div class="next" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</div>
         </a>
-        <a href="{{ url_for('cancel') }}">
-            <div class="next"></div>
+        <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
+            <div class="next" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</div>
         </a>
     </div>
 </body>

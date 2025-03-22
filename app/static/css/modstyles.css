@@ -1,19 +1,11 @@
 body{
-    background-color: #fff;
+    background-color: #f7ecec;
 }
 
 .container{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: auto;
-    margin: 10px auto;
-}
-
-.container_a{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
     width: auto;
     margin: 10px auto;
 }
@@ -78,43 +70,4 @@ body{
 
 .titulo-principal{
     margin: 0;
-}
-
-.image{
-    width: auto;
-    height: 160px;
-    background-color: #f7ecec;
-    margin: 20px auto;
-}
-
-.dashed-box {
-    width: 1000px;
-    height: 120px;
-    border: 2px dashed #000000;
-    margin: 10px auto;
-}
-
-.logo{
-    width: 120px;
-    height: 120px;
-    background-color: #808080;
-    border-radius: 40%;
-    margin: 20px auto;
-}
-
-.title{
-    width: 200px;
-    height: 50px;
-    border: 2px dashed #000000;
-    margin: 10px auto;
-}
-
-.next{
-    width: 180px;
-    height: 40px;
-    background-color: #494949;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    margin: 10px auto;
 }

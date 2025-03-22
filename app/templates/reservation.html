@@ -15,7 +15,9 @@
         <h1 class="titulo-principal">Reservación de Citas</h1>
       </div>
       <div class="header-right">
-        <button>Método de Pago</button>
+        <a href="{{ url_for('pago') }}">
+          <button>Método de Pago</button>
+        </a>
         <a href="{{ url_for('exit') }}">
           <button>Salir</button>
         </a>

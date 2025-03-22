@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/cancelacion') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cancelacion.css') }}">
     <title>Cancelar cita</title>
   </head>
   <body>
@@ -17,7 +17,9 @@
           <div class="nexttop">
             <button class="next">Inicio</button>
             <button class="next">Regresar</button>
-            <button class="next">Salir</button>
+            <a href="{{ url_for('exit') }}">
+              <button class="next">Salir</button>
+            </a>
           </div>
         </div>
         <div class="dropdown">

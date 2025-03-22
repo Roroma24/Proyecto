@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/busqueda') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/busqueda.css') }}" />
     <title>Busqueda de citas</title>
   </head>
   <body>
@@ -17,7 +17,9 @@
           <div class="nexttop">
             <button class="next">Inicio</button>
             <button class="next">Regresar</button>
-            <button class="next">Salir</button>
+            <a href="{{ url_for('exit') }}">
+              <button class="next">Salir</button>
+            </a>
           </div>
         </div>
         <div class="dropdown">
@@ -44,32 +46,24 @@
                 </div>
                 <div class="campo">
                   <input
-                    type="apellidos"
-                    id="primerapellido"
-                    placeholder="Primer Apellido"
-                  />
+                    type="apellidos" id="primerapellido" placeholder="Primer Apellido">
                 </div>
                 <div class="campo">
-                  <input
-                    type="apelidos"
-                    id="segundoapellido"
-                    placeholder="Segundo Apellido"
-                  />
+                  <input type="apelidos" id="segundoapellido" placeholder="Segundo Apellido">
                 </div>
               </div>
               <div class="campos-dobles">
                 <div class="campo">
-                  <input
-                    type="folio"
-                    id="foliodecita"
-                    placeholder="Folio de cita"
-                  />
+                  <input type="text" id="foliodecita" name="foliodecita" placeholder="Folio de cita" required />
                 </div>
                 <div class="campo">
-                  <input type="correo" id="correo" placeholder="Correo" />
+                  <input type="email" id="correo" name="correo" placeholder="Correo" required />
                 </div>
               </div>
-              <button class="next_1">Buscar citas</button>
+              <form action="{{ url_for('procesar_cita') }}" method="POST">
+                <input type="hidden" name="opcion" value="{{ opcion }}">
+                <button class="next_1" type="submit">Buscar</button>
+              </form>
             </div>
           </div>
         </div>

@@ -22,13 +22,19 @@
                 <input type="text" placeholder="Segundo Apellido">
             </div>
         </div>
-        <div class="input-box">
-            <input type="text" class="input-long" placeholder="Correo">
-            <input type="text" class="input-long" placeholder="Confirmación de correo">
+        <div class="info">
+            <div class="input-box">
+                <input type="text" placeholder="Correo">
+                <input type="text" placeholder="Confirmación de correo">
+            </div>
         </div>
-        <div class="buttons">
-            <button class="btn">Continuar</button>
-            <button class="btn">Registro como doctor</button>
+        <div class="info">
+            <div class="buttons">
+                <button class="btn">Continuar</button>
+                <a href="{{ url_for('newdoctor') }}">
+                    <button class="btn">Registro como doctor</button>
+                </a>
+            </div>
         </div>
 </body>
 </html>
