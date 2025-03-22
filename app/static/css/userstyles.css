@@ -74,22 +74,15 @@ body{
 
 /* Caja para los inputs, se organiza con flexbox */
 .input-box{
-<<<<<<< HEAD
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 900px;
     margin: 10px 0;
-=======
-    display: flex; /* Usamos flexbox para los elementos dentro */
-    justify-content: space-around; /* Espaciado uniforme entre los elementos */
-    margin: 10px 0; /* Márgenes de separación arriba y abajo */
->>>>>>> 643bdc13029ed472aaeefdc8c95fab140dd41c70
 }
 
 /* Estilo para los inputs */
 input{
-<<<<<<< HEAD
     padding: 8px;
     border: 1px solid #000000;
     justify-content: space-between;
@@ -97,21 +90,6 @@ input{
     width: 30%;
 }
 
-=======
-    padding: 8px; /* Espaciado interno del input */
-    border: 1px solid black; /* Borde negro */
-    border-radius: 5px; /* Bordes ligeramente redondeados */
-    width: 30%; /* El input ocupará el 30% del ancho */
-}
-
-/* Input más largo */
-.input-long{
-    width: 80%; /* El input ocupa el 80% del ancho */
-    margin-top: 10px; /* Márgenes superiores para separar de los demás elementos */
-}
-
-/* Contenedor para los botones, organizado con flexbox */
->>>>>>> 643bdc13029ed472aaeefdc8c95fab140dd41c70
 .buttons{
     display: flex; /* Usamos flexbox para los elementos dentro */
     justify-content: space-between; /* Espaciado uniforme entre los botones */
@@ -120,7 +98,6 @@ input{
 
 /* Estilo para los botones */
 .btn{
-<<<<<<< HEAD
     width: 180px;
     height: 40px;
     background: #555;
@@ -129,13 +106,5 @@ input{
     border-radius: 10px;
     border: none;
     cursor: pointer;
-=======
-    background: #555; /* Fondo gris oscuro */
-    color: white; /* Texto blanco */
-    padding: 10px 20px; /* Espaciado interno de los botones */
-    border-radius: 10px; /* Bordes redondeados */
-    border: none; /* Sin borde por defecto */
-    cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
->>>>>>> 643bdc13029ed472aaeefdc8c95fab140dd41c70
 }
 

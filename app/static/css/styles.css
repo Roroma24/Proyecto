@@ -34,18 +34,10 @@ body{
     margin: 10px auto; /* Márgenes automáticos para centrar el contenedor */
 }
 
-<<<<<<< HEAD
 .icon-title{
     display: flex;
     align-items: center;
     gap: 15px;
-=======
-/* Contenedor para los iconos */
-.icon-bar{
-    display: flex; /* Flexbox para organizar los iconos */
-    align-items: center; /* Alineación vertical centrada */
-    gap: 15px; /* Espaciado de 15px entre los iconos */
->>>>>>> 643bdc13029ed472aaeefdc8c95fab140dd41c70
 }
 
 /* Estilo para cada icono */
@@ -108,14 +100,10 @@ body{
     border-radius: 10px; /* Bordes redondeados */
 }
 
-<<<<<<< HEAD
 .titulo-principal{
     margin: 0;
 }
 
-=======
-/* Estilo para la imagen */
->>>>>>> 643bdc13029ed472aaeefdc8c95fab140dd41c70
 .image{
     width: auto; /* El ancho de la imagen se ajusta automáticamente */
     height: 160px; /* Alto de la imagen */
