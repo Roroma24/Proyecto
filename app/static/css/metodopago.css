@@ -1,73 +1,95 @@
 :root {
-    --primary-color: #f5eaea;
-    --secondary-color: #8c8c8c;
-    --button-color: #d1d1d1;
-    --highlight-color: #ff4d4d;
-    --dark-color: #4a4a4a;
-    --purple: #b45fd4;
+    /* Definición de variables de colores */
+    --primary-color: #f5eaea;  /* Color de fondo principal */
+    --secondary-color: #8c8c8c; /* Color secundario (gris) */
+    --button-color: #d1d1d1;  /* Color de los botones */
+    --highlight-color: #ff4d4d; /* Color de resaltado (rojo) */
+    --dark-color: #4a4a4a;  /* Color oscuro para texto o botones */
+    --purple: #b45fd4; /* Color morado para algunos elementos */
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--primary-color);
-    text-align: center;
+    /* Estilo general del cuerpo de la página */
+    font-family: Arial, sans-serif; /* Tipo de letra */
+    background-color: var(--primary-color); /* Color de fondo */
+    text-align: center; /* Centra el texto */
 }
+
 .container {
-    width: 90%;
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px var(--secondary-color);
+    /* Contenedor principal */
+    width: 90%; /* Ocupa el 90% del ancho disponible */
+    max-width: 600px; /* Máximo ancho de 600px */
+    margin: auto; /* Centrado horizontal */
+    padding: 20px; /* Espaciado interno */
+    background: white; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0px 0px 10px var(--secondary-color); /* Sombra alrededor */
 }
+
 .btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
+    /* Estilo de botones redondos */
+    width: 40px; /* Ancho del botón */
+    height: 40px; /* Altura del botón */
+    border-radius: 50%; /* Hace que el botón sea redondo */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor a un puntero */
 }
-.red { background: var(--highlight-color); }
-.dark { background: var(--dark-color); }
-.purple { background: var(--purple); }
+
+/* Clases para cambiar el color de los botones */
+.red { background: var(--highlight-color); } /* Botón rojo */
+.dark { background: var(--dark-color); } /* Botón oscuro */
+.purple { background: var(--purple); } /* Botón morado */
+
 .top-bar {
-    width: 80%;
-    height: 20px;
-    background: var(--secondary-color);
-    display: inline-block;
-    margin: 10px 0;
+    /* Barra superior de color gris */
+    width: 80%; /* Ocupa el 80% del ancho disponible */
+    height: 20px; /* Altura de 20px */
+    background: var(--secondary-color); /* Color gris */
+    display: inline-block; /* Se comporta como un bloque en línea */
+    margin: 10px 0; /* Margen arriba y abajo de 10px */
 }
+
 input, .confirm {
-    display: block;
-    width: calc(100% - 20px);
-    margin: 10px auto;
-    padding: 10px;
-    border: 1px solid var(--secondary-color);
-    border-radius: 5px;
+    /* Estilo para los campos de entrada y los botones de confirmación */
+    display: block; /* Se muestran como bloques */
+    width: calc(100% - 20px); /* Ancho completo menos 20px de margen */
+    margin: 10px auto; /* Centrado con margen */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid var(--secondary-color); /* Borde de 1px de color gris */
+    border-radius: 5px; /* Bordes redondeados */
 }
+
 .input-group {
-    display: flex;
-    justify-content: space-between;
+    /* Contenedor de un grupo de inputs */
+    display: flex; /* Usa flexbox para distribuir los inputs */
+    justify-content: space-between; /* Distribuye los inputs con espacio entre ellos */
 }
+
 .input-group input {
-    width: 48%;
+    /* Estilo de los inputs dentro del grupo */
+    width: 48%; /* Cada input ocupa casi la mitad del ancho disponible */
 }
+
 .payment-methods {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+    /* Contenedor de métodos de pago */
+    display: flex; /* Usa flexbox */
+    justify-content: center; /* Centra los elementos */
+    gap: 10px; /* Espaciado entre los métodos de pago */
 }
+
 .method {
-    width: 50px;
-    height: 50px;
-    background: var(--button-color);
-    border-radius: 50%;
-    border: none;
+    /* Estilo de cada botón de método de pago */
+    width: 50px; /* Ancho de 50px */
+    height: 50px; /* Altura de 50px */
+    background: var(--button-color); /* Color de fondo de los botones */
+    border-radius: 50%; /* Botones redondos */
+    border: none; /* Sin borde */
 }
+
 .confirm {
-    background: var(--dark-color);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
+    /* Estilo del botón de confirmación */
+    background: var(--dark-color); /* Color de fondo oscuro */
+    color: white; /* Texto en blanco */
+    font-size: 16px; /* Tamaño del texto */
+    cursor: pointer; /* Cambia el cursor a un puntero */
 }
