@@ -1,5 +1,6 @@
 body{
     background-color: #fff;
+    font-family: Arial, sans-serif;
 }
 
 .container{
@@ -7,7 +8,7 @@ body{
     align-items: center;
     justify-content: flex-end;
     width: auto;
-    margin: 10px auto;
+    margin: 1% auto;
 }
 
 .container-body{
@@ -28,37 +29,45 @@ body{
 }
 
 .exit_btn{
-    width: 180px;
-    height: 40px;
+    width: 160px;
+    height: 50px;
     background-color: #494949;
     border-radius: 25px;
     border: none;
     cursor: pointer;
-    margin: 10px auto;
+    margin: auto;
 }
 
 .profile{
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     background-image: url('imagen/logo.png');
     background-size: cover;
     border-radius: 50%;
-    margin: 3% auto;
+    margin: auto;
 }
 
 .bar{
     width: 40%;
     height: 50px;
-    background-color: #808080;
+    justify-items: center;
     border-radius: 25px;
     margin: 2% auto;
 }
 
 .dashed-box {
-    width: 1400px;
-    height: 150px;
-    border: 2px dashed #000000;
-    margin: 3% auto;
+    width: 80%;
+    height: 140px;
+    border: 2px dashed #000;
+    margin: 30px auto 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #fff;
 }
 
 .input-box{
@@ -92,4 +101,10 @@ input{
     border-radius: 10px;
     border: none;
     cursor: pointer;
+}
+
+.titulo-principal{
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
 }
