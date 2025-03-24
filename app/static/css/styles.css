@@ -14,6 +14,7 @@ Este archivo contiene los estilos CSS para la página de inicio de la aplicació
 /* Estilo para el fondo de la página */
 body{
     background-color: #fff; /* Fondo blanco para toda la página */
+    font-family: Arial, sans-serif;
 }
 
 /* Contenedor principal que usa flexbox */
@@ -44,7 +45,7 @@ body{
 .icon{
     width: 90px; /* Ancho de cada icono */
     height: 90px; /* Alto de cada icono */
-    background-image: url('imagen/logo.jpeg'); /* Fondo rojo para los iconos */
+    background-image: url('imagen/logo.png'); /* Fondo rojo para los iconos */
     border-radius: 40%; /* Bordes redondeados para darle forma circular */
 }
 
@@ -52,7 +53,9 @@ body{
 .btn{
     width: 90px; /* Ancho del botón */
     height: 90px; /* Alto del botón */
-    background-color: #b45fd4; /* Fondo morado para el botón */
+    background-color: #fff; /* Fondo morado para el botón */
+    background-image: url('imagen/logoregistro.png');
+    background-size: cover;
     border-radius: 40%; /* Bordes redondeados para darle forma circular */
     border: none; /* Sin borde por defecto */
     cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
@@ -101,12 +104,14 @@ body{
 }
 
 .titulo-principal{
+    font-size: 50px;
+    font-weight: bold;
     margin: 0;
 }
 
 .image{
     width: auto; /* El ancho de la imagen se ajusta automáticamente */
-    height: 160px; /* Alto de la imagen */
+    height: 200px; /* Alto de la imagen */
     background-image: url('imagen/index.jpg'); /* Fondo suave para la imagen */
     background-size: cover;
     background-repeat: no-repeat;
@@ -116,7 +121,7 @@ body{
 /* Caja con borde punteado */
 .dashed-box {
     width: 1000px; /* Ancho de la caja */
-    height: 120px; /* Alto de la caja */
+    height: 160px; /* Alto de la caja */
     border: 2px dashed #000000; /* Borde punteado negro */
     margin: 10px auto; /* Márgenes automáticos para centrarla */
 }
@@ -132,9 +137,11 @@ body{
 
 /* Título con borde punteado */
 .title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 200px; /* Ancho del título */
     height: 50px; /* Alto del título */
-    border: 2px dashed #000000; /* Borde punteado negro */
     margin: 10px auto; /* Márgenes automáticos para centrar */
 }
 
