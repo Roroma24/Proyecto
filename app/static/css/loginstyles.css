@@ -33,11 +33,10 @@ body {
   }
   
   .icon {
-    width: 50px;
-    height: 50px;
-    background-color: #ff4a4a;
-    border-radius: 50%;
-    margin: 0 auto 10px;
+    width: 90px; /* Ancho de cada icono */
+    height: 90px; /* Alto de cada icono */
+    background-image: url('imagen/logo.png'); /* Fondo rojo para los iconos */
+    border-radius: 40%; /* Bordes redondeados para darle forma circular */
   }
 
   .login-text {

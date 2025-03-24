@@ -13,7 +13,7 @@ Este archivo contiene los estilos CSS para la página de reservación de la apli
 
 /* Estilo general para todo el cuerpo de la página */
 body { 
-  background-color: #fefefe;
+  background-color: #fff;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -84,7 +84,7 @@ body {
 .circle.red {
   width: 90px;
   height: 90px;
-  background-color: #ff5b5b;
+  background-image: url('imagen/logo.png');
   border-radius: 40%; /* NO es completamente circular, es más un óvalo redondeado */
 }
 
@@ -92,7 +92,9 @@ body {
 .circle.purple {
   width: 90px;
   height: 90px;
-  background-color: #b45fd4;
+  background-color: #fff;
+  background-image: url('imagen/logoregistro.png');
+  background-size: cover;
   border-radius: 40%;
   border: none;
   cursor: pointer; /* Cambia el cursor a mano al pasar encima */
