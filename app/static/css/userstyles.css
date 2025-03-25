@@ -1,4 +1,4 @@
-/* 
+/*  
 Autores: 
 Axel Castañeda Sánchez 
 Antonio Albuerne Silva
@@ -13,162 +13,162 @@ Este archivo contiene los estilos CSS para la página de registro de la aplicaci
 
 /* Estilos generales del body */
 body{
-    background-color: #fff;
-    font-family: Arial, sans-serif;
+    background-color: #fff; /* Fondo blanco */
+    font-family: Arial, sans-serif; /* Establece la fuente de la página */
 }
 
 .container{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: auto;
-    margin: 1% auto;
+    display: flex; /* Usamos flexbox para organizar la disposición de los elementos */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: flex-end; /* Alinea los elementos al final (derecha) */
+    width: auto; /* El ancho es automático */
+    margin: 1% auto; /* Margen superior e inferior del 1% */
 }
 
 .container-body{
-    width: auto;
-    height: 55vw;
-    background-image: url('imagen/newuser.jpeg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: auto;
+    width: auto; /* El ancho es automático */
+    height: 55vw; /* Altura del contenedor es el 55% del ancho de la ventana */
+    background-image: url('imagen/newuser.jpeg'); /* Imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra completamente el área */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* La imagen no se repite */
+    background-attachment: fixed; /* La imagen permanece fija al hacer scroll */
+    margin: auto; /* Centra el contenedor */
 }
 
 .info{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: auto;
-    margin: 1% auto;
+    display: flex; /* Usamos flexbox para organizar los elementos */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: space-around; /* Distribuye los elementos equitativamente */
+    width: auto; /* El ancho es automático */
+    margin: 1% auto; /* Margen superior e inferior del 1% */
 }
 
 .exit_btn{
-    width: 160px;
-    height: 50px;
-    background-color: #494949;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    margin: auto;
+    width: 160px; /* Ancho del botón */
+    height: 50px; /* Alto del botón */
+    background-color: #494949; /* Fondo gris oscuro */
+    border-radius: 25px; /* Bordes redondeados */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    margin: auto; /* Centra el botón */
 }
 
 .profile{
-    width: 120px;
-    height: 120px;
-    background-image: url('imagen/logo.png');
-    background-size: cover;
-    border-radius: 50%;
-    margin: auto;
+    width: 120px; /* Ancho del perfil */
+    height: 120px; /* Alto del perfil */
+    background-image: url('imagen/logo.png'); /* Imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra completamente el área */
+    border-radius: 50%; /* Bordes redondeados para hacer el círculo */
+    margin: auto; /* Centra el perfil */
 }
 
 .bar{
-    width: 40%;
-    height: 50px;
-    justify-items: center;
-    border-radius: 25px;
-    margin: 2% auto;
+    width: 40%; /* Ancho de la barra */
+    height: 50px; /* Alto de la barra */
+    justify-items: center; /* Centra el contenido de la barra */
+    border-radius: 25px; /* Bordes redondeados */
+    margin: 2% auto; /* Margen superior e inferior del 2% */
 }
 
 .dashed-box {
-    width: 80%;
-    height: 140px;
-    border: 2px dashed #000;
-    margin: 30px auto 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #000000;
-    font-size: 16px;
-    text-align: center;
-    border-radius: 10px;
-    background-color: #fff;
+    width: 80%; /* Ancho del cuadro */
+    height: 140px; /* Alto del cuadro */
+    border: 2px dashed #000; /* Borde discontinuo negro */
+    margin: 30px auto 50px; /* Márgenes superior, inferior y lateral */
+    display: flex; /* Usamos flexbox para organizar los elementos dentro */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    color: #000000; /* Color del texto */
+    font-size: 16px; /* Tamaño de la fuente */
+    text-align: center; /* Centra el texto */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo blanco */
 }
 
 .input-box{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 900px;
-    margin: 10px 0;
+    display: flex; /* Usamos flexbox para organizar los elementos dentro */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: space-around; /* Distribuye los elementos equitativamente */
+    width: 900px; /* Ancho del cuadro de entrada */
+    margin: 10px 0; /* Margen superior e inferior de 10px */
 }
 
 input{
-    padding: 8px;
-    border: 1px solid #000000;
-    justify-content: space-between;
-    border-radius: 5px;
-    width: auto;
+    padding: 8px; /* Añade espacio dentro de los campos de entrada */
+    border: 1px solid #000000; /* Borde negro */
+    justify-content: space-between; /* Distribuye el contenido entre los lados */
+    border-radius: 5px; /* Bordes redondeados */
+    width: auto; /* El ancho es automático */
 }
 
 .buttons{
-    display: flex;
-    justify-content: space-between;
-    gap: 140px;
-    padding: 1%;
-    margin-top: 20px;
+    display: flex; /* Usamos flexbox para organizar los elementos */
+    justify-content: space-between; /* Distribuye los elementos equitativamente */
+    gap: 140px; /* Espacio entre los botones */
+    padding: 1%; /* Añade espacio interior */
+    margin-top: 20px; /* Margen superior de 20px */
 }
 
 .btn{
-    width: 180px;
-    background-color: #555;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    margin: auto;
+    width: 180px; /* Ancho del botón */
+    background-color: #555; /* Fondo gris para el botón */
+    border-radius: 25px; /* Bordes redondeados para el botón */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    margin: auto; /* Centra el botón */
 }
 
 .titulo-principal{
-    font-size: 50px;
-    font-weight: bold;
-    margin: 0;
+    font-size: 50px; /* Tamaño de la fuente */
+    font-weight: bold; /* Texto en negrita */
+    margin: 0; /* Sin margen */
 }
 
 /* Contenedor principal del formulario */
 .form{
-    display: flex;
-    flex-direction: column;
-    gap: 40px; /* Espaciado vertical entre elementos */
+    display: flex; /* Usamos flexbox para organizar los elementos */
+    flex-direction: column; /* Organiza los elementos en columna */
+    gap: 40px; /* Espaciado vertical entre los elementos */
 }
   
 /* Fila del formulario para organizar inputs horizontalmente */
 .form-row{
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap; /* Salta a nueva línea si no hay espacio */
-    justify-content: space-between;
-    margin-bottom: 30px;
-    margin: 30px;
+    display: flex; /* Usamos flexbox para organizar los elementos */
+    gap: 30px; /* Espacio entre los elementos */
+    flex-wrap: wrap; /* Los elementos saltan a nueva línea si no hay espacio suficiente */
+    justify-content: space-between; /* Distribuye los elementos equitativamente */
+    margin-bottom: 30px; /* Margen inferior de 30px */
+    margin: 30px; /* Márgenes de 30px */
 }
   
 /* Grupo de campos individuales dentro de una fila */
 .form-group{
     flex: 1 1 calc(25% - 30px); /* Mantiene la distribución horizontal original */
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Usamos flexbox para organizar los elementos dentro del grupo */
+    flex-direction: column; /* Organiza los elementos en columna */
     gap: 10px; /* Espacio entre label e input */
-    background-color: #fff;         /* Fondo blanco que cubre título e input */
-    border: 1px solid #333;         /* Borde para delimitar el área del grupo */
-    border-radius: 4px;             /* Bordes redondeados */
-    padding: 10px;                  /* Espaciado interno */
-    box-sizing: border-box;         /* Asegura que el padding no modifique el tamaño total */
-    margin: 1%;
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #333; /* Borde gris oscuro */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 10px; /* Añade espacio dentro del grupo */
+    box-sizing: border-box; /* Asegura que el padding no modifique el tamaño total */
+    margin: 1%; /* Margen del 1% */
 }
   
 /* Etiqueta de cada campo */
 .form-group label{
-    font-weight: bold;
+    font-weight: bold; /* Texto en negrita */
 }
   
 /* Inputs estándar y selectores de tipo texto, email, número, fecha, etc. */
 input[type="text"],
-input[type="email"]
+input[type="email"],
 select{
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #333;
-    border-radius: 4px;
-    font-size: 14px;
+    width: 100%; /* Ancho del campo al 100% */
+    padding: 12px; /* Añade espacio dentro de los campos */
+    border: 1px solid #333; /* Borde gris oscuro */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de la fuente */
     box-sizing: border-box; /* Asegura compatibilidad con padding */
 }

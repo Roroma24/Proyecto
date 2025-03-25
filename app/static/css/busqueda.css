@@ -1,4 +1,4 @@
-/* 
+/*  
 Autores: 
 Axel Castañeda Sánchez 
 Antonio Albuerne Silva
@@ -11,43 +11,49 @@ Descripción:
 Este archivo contiene los estilos CSS para la página de búsqueda de la aplicación web.
 */
 
+/* Estilo general del cuerpo de la página */
 body {
-  background-color: #fff;
+  background-color: #fff; /* Fondo blanco para la página */
 }
+
+/* Estilos para la sección principal */
 section {
-  width: 1850px;
+  width: 1850px; /* Ancho fijo para la sección */
   margin: 10px auto; /* Centra la sección y añade un margen superior e inferior */
 }
 
-/* Contenedor principal que usa flexbox */
-.container{
-  display: flex; /* Usamos flexbox para organizar los elementos */
+/* Contenedor principal que utiliza Flexbox para alinear los elementos */
+.container {
+  display: flex; /* Usamos Flexbox para organizar los elementos */
   align-items: center; /* Alineación vertical centrada */
   justify-content: space-between; /* Espaciado uniforme entre los elementos */
   width: auto; /* El ancho se ajusta al contenido */
   margin: 10px auto; /* Márgenes automáticos para centrar el contenedor */
 }
 
-.icon-title{
+/* Estilos para el título con iconos */
+.icon-title {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 15px; /* Espaciado entre iconos */
 }
 
 /* Estilo para cada icono */
-.icon{
+.icon {
   width: 90px; /* Ancho de cada icono */
   height: 90px; /* Alto de cada icono */
-  background-image: url('imagen/logo.png'); /* Fondo rojo para los iconos */
+  background-image: url('imagen/logo.png'); /* Fondo con imagen de los iconos */
   border-radius: 40%; /* Bordes redondeados para darle forma circular */
 }
 
-.titulo-principal{
-  font-size: 50px;
-  font-weight: bold;
-  margin: 0;
+/* Estilo del título principal */
+.titulo-principal {
+  font-size: 50px; /* Tamaño grande de la fuente */
+  font-weight: bold; /* Texto en negrita */
+  margin: 0; /* Eliminar márgenes */
 }
 
+/* Estilos para el contenedor 1 */
 .container_1 {
   display: flex;
   align-items: center;
@@ -56,11 +62,14 @@ section {
   margin: 10px auto;
 }
 
+/* Estilos para el contenedor 2 con posición absoluta */
 .container_2 {
-  position: absolute;
+  position: absolute; /* Posicionamiento absoluto */
   top: 12px;
   right: 200px;
 }
+
+/* Estilos para el contenedor 3 con dimensiones fijas */
 .container_3 {
   width: 1400px;
   height: 720px;
@@ -68,9 +77,11 @@ section {
   flex-direction: column;
   align-items: center;
   margin: 20px auto;
-  background-color: #fff;
-  border-radius: 20px;
+  background-color: #fff; /* Fondo blanco */
+  border-radius: 20px; /* Bordes redondeados */
 }
+
+/* Estilos para el contenedor 4 */
 .container_4 {
   display: flex;
   align-items: center;
@@ -79,150 +90,173 @@ section {
   margin: 10px auto;
   grid-column: auto;
 }
+
+/* Barra de iconos con separación */
 .icon-bar {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 40px; /* Espaciado entre los iconos */
 }
 
-.btn{
+/* Estilo para los botones */
+.btn {
   width: 90px; /* Ancho del botón */
   height: 90px; /* Alto del botón */
-  background-color: #fff; /* Fondo morado para el botón */
-  background-image: url('imagen/logoregistro.png');
-  background-size: cover;
-  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+  background-color: #fff; /* Fondo blanco para el botón */
+  background-image: url('imagen/logoregistro.png'); /* Imagen de fondo para el botón */
+  background-size: cover; /* Ajustar la imagen para que cubra el botón */
+  border-radius: 40%; /* Bordes redondeados para el botón */
   border: none; /* Sin borde por defecto */
-  cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
+  cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
 }
+
+/* Estilos para el menú desplegable */
 .dropdown {
   position: relative;
-  display: inline-block;
+  display: inline-block; /* Hacer que el menú sea un bloque en línea */
 }
 
 .dropdown-content {
-  display: none;
+  display: none; /* Oculta el contenido del menú por defecto */
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; /* Fondo gris claro para el menú */
   min-width: 120px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Sombra alrededor del menú */
+  z-index: 1; /* Asegura que el menú esté por encima de otros elementos */
 }
 
 .dropdown-content a {
   display: block;
   padding: 8px 12px;
-  text-decoration: none;
-  color: black;
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  color: black; /* Color negro para los enlaces */
 }
 
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: #ddd; /* Fondo gris oscuro al pasar el ratón sobre los enlaces */
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: block; /* Muestra el menú al pasar el ratón sobre el contenedor */
 }
 
+/* Estilo para la barra */
 .bar {
   width: 400px;
   height: 70px;
-  background-color: #9c9898;
-  border-radius: 40px;
+  background-color: #9c9898; /* Color gris para la barra */
+  border-radius: 40px; /* Bordes redondeados */
 }
 
+/* Estilo para la imagen de fondo */
 .image {
   width: auto;
   height: 830px;
-  background-image: url('imagen/file.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url('imagen/file.jpeg'); /* Imagen de fondo */
+  background-size: cover; /* Ajustar la imagen para cubrir el área */
+  background-repeat: no-repeat; /* Evitar que la imagen se repita */
 }
 
+/* Estilo para el primer logo */
 .logo_1 {
   width: 150px;
   height: 100px;
-  background-color: #b6c4c7;
-  border-radius: 40%;
-  margin: 20px auto;
+  background-color: #b6c4c7; /* Fondo gris claro para el logo */
+  border-radius: 40%; /* Bordes redondeados para el logo */
+  margin: 20px auto; /* Centra el logo con márgenes */
 }
+
+/* Estilo para el segundo logo */
 .logo_2 {
   width: 115px;
   height: 85px;
-  background-color: #f7ecec;
-  border-radius: 40%;
-  margin: 5px auto;
+  background-color: #f7ecec; /* Fondo rosa claro para el logo */
+  border-radius: 40%; /* Bordes redondeados para el logo */
+  margin: 5px auto; /* Centra el logo con márgenes */
 }
 
+/* Estilo para el título de la sección */
 .title {
   width: 1000px;
   height: 120px;
-  border: 2px dashed #000000;
+  border: 2px dashed #000000; /* Borde punteado negro */
   margin: 10px auto;
 }
 
+/* Estilo para el botón siguiente */
 .next {
   width: 120px;
   height: 70px;
-  background-color: #656464;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
+  background-color: #656464; /* Fondo gris oscuro para el botón */
+  border-radius: 40px; /* Bordes redondeados */
+  border: none; /* Sin borde por defecto */
+  cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
   margin: 10px auto;
 }
 
+/* Estilo para el botón siguiente pequeño */
 .next_1 {
   width: 120px;
   height: 50px;
-  background-color: #656464;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
+  background-color: #656464; /* Fondo gris oscuro para el botón */
+  border-radius: 40px; /* Bordes redondeados */
+  border: none; /* Sin borde por defecto */
+  cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
 }
+
+/* Estilos para la parte superior con botones alineados */
 .nexttop {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 40px; /* Espaciado entre los elementos */
 }
+
+/* Estilo para el formulario */
 .formulario {
   width: 1000px;
   padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  text-align: center;
+  background-color: #fff; /* Fondo blanco para el formulario */
+  border-radius: 8px; /* Bordes redondeados para el formulario */
+  text-align: center; /* Centrado del texto en el formulario */
 }
 
+/* Estilo para cada campo del formulario */
 .campo {
-  margin: 10px 0;
+  margin: 10px 0; /* Espaciado entre los campos */
 }
 
+/* Estilo para los inputs dentro del formulario */
 .campo input {
-  width: calc(100% - 22px);
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  width: calc(100% - 22px); /* Ancho que ocupa todo el campo menos los bordes */
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 4px; /* Bordes redondeados */
 }
 
+/* Estilo para los campos dobles (para cuando hay dos inputs en una fila) */
 .campos-dobles {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Espaciado entre los campos */
 }
 
+/* Estilo para cada campo dentro de los campos dobles */
 .campos-dobles .campo {
-  width: 30%;
+  width: 30%; /* Ancho de cada campo */
 }
 
+/* Estilo para el botón de cancelar */
 .cancelar {
-  background-color: #6c757d;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 20px;
-  align-self: flex-end;
+  background-color: #6c757d; /* Fondo gris para el botón */
+  color: white; /* Texto blanco */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
+  margin-top: 20px; /* Margen superior */
+  align-self: flex-end; /* Alinea el botón al final */
 }
 
+/* Estilo para el botón de cancelar al pasar el ratón sobre él */
 .cancelar:hover {
-  background-color: #5a6268;
+  background-color: #5a6268; /* Cambio de color al pasar el ratón */
 }

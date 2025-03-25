@@ -1,44 +1,88 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Página de pago para registrar nuevos usuarios. Se solicitan datos personales del usuario, como nombre, apellidos y correo electrónico, así como la información relacionada con el pago y el método seleccionado.
+-->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Establece la codificación de caracteres para la página -->
     <meta charset="UTF-8">
+    
+    <!-- Define la vista para dispositivos móviles, asegurando una correcta visualización en diferentes tamaños de pantalla -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Enlaza el archivo CSS para los estilos de la página -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/metodopago.css') }}">
+    
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Página de Pago</title>
 </head>
 <body>
+    <!-- Contenedor principal de la página -->
     <div class="container">
+        
+        <!-- Sección del encabezado de la página -->
         <header>
+            <!-- Botones de navegación o de acciones, como cerrar sesión o ir a otra página -->
             <button class="btn red"></button>
-            <div class="top-bar"></div>
+            <div class="top-bar"></div> <!-- Barra superior para el diseño -->
             <button class="btn dark"></button>
             <button class="btn dark"></button>
             <button class="btn purple"></button>
         </header>
+        
+        <!-- Título de la página -->
         <h2>Página de Pago</h2>
+        
+        <!-- Formulario para capturar los datos del usuario -->
         <form>
+            <!-- Grupo de campos de entrada para el nombre y apellidos -->
             <div class="input-group">
-                <input type="text" placeholder="Nombre(s)">
-                <input type="text" placeholder="Apellido(s)">
-                <input type="text" placeholder="Apellido(s)">
+                <input type="text" placeholder="Nombre(s)"> <!-- Campo para nombre(s) -->
+                <input type="text" placeholder="Apellido(s)"> <!-- Campo para primer apellido -->
+                <input type="text" placeholder="Apellido(s)"> <!-- Campo para segundo apellido -->
             </div>
+            
+            <!-- Campo para ingresar la ubicación del hospital -->
             <input type="text" placeholder="Ubicación del hospital">
+            
+            <!-- Campos para ingresar el número de cuenta y confirmación del número de cuenta -->
             <input type="text" placeholder="No. cuenta">
             <input type="text" placeholder="Confirmación No. cuenta">
+            
+            <!-- Campo para ingresar el correo electrónico -->
             <input type="email" placeholder="Correo electrónico">
+            
+            <!-- Grupo de campos de entrada para el concepto y monto del pago -->
             <div class="input-group">
-                <input type="text" placeholder="Concepto">
-                <input type="text" placeholder="Monto $">
+                <input type="text" placeholder="Concepto"> <!-- Campo para concepto del pago -->
+                <input type="text" placeholder="Monto $"> <!-- Campo para monto del pago -->
             </div>
+            
+            <!-- Título para la sección de selección del método de pago -->
             <h3>Seleccionar método de pago</h3>
+            
+            <!-- Contenedor con los botones para seleccionar el método de pago -->
             <div class="payment-methods">
-                <button class="method"></button>
-                <button class="method"></button>
-                <button class="method"></button>
-                <button class="method"></button>
+                <button class="method"></button> <!-- Botón para un método de pago -->
+                <button class="method"></button> <!-- Botón para otro método de pago -->
+                <button class="method"></button> <!-- Botón para otro método de pago -->
+                <button class="method"></button> <!-- Botón para otro método de pago -->
             </div>
+            
+            <!-- Botón para confirmar el pago -->
             <button class="confirm">Confirmar Pago</button>
         </form>
     </div>
 </body>
 </html>
+

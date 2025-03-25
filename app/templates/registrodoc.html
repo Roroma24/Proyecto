@@ -1,23 +1,66 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Página de registro para doctores. Se solicitan datos personales del doctor, como número de cédula, nombres, 
+apellidos y correo electrónico.
+-->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Establece la codificación de caracteres para la página -->
     <meta charset="UTF-8">
+    
+    <!-- Define la vista para dispositivos móviles, asegurando una correcta visualización en diferentes tamaños de pantalla -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Enlaza el archivo CSS para los estilos de la página -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/registrodoc.css') }}">
+    
+    <!-- Título que aparece en la pestaña del navegador -->
     <title>Registro</title>
 </head>
 <body>
+    <!-- Botón de salida o cerrar sesión -->
     <button class="btn">Salir</button>
+    
+    <!-- Contenedor principal para el formulario de registro -->
     <div class="container">
+        
+        <!-- Elemento decorativo (círculo) para el diseño de la página -->
         <div class="circle"></div>
+        
+        <!-- Barra de separación o elemento decorativo adicional -->
         <div class="bar"></div>
+        
+        <!-- Campo de entrada para el número de cédula -->
         <input type="text" class="full-width" placeholder="Número de cédula">
+        
+        <!-- Campo de entrada para los nombres del usuario -->
         <input type="text" placeholder="Nombres">
+        
+        <!-- Campo de entrada para el primer apellido del usuario -->
         <input type="text" placeholder="Primer Apellido">
+        
+        <!-- Campo de entrada para el segundo apellido del usuario -->
         <input type="text" placeholder="Segundo Apellido">
+        
+        <!-- Campo de entrada para el correo electrónico -->
         <input type="email" class="full-width" placeholder="Correo">
+        
+        <!-- Campo de entrada para confirmar el correo electrónico -->
         <input type="email" class="full-width" placeholder="Confirmación de correo">
+        
+        <!-- Contenedor para los botones de confirmación -->
         <div class="confirm-buttons">
+            <!-- Botón para continuar con el registro -->
             <button class="confirm">Continuar</button>
         </div>
     </div>
