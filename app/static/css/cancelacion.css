@@ -6,12 +6,47 @@ section {
   margin: 10px auto; /* Centra la sección y añade un margen superior e inferior */
 }
 
+/* Contenedor principal que usa flexbox */
+.container{
+  display: flex; /* Usamos flexbox para organizar los elementos */
+  align-items: center; /* Alineación vertical centrada */
+  justify-content: space-between; /* Espaciado uniforme entre los elementos */
+  width: auto; /* El ancho se ajusta al contenido */
+  margin: 10px auto; /* Márgenes automáticos para centrar el contenedor */
+}
+
+.icon-title{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Estilo para cada icono */
+.icon{
+  width: 90px; /* Ancho de cada icono */
+  height: 90px; /* Alto de cada icono */
+  background-image: url('logo.png'); /* Fondo rojo para los iconos */
+  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+}
+
+.titulo-principal{
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0;
+}
+
 .container_1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: auto;
   margin: 10px auto;
+}
+
+.titulo-principal{
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0;
 }
 
 .container_2 {
@@ -43,51 +78,50 @@ section {
   gap: 40px;
 }
 
-.icon {
-  width: 90px;
-  height: 90px;
-  background-color: #ff5757;
-  border-radius: 40%;
-}
 
-.btn {
-  width: 90px;
-  height: 90px;
-  background-color: #cb6ce6;
-  border-radius: 40%;
-  border: none;
-  cursor: pointer;
+.btn{
+  width: 90px; /* Ancho del botón */
+  height: 90px; /* Alto del botón */
+  background-color: #fff; /* Fondo morado para el botón */
+  background-image: url('logoregistro.png');
+  background-size: cover;
+  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+  border: none; /* Sin borde por defecto */
+  cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
 }
 
 .dropdown {
-  position: relative;
-  display: inline-block;
+  position: relative; /* Necesario para el posicionamiento de los elementos del menú */
+  display: inline-block; /* El contenedor se comporta como un bloque en línea */
 }
 
+/* Contenido del dropdown, que está oculto por defecto */
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 120px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  display: none; /* Oculto inicialmente */
+  position: absolute; /* Se posiciona absolutamente respecto al contenedor */
+  background-color: #f9f9f9; /* Fondo blanco para el menú */
+  min-width: 120px; /* Ancho mínimo del menú */
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Sombra para dar profundidad */
+  z-index: 1; /* Para asegurarse de que el menú esté por encima de otros elementos */
 }
 
+/* Estilo de los enlaces dentro del dropdown */
 .dropdown-content a {
-  display: block;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: black;
+  display: block; /* Los enlaces ocupan todo el ancho disponible */
+  padding: 8px 12px; /* Espaciado dentro de los enlaces */
+  text-decoration: none; /* Eliminar subrayado por defecto */
+  color: black; /* Color de texto negro */
 }
 
+/* Estilo cuando el cursor está sobre los enlaces del dropdown */
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: #ddd; /* Fondo gris claro al pasar el mouse sobre el enlace */
 }
 
+/* Mostrar el contenido del dropdown cuando se pasa el mouse sobre el contenedor */
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: block; /* Muestra el menú */
 }
-
 .bar {
   width: 400px;
   height: 70px;
@@ -96,10 +130,11 @@ section {
 }
 
 .image {
-  width: 1700px;
+  width: auto;
   height: 830px;
-  background-color: #f7ecec;
-  margin: 20px auto;
+  background-image: url('cancel.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .logo_1 {
