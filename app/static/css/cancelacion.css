@@ -2,7 +2,7 @@ body {
   background-color: #fff;
 }
 section {
-  width: 1850px;
+  width: auto;
   margin: 10px auto; /* Centra la sección y añade un margen superior e inferior */
 }
 
@@ -57,7 +57,7 @@ section {
     gap: 5px; /* Espacio de 15px entre los elementos */
 }
 .container_3 {
-  width: 1400px;
+  width: 75%;
   height: 720px;
   display: flex;
   flex-direction: column;
