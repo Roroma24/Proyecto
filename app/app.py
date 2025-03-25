@@ -71,10 +71,5 @@ def cancel():
     folio = request.args.get('folio', '')
     return render_template('cancelacion.html', folio=folio)
 
-# Ruta para salir (redirige a la página principal).
-@app.route('/exit')
-def exit():
-    return render_template('index.html')  # Renderiza nuevamente la página 'index.html'.
-
 if __name__ == '__main__': 
     app.run(debug=True)
