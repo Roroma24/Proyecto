@@ -30,7 +30,6 @@ body {
 /* Estilo del contenido principal del encabezado */
 .header {
   width: 95%;
-  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

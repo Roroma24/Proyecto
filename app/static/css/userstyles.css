@@ -13,11 +13,12 @@ body{
 
 .container-body{
     width: auto;
-    height: 45vw;
+    height: 55vw;
     background-image: url('imagen/newuser.jpeg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .info{
@@ -25,7 +26,7 @@ body{
     align-items: center;
     justify-content: space-around;
     width: auto;
-    margin: 10px auto;
+    margin: 1% auto;
 }
 
 .exit_btn{
@@ -83,28 +84,76 @@ input{
     border: 1px solid #000000;
     justify-content: space-between;
     border-radius: 5px;
-    width: 30%;
+    width: auto;
 }
 
 .buttons{
     display: flex;
     justify-content: space-between;
+    gap: 140px;
+    padding: 1%;
     margin-top: 20px;
 }
 
 .btn{
     width: 180px;
-    height: 40px;
-    background: #555;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 10px;
+    background-color: #555;
+    border-radius: 25px;
     border: none;
     cursor: pointer;
+    margin: auto;
 }
 
 .titulo-principal{
     font-size: 50px;
     font-weight: bold;
     margin: 0;
+}
+
+/* Contenedor principal del formulario */
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Espaciado vertical entre elementos */
+}
+  
+/* Fila del formulario para organizar inputs horizontalmente */
+.form-row{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Salta a nueva línea si no hay espacio */
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin: 30px;
+}
+  
+/* Grupo de campos individuales dentro de una fila */
+.form-group{
+    flex: 1 1 calc(25% - 30px); /* Mantiene la distribución horizontal original */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre label e input */
+    background-color: #fff;         /* Fondo blanco que cubre título e input */
+    border: 1px solid #333;         /* Borde para delimitar el área del grupo */
+    border-radius: 4px;             /* Bordes redondeados */
+    padding: 10px;                  /* Espaciado interno */
+    box-sizing: border-box;         /* Asegura que el padding no modifique el tamaño total */
+    margin: 1%;
+}
+  
+/* Etiqueta de cada campo */
+.form-group label{
+    font-weight: bold;
+}
+  
+/* Inputs estándar y selectores de tipo texto, email, número, fecha, etc. */
+input[type="text"],
+input[type="email"]
+select{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box; /* Asegura compatibilidad con padding */
 }

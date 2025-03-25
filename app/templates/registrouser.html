@@ -31,8 +31,8 @@ Se incluye un botón para continuar con el registro y otro para registrarse como
     <div class="container">
 
         <!-- Botón de salida que redirige a la función 'exit' -->
-        <a href="{{ url_for('exit') }}">
-            <div class="exit_btn"></div> <!-- Botón estilizado para salir -->
+        <a href="{{ url_for('exit') }}" style="text-decoration: none;">
+            <div class="exit_btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Salir</div> <!-- Botón estilizado para salir -->
         </a>
 
     </div>
@@ -47,27 +47,40 @@ Se incluye un botón para continuar con el registro y otro para registrarse como
         <div class="dashed-box">
             Información
         </div>
-        <div class="info">
-            <div class="input-box">
-                <input type="text" placeholder="Nombres">
-                <input type="text" placeholder="Primer Apellido">
-                <input type="text" placeholder="Segundo Apellido">
+        <form>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombres</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="apellido1">Primer Apellido</label>
+                    <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa primer apellido">
+                </div>
+                <div class="form-group">
+                    <label for="apellido2">Segundo Apellido</label>
+                    <input type="text" id="apellido2" name="apellido2" placeholder="Ingresa segundo apellido">
+                </div>
             </div>
-        </div>
-        <div class="info">
-            <div class="input-box">
-                <input type="text" placeholder="Correo">
-                <input type="text" placeholder="Confirmación de correo">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" name="correo" placeholder="Correo electrónico">
+                </div>
+                <div class="form-group">
+                    <label for="confirmacion">Confirmación de Correo</label>
+                    <input type="email" id="confirmacion" name="confirmacion" placeholder="Confirma tu correo">
+                </div>
             </div>
-        </div>
-        <div class="info">
-            <div class="buttons">
-                <button class="btn">Continuar</button>
-                <a href="{{ url_for('newdoctor') }}">
-                    <button class="btn">Registro como doctor</button>
-                </a>
+            <div class="info">
+                <div class="buttons">
+                    <button class="btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</button>
+                    <a href="{{ url_for('newdoctor') }}" style="text-decoration: none;">
+                        <button class="btn" style="text-align: center; color: #fff; font-size: 18px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Registro como doctor</button>
+                    </a>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </body>
 </html>
