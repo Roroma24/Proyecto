@@ -13,8 +13,9 @@ body{
 
 .container-body{
     width: auto;
-    height: 55vw;
+    height: 58vw;
     background-image: url('imagen/newuser.jpeg');
+    padding-top: 20px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -46,7 +47,7 @@ body{
     background-image: url('imagen/logo.png');
     background-size: cover;
     border-radius: 50%;
-    margin: auto;
+    margin: 20px auto;
 }
 
 .bar{
