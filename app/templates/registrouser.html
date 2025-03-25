@@ -8,8 +8,7 @@ Sebastián Villaluz Martínez
 Daniela Zuno Aguilar
 
 Descripción:   
-Página de registro de usuario. Se solicitan datos personales del usuario, como nombre, apellidos y correo electrónico. 
-Se incluye un botón para continuar con el registro y otro para registrarse como doctor.
+Página de registro de nuevos usuarios. Se solicitan datos personales del usuario, como nombre, apellidos y correo electrónico.
 -->
 
 <!DOCTYPE html>
@@ -23,60 +22,83 @@ Se incluye un botón para continuar con el registro y otro para registrarse como
     <link rel="stylesheet" href="{{ url_for('static', filename='css/userstyles.css') }}">
 
     <!-- Título de la página -->
-    <title>New user</title>
+    <title>Nuevo Usuario</title>
 </head>
 <body>
 
-    <!-- Contenedor principal -->
+    <!-- Contenedor principal del botón de salida -->
     <div class="container">
-
         <!-- Botón de salida que redirige a la función 'exit' -->
         <a href="{{ url_for('exit') }}" style="text-decoration: none;">
-            <div class="exit_btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Salir</div> <!-- Botón estilizado para salir -->
+            <div class="exit_btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                Salir
+            </div> <!-- Botón estilizado para salir -->
         </a>
-
     </div>
 
+    <!-- Contenedor principal de la página de registro -->
     <div class="container-body">
 
         <!-- Sección de imagen del perfil -->
         <div class="profile"></div>
+
+        <!-- Barra con título -->
         <div class="bar">
             <h1 class="titulo-principal">Nuevo Usuario</h1>
         </div>
+
+        <!-- Caja con borde punteado para mostrar información -->
         <div class="dashed-box">
             Información
         </div>
+
+        <!-- Formulario de registro de usuario -->
         <form>
+            <!-- Primera fila de campos (Nombres y Apellidos) -->
             <div class="form-row">
+                <!-- Campo: Nombres -->
                 <div class="form-group">
                     <label for="nombre">Nombres</label>
                     <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
                 </div>
+                <!-- Campo: Primer Apellido -->
                 <div class="form-group">
                     <label for="apellido1">Primer Apellido</label>
-                    <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa primer apellido">
+                    <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa tu primer apellido">
                 </div>
+                <!-- Campo: Segundo Apellido -->
                 <div class="form-group">
                     <label for="apellido2">Segundo Apellido</label>
-                    <input type="text" id="apellido2" name="apellido2" placeholder="Ingresa segundo apellido">
+                    <input type="text" id="apellido2" name="apellido2" placeholder="Ingresa tu segundo apellido">
                 </div>
             </div>
+
+            <!-- Segunda fila de campos (Correo y Confirmación) -->
             <div class="form-row">
+                <!-- Campo: Correo Electrónico -->
                 <div class="form-group">
                     <label for="correo">Correo</label>
                     <input type="email" id="correo" name="correo" placeholder="Correo electrónico">
                 </div>
+                <!-- Campo: Confirmación de Correo -->
                 <div class="form-group">
                     <label for="confirmacion">Confirmación de Correo</label>
                     <input type="email" id="confirmacion" name="confirmacion" placeholder="Confirma tu correo">
                 </div>
             </div>
+
+            <!-- Sección de botones de acción -->
             <div class="info">
                 <div class="buttons">
-                    <button class="btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</button>
+                    <!-- Botón de continuar -->
+                    <button class="btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                        Continuar
+                    </button>
+                    <!-- Botón de registro como doctor -->
                     <a href="{{ url_for('newdoctor') }}" style="text-decoration: none;">
-                        <button class="btn" style="text-align: center; color: #fff; font-size: 18px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Registro como doctor</button>
+                        <button class="btn" style="text-align: center; color: #fff; font-size: 18px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                            Registro como doctor
+                        </button>
                     </a>
                 </div>
             </div>
@@ -84,3 +106,4 @@ Se incluye un botón para continuar con el registro y otro para registrarse como
     </div>
 </body>
 </html>
+

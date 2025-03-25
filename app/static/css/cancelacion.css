@@ -1,8 +1,22 @@
+/* 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Este archivo contiene los estilos CSS para la página de cancelación de la aplicación web.
+*/
+
+/* Establece el color de fondo de la página */
 body {
   background-color: #fff;
 }
 section {
-  width: auto;
+  width: 1850px;
   margin: 10px auto; /* Centra la sección y añade un margen superior e inferior */
 }
 
@@ -50,14 +64,12 @@ section {
 }
 
 .container_2 {
-  display: flex; /* Usa flexbox para alinear icono y título */
-    align-items: center; /* Alinea los elementos verticalmente */
-    justify-content: flex-end;
-    width: auto;
-    gap: 5px; /* Espacio de 15px entre los elementos */
+  position: absolute;
+  top: 12px;
+  right: 200px;
 }
 .container_3 {
-  width: 75%;
+  width: 1400px;
   height: 720px;
   display: flex;
   flex-direction: column;
