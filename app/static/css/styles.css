@@ -95,14 +95,6 @@ body{
     display: block; /* Muestra el menú */
 }
 
-/* Barra gris */
-.bar{
-    width: 400px; /* Ancho de la barra */
-    height: 50px; /* Alto de la barra */
-    background-color: #808080; /* Fondo gris para la barra */
-    border-radius: 10px; /* Bordes redondeados */
-}
-
 .titulo-principal{
     font-size: 50px;
     font-weight: bold;
