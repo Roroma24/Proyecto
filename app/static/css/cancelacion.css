@@ -13,17 +13,17 @@ Este archivo contiene los estilos CSS para la página de cancelación de la apli
 
 /* Establece el color de fondo de la página */
 body {
-  background-color: #fff;
-  font-family: Arial, sans-serif;
+  background-color: #fff; /* Fondo blanco para la página */
+  font-family: Arial, sans-serif; /* Establece la fuente para todo el texto */
 }
 
 .section {
-  width: auto;
+  width: auto; /* El ancho se ajusta al contenido */
   margin: 10px auto; /* Centra la sección y añade un margen superior e inferior */
 }
 
 /* Contenedor principal que usa flexbox */
-.container{
+.container {
   display: flex; /* Usamos flexbox para organizar los elementos */
   align-items: center; /* Alineación vertical centrada */
   justify-content: space-between; /* Espaciado uniforme entre los elementos */
@@ -31,105 +31,100 @@ body {
   margin: 10px auto; /* Márgenes automáticos para centrar el contenedor */
 }
 
-.icon-title{
-  display: flex;
-  align-items: center;
-  gap: 15px;
+.icon-title {
+  display: flex; /* Usa flexbox para alinear icono y título */
+  align-items: center; /* Alinea los elementos verticalmente */
+  gap: 15px; /* Espacio de 15px entre los elementos */
 }
 
 /* Estilo para cada icono */
-.icon{
-  width: 90px; /* Ancho de cada icono */
-  height: 90px; /* Alto de cada icono */
+.icon {
+  width: 90px; /* Ancho del icono */
+  height: 90px; /* Alto del icono */
   background-image: url('imagen/logo.png'); /* Fondo rojo para los iconos */
   border-radius: 40%; /* Bordes redondeados para darle forma circular */
 }
 
-.titulo-principal{
-  font-size: 50px;
-  font-weight: bold;
-  margin: 0;
+.titulo-principal {
+  font-size: 50px; /* Tamaño grande para el título */
+  font-weight: bold; /* Pone el texto en negritas */
+  margin: 0; /* Elimina el margen exterior */
 }
 
-.container_1{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 70%;
-  margin: 10px auto;
+.container_1 {
+  display: flex; /* Usa flexbox para organizar los elementos */
+  align-items: center; /* Alineación vertical centrada */
+  justify-content: space-between; /* Espaciado uniforme entre los elementos */
+  width: 70%; /* El contenedor ocupa el 70% del ancho */
+  margin: 10px auto; /* Centra el contenedor con un margen automático */
 }
 
-.titulo-principal{
-  font-size: 50px;
-  font-weight: bold;
-  margin: 0;
+.container_2 {
+  display: flex; /* Usa flexbox para organizar los elementos */
+  align-items: center; /* Alineación vertical centrada */
+  justify-content: flex-end; /* Alinea los elementos al final */
+  width: auto; /* El ancho se ajusta al contenido */
+  gap: 5px; /* Espacio entre los elementos */
 }
 
-.container_2{
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: auto;
-  gap: 5px;
-}
-
-.container_3{
-  width: 1400px;
-  height: 720px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px auto;
-  background-color: #fff;
-  border-radius: 20px;
+.container_3 {
+  width: 1400px; /* Ancho del contenedor */
+  height: 720px; /* Altura del contenedor */
+  display: flex; /* Usa flexbox para organizar los elementos */
+  flex-direction: column; /* Organiza los elementos en una columna */
+  align-items: center; /* Centra los elementos verticalmente */
+  margin: 20px auto; /* Centra el contenedor con márgenes automáticos */
+  background-color: #fff; /* Fondo blanco para el contenedor */
+  border-radius: 20px; /* Bordes redondeados */
 }
 
 .container_4 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: auto;
-  margin: 10px auto;
-  grid-column: auto;
+  display: flex; /* Usa flexbox para organizar los elementos */
+  align-items: center; /* Alineación vertical centrada */
+  justify-content: space-between; /* Espaciado uniforme entre los elementos */
+  width: auto; /* El ancho se ajusta al contenido */
+  margin: 10px auto; /* Centra el contenedor con márgenes automáticos */
+  grid-column: auto; /* Permite que el contenedor ocupe varias columnas */
 }
+
 .icon-bar {
-  display: flex;
-  align-items: center;
-  gap: 40px;
+  display: flex; /* Usa flexbox para organizar los iconos */
+  align-items: center; /* Alineación vertical centrada */
+  gap: 40px; /* Espacio de 40px entre los iconos */
 }
 
-
-.btn{
+/* Estilo para los botones */
+.btn {
   width: 90px; /* Ancho del botón */
   height: 90px; /* Alto del botón */
-  background-color: #fff; /* Fondo morado para el botón */
+  background-color: #fff; /* Fondo blanco para el botón */
   background-image: url('imagen/logoregistro.png'); /* Imagen de fondo para el botón */
-  background-size: cover;
-  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+  background-size: cover; /* Ajusta la imagen de fondo */
+  border-radius: 40%; /* Bordes redondeados para el botón */
   border: none; /* Sin borde por defecto */
-  cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
+  cursor: pointer; /* Cambia el cursor cuando pasa sobre el botón */
 }
 
 .dropdown {
-  position: relative; /* Necesario para el posicionamiento de los elementos del menú */
-  display: inline-block; /* El contenedor se comporta como un bloque en línea */
+  position: relative; /* Necesario para el posicionamiento del contenido desplegable */
+  display: inline-block; /* Comporta como un bloque en línea */
 }
 
 /* Contenido del dropdown, que está oculto por defecto */
 .dropdown-content {
-  display: none; /* Oculto inicialmente */
-  position: absolute; /* Se posiciona absolutamente respecto al contenedor */
-  background-color: #f9f9f9; /* Fondo blanco para el menú */
+  display: none; /* El contenido está oculto inicialmente */
+  position: absolute; /* Se posiciona de manera absoluta */
+  background-color: #f9f9f9; /* Fondo gris claro */
   min-width: 120px; /* Ancho mínimo del menú */
   box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Sombra para dar profundidad */
-  z-index: 1; /* Para asegurarse de que el menú esté por encima de otros elementos */
+  z-index: 1; /* Asegura que el menú esté por encima de otros elementos */
 }
 
 /* Estilo de los enlaces dentro del dropdown */
 .dropdown-content a {
   display: block; /* Los enlaces ocupan todo el ancho disponible */
   padding: 8px 12px; /* Espaciado dentro de los enlaces */
-  text-decoration: none; /* Eliminar subrayado por defecto */
+  text-decoration: none; /* Elimina el subrayado por defecto */
   color: black; /* Color de texto negro */
 }
 
@@ -142,110 +137,114 @@ body {
 .dropdown:hover .dropdown-content {
   display: block; /* Muestra el menú */
 }
+
 .bar {
-  width: 400px;
-  height: 70px;
-  background-color: #9c9898;
-  border-radius: 40px;
+  width: 400px; /* Ancho de la barra */
+  height: 70px; /* Altura de la barra */
+  background-color: #9c9898; /* Color de fondo gris para la barra */
+  border-radius: 40px; /* Bordes redondeados */
 }
 
 .image {
-  width: auto;
-  height: 830px;
-  background-image: url('imagen/cancel.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
+  width: auto; /* El ancho se ajusta automáticamente */
+  height: 830px; /* Altura de la imagen */
+  background-image: url('imagen/cancel.jpeg'); /* Imagen de fondo */
+  background-size: cover; /* Ajusta la imagen de fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
 
 .logo_1 {
-  width: 150px;
-  height: 100px;
-  background-color: #b6c4c7;
-  border-radius: 40%;
-  margin: 20px auto;
+  width: 150px; /* Ancho del logo */
+  height: 100px; /* Alto del logo */
+  background-color: #b6c4c7; /* Fondo gris claro */
+  border-radius: 40%; /* Bordes redondeados */
+  margin: 20px auto; /* Centra el logo */
 }
+
 .logo_2 {
-  width: 115px;
-  height: 85px;
-  background-color: #f7ecec;
-  border-radius: 40%;
-  margin: 5px auto;
+  width: 115px; /* Ancho del logo */
+  height: 85px; /* Alto del logo */
+  background-color: #f7ecec; /* Fondo rosa claro */
+  border-radius: 40%; /* Bordes redondeados */
+  margin: 5px auto; /* Centra el logo */
 }
 
 .title {
-  width: 1000px;
-  height: 120px;
-  border: 2px dashed #000000;
-  margin: 10px auto;
+  width: 1000px; /* Ancho del título */
+  height: 120px; /* Altura del título */
+  border: 2px dashed #000000; /* Borde punteado negro */
+  margin: 10px auto; /* Centra el título */
 }
 
 .next {
-  width: 120px;
-  height: 70px;
-  background-color: #656464;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-  margin: 10px auto;
+  width: 120px; /* Ancho del botón siguiente */
+  height: 70px; /* Alto del botón siguiente */
+  background-color: #656464; /* Fondo gris para el botón */
+  border-radius: 40px; /* Bordes redondeados */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  margin: 10px auto; /* Centra el botón */
 }
 
 .next_1 {
-  width: 120px;
-  height: 50px;
-  background-color: #656464;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  bottom: 260px;
-  right: 450px;
+  width: 120px; /* Ancho del botón siguiente */
+  height: 50px; /* Alto del botón siguiente */
+  background-color: #656464; /* Fondo gris para el botón */
+  border-radius: 40px; /* Bordes redondeados */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  position: absolute; /* Posiciona el botón de forma absoluta */
+  bottom: 260px; /* Distancia desde la parte inferior */
+  right: 450px; /* Distancia desde la derecha */
 }
+
 .nexttop {
-  display: flex;
-  align-items: center;
-  gap: 40px;
+  display: flex; /* Usa flexbox para organizar los elementos */
+  align-items: center; /* Alineación vertical centrada */
+  gap: 40px; /* Espacio de 40px entre los elementos */
 }
+
 .formulario {
-  width: 1000px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  text-align: center;
+  width: 1000px; /* Ancho del formulario */
+  padding: 20px; /* Espaciado interno del formulario */
+  background-color: #fff; /* Fondo blanco para el formulario */
+  border-radius: 8px; /* Bordes redondeados */
+  text-align: center; /* Centra el texto dentro del formulario */
 }
 
 .campo {
-  margin: 10px 0;
+  margin: 10px 0; /* Margen superior e inferior para los campos */
 }
 
 .campo input {
-  width: calc(100% - 22px);
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  width: calc(100% - 22px); /* Ajusta el ancho del input */
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 4px; /* Bordes redondeados */
 }
 
 .campos-dobles {
-  display: flex;
-  justify-content: space-between;
+  display: flex; /* Usa flexbox para organizar los elementos */
+  justify-content: space-between; /* Espaciado entre los elementos */
 }
 
 .campos-dobles .campo {
-  width: 30%;
+  width: 30%; /* Ancho de cada campo */
 }
 
 .cancelar {
-  background-color: #6c757d;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 20px;
-  align-self: flex-end;
+  background-color: #6c757d; /* Fondo gris oscuro para el botón cancelar */
+  color: white; /* Color blanco para el texto */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  margin-top: 20px; /* Márgenes superiores para separar el botón */
+  align-self: flex-end; /* Alinea el botón al final */
 }
 
 .cancelar:hover {
-  background-color: #5a6268;
+  background-color: #5a6268; /* Cambia el fondo a un gris más oscuro al pasar el mouse */
 }
 
 .dashed-box {

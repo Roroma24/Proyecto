@@ -12,15 +12,15 @@ Este archivo contiene los estilos CSS para la página de modificación de la apl
 */
 
 body { 
-    background-color: #fff; /* Establece el color de fondo de la página en un tono rosa claro */
-    font-family: Arial, sans-serif;
+    background-color: #fff; /* Establece el color de fondo de la página en blanco */
+    font-family: Arial, sans-serif; /* Define la fuente de la página */
 }
 
 /* CONTENEDOR PRINCIPAL */
 .container { 
-    display: flex; /* Usa flexbox para organizar los elementos en fila */
-    align-items: center; /* Alinea los elementos verticalmente en el centro */
-    background-color: #fff; /* Fondo blanco para el menú */
+    display: flex; /* Utiliza flexbox para organizar los elementos en fila */
+    align-items: center; /* Alinea los elementos verticalmente al centro */
+    background-color: #fff; /* Fondo blanco para el contenedor */
     justify-content: space-between; /* Distribuye los elementos uniformemente en la fila */
     width: auto; /* El ancho se ajusta automáticamente al contenido */
     margin: 10px auto; /* Centra el contenedor con un margen de 10px arriba y abajo */
@@ -28,108 +28,111 @@ body {
 
 /* ICONO Y TÍTULO: Alineación de elementos con espacio entre ellos */
 .icon-title { 
-    display: flex; /* Usa flexbox para alinear icono y título */
+    display: flex; /* Utiliza flexbox para alinear icono y título */
     align-items: center; /* Alinea los elementos verticalmente */
-    gap: 15px; /* Espacio de 15px entre los elementos */
+    gap: 15px; /* Espacio de 15px entre el icono y el título */
 }
 
 .btn_accion { 
-    display: flex; /* Usa flexbox para alinear icono y título */
+    display: flex; /* Utiliza flexbox para alinear los botones de acción */
     align-items: center; /* Alinea los elementos verticalmente */
-    justify-content: flex-end;
-    width: auto;
-    gap: 15px; /* Espacio de 15px entre los elementos */
+    justify-content: flex-end; /* Alinea los elementos hacia el extremo derecho */
+    width: auto; 
+    gap: 15px; /* Espacio de 15px entre los botones */
 }
 
 /* ICONO: Estilos para un icono redondeado */
 .icon { 
     width: 90px; /* Ancho del icono */
     height: 90px; /* Altura del icono */
-    background-image: url('imagen/logo.png');
-    background-size: cover;
+    background-image: url('imagen/logo.png'); /* Imagen de fondo para el icono */
+    background-size: cover; /* Hace que la imagen cubra todo el área del icono */
     border-radius: 40%; /* Bordes redondeados para hacer un círculo */
 }
 
-/* BOTÓN: Botón circular con color púrpura */
+/* BOTÓN: Botón circular con color de fondo */
 .btn { 
     width: 90px; /* Ancho del botón */
     height: 90px; /* Altura del botón */
-    background-color: #fff;
-    background-image: url('imagen/logoregistro.png'); /* Fondo color púrpura */
-    background-size: cover;
-    border-radius: 40%; /* Bordes redondeados */
-    border: none; /* Sin borde */
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    background-color: #fff; /* Fondo blanco para el botón */
+    background-image: url('imagen/logoregistro.png'); /* Imagen de fondo para el botón */
+    background-size: cover; /* Hace que la imagen cubra todo el área del botón */
+    border-radius: 40%; /* Bordes redondeados para hacer un círculo */
+    border: none; /* Sin borde para el botón */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
 }
 
+/* BOTÓN DE ACCIÓN */
 .accion{
-    width: 160px;
-    height: 50px;
-    background-color: #494949;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    margin: auto;
+    width: 160px; /* Ancho del botón de acción */
+    height: 50px; /* Altura del botón de acción */
+    background-color: #494949; /* Fondo gris oscuro para el botón */
+    border-radius: 25px; /* Bordes redondeados para el botón */
+    border: none; /* Sin borde para el botón */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
+    margin: auto; /* Centra el botón dentro de su contenedor */
 }
 
 /* CONTENEDOR DESPLEGABLE */
 .dropdown { 
     position: relative; /* Permite posicionar los elementos internos de manera relativa */
-    display: inline-block; /* Mantiene el tamaño según el contenido */
+    display: inline-block; /* Hace que el contenedor se ajuste al tamaño del contenido */
 }
 
-/* CONTENIDO DEL DESPLEGABLE (OCULTO POR DEFECTO) */
+/* CONTENIDO DEL MENÚ DESPLEGABLE (OCULTO POR DEFECTO) */
 .dropdown-content { 
     display: none; /* Oculta el contenido del menú desplegable por defecto */
-    position: absolute; /* Posiciona el menú de forma absoluta respecto al padre */
-    background-color: #f9f9f9; /* Color de fondo gris claro */
-    min-width: 120px; /* Ancho mínimo de 120px */
+    position: absolute; /* Posiciona el menú de manera absoluta respecto al contenedor */
+    background-color: #f9f9f9; /* Fondo gris claro para el menú */
+    min-width: 120px; /* Establece un ancho mínimo de 120px */
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Agrega sombra al menú */
     z-index: 1; /* Asegura que el menú se muestre por encima de otros elementos */
 }
 
-/* ENLACES DENTRO DEL DESPLEGABLE */
+/* ENLACES DENTRO DEL MENÚ DESPLEGABLE */
 .dropdown-content a { 
     display: block; /* Hace que los enlaces ocupen todo el ancho disponible */
-    padding: 8px 12px; /* Espaciado interno */
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    color: black; /* Color del texto en negro */
+    padding: 8px 12px; /* Espaciado interno de los enlaces */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: black; /* Color negro para el texto de los enlaces */
 }
 
 /* CAMBIO DE COLOR AL PASAR EL CURSOR SOBRE UN ENLACE */
 .dropdown-content a:hover { 
-    background-color: #ddd; /* Cambia el fondo a gris claro */
+    background-color: #ddd; /* Cambia el fondo a gris claro cuando el cursor pasa sobre un enlace */
 }
 
-/* MOSTRAR EL MENÚ CUANDO SE PASA EL CURSOR SOBRE EL CONTENEDOR */
+/* MUESTRA EL MENÚ AL PASAR EL CURSOR SOBRE EL CONTENEDOR */
 .dropdown:hover .dropdown-content { 
-    display: block; /* Muestra el contenido del menú */
+    display: block; /* Muestra el contenido del menú cuando se pasa el cursor sobre el contenedor */
 }
 
 /* TÍTULO PRINCIPAL */
 .titulo-principal {
-    font-size: 40px;
-    font-weight: bold;
+    font-size: 40px; /* Tamaño de fuente grande para el título */
+    font-weight: bold; /* Hace que el título sea en negrita */
     margin: 0; /* Elimina el margen exterior del título */
 }
 
-.body_image{
-    width: auto;
-    height: 55vw;
-    background-image: url('imagen/modification.jpeg');
-    padding-top: 40px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: auto;
+/* CONTENEDOR DE IMAGEN DE FONDO */
+.body_image {
+    width: auto; /* El ancho se ajusta automáticamente al contenido */
+    height: 55vw; /* La altura se establece como un 55% del ancho de la ventana */
+    background-image: url('imagen/modification.jpeg'); /* Imagen de fondo */
+    padding-top: 40px; /* Añade espacio en la parte superior */
+    background-size: cover; /* Hace que la imagen cubra todo el área del contenedor */
+    background-position: center; /* Centra la imagen dentro del contenedor */
+    background-repeat: no-repeat; /* No repite la imagen si es más pequeña que el contenedor */
+    background-attachment: fixed; /* Fija la imagen en el fondo cuando se hace scroll */
+    margin: auto; /* Centra el contenedor */
 }
 
-.logo_pag{
-    width: 120px;
-    height: 120px;
-    background-color: #737272;
-    background-size: cover;
-    border-radius: 50%;
-    margin: auto;
+/* LOGO DE LA PÁGINA: Estilo de un logo circular */
+.logo_pag {
+    width: 120px; /* Ancho del logo */
+    height: 120px; /* Altura del logo */
+    background-color: #737272; /* Fondo gris para el logo */
+    background-size: cover; /* Hace que la imagen cubra todo el área del logo */
+    border-radius: 50%; /* Hace que el logo tenga forma circular */
+    margin: auto; /* Centra el logo dentro de su contenedor */
 }

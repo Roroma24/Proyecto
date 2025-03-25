@@ -1,35 +1,60 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Página de modificación de cita. Se solicitan datos personales, como nombre, fecha de nacimiento, correo electrónico,
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta información de la página -->
+    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace la página responsive -->
+    <!-- Enlace a la hoja de estilos CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/modstyles.css') }}">
+    <!-- Título de la página -->
     <title>Modificación</title>
 </head>
 <body>
+    <!-- Contenedor principal -->
     <div class="container">
+        <!-- Sección de íconos y título -->
         <div class="icon-title">
-            <div class="icon"></div>
-            <h1 class="titulo-principal">Modificación de cita</h1>
+            <div class="icon"></div> <!-- Ícono -->
+            <h1 class="titulo-principal">Modificación de cita</h1> <!-- Título principal -->
         </div>
+        <!-- Botones de acción -->
         <div class="btn_accion">
+            <!-- Enlace a la página principal -->
             <a href="{{ url_for('index') }}" style="text-decoration: none;">
                 <button class="accion" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Inicio</button>
             </a>
+            <!-- Botón de regresar (sin enlace asignado aún) -->
             <a>
                 <button class="accion" style="text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Regresar</button>
             </a>
+            <!-- Menú desplegable -->
             <div class="dropdown">
+                <!-- Botón para abrir el menú desplegable -->
                 <button class="btn"></button>
                 <div class="dropdown-content">
+                    <!-- Enlaces dentro del menú desplegable -->
                     <a href="{{ url_for('login') }}">Login</a>
                     <a href="{{ url_for('registro') }}">New user</a>
                 </div>
             </div>
         </div>                
     </div>
+    <!-- Sección de imagen de fondo -->
     <div class="body_image">
-        <div class="logo_pag"></div>
+        <div class="logo_pag"></div> <!-- Logo de la página -->
     </div>
 </body>
 </html>

@@ -10,62 +10,67 @@ Daniela Zuno Aguilar
 Descripción:   
 Página de pago. Se solicitan datos personales, como nombre, ubicación del hospital, número de cuenta, 
 correo electrónico, concepto y monto a pagar.
-
--->
-<!-- 
-Autores: 
-Axel Castañeda Sánchez 
-Antonio Albuerne Silva
-Alyn Layla Nila Vélez
-Luis Roberto Rodríguez Marroquin 
-Sebastián Villaluz Martínez
-Daniela Zuno Aguilar
-
-Descripción:   
-Página de pago. Se solicitan datos personales, como nombre, ubicación del hospital, número de cuenta, 
-correo electrónico, concepto y monto a pagar.
-
 -->
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Información sobre la codificación y la vista de la página -->
+    <meta charset="UTF-8"> <!-- Establece la codificación de caracteres a UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace la página responsive -->
+    <!-- Enlace a la hoja de estilos CSS para esta página -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/metodopago.css') }}">
+    <!-- Título de la página -->
     <title>Página de Pago</title>
 </head>
 <body>
+    <!-- Contenedor principal de la página -->
     <div class="container">
         <header>
-            <button class="btn red"></button>
-            <div class="top-bar"></div>
-            <button class="btn dark"></button>
-            <button class="btn dark"></button>
-            <button class="btn purple"></button>
+            <!-- Botones (con clases específicas para el estilo) -->
+            <button class="btn red"></button> <!-- Botón rojo -->
+            <div class="top-bar"></div> <!-- Barra superior -->
+            <button class="btn dark"></button> <!-- Botón oscuro -->
+            <button class="btn dark"></button> <!-- Botón oscuro -->
+            <button class="btn purple"></button> <!-- Botón morado -->
         </header>
+        
+        <!-- Título de la página -->
         <h2>Página de Pago</h2>
+        
+        <!-- Formulario para ingresar datos del pago -->
         <form>
+            <!-- Grupo de entradas para el nombre y los apellidos -->
             <div class="input-group">
-                <input type="text" placeholder="Nombre(s)">
-                <input type="text" placeholder="Apellido(s)">
-                <input type="text" placeholder="Apellido(s)">
+                <input type="text" placeholder="Nombre(s)"> <!-- Campo para el nombre -->
+                <input type="text" placeholder="Apellido(s)"> <!-- Campo para el primer apellido -->
+                <input type="text" placeholder="Apellido(s)"> <!-- Campo para el segundo apellido -->
             </div>
-            <input type="text" placeholder="Ubicación del hospital">
-            <input type="text" placeholder="No. cuenta">
-            <input type="text" placeholder="Confirmación No. cuenta">
-            <input type="email" placeholder="Correo electrónico">
+            
+            <!-- Campos para la ubicación del hospital y los números de cuenta -->
+            <input type="text" placeholder="Ubicación del hospital"> <!-- Ubicación del hospital -->
+            <input type="text" placeholder="No. cuenta"> <!-- Número de cuenta -->
+            <input type="text" placeholder="Confirmación No. cuenta"> <!-- Confirmación del número de cuenta -->
+            <input type="email" placeholder="Correo electrónico"> <!-- Correo electrónico -->
+            
+            <!-- Grupo de entradas para el concepto y el monto -->
             <div class="input-group">
-                <input type="text" placeholder="Concepto">
-                <input type="text" placeholder="Monto $">
+                <input type="text" placeholder="Concepto"> <!-- Campo para el concepto del pago -->
+                <input type="text" placeholder="Monto $"> <!-- Campo para el monto del pago -->
             </div>
+            
+            <!-- Título para la sección de selección del método de pago -->
             <h3>Seleccionar método de pago</h3>
+            
+            <!-- Contenedor para los botones de los métodos de pago -->
             <div class="payment-methods">
-                <button class="method"></button>
-                <button class="method"></button>
-                <button class="method"></button>
-                <button class="method"></button>
+                <button class="method"></button> <!-- Método de pago 1 -->
+                <button class="method"></button> <!-- Método de pago 2 -->
+                <button class="method"></button> <!-- Método de pago 3 -->
+                <button class="method"></button> <!-- Método de pago 4 -->
             </div>
+            
+            <!-- Botón para confirmar el pago -->
             <button class="confirm">Confirmar Pago</button>
         </form>
     </div>
