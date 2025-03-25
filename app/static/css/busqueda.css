@@ -6,6 +6,35 @@ section {
   margin: 10px auto; /* Centra la sección y añade un margen superior e inferior */
 }
 
+/* Contenedor principal que usa flexbox */
+.container{
+  display: flex; /* Usamos flexbox para organizar los elementos */
+  align-items: center; /* Alineación vertical centrada */
+  justify-content: space-between; /* Espaciado uniforme entre los elementos */
+  width: auto; /* El ancho se ajusta al contenido */
+  margin: 10px auto; /* Márgenes automáticos para centrar el contenedor */
+}
+
+.icon-title{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Estilo para cada icono */
+.icon{
+  width: 90px; /* Ancho de cada icono */
+  height: 90px; /* Alto de cada icono */
+  background-image: url('imagen/logo.png'); /* Fondo rojo para los iconos */
+  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+}
+
+.titulo-principal{
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0;
+}
+
 .container_1 {
   display: flex;
   align-items: center;
@@ -43,22 +72,16 @@ section {
   gap: 40px;
 }
 
-.icon {
-  width: 90px;
-  height: 90px;
-  background-color: #ff5757;
-  border-radius: 40%;
+.btn{
+  width: 90px; /* Ancho del botón */
+  height: 90px; /* Alto del botón */
+  background-color: #fff; /* Fondo morado para el botón */
+  background-image: url('imagen/logoregistro.png');
+  background-size: cover;
+  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+  border: none; /* Sin borde por defecto */
+  cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
 }
-
-.btn {
-  width: 90px;
-  height: 90px;
-  background-color: #cb6ce6;
-  border-radius: 40%;
-  border: none;
-  cursor: pointer;
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -96,10 +119,11 @@ section {
 }
 
 .image {
-  width: 1700px;
+  width: auto;
   height: 830px;
-  background-color: #f7ecec;
-  margin: 20px auto;
+  background-image: url('imagen/file.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .logo_1 {
