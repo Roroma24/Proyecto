@@ -15,8 +15,9 @@ Este archivo contiene los estilos CSS para la página de cancelación de la apli
 body {
   background-color: #fff;
 }
-section {
-  width: 1850px;
+
+.section {
+  width: auto;
   margin: 10px auto; /* Centra la sección y añade un margen superior e inferior */
 }
 
@@ -49,11 +50,11 @@ section {
   margin: 0;
 }
 
-.container_1 {
+.container_1{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: auto;
+  width: 70%;
   margin: 10px auto;
 }
 
@@ -63,12 +64,15 @@ section {
   margin: 0;
 }
 
-.container_2 {
-  position: absolute;
-  top: 12px;
-  right: 200px;
+.container_2{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: auto;
+  gap: 5px;
 }
-.container_3 {
+
+.container_3{
   width: 1400px;
   height: 720px;
   display: flex;
@@ -78,6 +82,7 @@ section {
   background-color: #fff;
   border-radius: 20px;
 }
+
 .container_4 {
   display: flex;
   align-items: center;
@@ -240,4 +245,11 @@ section {
 
 .cancelar:hover {
   background-color: #5a6268;
+}
+
+.dashed-box {
+  width: 70%; /* Ancho de la caja */
+  height: 18%; /* Alto de la caja */
+  border: 2px dashed #000000; /* Borde punteado negro */
+  margin: 10px auto; /* Márgenes automáticos para centrarla */
 }
