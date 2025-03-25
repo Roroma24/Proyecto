@@ -25,7 +25,7 @@ section {
 .icon{
   width: 90px; /* Ancho de cada icono */
   height: 90px; /* Alto de cada icono */
-  background-image: url('logo.png'); /* Fondo rojo para los iconos */
+  background-image: url('imagen/logo.png'); /* Fondo rojo para los iconos */
   border-radius: 40%; /* Bordes redondeados para darle forma circular */
 }
 
@@ -83,7 +83,7 @@ section {
   width: 90px; /* Ancho del botón */
   height: 90px; /* Alto del botón */
   background-color: #fff; /* Fondo morado para el botón */
-  background-image: url('logoregistro.png');
+  background-image: url('imagen/logoregistro.png'); /* Imagen de fondo para el botón */
   background-size: cover;
   border-radius: 40%; /* Bordes redondeados para darle forma circular */
   border: none; /* Sin borde por defecto */
@@ -132,7 +132,7 @@ section {
 .image {
   width: auto;
   height: 830px;
-  background-image: url('cancel.jpeg');
+  background-image: url('imagen/cancel.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
 }
