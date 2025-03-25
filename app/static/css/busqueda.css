@@ -1,13 +1,29 @@
+/* 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Este archivo contiene los estilos CSS para la página de búsqueda de la aplicación web.
+*/
+
+/* Establece el color de fondo de la página */
 body {
   background-color: #fff;
 }
+
+/* Configuración de la sección principal */
 section {
-  width: 1850px;
+  width: 1850px; /* Ancho de la sección */
   margin: 10px auto; /* Centra la sección y añade un margen superior e inferior */
 }
 
 /* Contenedor principal que usa flexbox */
-.container{
+.container {
   display: flex; /* Usamos flexbox para organizar los elementos */
   align-items: center; /* Alineación vertical centrada */
   justify-content: space-between; /* Espaciado uniforme entre los elementos */
@@ -15,27 +31,30 @@ section {
   margin: 10px auto; /* Márgenes automáticos para centrar el contenedor */
 }
 
-.icon-title{
+/* Contenedor de icono y título */
+.icon-title {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 15px; /* Espacio entre los elementos internos */
 }
 
 /* Estilo para cada icono */
-.icon{
-  width: 90px; /* Ancho de cada icono */
-  height: 90px; /* Alto de cada icono */
-  background-image: url('imagen/logo.png'); /* Fondo rojo para los iconos */
-  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+.icon {
+  width: 90px; /* Ancho del icono */
+  height: 90px; /* Alto del icono */
+  background-image: url('imagen/logo.png'); /* Imagen de fondo */
+  border-radius: 40%; /* Forma circular */
 }
 
-.titulo-principal{
-  font-size: 50px;
-  font-weight: bold;
-  margin: 0;
+/* Título principal */
+.titulo-principal {
+  font-size: 50px; /* Tamaño del texto */
+  font-weight: bold; /* Texto en negrita */
+  margin: 0; /* Elimina el margen predeterminado */
 }
 
-.container_1 {
+/* Diferentes contenedores para organizar el contenido */
+.container_1, .container_4 {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -44,44 +63,42 @@ section {
 }
 
 .container_2 {
-  position: absolute;
-  top: 12px;
-  right: 200px;
+  position: absolute; /* Posición absoluta dentro del contenedor */
+  top: 12px; /* Distancia desde la parte superior */
+  right: 200px; /* Distancia desde la derecha */
 }
+
 .container_3 {
   width: 1400px;
   height: 720px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Organización en columna */
   align-items: center;
   margin: 20px auto;
-  background-color: #fff;
-  border-radius: 20px;
+  background-color: #fff; /* Fondo blanco */
+  border-radius: 20px; /* Bordes redondeados */
 }
-.container_4 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: auto;
-  margin: 10px auto;
-  grid-column: auto;
-}
+
+/* Barra de iconos */
 .icon-bar {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 40px; /* Espaciado entre iconos */
 }
 
-.btn{
-  width: 90px; /* Ancho del botón */
-  height: 90px; /* Alto del botón */
-  background-color: #fff; /* Fondo morado para el botón */
+/* Botón de acción */
+.btn {
+  width: 90px;
+  height: 90px;
+  background-color: #fff;
   background-image: url('imagen/logoregistro.png');
   background-size: cover;
-  border-radius: 40%; /* Bordes redondeados para darle forma circular */
-  border: none; /* Sin borde por defecto */
-  cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
+  border-radius: 40%;
+  border: none;
+  cursor: pointer; /* Cursor de tipo puntero */
 }
+
+/* Menú desplegable */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -96,6 +113,7 @@ section {
   z-index: 1;
 }
 
+/* Estilos para los enlaces del menú desplegable */
 .dropdown-content a {
   display: block;
   padding: 8px 12px;
@@ -107,10 +125,12 @@ section {
   background-color: #ddd;
 }
 
+/* Mostrar el menú cuando el usuario pase el cursor */
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
+/* Barra de estado */
 .bar {
   width: 400px;
   height: 70px;
@@ -118,6 +138,7 @@ section {
   border-radius: 40px;
 }
 
+/* Imagen de fondo */
 .image {
   width: auto;
   height: 830px;
@@ -126,6 +147,7 @@ section {
   background-repeat: no-repeat;
 }
 
+/* Logos */
 .logo_1 {
   width: 150px;
   height: 100px;
@@ -133,6 +155,7 @@ section {
   border-radius: 40%;
   margin: 20px auto;
 }
+
 .logo_2 {
   width: 115px;
   height: 85px;
@@ -141,6 +164,7 @@ section {
   margin: 5px auto;
 }
 
+/* Caja de título */
 .title {
   width: 1000px;
   height: 120px;
@@ -148,29 +172,32 @@ section {
   margin: 10px auto;
 }
 
-.next {
+/* Botones de navegación */
+.next, .next_1 {
   width: 120px;
-  height: 70px;
   background-color: #656464;
   border-radius: 40px;
   border: none;
   cursor: pointer;
+}
+
+.next {
+  height: 70px;
   margin: 10px auto;
 }
 
 .next_1 {
-  width: 120px;
   height: 50px;
-  background-color: #656464;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
 }
+
+/* Contenedor de botones */
 .nexttop {
   display: flex;
   align-items: center;
   gap: 40px;
 }
+
+/* Estilos del formulario */
 .formulario {
   width: 1000px;
   padding: 20px;
@@ -179,6 +206,7 @@ section {
   text-align: center;
 }
 
+/* Campos del formulario */
 .campo {
   margin: 10px 0;
 }
@@ -190,6 +218,7 @@ section {
   border-radius: 4px;
 }
 
+/* Contenedor de campos dobles */
 .campos-dobles {
   display: flex;
   justify-content: space-between;
@@ -199,6 +228,7 @@ section {
   width: 30%;
 }
 
+/* Botón de cancelar */
 .cancelar {
   background-color: #6c757d;
   color: white;
