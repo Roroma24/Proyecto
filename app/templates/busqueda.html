@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/busqueda.css') }}" />
+    <link rel="stylesheet" href="busqueda.css" />
     <title>Busqueda de citas</title>
   </head>
   <body>
@@ -11,12 +11,10 @@
       <div class="container_1">
         <div class="icon-bar">
           <div class="icon"></div>
-          <div class="bar"></div>
+          <h1 class="titulo-principal">Hospital Qualitas</h1>
         </div>
         <div class="container_2">
           <div class="nexttop">
-            <button class="next">Inicio</button>
-            <button class="next">Regresar</button>
             <a href="{{ url_for('exit') }}">
               <button class="next">Salir</button>
             </a>
