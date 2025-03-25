@@ -82,7 +82,7 @@ body{
     display: block; /* Los enlaces ocupan todo el ancho disponible */
     padding: 8px 12px; /* Espaciado dentro de los enlaces */
     text-decoration: none; /* Eliminar subrayado por defecto */
-    color: black; /* Color de texto negro */
+    color: #000000; /* Color de texto negro */
 }
 
 /* Estilo cuando el cursor está sobre los enlaces del dropdown */

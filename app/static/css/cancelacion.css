@@ -50,9 +50,11 @@ section {
 }
 
 .container_2 {
-  position: absolute;
-  top: 12px;
-  right: 200px;
+  display: flex; /* Usa flexbox para alinear icono y título */
+    align-items: center; /* Alinea los elementos verticalmente */
+    justify-content: flex-end;
+    width: auto;
+    gap: 5px; /* Espacio de 15px entre los elementos */
 }
 .container_3 {
   width: 1400px;

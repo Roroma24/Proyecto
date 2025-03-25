@@ -1,11 +1,13 @@
 body { 
-    background-color: #f7ecec; /* Establece el color de fondo de la página en un tono rosa claro */
+    background-color: #fff; /* Establece el color de fondo de la página en un tono rosa claro */
+    font-family: Arial, sans-serif;
 }
 
 /* CONTENEDOR PRINCIPAL */
 .container { 
     display: flex; /* Usa flexbox para organizar los elementos en fila */
     align-items: center; /* Alinea los elementos verticalmente en el centro */
+    background-color: #fff; /* Fondo blanco para el menú */
     justify-content: space-between; /* Distribuye los elementos uniformemente en la fila */
     width: auto; /* El ancho se ajusta automáticamente al contenido */
     margin: 10px auto; /* Centra el contenedor con un margen de 10px arriba y abajo */
@@ -18,11 +20,20 @@ body {
     gap: 15px; /* Espacio de 15px entre los elementos */
 }
 
+.btn_accion { 
+    display: flex; /* Usa flexbox para alinear icono y título */
+    align-items: center; /* Alinea los elementos verticalmente */
+    justify-content: flex-end;
+    width: auto;
+    gap: 15px; /* Espacio de 15px entre los elementos */
+}
+
 /* ICONO: Estilos para un icono redondeado */
 .icon { 
     width: 90px; /* Ancho del icono */
     height: 90px; /* Altura del icono */
-    background-color: #ff0000; /* Fondo rojo */
+    background-image: url('imagen/logo.png');
+    background-size: cover;
     border-radius: 40%; /* Bordes redondeados para hacer un círculo */
 }
 
@@ -30,10 +41,22 @@ body {
 .btn { 
     width: 90px; /* Ancho del botón */
     height: 90px; /* Altura del botón */
-    background-color: #b45fd4; /* Fondo color púrpura */
+    background-color: #fff;
+    background-image: url('imagen/logoregistro.png'); /* Fondo color púrpura */
+    background-size: cover;
     border-radius: 40%; /* Bordes redondeados */
     border: none; /* Sin borde */
     cursor: pointer; /* Cambia el cursor al pasar el mouse */
+}
+
+.accion{
+    width: 160px;
+    height: 50px;
+    background-color: #494949;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    margin: auto;
 }
 
 /* CONTENEDOR DESPLEGABLE */
@@ -70,15 +93,20 @@ body {
     display: block; /* Muestra el contenido del menú */
 }
 
-/* BARRA: Elemento rectangular con bordes redondeados */
-.bar { 
-    width: 400px; /* Ancho de la barra */
-    height: 50px; /* Altura de la barra */
-    background-color: #808080; /* Color de fondo gris */
-    border-radius: 10px; /* Bordes redondeados */
+/* TÍTULO PRINCIPAL */
+.titulo-principal {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0; /* Elimina el margen exterior del título */
 }
 
-/* TÍTULO PRINCIPAL */
-.titulo-principal { 
-    margin: 0; /* Elimina el margen exterior del título */
+.body_image{
+    width: auto;
+    height: 55vw;
+    background-image: url('imagen/modification.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: auto;
 }

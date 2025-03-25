@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/modstyles.css') }}">
-    <title>Document</title>
+    <title>Modificación</title>
 </head>
 <body>
     <div class="container">
@@ -12,13 +12,22 @@
             <div class="icon"></div>
             <h1 class="titulo-principal">Modificación de cita</h1>
         </div>
-        <div class="dropdown">
-            <button class="btn"></button>
-            <div class="dropdown-content">
-                <a href="{{ url_for('login') }}">Login</a>
-                <a href="{{ url_for('registro') }}">New user</a>
+        <div class="btn_accion">
+            <a href="{{ url_for('exit') }}" style="text-decoration: none;">
+                <button class="accion" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Inicio</button>
+            </a>
+            <a>
+                <button class="accion" style="text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Regresar</button>
+            </a>
+            <div class="dropdown">
+                <button class="btn"></button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('login') }}">Login</a>
+                    <a href="{{ url_for('registro') }}">New user</a>
+                </div>
             </div>
         </div>                
     </div>
+    <div class="body_image"></div>
 </body>
 </html>
