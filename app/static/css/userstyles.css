@@ -27,8 +27,9 @@ body{
 
 .container-body{
     width: auto; /* El ancho es automático */
-    height: 55vw; /* Altura del contenedor es el 55% del ancho de la ventana */
+    height: 58vw; /* Altura del contenedor es el 55% del ancho de la ventana */
     background-image: url('imagen/newuser.jpeg'); /* Imagen de fondo */
+    padding-top: 40px;
     background-size: cover; /* Asegura que la imagen cubra completamente el área */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* La imagen no se repite */
