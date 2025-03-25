@@ -15,45 +15,40 @@ Este archivo contiene los estilos CSS para la página de cancelación de la apli
 body {
   background-color: #fff;
 }
-
-/* Define el tamaño y margen de la sección principal */
 section {
-  width: auto;
+  width: 1850px;
   margin: 10px auto; /* Centra la sección y añade un margen superior e inferior */
 }
 
-/* Contenedor principal con flexbox para organizar elementos */
+/* Contenedor principal que usa flexbox */
 .container{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: auto;
-  margin: 10px auto;
+  display: flex; /* Usamos flexbox para organizar los elementos */
+  align-items: center; /* Alineación vertical centrada */
+  justify-content: space-between; /* Espaciado uniforme entre los elementos */
+  width: auto; /* El ancho se ajusta al contenido */
+  margin: 10px auto; /* Márgenes automáticos para centrar el contenedor */
 }
 
-/* Contenedor para el icono y el título */
 .icon-title{
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-/* Estilo del icono */
+/* Estilo para cada icono */
 .icon{
-  width: 90px;
-  height: 90px;
-  background-image: url('imagen/logo.png');
-  border-radius: 40%;
+  width: 90px; /* Ancho de cada icono */
+  height: 90px; /* Alto de cada icono */
+  background-image: url('imagen/logo.png'); /* Fondo rojo para los iconos */
+  border-radius: 40%; /* Bordes redondeados para darle forma circular */
 }
 
-/* Estilos del título principal */
 .titulo-principal{
   font-size: 50px;
   font-weight: bold;
   margin: 0;
 }
 
-/* Otro contenedor flexible con distribución uniforme */
 .container_1 {
   display: flex;
   align-items: center;
@@ -62,18 +57,19 @@ section {
   margin: 10px auto;
 }
 
-/* Posiciona un contenedor en la parte superior derecha */
-.container_2 {
-  display: flex; /* Usa flexbox para alinear icono y título */
-    align-items: center; /* Alinea los elementos verticalmente */
-    justify-content: flex-end;
-    width: auto;
-    gap: 5px; /* Espacio de 15px entre los elementos */
+.titulo-principal{
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0;
 }
 
-/* Contenedor con fondo blanco y bordes redondeados */
+.container_2 {
+  position: absolute;
+  top: 12px;
+  right: 200px;
+}
 .container_3 {
-  width: 75%;
+  width: 1400px;
   height: 720px;
   display: flex;
   flex-direction: column;
@@ -82,8 +78,6 @@ section {
   background-color: #fff;
   border-radius: 20px;
 }
-
-/* Contenedor flexible con alineación horizontal */
 .container_4 {
   display: flex;
   align-items: center;
@@ -92,61 +86,56 @@ section {
   margin: 10px auto;
   grid-column: auto;
 }
-
-/* Barra de iconos con espacio entre elementos */
 .icon-bar {
   display: flex;
   align-items: center;
   gap: 40px;
 }
 
-/* Estilo de los botones */
+
 .btn{
-  width: 90px;
-  height: 90px;
-  background-color: #fff;
-  background-image: url('imagen/logoregistro.png');
+  width: 90px; /* Ancho del botón */
+  height: 90px; /* Alto del botón */
+  background-color: #fff; /* Fondo morado para el botón */
+  background-image: url('imagen/logoregistro.png'); /* Imagen de fondo para el botón */
   background-size: cover;
-  border-radius: 40%;
-  border: none;
-  cursor: pointer;
+  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+  border: none; /* Sin borde por defecto */
+  cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
 }
 
-/* Contenedor para menú desplegable */
 .dropdown {
-  position: relative;
-  display: inline-block;
+  position: relative; /* Necesario para el posicionamiento de los elementos del menú */
+  display: inline-block; /* El contenedor se comporta como un bloque en línea */
 }
 
-/* Estilos para el contenido del menú desplegable */
+/* Contenido del dropdown, que está oculto por defecto */
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 120px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  z-index: 1;
+  display: none; /* Oculto inicialmente */
+  position: absolute; /* Se posiciona absolutamente respecto al contenedor */
+  background-color: #f9f9f9; /* Fondo blanco para el menú */
+  min-width: 120px; /* Ancho mínimo del menú */
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Sombra para dar profundidad */
+  z-index: 1; /* Para asegurarse de que el menú esté por encima de otros elementos */
 }
 
-/* Estilos para los enlaces dentro del dropdown */
+/* Estilo de los enlaces dentro del dropdown */
 .dropdown-content a {
-  display: block;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: black;
+  display: block; /* Los enlaces ocupan todo el ancho disponible */
+  padding: 8px 12px; /* Espaciado dentro de los enlaces */
+  text-decoration: none; /* Eliminar subrayado por defecto */
+  color: black; /* Color de texto negro */
 }
 
-/* Cambia el fondo cuando el mouse pasa sobre un enlace */
+/* Estilo cuando el cursor está sobre los enlaces del dropdown */
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: #ddd; /* Fondo gris claro al pasar el mouse sobre el enlace */
 }
 
-/* Muestra el menú al pasar el mouse */
+/* Mostrar el contenido del dropdown cuando se pasa el mouse sobre el contenedor */
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: block; /* Muestra el menú */
 }
-
-/* Barra de color gris */
 .bar {
   width: 400px;
   height: 70px;
@@ -154,7 +143,6 @@ section {
   border-radius: 40px;
 }
 
-/* Imagen de fondo */
 .image {
   width: auto;
   height: 830px;
@@ -163,7 +151,6 @@ section {
   background-repeat: no-repeat;
 }
 
-/* Estilos de los logos */
 .logo_1 {
   width: 150px;
   height: 100px;
@@ -171,7 +158,6 @@ section {
   border-radius: 40%;
   margin: 20px auto;
 }
-
 .logo_2 {
   width: 115px;
   height: 85px;
@@ -180,7 +166,6 @@ section {
   margin: 5px auto;
 }
 
-/* Cuadro con borde discontinuo */
 .title {
   width: 1000px;
   height: 120px;
@@ -188,7 +173,6 @@ section {
   margin: 10px auto;
 }
 
-/* Estilos de los botones de navegación */
 .next {
   width: 120px;
   height: 70px;
@@ -210,15 +194,11 @@ section {
   bottom: 260px;
   right: 450px;
 }
-
-/* Contenedor para botones alineados */
 .nexttop {
   display: flex;
   align-items: center;
   gap: 40px;
 }
-
-/* Estilos del formulario */
 .formulario {
   width: 1000px;
   padding: 20px;
@@ -227,12 +207,10 @@ section {
   text-align: center;
 }
 
-/* Espaciado entre campos del formulario */
 .campo {
   margin: 10px 0;
 }
 
-/* Estilo de los inputs */
 .campo input {
   width: calc(100% - 22px);
   padding: 10px;
@@ -240,7 +218,6 @@ section {
   border-radius: 4px;
 }
 
-/* Campos dobles alineados horizontalmente */
 .campos-dobles {
   display: flex;
   justify-content: space-between;
@@ -250,7 +227,6 @@ section {
   width: 30%;
 }
 
-/* Botón de cancelar */
 .cancelar {
   background-color: #6c757d;
   color: white;
@@ -262,7 +238,6 @@ section {
   align-self: flex-end;
 }
 
-/* Cambio de color al pasar el mouse sobre el botón de cancelar */
 .cancelar:hover {
   background-color: #5a6268;
 }
