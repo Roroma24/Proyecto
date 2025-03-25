@@ -18,7 +18,7 @@ body {
 
 /* Define el tamaño y margen de la sección principal */
 section {
-  width: 1850px;
+  width: auto;
   margin: 10px auto; /* Centra la sección y añade un margen superior e inferior */
 }
 
@@ -64,14 +64,16 @@ section {
 
 /* Posiciona un contenedor en la parte superior derecha */
 .container_2 {
-  position: absolute;
-  top: 12px;
-  right: 200px;
+  display: flex; /* Usa flexbox para alinear icono y título */
+    align-items: center; /* Alinea los elementos verticalmente */
+    justify-content: flex-end;
+    width: auto;
+    gap: 5px; /* Espacio de 15px entre los elementos */
 }
 
 /* Contenedor con fondo blanco y bordes redondeados */
 .container_3 {
-  width: 1400px;
+  width: 75%;
   height: 720px;
   display: flex;
   flex-direction: column;

@@ -111,7 +111,7 @@ body {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 120px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px #00000033;
   z-index: 1;
 }
 
@@ -120,7 +120,7 @@ body {
   display: block;
   padding: 8px 12px;
   text-decoration: none;
-  color: black;
+  color: #000000;
 }
 
 /* Hover en cada link del dropdown */
@@ -225,7 +225,7 @@ body {
 input[type="text"],
 input[type="email"],
 input[type="number"],
-input[type="date"],
+input[type="date"], 
 select {
   width: 100%;
   padding: 12px;
