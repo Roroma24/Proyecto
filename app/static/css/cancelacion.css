@@ -14,6 +14,7 @@ Este archivo contiene los estilos CSS para la página de cancelación de la apli
 /* Establece el color de fondo de la página */
 body {
   background-color: #fff;
+  font-family: Arial, sans-serif;
 }
 
 .section {
