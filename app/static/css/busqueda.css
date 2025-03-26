@@ -14,6 +14,7 @@ Este archivo contiene los estilos CSS para la página de búsqueda de la aplicac
 /* Estilo general del cuerpo de la página */
 body {
   background-color: #fff; /* Fondo blanco para la página */
+  font-family: Arial, sans-serif; /* Establece la fuente de la página */
 }
 
 /* Estilos para la sección principal */
@@ -152,7 +153,7 @@ section {
 .image {
   width: auto;
   height: 830px;
-  background-image: url('imagen/file.jpeg'); /* Imagen de fondo */
+  background-image: url('imagen/fondo.png'); /* Imagen de fondo */
   background-size: cover; /* Ajustar la imagen para cubrir el área */
   background-repeat: no-repeat; /* Evitar que la imagen se repita */
 }

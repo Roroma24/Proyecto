@@ -148,7 +148,7 @@ body {
 .image {
   width: auto; /* El ancho se ajusta automáticamente */
   height: 830px; /* Altura de la imagen */
-  background-image: url('imagen/cancel.jpeg'); /* Imagen de fondo */
+  background-image: url('imagen/fondo.png'); /* Imagen de fondo */
   background-size: cover; /* Ajusta la imagen de fondo */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
 }

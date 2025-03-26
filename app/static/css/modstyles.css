@@ -118,12 +118,11 @@ body {
 .body_image {
     width: auto; /* El ancho se ajusta automáticamente al contenido */
     height: 55vw; /* La altura se establece como un 55% del ancho de la ventana */
-    background-image: url('imagen/modification.jpeg'); /* Imagen de fondo */
+    background-image: url('imagen/fondo.png'); /* Imagen de fondo */
     padding-top: 40px; /* Añade espacio en la parte superior */
     background-size: cover; /* Hace que la imagen cubra todo el área del contenedor */
     background-position: center; /* Centra la imagen dentro del contenedor */
     background-repeat: no-repeat; /* No repite la imagen si es más pequeña que el contenedor */
-    background-attachment: fixed; /* Fija la imagen en el fondo cuando se hace scroll */
     margin: auto; /* Centra el contenedor */
 }
 

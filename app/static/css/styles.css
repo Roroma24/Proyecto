@@ -119,7 +119,25 @@ body{
 }
 
 /* Estilo para el logo */
-.logo{
+.logo_reserv{
+    width: 120px; /* Ancho del logo */
+    height: 120px; /* Alto del logo */
+    background-color: #808080; /* Fondo gris para el logo */
+    border-radius: 40%; /* Bordes redondeados para darle forma circular */
+    margin: 20px auto; /* Márgenes automáticos para centrar */
+}
+
+/* Estilo para el logo */
+.logo_mod{
+    width: 120px; /* Ancho del logo */
+    height: 120px; /* Alto del logo */
+    background-color: #808080; /* Fondo gris para el logo */
+    border-radius: 40%; /* Bordes redondeados para darle forma circular */
+    margin: 20px auto; /* Márgenes automáticos para centrar */
+}
+
+/* Estilo para el logo */
+.logo_cancel{
     width: 120px; /* Ancho del logo */
     height: 120px; /* Alto del logo */
     background-color: #808080; /* Fondo gris para el logo */
