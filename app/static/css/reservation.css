@@ -59,9 +59,9 @@ body {
 
 /* Contenedor principal del contenido de la página */
 .container {
-  width: 95%;
-  max-width: 1400px;
-  margin: 20px auto;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
   padding: 40px;
   border-radius: 12px; /* Bordes redondeados */
   box-shadow: 0 6px 12px rgba(0,0,0,0.1); /* Sombra suave */
