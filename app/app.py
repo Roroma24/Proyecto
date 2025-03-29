@@ -34,7 +34,7 @@ def registro():
 
 # Ruta para la página de registro de doctor (registrodoc.html).
 @app.route('/newdoc')
-def newdoctor():
+def newdoc():
     return render_template('newdoctor.html')  # Renderiza la página de registro de doctor.
 
 # Ruta para la página de reserva de cita (reservation.html).
