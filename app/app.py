@@ -33,9 +33,9 @@ def registro():
     return render_template('registrouser.html')  # Renderiza la página de registro de usuario.
 
 # Ruta para la página de registro de doctor (registrodoc.html).
-@app.route('/newdoctor')
-def newdoctor():
-    return render_template('registrodoc.html')  # Renderiza la página de registro de doctor.
+@app.route('/newdoc')
+def newdoc():
+    return render_template('newdoctor.html')  # Renderiza la página de registro de doctor.
 
 # Ruta para la página de reserva de cita (reservation.html).
 @app.route('/reserva')
