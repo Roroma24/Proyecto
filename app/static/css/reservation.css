@@ -61,12 +61,11 @@ body {
 }
 
 /* Contenedor principal del contenido de la página */
-/* Hacer que el container sea blanco */
 .container {
   background-color: white; /* Fondo blanco */
   width: 80%;
+  padding-top: 60px;
   max-width: 100vw;
-  padding: 20px;
   min-height: 100vh;
   margin: 0 auto;
   padding: 40px;
