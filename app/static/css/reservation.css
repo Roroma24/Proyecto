@@ -12,8 +12,11 @@ Este archivo contiene los estilos CSS para la página de reservación de la apli
 */
 
 /* Estilo general para todo el cuerpo de la página */
-body { 
-  background-color: #fff;
+body {
+  background-image: url('./imagen/fondo.png'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -58,21 +61,18 @@ body {
 }
 
 /* Contenedor principal del contenido de la página */
+/* Hacer que el container sea blanco */
 .container {
-  width: 100%; /* Ocupa todo el ancho disponible */
-  max-width: 100vw; /* Máximo ancho igual al ancho de la ventana */
-  min-height: 100vh; /* Altura mínima igual al alto de la ventana */
+  background-color: white; /* Fondo blanco */
+  width: 80%;
+  max-width: 100vw;
+  padding: 20px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 40px;
-  border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 6px 12px rgba(0,0,0,0.1); /* Sombra suave */
-
-  /* Establecer imagen de fondo */
-  background-image: url('./imagen/fondo.png');
-  background-size: cover; /* Ajusta la imagen para cubrir el área */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evitar que la imagen se repita */
-  box-sizing: border-box; /* Asegurar que el padding esté incluido en el ancho/alto */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
 /* Elementos circulares básicos */
