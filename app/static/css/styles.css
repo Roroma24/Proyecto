@@ -112,7 +112,7 @@ body{
 
 /* Caja con borde punteado */
 .dashed-box {
-    width: 1000px; /* Ancho de la caja */
+    width: 80%; /* Ancho de la caja */
     height: 160px; /* Alto de la caja */
     border: 2px dashed #000000; /* Borde punteado negro */
     margin: 10px auto; /* Márgenes automáticos para centrarla */
