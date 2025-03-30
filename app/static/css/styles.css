@@ -122,7 +122,8 @@ body{
 .logo_reserv{
     width: 120px; /* Ancho del logo */
     height: 120px; /* Alto del logo */
-    background-color: #808080; /* Fondo gris para el logo */
+    background-image: url('imagen/logo_reserv.png'); /* Fondo gris para el logo */
+    background-size: cover;
     border-radius: 40%; /* Bordes redondeados para darle forma circular */
     margin: 20px auto; /* Márgenes automáticos para centrar */
 }
@@ -131,7 +132,8 @@ body{
 .logo_mod{
     width: 120px; /* Ancho del logo */
     height: 120px; /* Alto del logo */
-    background-color: #808080; /* Fondo gris para el logo */
+    background-image: url('imagen/logo_mod.png'); /* Fondo gris para el logo */
+    background-size: cover;
     border-radius: 40%; /* Bordes redondeados para darle forma circular */
     margin: 20px auto; /* Márgenes automáticos para centrar */
 }
@@ -140,7 +142,8 @@ body{
 .logo_cancel{
     width: 120px; /* Ancho del logo */
     height: 120px; /* Alto del logo */
-    background-color: #808080; /* Fondo gris para el logo */
+    background-image: url('imagen/logo_cancel.png'); /* Fondo gris para el logo */
+    background-size: cover;
     border-radius: 40%; /* Bordes redondeados para darle forma circular */
     margin: 20px auto; /* Márgenes automáticos para centrar */
 }

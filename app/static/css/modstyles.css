@@ -135,3 +135,66 @@ body {
     border-radius: 50%; /* Hace que el logo tenga forma circular */
     margin: auto; /* Centra el logo dentro de su contenedor */
 }
+
+.dashed-box {
+    width: 80%; /* Ancho del cuadro */
+    height: 140px; /* Alto del cuadro */
+    border: 2px dashed #000; /* Borde discontinuo negro */
+    margin: 30px auto 50px; /* Márgenes superior, inferior y lateral */
+    display: flex; /* Usamos flexbox para organizar los elementos dentro */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    color: #000000; /* Color del texto */
+    font-size: 16px; /* Tamaño de la fuente */
+    text-align: center; /* Centra el texto */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo blanco */
+}
+
+/* Contenedor principal del formulario */
+.form{
+    display: flex; /* Usamos flexbox para organizar los elementos */
+    flex-direction: column; /* Organiza los elementos en columna */
+    gap: 40px; /* Espaciado vertical entre los elementos */
+}
+  
+/* Fila del formulario para organizar inputs horizontalmente */
+.form-row{
+    display: flex; /* Usamos flexbox para organizar los elementos */
+    gap: 30px; /* Espacio entre los elementos */
+    flex-wrap: wrap; /* Los elementos saltan a nueva línea si no hay espacio suficiente */
+    justify-content: space-between; /* Distribuye los elementos equitativamente */
+    margin-bottom: 30px; /* Margen inferior de 30px */
+    margin: 30px; /* Márgenes de 30px */
+}
+  
+/* Grupo de campos individuales dentro de una fila */
+.form-group{
+    flex: 1 1 calc(25% - 30px); /* Mantiene la distribución horizontal original */
+    display: flex; /* Usamos flexbox para organizar los elementos dentro del grupo */
+    flex-direction: column; /* Organiza los elementos en columna */
+    gap: 10px; /* Espacio entre label e input */
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #333; /* Borde gris oscuro */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 10px; /* Añade espacio dentro del grupo */
+    box-sizing: border-box; /* Asegura que el padding no modifique el tamaño total */
+    margin: 1%; /* Margen del 1% */
+}
+  
+/* Etiqueta de cada campo */
+.form-group label{
+    font-weight: bold; /* Texto en negrita */
+}
+  
+/* Inputs estándar y selectores de tipo texto, email, número, fecha, etc. */
+input[type="text"],
+input[type="email"],
+select{
+    width: 100%; /* Ancho del campo al 100% */
+    padding: 12px; /* Añade espacio dentro de los campos */
+    border: 1px solid #333; /* Borde gris oscuro */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de la fuente */
+    box-sizing: border-box; /* Asegura compatibilidad con padding */
+}

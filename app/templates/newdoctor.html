@@ -29,7 +29,9 @@ apellidos y correo electrónico.
 </head>
 <body>
     <!-- Botón de salida o cerrar sesión -->
-    <button class="btn">Salir</button>
+     <a href="{{ url_for('index') }}" style="text-decoration: none;">
+        <div class="btn">Salir</div>
+     </a>
     
     <!-- Contenedor principal para el formulario de registro -->
     <div class="container">
