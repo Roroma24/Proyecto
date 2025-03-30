@@ -11,58 +11,108 @@ Descripción:
 Página de registro para doctores. Se solicitan datos personales del doctor, como número de cédula, nombres, 
 apellidos y correo electrónico.
 -->
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <!-- Establece la codificación de caracteres para la página -->
+    <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
-    
-    <!-- Define la vista para dispositivos móviles, asegurando una correcta visualización en diferentes tamaños de pantalla -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Enlaza el archivo CSS para los estilos de la página -->
+
+    <!-- Enlace al archivo CSS de estilos para el usuario -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/registrodoc.css') }}">
-    
-    <!-- Título que aparece en la pestaña del navegador -->
-    <title>Registro</title>
+
+    <!-- Título de la página -->
+    <title>Inicio del doctor</title>
+
+    <style>
+        .form-group.cedula {
+            width: 30%; /* Reduce el ancho del grupo */
+            min-width: 250px; /* Evita que sea demasiado pequeño */
+            margin: 0 auto; /* Centra el elemento */
+        }
+    </style>
 </head>
 <body>
-    <!-- Botón de salida o cerrar sesión -->
-    <button class="btn">Salir</button>
-    
-    <!-- Contenedor principal para el formulario de registro -->
-    <div class="container">
-        
-        <!-- Elemento decorativo (círculo) para el diseño de la página -->
-        <div class="circle"></div>
-        
-        <!-- Barra de separación o elemento decorativo adicional -->
-        <div class="bar"></div>
-        
-        <!-- Campo de entrada para el número de cédula -->
-        <input type="text" class="full-width" placeholder="Número de cédula">
-        
-        <!-- Campo de entrada para los nombres del usuario -->
-        <input type="text" placeholder="Nombres">
-        
-        <!-- Campo de entrada para el primer apellido del usuario -->
-        <input type="text" placeholder="Primer Apellido">
-        
-        <!-- Campo de entrada para el segundo apellido del usuario -->
-        <input type="text" placeholder="Segundo Apellido">
-        
-        <!-- Campo de entrada para el correo electrónico -->
-        <input type="email" class="full-width" placeholder="Correo">
-        
-        <!-- Campo de entrada para confirmar el correo electrónico -->
-        <input type="email" class="full-width" placeholder="Confirmación de correo">
-        
-        <!-- Contenedor para los botones de confirmación -->
-        <div class="confirm-buttons">
-            <!-- Botón para continuar con el registro -->
-            <button class="confirm">Continuar</button>
+
+<!-- Contenedor principal de los botones (fuera del contenedor principal de los elementos) -->
+<div class="container-buttons" style="position: absolute; top: 10px; right: 10px; display: flex; padding: 10px;">
+    <!-- Botón de regresar -->
+    <a href="{{ url_for('registro') }}" style="text-decoration: none; margin-right: 10px;">
+        <div class="btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px">
+            Regresar
         </div>
+    </a>
+    
+    <!-- Botón de salida -->
+    <a href="{{ url_for('index') }}" style="text-decoration: none;">
+        <div class="exit_btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px">
+            Salir
+        </div>
+    </a>
+</div>
+
+    <!-- Contenedor principal de la página de registro -->
+    <div class="container-body" style="margin-top: 80px;"> <!-- Ajuste el margen superior para que no se superpongan los botones -->
+        <!-- Sección de imagen del perfil -->
+        <div class="profile"></div>
+
+        <!-- Barra con título -->
+        <div class="bar">
+            <h1 class="titulo-principal">Inicio del doctor</h1>
+        </div>
+
+        <!-- Caja con borde punteado para mostrar información -->
+        <div class="dashed-box">
+            Información
+        </div>
+
+        <!-- Formulario de registro de usuario -->
+        <form>
+            <!-- Primera fila: Cédula Profesional -->
+            <div class="form-row">
+                <div class="form-group cedula">
+                    <label for="cedula">Cédula Profesional</label>
+                    <input type="text" id="cedula" name="cedula" placeholder="Ingresa tu cédula profesional">
+                </div>
+            </div>
+        
+            <!-- Segunda fila: Nombre, Primer Apellido y Segundo Apellido -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="apellido1">Primer Apellido</label>
+                    <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa tu primer apellido">
+                </div>
+                <div class="form-group">
+                    <label for="apellido2">Segundo Apellido</label>
+                    <input type="text" id="apellido2" name="apellido2" placeholder="Ingresa tu segundo apellido">
+                </div>
+            </div>
+        
+            <!-- Tercera fila: Correo y Contraseña -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" name="correo" placeholder="Correo electrónico">
+                </div>
+                <div class="form-group">
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" id="contraseña" name="contraseña" placeholder="Ingresa tu contraseña">
+                </div>
+            </div>
+
+            <!-- Sección de botones de acción -->
+            <div class="info">
+                <div class="buttons">
+                    <!-- Botón de continuar -->
+                    <div class="btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</div>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>
+
