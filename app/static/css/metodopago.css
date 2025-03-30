@@ -1,116 +1,355 @@
 /* 
-Autores:
-Axel Castañeda Sánchez
+Autores: 
+Axel Castañeda Sánchez 
 Antonio Albuerne Silva
 Alyn Layla Nila Vélez
-Luis Roberto Rodríguez Marroquín
+Luis Roberto Rodríguez Marroquin 
 Sebastián Villaluz Martínez
 Daniela Zuno Aguilar
 
-Descripción:
-Este archivo contiene los estilos CSS para la página de métodos de pago de la aplicación web.
+Descripción:   
+Este archivo contiene los estilos CSS para la página de reservación de la aplicación web.
 */
 
-:root {
-    /* Definición de variables de colores */
-    --primary-color: #ffffff;  /* Color de fondo principal */
-    --secondary-color: #8c8c8c; /* Color secundario (gris) */
-    --button-color: #d1d1d1;  /* Color de los botones */
-    --highlight-color: #ff4d4d; /* Color de resaltado (rojo) */
-    --dark-color: #4a4a4a;  /* Color oscuro para texto o botones */
-    --purple: #b45fd4; /* Color morado para algunos elementos */
-}
-
+/* Estilo general para todo el cuerpo de la página */
 body {
-    /* Estilo general del cuerpo de la página */
-    font-family: Arial, sans-serif; /* Tipo de letra */
-    background-color: var(--primary-color); /* Color de fondo */
-    text-align: center; /* Centra el texto */
-}
-
-.container {
-    /* Contenedor principal */
-    width: 90%;
-    max-width: 1400px;
-    min-height: 1000px; /* Ajuste para más espacio */
-    margin: auto;
-    padding: 40px; /* Más espaciado interno */
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px var(--secondary-color);
-
-    /* Imagen de fondo */
-    background-image: url('imagen/metpay.jpeg'); /* Cambia esto con la ruta real */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.btn {
-    /* Estilo de botones redondos */
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-}
-
-/* Clases para cambiar el color de los botones */
-.red { background: var(--highlight-color); }
-.dark { background: var(--dark-color); }
-.purple { background: var(--purple); }
-
-.top-bar {
-    /* Barra superior */
-    width: 100%; /* Ocupar todo el ancho */
-    height: 30px; /* Altura mayor */
-    background: var(--secondary-color);
-    display: inline-block;
-    margin: 10px 0;
-}
-
-input, .confirm {
-    /* Estilo para inputs y botones de confirmación */
-    display: block;
-    width: calc(100% - 20px);
-    margin: 10px auto;
-    padding: 10px;
-    border: 1px solid var(--secondary-color);
-    border-radius: 5px;
-}
-
-.input-group {
-    display: flex; /* Usa flexbox para alinear en fila */
-    justify-content: space-between; /* Espaciar los elementos horizontalmente */
-    align-items: center; /* Alinear los elementos verticalmente */
-    gap: 10px; /* Espacio entre los elementos */
-}
-
-.input-group input {
-    width: 48%; /* Cada input ocupa casi la mitad del espacio disponible */
-}
-
-.payment-methods {
-    /* Contenedor de métodos de pago */
+    background-image: url('./imagen/fondo.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Contenedor del encabezado de la página */
+  .header-container {
+    background-color: #ffffff;
+    padding: 20px 0;
+    margin-bottom: 0;
+    box-shadow: none; /* No se aplica sombra */
+  }
+  
+  /* Estilo del contenido principal del encabezado */
+  .header {
+    width: 95%;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-around; /* Distribuir equitativamente */
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que el contenido baje si es necesario */
+  }
+  
+  /* Sección izquierda del header (logotipo y otros elementos) */
+  .header-left {
+    display: flex;
+    align-items: center;
     gap: 20px;
-}
-
-.method {
-    /* Botón de método de pago */
-    width: 70px; /* Tamaño más grande */
-    height: 70px;
-    background: var(--button-color);
+    flex-grow: 1; /* Toma el espacio sobrante si es necesario */
+  }
+  
+  /* Sección derecha del header (botones, iconos, etc.) */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* Título principal, usualmente h1 o similar */
+  .titulo-principal {
+    margin: 0; /* Quita margen por defecto */
+  }
+  
+  /* Contenedor principal del contenido de la página */
+  .container {
+    background-color: white; /* Fondo blanco */
+    width: 80%;
+    max-width: 100vw;
+    min-height: 80vh; /* Ajusta la altura si es necesario */
+    margin: 50px auto 0; /* Agrega margen superior para moverlo hacia abajo */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+  }
+  
+  /* Elementos circulares básicos */
+  .circle {
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
+  }
+  
+  /* Círculo rojo personalizado */
+  .circle.red {
+    width: 90px;
+    height: 90px;
+    background-image: url('imagen/logo.png');
+    border-radius: 40%; /* NO es completamente circular, es más un óvalo redondeado */
+  }
+  
+  /* Círculo morado personalizado */
+  .circle.purple {
+    width: 90px;
+    height: 90px;
+    background-color: #fff;
+    background-image: url('imagen/logoregistro.png');
+    background-size: cover;
+    border-radius: 40%;
     border: none;
-}
-
-.confirm {
-    /* Botón de confirmación */
-    background: var(--dark-color);
-    color: white;
-    font-size: 18px; /* Texto más grande */
-    width: 200px; /* Botón más destacado */
-    padding: 15px;
+    cursor: pointer; /* Cambia el cursor a mano al pasar encima */
+  }
+  
+  /* Contenedor para el dropdown */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Contenido del dropdown, oculto por defecto */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px #00000033;
+    z-index: 1;
+  }
+  
+  /* Links dentro del dropdown */
+  .dropdown-content a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #000000;
+  }
+  
+  /* Hover en cada link del dropdown */
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Muestra el contenido del dropdown cuando se pasa el mouse sobre el contenedor */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Barra de búsqueda */
+  .search-bar {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    width: 60vw; /* 60% del ancho de la ventana */
+    min-width: 250px;
+    max-width: 600px;
+    outline: none; /* Elimina el borde azul al hacer clic */
+    box-sizing: border-box;
+  }
+  
+  /* Botones dentro del header */
+  .header button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
     cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Efecto hover para los botones del header */
+  .header button:hover {
+    background-color: #555;
+  }
+  
+  /* Imagen de perfil */
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    margin: 40px auto 30px;
+    border-radius: 50%;
+    background-color: #d1dcdc;
+  }
+  
+  /* Caja de texto */
+  .textbox {
+    width: 95%;
+    height: 140px;
+    border: 2px dashed #000;
+    margin: 30px auto 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
+  /* Contenedor principal del formulario */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Espaciado vertical entre elementos */
+  }
+  
+  /* Fila del formulario para organizar inputs horizontalmente */
+  .form-row {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap; /* Salta a nueva línea si no hay espacio */
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  /* Grupo de campos individuales dentro de una fila */
+  .form-group {
+    flex: 1 1 calc(25% - 30px); /* Mantiene la distribución horizontal original */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre label e input */
+    background-color: #fff;         /* Fondo blanco que cubre título e input */
+    border: 1px solid #333;         /* Borde para delimitar el área del grupo */
+    border-radius: 4px;             /* Bordes redondeados */
+    padding: 10px;                  /* Espaciado interno */
+    box-sizing: border-box;         /* Asegura que el padding no modifique el tamaño total */
+  }
+  
+  /* Etiqueta de cada campo */
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  /* Inputs estándar y selectores de tipo texto, email, número, fecha, etc. */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="date"], 
+  select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box; /* Asegura compatibilidad con padding */
+  }
+  
+  /* Inputs dentro de la columna izquierda del formulario */
+  .left-column .form-group input {
+    width: 100%; /* Sin cambios en los tamaños horizontales */
+  }
+  
+  /* Sección inferior, usualmente para dividir en columnas */
+  .bottom-section {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  /* Columna izquierda, parte de la sección inferior */
+  .left-column {
+    flex: 2; /* Toma el doble de espacio que la columna derecha */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Columna derecha, para contenido auxiliar */
+  .right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Contenedor del calendario, puede usarse para mostrar un selector de fechas */
+  .calendar-container {
+    width: 100%;
+    background-color: #fff;
+    border: 2px solid #333;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Etiqueta dentro del contenedor del calendario */
+  .calendar-container label {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  /* Botón de envío al final del formulario */
+  .submit-btn {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+}
+  
+  /* Hover para el botón de envío */
+  .submit-btn:hover {
+    background-color: #777;
+  }
+
+  .form-group1 {
+    flex: 1 1 calc(25% - 30px); /* Mantiene la distribución horizontal original */
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Espacio entre label e input */
+    background-color: #fff;         /* Fondo blanco que cubre título e input */
+    border: 1px solid #333;         /* Borde para delimitar el área del grupo */
+    border-radius: 4px;             /* Bordes redondeados */
+    padding: 10px;                  /* Espaciado interno */
+    box-sizing: border-box;         /* Asegura que el padding no modifique el tamaño total */
+  }
+
+  /* Estilo para el label del método de pago */
+  .payment-label {
+    display: block; /* Asegura que el label ocupe toda la línea */
+    text-align: center; /* Centra el texto del label */
+    font-weight: bold; /* Hace el texto más destacado */
+    margin-bottom: 10px; /* Espaciado entre el label y el div */
+    font-size: 16px; /* Tamaño de fuente */
+  }
+
+  /* Contenedor para centrar el grupo de métodos de pago */
+  #metodo-pago {
+    display: flex; /* Flexbox para organizar los elementos */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Alinea verticalmente los elementos */
+    gap: 20px; /* Espaciado entre las imágenes */
+    margin-top: 20px;
+  }
+
+  /* Estilo para las imágenes de los métodos de pago */
+  #metodo-pago img {
+    width: 80px; /* Ajusta el tamaño de las imágenes */
+    height: auto;
+    cursor: pointer; /* Cambia el cursor al pasar sobre las imágenes */
+    transition: transform 0.3s ease; /* Efecto de zoom */
+  }
+
+  #metodo-pago img:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el mouse */
+  }
+  
+  .circle.blue {
+    width: 90px;
+    height: 90px;
+    background-image: url('imagen/logo.png');
+    border-radius: 40%; /* NO es completamente circular, es más un óvalo redondeado */
+  }
+
+  /* Contenedor para alinear el botón a la derecha */
+  .button-container {
+    position: relative; /* El botón absoluto se moverá respecto a este contenedor */
+    width: 300px;
+    height: 200px;
+    background-color: lightgray;
 }
