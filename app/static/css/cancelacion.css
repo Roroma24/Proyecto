@@ -147,26 +147,19 @@ body {
 
 .image {
   width: auto; /* El ancho se ajusta automáticamente */
-  height: 830px; /* Altura de la imagen */
+  height: 45vw; /* Altura de la imagen */
   background-image: url('imagen/fondo.png'); /* Imagen de fondo */
   background-size: cover; /* Ajusta la imagen de fondo */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
 
 .logo_1 {
-  width: 150px; /* Ancho del logo */
-  height: 100px; /* Alto del logo */
-  background-color: #b6c4c7; /* Fondo gris claro */
+  width: 160px; /* Ancho del logo */
+  height: 160px; /* Alto del logo */
+  background-image: url('imagen/logo_cancel.png'); /* Fondo gris claro */
+  background-size: cover;
   border-radius: 40%; /* Bordes redondeados */
   margin: 20px auto; /* Centra el logo */
-}
-
-.logo_2 {
-  width: 115px; /* Ancho del logo */
-  height: 85px; /* Alto del logo */
-  background-color: #f7ecec; /* Fondo rosa claro */
-  border-radius: 40%; /* Bordes redondeados */
-  margin: 5px auto; /* Centra el logo */
 }
 
 .title {

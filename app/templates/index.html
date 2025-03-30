@@ -13,6 +13,7 @@ Página de inicio. Permite navegar a las vistas de login, registro, reserva y ca
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
@@ -24,6 +25,7 @@ Página de inicio. Permite navegar a las vistas de login, registro, reserva y ca
     <!-- Título de la página que aparece en la pestaña del navegador -->
     <title>Menu principal</title>
 </head>
+
 <body>
 
     <!-- Contenedor principal -->
@@ -50,46 +52,55 @@ Página de inicio. Permite navegar a las vistas de login, registro, reserva y ca
 
     </div> <!-- Fin del contenedor principal -->
 
-    <!-- Imagen o fondo decorativo que puede ocupar una parte destacada de la página -->
-    <div class="image"></div>
+    <div class="body_image">
+        <!-- Imagen o fondo decorativo que puede ocupar una parte destacada de la página -->
+        <div class="image"></div>
 
-    <!-- Caja de texto -->
-    <div class="dashed-box"></div>
+        <!-- Caja de texto -->
+        <div class="dashed-box"></div>
 
-    <!-- Segundo contenedor principal -->
-    <div class="container">
-        <!-- Tres logos que se estilizan en CSS -->
-        <div class="logo_reserv"></div>
-        <div class="logo_mod"></div>
-        <div class="logo_cancel"></div>
-    </div>
-
-    <!-- Contenedor para los títulos o nombres de las secciones -->
-    <div class="container">
-        <!-- Títulos o encabezados -->
-        <div class="title">
-            <h1>Reservar</h1>
+        <!-- Segundo contenedor principal -->
+        <div class="container">
+            <!-- Tres logos que se estilizan en CSS -->
+            <div class="logo_reserv"></div>
+            <div class="logo_mod"></div>
+            <div class="logo_cancel"></div>
         </div>
-        <div class="title">
-            <h1>Modíficar</h1>
-        </div>
-        <div class="title">
-            <h1>Cancelar</h1>
-        </div>
-    </div>
 
-    <!-- Contenedor para los botones o accesos rápidos -->
-    <div class="container_a">
-        <a href="{{ url_for('reserva') }}" style="text-decoration: none;">
-            <div class="next" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</div>
-        </a>
-        <a href="{{ url_for('file', opcion='modification') }}" style="text-decoration: none;">
-            <div class="next" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</div>
-        </a>
-        <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
-            <div class="next" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</div>
-        </a>
+        <!-- Contenedor para los títulos o nombres de las secciones -->
+        <div class="container">
+            <!-- Títulos o encabezados -->
+            <div class="title">
+                <h1>Reservar</h1>
+            </div>
+            <div class="title">
+                <h1>Modíficar</h1>
+            </div>
+            <div class="title">
+                <h1>Cancelar</h1>
+            </div>
+        </div>
+
+        <!-- Contenedor para los botones o accesos rápidos -->
+        <div class="container_a">
+            <a href="{{ url_for('reserva') }}" style="text-decoration: none;">
+                <div class="next"
+                    style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                    Continuar</div>
+            </a>
+            <a href="{{ url_for('file', opcion='modification') }}" style="text-decoration: none;">
+                <div class="next"
+                    style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                    Continuar</div>
+            </a>
+            <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
+                <div class="next"
+                    style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                    Continuar</div>
+            </a>
+        </div>
     </div>
 
 </body>
+
 </html>

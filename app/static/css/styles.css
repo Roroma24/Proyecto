@@ -101,6 +101,17 @@ body{
     margin: 0;
 }
 
+.body_image {
+    width: auto; /* El ancho se ajusta automáticamente al contenido */
+    height: 42.4vw; /* La altura se establece como un 55% del ancho de la ventana */
+    background-image: url('imagen/fondo.png'); /* Imagen de fondo */
+    padding-top: 40px; /* Añade espacio en la parte superior */
+    background-size: cover; /* Hace que la imagen cubra todo el área del contenedor */
+    background-position: center; /* Centra la imagen dentro del contenedor */
+    background-repeat: no-repeat; /* No repite la imagen si es más pequeña que el contenedor */
+    margin: auto; /* Centra el contenedor */
+}
+
 .image{
     width: auto; /* El ancho de la imagen se ajusta automáticamente */
     height: 200px; /* Alto de la imagen */
@@ -120,9 +131,9 @@ body{
 
 /* Estilo para el logo */
 .logo_reserv{
-    width: 120px; /* Ancho del logo */
-    height: 120px; /* Alto del logo */
-    background-image: url('imagen/logo_reserv.png'); /* Fondo gris para el logo */
+    width: 160px; /* Ancho del logo */
+    height: 160px; /* Alto del logo */
+    background-image: url('imagen/logo_reserva.png'); /* Fondo gris para el logo */
     background-size: cover;
     border-radius: 40%; /* Bordes redondeados para darle forma circular */
     margin: 20px auto; /* Márgenes automáticos para centrar */
@@ -130,9 +141,9 @@ body{
 
 /* Estilo para el logo */
 .logo_mod{
-    width: 120px; /* Ancho del logo */
-    height: 120px; /* Alto del logo */
-    background-image: url('imagen/logo_mod.png'); /* Fondo gris para el logo */
+    width: 160px; /* Ancho del logo */
+    height: 160px; /* Alto del logo */
+    background-image: url('imagen/logo_modif.png'); /* Fondo gris para el logo */
     background-size: cover;
     border-radius: 40%; /* Bordes redondeados para darle forma circular */
     margin: 20px auto; /* Márgenes automáticos para centrar */
@@ -140,8 +151,8 @@ body{
 
 /* Estilo para el logo */
 .logo_cancel{
-    width: 120px; /* Ancho del logo */
-    height: 120px; /* Alto del logo */
+    width: 160px; /* Ancho del logo */
+    height: 160px; /* Alto del logo */
     background-image: url('imagen/logo_cancel.png'); /* Fondo gris para el logo */
     background-size: cover;
     border-radius: 40%; /* Bordes redondeados para darle forma circular */

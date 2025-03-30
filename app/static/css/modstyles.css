@@ -128,9 +128,9 @@ body {
 
 /* LOGO DE LA PÁGINA: Estilo de un logo circular */
 .logo_pag {
-    width: 120px; /* Ancho del logo */
-    height: 120px; /* Altura del logo */
-    background-color: #737272; /* Fondo gris para el logo */
+    width: 160px; /* Ancho del logo */
+    height: 160px; /* Altura del logo */
+    background-image: url('imagen/logo_modif.png'); /* Fondo gris para el logo */
     background-size: cover; /* Hace que la imagen cubra todo el área del logo */
     border-radius: 50%; /* Hace que el logo tenga forma circular */
     margin: auto; /* Centra el logo dentro de su contenedor */

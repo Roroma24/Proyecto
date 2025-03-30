@@ -165,11 +165,12 @@ body {
 
 /* Imagen de perfil */
 .profile-pic {
-  width: 100px;
-  height: 100px;
+  width: 160px;
+  height: 160px;
   margin: 40px auto 30px;
   border-radius: 50%;
-  background-color: #d1dcdc;
+  background-image: url('imagen/logo_reserva.png');
+  background-size: cover;
 }
 
 /* Caja de texto */
