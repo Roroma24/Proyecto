@@ -33,42 +33,13 @@ apellidos y correo electrónico.
     </style>
 </head>
 <body>
-    <!-- Botón de salida o cerrar sesión -->
-     <a href="{{ url_for('index') }}" style="text-decoration: none;">
-        <div class="btn">Salir</div>
-     </a>
-    
-    <!-- Contenedor principal para el formulario de registro -->
-    <div class="container">
-        
-        <!-- Elemento decorativo (círculo) para el diseño de la página -->
-        <div class="circle"></div>
-        
-        <!-- Barra de separación o elemento decorativo adicional -->
-        <div class="bar"></div>
-        
-        <!-- Campo de entrada para el número de cédula -->
-        <input type="text" class="full-width" placeholder="Número de cédula">
-        
-        <!-- Campo de entrada para los nombres del usuario -->
-        <input type="text" placeholder="Nombres">
-        
-        <!-- Campo de entrada para el primer apellido del usuario -->
-        <input type="text" placeholder="Primer Apellido">
-        
-        <!-- Campo de entrada para el segundo apellido del usuario -->
-        <input type="text" placeholder="Segundo Apellido">
-        
-        <!-- Campo de entrada para el correo electrónico -->
-        <input type="email" class="full-width" placeholder="Correo">
-        
-        <!-- Campo de entrada para confirmar el correo electrónico -->
-        <input type="email" class="full-width" placeholder="Confirmación de correo">
-        
-        <!-- Contenedor para los botones de confirmación -->
-        <div class="confirm-buttons">
-            <!-- Botón para continuar con el registro -->
-            <button class="confirm">Continuar</button>
+
+<!-- Contenedor principal de los botones (fuera del contenedor principal de los elementos) -->
+<div class="container-buttons" style="position: absolute; top: 10px; right: 10px; display: flex; padding: 10px;">
+    <!-- Botón de regresar -->
+    <a href="{{ url_for('registro') }}" style="text-decoration: none; margin-right: 10px;">
+        <div class="btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px">
+            Regresar
         </div>
     </a>
     
@@ -144,4 +115,3 @@ apellidos y correo electrónico.
     </div>
 </body>
 </html>
-

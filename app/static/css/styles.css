@@ -23,7 +23,7 @@ body{
     align-items: center; /* Alineación vertical centrada */
     justify-content: space-between; /* Espaciado uniforme entre los elementos */
     width: auto; /* El ancho se ajusta al contenido */
-    margin: 10px auto; /* Márgenes automáticos para centrar el contenedor */
+    margin: 25px auto; /* Márgenes automáticos para centrar el contenedor */
 }
 
 /* Contenedor para otro grupo de elementos usando flexbox */
@@ -113,12 +113,14 @@ body{
 }
 
 .image{
+    display: block;
     width: auto; /* El ancho de la imagen se ajusta automáticamente */
-    height: 200px; /* Alto de la imagen */
+    height: 220px; /* Alto de la imagen */
     background-image: url('imagen/index.jpg'); /* Fondo suave para la imagen */
     background-size: cover;
     background-repeat: no-repeat;
-    margin: 20px auto; /* Márgenes automáticos para centrarla */
+    background-position: top;
+    margin-top: -2%;
 }
 
 /* Caja con borde punteado */
@@ -126,7 +128,8 @@ body{
     width: 80%; /* Ancho de la caja */
     height: 160px; /* Alto de la caja */
     border: 2px dashed #000000; /* Borde punteado negro */
-    margin: 10px auto; /* Márgenes automáticos para centrarla */
+    margin: 40px auto; /* Márgenes automáticos para centrarla */
+    margin-top: 3%;
 }
 
 /* Estilo para el logo */

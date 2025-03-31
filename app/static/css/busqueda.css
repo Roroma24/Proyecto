@@ -163,20 +163,12 @@ section {
 
 /* Estilo para el primer logo */
 .logo_1 {
-  width: 150px;
-  height: 100px;
-  background-color: #b6c4c7; /* Fondo gris claro para el logo */
+  width: 160px;
+  height: 160px;
+  background-image: url('imagen/logo_search.png'); /* Fondo gris claro para el logo */
+  background-size: cover;
   border-radius: 40%; /* Bordes redondeados para el logo */
   margin: 20px auto; /* Centra el logo con márgenes */
-}
-
-/* Estilo para el segundo logo */
-.logo_2 {
-  width: 115px;
-  height: 85px;
-  background-color: #f7ecec; /* Fondo rosa claro para el logo */
-  border-radius: 40%; /* Bordes redondeados para el logo */
-  margin: 5px auto; /* Centra el logo con márgenes */
 }
 
 /* Estilo para el título de la sección */

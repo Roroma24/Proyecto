@@ -246,3 +246,13 @@ body {
   border: 2px dashed #000000; /* Borde punteado negro */
   margin: 10px auto; /* Márgenes automáticos para centrarla */
 }
+
+.accion{
+  width: 160px; /* Ancho del botón de acción */
+  height: 50px; /* Altura del botón de acción */
+  background-color: #494949; /* Fondo gris oscuro para el botón */
+  border-radius: 25px; /* Bordes redondeados para el botón */
+  border: none; /* Sin borde para el botón */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
+  margin: auto; /* Centra el botón dentro de su contenedor */
+}
