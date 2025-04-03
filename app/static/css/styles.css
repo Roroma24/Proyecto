@@ -103,8 +103,8 @@ body{
 
 .body_image {
     width: auto; /* El ancho se ajusta automáticamente al contenido */
-    height: 42.4vw; /* La altura se establece como un 55% del ancho de la ventana */
-    background-image: url('imagen/fondo.png'); /* Imagen de fondo */
+    height: 46vw; /* La altura se establece como un 55% del ancho de la ventana */
+    background-image: url('imagen/fondo_menu.jpeg'); /* Imagen de fondo */
     padding-top: 40px; /* Añade espacio en la parte superior */
     background-size: cover; /* Hace que la imagen cubra todo el área del contenedor */
     background-position: center; /* Centra la imagen dentro del contenedor */
@@ -120,7 +120,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
-    margin-top: -2%;
+    margin-top: -2.2%;
 }
 
 /* Caja con borde punteado */
@@ -130,6 +130,7 @@ body{
     border: 2px dashed #000000; /* Borde punteado negro */
     margin: 40px auto; /* Márgenes automáticos para centrarla */
     margin-top: 3%;
+    border-radius: 10px; /* Bordes redondeados */
 }
 
 /* Estilo para el logo */

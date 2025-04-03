@@ -68,11 +68,13 @@ body {
 }
 
 .container_3 {
-  width: 1400px; /* Ancho del contenedor */
-  height: 720px; /* Altura del contenedor */
+  position: relative;
   display: flex; /* Usa flexbox para organizar los elementos */
   flex-direction: column; /* Organiza los elementos en una columna */
   align-items: center; /* Centra los elementos verticalmente */
+  justify-content: flex-start;
+  width: 1400px; /* Ancho del contenedor */
+  height: 720px; /* Altura del contenedor */
   margin: 20px auto; /* Centra el contenedor con márgenes automáticos */
   background-color: #fff; /* Fondo blanco para el contenedor */
   border-radius: 20px; /* Bordes redondeados */
@@ -148,7 +150,7 @@ body {
 .image {
   width: auto; /* El ancho se ajusta automáticamente */
   height: 45vw; /* Altura de la imagen */
-  background-image: url('imagen/fondo.png'); /* Imagen de fondo */
+  background-image: url('imagen/fondo.jpeg'); /* Imagen de fondo */
   background-size: cover; /* Ajusta la imagen de fondo */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
@@ -188,7 +190,8 @@ body {
   cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
   position: absolute; /* Posiciona el botón de forma absoluta */
   bottom: 260px; /* Distancia desde la parte inferior */
-  right: 450px; /* Distancia desde la derecha */
+  left: 50%; /* Lo centra horizontalmente */
+  transform: translateX(-50%); /* Ajusta para centrar exactamente */
 }
 
 .nexttop {

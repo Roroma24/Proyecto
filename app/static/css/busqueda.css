@@ -153,7 +153,7 @@ section {
 .image {
   width: auto; /* Ocupa el 100% del ancho de la ventana */
   height: 90vh; /* Ocupa el 100% del alto de la ventana */
-  background-image: url('imagen/fondo.png'); /* Imagen de fondo */
+  background-image: url('imagen/fondo.jpeg'); /* Imagen de fondo */
   background-size: cover; /* Ajustar la imagen para cubrir todo el contenedor */
   background-repeat: no-repeat; /* Evita la repetición de la imagen */
   background-position: center; /* Centra la imagen */

@@ -21,7 +21,7 @@ body {
 
 .left-side {
   flex: 0.4; /* El lado izquierdo ocupa el 40% del espacio */
-  background-image: url('imagen/fondo.png'); /* Imagen de fondo para el lado izquierdo */
+  background-image: url('imagen/fondo.jpeg'); /* Imagen de fondo para el lado izquierdo */
   background-size: cover; /* Asegura que la imagen cubra completamente el área */
   background-position: center; /* Centra la imagen en el área */
   display: flex; /* Usamos flexbox para la disposición de los elementos */

@@ -13,7 +13,7 @@ Este archivo contiene los estilos CSS para la página de reservación de la apli
 
 /* Estilo general para todo el cuerpo de la página */
 body {
-  background-image: url("./imagen/fondo.png");
+  background-image: url("imagen/fondo.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

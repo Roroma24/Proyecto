@@ -28,7 +28,7 @@ body{
 .container-body{
     width: auto; /* El ancho es automático */
     height: 58vw; /* Altura del contenedor es el 55% del ancho de la ventana */
-    background-image: url('imagen/fondo.png'); /* Imagen de fondo */
+    background-image: url('imagen/fondo.jpeg'); /* Imagen de fondo */
     padding-top: 40px;
     background-size: cover; /* Asegura que la imagen cubra completamente el área */
     background-position: center; /* Centra la imagen */

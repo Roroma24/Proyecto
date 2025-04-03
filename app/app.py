@@ -12,7 +12,8 @@ Este archivo contiene el código para la creación de la aplicación web con Fla
 """
 
 # Importamos Flask y las funciones necesarias para manejar las rutas y plantillas HTML.
-from flask import Flask, render_template, request, redirect, url_for  
+from flask import Flask, render_template, request, redirect, url_for
+import _mysql_connector
 
 # Creamos una instancia de la aplicación Flask.
 app = Flask(__name__)  
