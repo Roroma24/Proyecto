@@ -146,21 +146,45 @@ body {
   box-sizing: border-box;
 }
 
-/* Botones dentro del header */
-.header button {
-  padding: 10px 20px;
-  background-color: #656464;
-  color: #fff;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+.btn_accion {
+  display: flex; /* Utiliza flexbox para alinear los botones de acción */
+  align-items: center; /* Alinea los elementos verticalmente */
+  justify-content: flex-end; /* Alinea los elementos hacia el extremo derecho */
+  width: auto;
+  gap: 15px; /* Espacio de 15px entre los botones */
 }
 
-/* Efecto hover para los botones del header */
-.header button:hover {
-  background-color: #656464;
+/* BOTÓN: Botón circular con color de fondo */
+.btn {
+  width: 90px; /* Ancho del botón */
+  height: 90px; /* Altura del botón */
+  background-color: #fff; /* Fondo blanco para el botón */
+  background-image: url('imagen/logoregistro.png'); /* Imagen de fondo para el botón */
+  background-size: cover; /* Hace que la imagen cubra todo el área del botón */
+  border-radius: 40%; /* Bordes redondeados para hacer un círculo */
+  border: none; /* Sin borde para el botón */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
+}
+
+/* BOTÓN DE ACCIÓN */
+.accion{
+  width: 160px; /* Ancho del botón de acción */
+  height: 50px; /* Altura del botón de acción */
+  background-color: #656464; /* Fondo gris oscuro para el botón */
+  border-radius: 25px; /* Bordes redondeados para el botón */
+  border: none; /* Sin borde para el botón */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
+  margin: auto; /* Centra el botón dentro de su contenedor */
+}
+
+.exit_btn{
+  width: 160px; /* Ancho del botón */
+  height: 50px; /* Alto del botón */
+  background-color: #656464; /* Fondo gris oscuro */
+  border-radius: 25px; /* Bordes redondeados */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  margin: auto; /* Centra el botón */
 }
 
 /* Imagen de perfil */

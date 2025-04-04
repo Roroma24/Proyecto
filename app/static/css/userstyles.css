@@ -33,7 +33,7 @@ body{
     background-size: cover; /* Asegura que la imagen cubra completamente el área */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* La imagen no se repite */
-    background-attachment: fixed; /* La imagen permanece fija al hacer scroll */
+    background-attachment: absolute; /* La imagen se fija al fondo */
     margin: auto; /* Centra el contenedor */
 }
 
