@@ -181,7 +181,7 @@ section {
 
 /* Estilo para el botón siguiente */
 .next {
-  background-color: #494949; /* Fondo gris oscuro para el botón */
+  background-color: #656464; /* Fondo gris oscuro para el botón */
   border-radius: 40px; /* Bordes redondeados */
   border: none; /* Sin borde por defecto */
   cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
@@ -268,7 +268,7 @@ section {
 .accion{
   width: 160px; /* Ancho del botón de acción */
   height: 50px; /* Altura del botón de acción */
-  background-color: #494949; /* Fondo gris oscuro para el botón */
+  background-color: #656464; /* Fondo gris oscuro para el botón */
   border-radius: 25px; /* Bordes redondeados para el botón */
   border: none; /* Sin borde para el botón */
   cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
