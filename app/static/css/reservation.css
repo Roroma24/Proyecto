@@ -149,7 +149,7 @@ body {
 /* Botones dentro del header */
 .header button {
   padding: 10px 20px;
-  background-color: #333;
+  background-color: #656464;
   color: #fff;
   border: none;
   border-radius: 15px;
@@ -160,7 +160,7 @@ body {
 
 /* Efecto hover para los botones del header */
 .header button:hover {
-  background-color: #555;
+  background-color: #656464;
 }
 
 /* Imagen de perfil */
@@ -292,10 +292,11 @@ select {
   width: 180px;
   padding: 14px;
   margin: 40px auto 0;
-  background-color: #555;
+  background-color: #656464;
   color: #fff;
   border: none;
   border-radius: 25px;
+  font-weight: bold;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;

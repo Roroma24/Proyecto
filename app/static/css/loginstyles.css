@@ -95,7 +95,7 @@ input[type="password"] {
 }
 
 button.btn-continue {
-  background-color: #5c5a5a; /* Fondo gris para el botón */
+  background-color: #656464; /* Fondo gris para el botón */
   color: white; /* Texto en color blanco */
   padding: 10px; /* Añade espacio interior al botón */
   width: 100px; /* Ancho del botón */
@@ -106,7 +106,7 @@ button.btn-continue {
 }
 
 .btn-exit {
-  background-color: rgb(92, 90, 90); /* Fondo gris para el botón de salir */
+  background-color: #656464; /* Fondo gris para el botón de salir */
   color: white; /* Texto en color blanco */
   position: absolute; /* Posicionamiento absoluto del botón */
   top: 20px; /* Ubica el botón a 20px desde la parte superior */
