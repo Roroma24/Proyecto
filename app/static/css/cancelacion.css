@@ -190,8 +190,8 @@ body {
   cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
   position: absolute; /* Posiciona el botón de forma absoluta */
   bottom: 260px; /* Distancia desde la parte inferior */
-  left: 50%; /* Lo centra horizontalmente */
-  transform: translateX(-50%); /* Ajusta para centrar exactamente */
+  left: 46%; /* Lo centra horizontalmente */
+  bottom: 20%; /* Distancia desde la parte inferior */
 }
 
 .nexttop {
