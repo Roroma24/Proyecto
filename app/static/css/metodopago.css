@@ -149,7 +149,7 @@ body {
 /* Botones dentro del header */
 .header button {
   padding: 10px 20px;
-  background-color: #333;
+  background-color: #656464;
   color: #fff;
   border: none;
   border-radius: 15px;
@@ -286,16 +286,26 @@ select {
   font-size: 16px;
 }
 
-/* Botón de envío al final del formulario */
+/* Estilo para el botón fuera del contenedor */
 .submit-btn {
-  position: absolute;
-  top: 50px;
-  left: 100px;
+  position: absolute; /* Mantenerlo fijo en la pantalla */
+  bottom: 20px;    /* Distancia desde el fondo */
+  right: 415px;     /* Distancia desde el lado derecho */
+  background-color: #656464;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1000;  /* Asegura que el botón esté por encima de otros elementos */
+  visibility: visible; /* Visible por defecto */
 }
 
-/* Hover para el botón de envío */
+/* Hover para el botón */
 .submit-btn:hover {
-  background-color: #777;
+  background-color: #656464;
 }
 
 .form-group1 {
@@ -313,8 +323,9 @@ select {
 /* Estilo para el label del método de pago */
 .payment-label {
   display: block; /* Asegura que el label ocupe toda la línea */
-  text-align: center; /* Centra el texto del label */
+  text-align: left; /* Alinea el texto del label a la izquierda */
   font-weight: bold; /* Hace el texto más destacado */
+  margin-top: 20px; /* Añade un margen superior para moverlo hacia abajo */
   margin-bottom: 10px; /* Espaciado entre el label y el div */
   font-size: 16px; /* Tamaño de fuente */
 }
@@ -322,10 +333,11 @@ select {
 /* Contenedor para centrar el grupo de métodos de pago */
 #metodo-pago {
   display: flex; /* Flexbox para organizar los elementos */
-  justify-content: center; /* Centra los elementos horizontalmente */
+  justify-content: flex-start; /* Mueve los elementos hacia la izquierda */
   align-items: center; /* Alinea verticalmente los elementos */
   gap: 20px; /* Espaciado entre las imágenes */
   margin-top: 20px;
+  margin-left: 20px; /* Opcional: Añade margen desde el lado izquierdo si es necesario */
 }
 
 /* Estilo para las imágenes de los métodos de pago */
@@ -345,12 +357,4 @@ select {
   height: 90px;
   background-image: url("imagen/logo.png");
   border-radius: 40%; /* NO es completamente circular, es más un óvalo redondeado */
-}
-
-/* Contenedor para alinear el botón a la derecha */
-.button-container {
-  position: relative; /* El botón absoluto se moverá respecto a este contenedor */
-  width: 300px;
-  height: 200px;
-  background-color: lightgray;
 }
