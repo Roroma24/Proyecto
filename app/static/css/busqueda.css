@@ -181,13 +181,21 @@ section {
 
 /* Estilo para el botón siguiente */
 .next {
-  width: 120px;
-  height: 70px;
-  background-color: #656464; /* Fondo gris oscuro para el botón */
+  background-color: #494949; /* Fondo gris oscuro para el botón */
   border-radius: 40px; /* Bordes redondeados */
   border: none; /* Sin borde por defecto */
   cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
   margin: 10px auto;
+  color: #fff; 
+  font-size: 24px; 
+  font-weight: bolder; 
+  align-items: center; 
+  justify-content: center; 
+  height: 50px; 
+  width: 150px; 
+  right: -40%;
+  bottom: -10%;
+  position: relative;
 }
 
 /* Estilo para el botón siguiente pequeño */
