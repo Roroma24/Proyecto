@@ -256,3 +256,13 @@ section {
 .cancelar:hover {
   background-color: #5a6268; /* Cambio de color al pasar el ratón */
 }
+
+.accion{
+  width: 160px; /* Ancho del botón de acción */
+  height: 50px; /* Altura del botón de acción */
+  background-color: #494949; /* Fondo gris oscuro para el botón */
+  border-radius: 25px; /* Bordes redondeados para el botón */
+  border: none; /* Sin borde para el botón */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
+  margin: auto; /* Centra el botón dentro de su contenedor */
+}
