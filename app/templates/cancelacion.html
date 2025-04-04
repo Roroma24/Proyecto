@@ -94,7 +94,12 @@ fecha de la cita a cancelar.
             </div>
             <!-- Botón para cancelar la cita -->
             <div class="campo">
-              <button class="next_1">Cancelar Cita</button>
+              <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
+                <div class="accion" style="position: absolute;left: 75%;bottom: 13%;text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px; width: 150px; ">
+                    Cancelar
+                </div>
+            </a>
+            
             </div>
           </div>
         </div>
