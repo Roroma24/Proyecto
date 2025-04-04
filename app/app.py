@@ -13,29 +13,25 @@ Este archivo contiene el código para la creación de la aplicación web con Fla
 
 # Importamos Flask y las funciones necesarias para manejar las rutas y plantillas HTML.
 from flask import Flask, render_template, request, redirect, url_for
-import mysql.connector
-from tkinter import messagebox  # Para mostrar los mensajes de error
-
-# Creamos una instancia de la aplicación Flask.
-app = Flask(__name__)
+import mysql.connector  # Cambiado para usar mysql.connector
 
 # ---------------- CONEXIÓN A LA BASE DE DATOS ----------------
-def conectar_db(): 
-    """Función para conectar a la base de datos."""
-    try: 
+def conectar_db():  # Función para conectar a la base de datos
+    try:
         conn = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Meliodas1.",  # Se ajusta según la configuración
-            database="hospital"
+            password="Saltamontes71#",  # Se ajusta según la configuración
+            database="hospital",  # Nombre de la base de datos
         )
-        # Si la conexión es exitosa, mostramos un mensaje
-        messagebox.showinfo("Conexión exitosa", "Conexión exitosa a la base de datos.")
+        print("✅ Conexión exitosa a la base de datos.")
         return conn
     except mysql.connector.Error as err:
-        # Si ocurre un error, mostramos un mensaje de error
-        messagebox.showerror("Error de conexión", f"No se pudo conectar a la base de datos:\n{err}")
+        print(f"❌ Error al conectar a la base de datos: {err}")
         return None
+
+# Creamos una instancia de la aplicación Flask.
+app = Flask(__name__)  
 
 # Ruta para la página principal (index.html).
 @app.route('/')
@@ -81,7 +77,7 @@ def procesar_cita():
 
     # Verificamos si se ingresó un folio.
     if not folio:
-        return "Error: Debes ingresar un folio.", 400  # Si no se ingresa un folio, muestra un mensaje de error.
+        return "Error: Debes ingresar un folio.", 400
 
     # Redirige a la página de modificación si la opción seleccionada es "modification".
     if opcion == "modification":
@@ -90,20 +86,21 @@ def procesar_cita():
     elif opcion == "cancel":
         return redirect(url_for('cancel', folio=folio))  
     else:
-        return "Error: No se ha seleccionado una opción válida.", 400  # Si no se selecciona una opción válida, muestra un mensaje de error.
+        return "Error: No se ha seleccionado una opción válida.", 400
 
 # Ruta para la página de modificación de cita (modificacion.html).
 @app.route('/modification')
 def modification():
     folio = request.args.get('folio', '')  # Obtiene el folio de la cita desde la URL.
-    return render_template('modificacion.html', folio=folio)  # Renderiza la página de modificación.
+    return render_template('modificacion.html', folio=folio)
 
 # Ruta para la página de cancelación de cita (cancelacion.html).
 @app.route('/cancel')
 def cancel():
     folio = request.args.get('folio', '')  # Obtiene el folio de la cita desde la URL.
-    return render_template('cancelacion.html', folio=folio)  # Renderiza la página de cancelación.
+    return render_template('cancelacion.html', folio=folio)
 
 # Si este archivo es ejecutado como principal, inicia la aplicación Flask en modo debug.
 if __name__ == '__main__':  
+    conectar_db()  # Ejecuta la conexión a la base de datos al iniciar
     app.run(debug=True)  # Ejecuta la aplicación Flask en modo debug para facilitar la depuración.
