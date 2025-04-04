@@ -31,7 +31,7 @@ body{
     background-size: cover; /* Asegura que la imagen cubra completamente el área */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* La imagen no se repite */
-    background-attachment: fixed; /* La imagen permanece fija al hacer scroll */
+    background-attachment: absolute; /* La imagen se fija al fondo */
     margin: auto; /* Centra el contenedor */
 }
 
@@ -46,7 +46,7 @@ body{
 .exit_btn{
     width: 160px; /* Ancho del botón */
     height: 50px; /* Alto del botón */
-    background-color: #494949; /* Fondo gris oscuro */
+    background-color: #656464; /* Fondo gris oscuro */
     border-radius: 25px; /* Bordes redondeados */
     border: none; /* Sin borde */
     cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
@@ -111,7 +111,7 @@ input{
 
 .btn{
     width: 180px; /* Ancho del botón */
-    background-color: #555; /* Fondo gris para el botón */
+    background-color: #656464; /* Fondo gris para el botón */
     border-radius: 25px; /* Bordes redondeados para el botón */
     border: none; /* Sin borde */
     cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
