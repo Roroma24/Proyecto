@@ -84,7 +84,11 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
               <!-- Formulario para enviar los datos -->
               <form action="{{ url_for('procesar_cita') }}" method="POST">
                 <input type="hidden" name="opcion" value="{{ opcion }}"> <!-- Campo oculto para enviar una opción -->
-                <button class="next_1" type="submit">Buscar</button> <!-- Botón para buscar la cita -->
+                <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
+                  <div class="accion" style="position: absolute;left: 46%;bottom: 35%;text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px; width: 150px; ">
+                      Cancelar
+                  </div>
+              </a> <!-- Botón para buscar la cita -->
               </form>
             </div>
           </div>
