@@ -13,10 +13,29 @@ Este archivo contiene el código para la creación de la aplicación web con Fla
 
 # Importamos Flask y las funciones necesarias para manejar las rutas y plantillas HTML.
 from flask import Flask, render_template, request, redirect, url_for
-import _mysql_connector
+import mysql.connector
+from tkinter import messagebox  # Para mostrar los mensajes de error
 
 # Creamos una instancia de la aplicación Flask.
-app = Flask(__name__)  
+app = Flask(__name__)
+
+# ---------------- CONEXIÓN A LA BASE DE DATOS ----------------
+def conectar_db(): 
+    """Función para conectar a la base de datos."""
+    try: 
+        conn = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="Meliodas1.",  # Se ajusta según la configuración
+            database="hospital"
+        )
+        # Si la conexión es exitosa, mostramos un mensaje
+        messagebox.showinfo("Conexión exitosa", "Conexión exitosa a la base de datos.")
+        return conn
+    except mysql.connector.Error as err:
+        # Si ocurre un error, mostramos un mensaje de error
+        messagebox.showerror("Error de conexión", f"No se pudo conectar a la base de datos:\n{err}")
+        return None
 
 # Ruta para la página principal (index.html).
 @app.route('/')
