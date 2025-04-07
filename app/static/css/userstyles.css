@@ -165,6 +165,7 @@ input{
 /* Inputs estándar y selectores de tipo texto, email, número, fecha, etc. */
 input[type="text"],
 input[type="email"],
+input[type="password"],
 select{
     width: 100%; /* Ancho del campo al 100% */
     padding: 12px; /* Añade espacio dentro de los campos */
@@ -172,4 +173,10 @@ select{
     border-radius: 4px; /* Bordes redondeados */
     font-size: 14px; /* Tamaño de la fuente */
     box-sizing: border-box; /* Asegura compatibilidad con padding */
+}
+
+.text_style{
+    text-align: center;
+    justify-items: center;
+    font-size: 28px;
 }

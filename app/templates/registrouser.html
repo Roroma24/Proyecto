@@ -13,6 +13,7 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
@@ -24,13 +25,16 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
     <!-- Título de la página -->
     <title>Nuevo Usuario</title>
 </head>
+
 <body>
 
     <!-- Contenedor principal del botón de salida -->
     <div class="container">
         <!-- Botón de salida que redirige a la función 'exit' -->
         <a href="{{ url_for('index') }}" style="text-decoration: none;">
-            <div class="exit_btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Salir</div> <!-- Botón estilizado para salir -->
+            <div class="exit_btn"
+                style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                Salir</div> <!-- Botón estilizado para salir -->
         </a>
     </div>
 
@@ -57,12 +61,12 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
                 <!-- Campo: Nombres -->
                 <div class="form-group">
                     <label for="nombre">Nombres</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
                 </div>
                 <!-- Campo: Primer Apellido -->
                 <div class="form-group">
                     <label for="apellido1">Primer Apellido</label>
-                    <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa tu primer apellido">
+                    <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa tu primer apellido" required>
                 </div>
                 <!-- Campo: Segundo Apellido -->
                 <div class="form-group">
@@ -71,17 +75,17 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
                 </div>
             </div>
 
-            <!-- Segunda fila de campos (Correo y Confirmación) -->
+            <!-- Segunda fila de campos (Correo y Contraseña) -->
             <div class="form-row">
                 <!-- Campo: Correo Electrónico -->
                 <div class="form-group">
                     <label for="correo">Correo</label>
                     <input type="email" id="correo" name="correo" placeholder="Correo electrónico">
                 </div>
-                <!-- Campo: Confirmación de Correo -->
+                <!-- Campo: Contraseña -->
                 <div class="form-group">
-                    <label for="confirmacion">Confirmación de Correo</label>
-                    <input type="email" id="confirmacion" name="confirmacion" placeholder="Confirma tu correo">
+                    <label for="confirmacion">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña">
                 </div>
             </div>
 
@@ -89,15 +93,19 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
             <div class="info">
                 <div class="buttons">
                     <!-- Botón de continuar -->
-                    <div class="btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</div>
+                    <div class="btn"
+                        style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                        Continuar</div>
                     <!-- Botón de registro como doctor -->
                     <a href="{{ url_for('newdoc') }}" style="text-decoration: none;">
-                        <div class="btn" style="text-align: center; color: #fff; font-size: 22px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Registro como doctor</div>
+                        <div class="btn"
+                            style="text-align: center; color: #fff; font-size: 22px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                            Registro como doctor</div>
                     </a>
                 </div>
             </div>
         </form>
     </div>
 </body>
-</html>
 
+</html>

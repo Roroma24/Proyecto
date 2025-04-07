@@ -21,7 +21,7 @@ def conectar_db():  # Función para conectar a la base de datos
         conn = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Saltamontes71#",  # Se ajusta según la configuración
+            password="Meliodas1.",  # Se ajusta según la configuración
             database="hospital",  # Nombre de la base de datos
         )
         print("✅ Conexión exitosa a la base de datos.")
@@ -44,8 +44,29 @@ def login():
     return render_template('login.html')  # Renderiza la página HTML llamada 'login.html'.
 
 # Ruta para la página de registro de usuario (registrouser.html).
-@app.route('/registro')
+@app.route('/registro', methods=['GET', 'POST'])
 def registro():
+    if request.method == 'POST':
+        nombre = request.form.get('nombre')
+        apellido1 = request.form.get('apellido1')
+        apellido2 = request.form.get('apellido2')
+        correo = request.form.get('correo')
+        password = request.form.get('password')
+
+        conn = conectar_db()
+        if conn:
+            try:
+                cursor = conn.cursor()
+                sql = "INSERT INTO usuario (nombre, primer_apellido, segundo_apellido) VALUES (%s, %s, %s,)"
+                valores = (nombre, apellido1, apellido2)
+                cursor.execute(sql, valores)
+                conn.commit()
+                cursor.close()
+                conn.close()
+                return redirect(url_for('index'))
+            except mysql.connector.Error as err:
+                return f"❌ Error al insertar datos: {err}"
+
     return render_template('registrouser.html')  # Renderiza la página de registro de usuario.
 
 # Ruta para la página de registro de doctor (registrodoc.html).
