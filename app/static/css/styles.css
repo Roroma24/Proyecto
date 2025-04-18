@@ -128,7 +128,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #bebebe;
     width: 80%; /* Ancho de la caja */
     height: 160px; /* Alto de la caja */
     margin: 40px auto; /* Márgenes automáticos para centrarla */
@@ -190,6 +189,8 @@ body{
 .text_style{
     text-align: center;
     justify-items: center;
+    background-color: #bebebe82;
+    border-radius: 2%;
     font-size: 30px;
     color: #000000;
 }

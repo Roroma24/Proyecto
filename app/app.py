@@ -57,9 +57,11 @@ def registro():
         if conn:
             try:
                 cursor = conn.cursor()
-                sql = "INSERT INTO usuario (nombre, primer_apellido, segundo_apellido) VALUES (%s, %s, %s,)"
-                valores = (nombre, apellido1, apellido2)
-                cursor.execute(sql, valores)
+                cursor.execute("SET @new_id_usuario = 0;")
+                cursor.callproc('registro_usuario', (nombre, apellido1, apellido2, correo, password, '@new_id_usuario'))
+                cursor.execute("SELECT @new_id_usuario;")
+                new_id = cursor.fetchone()[0]
+                print(f"🆕 Nuevo ID de usuario registrado: {new_id}")
                 conn.commit()
                 cursor.close()
                 conn.close()

@@ -51,11 +51,15 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
 
         <!-- Caja con borde punteado para mostrar información -->
         <div class="dashed-box">
-            Información
+            <p class="text_style">Registrar un nuevo usuario para priorizar el bienestar y acceder a un servicio de
+                salud eficiente y accesible. Contar con atención de calidad brindada por profesionales capacitados,
+                asegurando un cuidado integral y facilitando el acceso a recursos que mejoren la experiencia del
+                paciente en su camino hacia una mejor salud.
+            </p>
         </div>
 
         <!-- Formulario de registro de usuario -->
-        <form>
+        <form method="POST" action="{{ url_for('registro') }}">
             <!-- Primera fila de campos (Nombres y Apellidos) -->
             <div class="form-row">
                 <!-- Campo: Nombres -->
@@ -66,7 +70,8 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
                 <!-- Campo: Primer Apellido -->
                 <div class="form-group">
                     <label for="apellido1">Primer Apellido</label>
-                    <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa tu primer apellido" required>
+                    <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa tu primer apellido"
+                        required>
                 </div>
                 <!-- Campo: Segundo Apellido -->
                 <div class="form-group">
@@ -93,9 +98,8 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
             <div class="info">
                 <div class="buttons">
                     <!-- Botón de continuar -->
-                    <div class="btn"
-                        style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
-                        Continuar</div>
+                    <button type="submit" class="btn"
+                        style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</button>
                     <!-- Botón de registro como doctor -->
                     <a href="{{ url_for('newdoc') }}" style="text-decoration: none;">
                         <div class="btn"

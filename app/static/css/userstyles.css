@@ -75,7 +75,6 @@ body{
 .dashed-box {
     width: 80%; /* Ancho del cuadro */
     height: 140px; /* Alto del cuadro */
-    border: 2px dashed #000; /* Borde discontinuo negro */
     margin: 30px auto 50px; /* Márgenes superior, inferior y lateral */
     display: flex; /* Usamos flexbox para organizar los elementos dentro */
     align-items: center; /* Centra los elementos verticalmente */
@@ -84,7 +83,6 @@ body{
     font-size: 16px; /* Tamaño de la fuente */
     text-align: center; /* Centra el texto */
     border-radius: 10px; /* Bordes redondeados */
-    background-color: #fff; /* Fondo blanco */
 }
 
 .input-box{
@@ -178,5 +176,7 @@ select{
 .text_style{
     text-align: center;
     justify-items: center;
+    background-color: #bebebe82;
+    border-radius: 2%;
     font-size: 28px;
 }
