@@ -21,7 +21,7 @@ def conectar_db():  # Función para conectar a la base de datos
         conn = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Meliodas1.",  # Se ajusta según la configuración
+            password="Ror@$2405",  # Se ajusta según la configuración
             database="hospital",  # Nombre de la base de datos
         )
         print("✅ Conexión exitosa a la base de datos.")
@@ -77,9 +77,37 @@ def newdoc():
     return render_template('newdoctor.html')  # Renderiza la página de registro de doctor.
 
 # Ruta para la página de reserva de cita (reservation.html).
-@app.route('/reserva')
+@app.route('/reserva', methods=['GET', 'POST'])
 def reserva():
-    return render_template('reservation.html')  # Renderiza la página HTML llamada 'reservation.html'.
+    if request.method == 'POST':
+        edad = request.form.get('edad')
+        telefono = request.form.get('telefono')
+        alergias = request.form.get('alergias')
+        discapacidad = request.form.get('discapacidad')
+        horario = request.form.get('horarios')
+        direccion = request.form.get('direccion')
+        correo = request.form.get('correo')
+        confirmacion = request.form.get('confirmacion')
+        fecha = request.form.get('fecha')
+
+        if correo != confirmacion:
+            return "⚠️ Los correos no coinciden. Intenta de nuevo."
+
+        conn = conectar_db()
+        if conn:
+            try:
+                cursor = conn.cursor()
+                cursor.callproc('insertar_cita', (
+                    int(edad), telefono, alergias, discapacidad, horario, direccion, fecha
+                ))
+                conn.commit()
+                cursor.close()
+                conn.close()
+                return redirect(url_for('index'))
+            except mysql.connector.Error as err:
+                return f"❌ Error al registrar la cita: {err}"
+
+    return render_template('reservation.html')
 
 # Ruta para la página de métodos de pago (metodopago.html).
 @app.route('/pago')
