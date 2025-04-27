@@ -90,19 +90,21 @@ section {
 
 .flex-container {
   display: flex;
-  justify-content: space-between; /* Espacio entre Left y Right */
-  align-items: flex-start; /* Alinear arriba */
-  gap: 20px; /* Espacio entre ellos */
+  justify-content: space-between;
+  align-items: stretch; /* <<< Cambia de flex-start a stretch */
+  gap: 20px;
   padding: 20px;
+  height: 90%; /* <<< Ocupar todo el alto de la ventana */
 }
 
-/* Ajustamos para que Left y Right ocupen exactamente 50% cada uno */
 .Left, .Right {
   background-color: #fff;
+  border-radius: 2%;
   flex: 1 1 0;
   width: 50%;
   padding: 20px;
-  box-sizing: border-box; /* Para que el padding no afecte el ancho real */
+  box-sizing: border-box;
+  height: 105%; /* <<< Ocupar todo el alto del contenedor padre */
 }
 
 .Left {
