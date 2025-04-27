@@ -72,8 +72,8 @@ body {
   
   /* Estilos para el contenedor 3 con dimensiones fijas */
   .container_3 {
-    width: 1400px;
-    height: 720px;
+    width: 1600px;
+    height: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -181,7 +181,7 @@ body {
   
   /* Estilo para el botón siguiente */
   .next {
-    background-color: #656464; /* Fondo gris oscuro para el botón */
+    background-color: #000000; /* Fondo gris oscuro para el botón */
     border-radius: 40px; /* Bordes redondeados */
     border: none; /* Sin borde por defecto */
     cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
@@ -281,3 +281,221 @@ body {
     font-size: 20px;
     color: #453a3e;
   }
+
+.horizontal-container {
+    display: flex; /* Usamos Flexbox para organizar los elementos en una fila */
+    align-items: center; /* Alineación vertical centrada */
+    justify-content: space-between; /* Espaciado uniforme entre los elementos */
+    width: 75%; /* Ancho completo del contenedor */
+    margin: 10px auto; /* Márgenes automáticos para centrar el contenedor */
+    padding: 50px; /* Espaciado interno del contenedor */
+}
+
+.horizontal-container .titulo {
+    background-color: #52a7ff; /* Fondo con el color especificado */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 10px 30px; /* Espaciado interno para el texto */
+    color: white; /* Color del texto */
+    font-weight: bold; /* Texto en negrita */
+    text-align: center; /* Centrado del texto */
+}
+
+.caja-punteados {
+    width: 90%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 130%; /* Altura del contenedor */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+
+.caja-punteados-1{
+    width: 25%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 90%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-1-1{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-1-2{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-1-3{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-1-4{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-1-5{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-2{
+    width: 20%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 90%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-2-1{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-2-2{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-2-3{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-2-4{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-2-5{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-3{
+    width: 20%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 90%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-3-1{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-3-2{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-3-3{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-3-4{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-3-5{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-4{
+    width: 25%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 90%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-4-1{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-4-2{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-4-3{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-4-4{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
+.caja-punteados-4-5{
+    width: 94%; /* Ajusta el ancho para que quepan varias cajas en una fila */
+    height: 15%; /* Altura del contenedor */
+    border: 2px dashed #000000; /* Borde punteado */
+    margin: 10px; /* Espaciado entre las cajas */
+    display: inline-block; /* Alinea las cajas en línea */
+    vertical-align: top; /* Alineación vertical */
+}
