@@ -127,6 +127,10 @@ def cancel():
     folio = request.args.get('folio', '')  # Obtiene el folio de la cita desde la URL.
     return render_template('cancelacion.html', folio=folio)
 
+@app.route('/historial')
+def historial():
+    return render_template('historialcld.html')
+
 # Si este archivo es ejecutado como principal, inicia la aplicación Flask en modo debug.
 if __name__ == '__main__':  
     conectar_db()  # Ejecuta la conexión a la base de datos al iniciar
