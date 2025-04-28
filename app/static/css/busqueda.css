@@ -226,7 +226,15 @@ section {
 
 /* Estilo para cada campo del formulario */
 .campo {
-  margin: 10px 0; /* Espaciado entre los campos */
+  flex: 1 1 calc(25% - 30px); /* Mantiene la distribución horizontal original */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacio entre label e input */
+  background-color: #fff;         /* Fondo blanco que cubre título e input */
+  border: 1px solid #333;         /* Borde para delimitar el área del grupo */
+  border-radius: 4px;             /* Bordes redondeados */
+  padding: 10px;                  /* Espaciado interno */
+  box-sizing: border-box;         /* Asegura que el padding no modifique el tamaño total */
 }
 
 /* Estilo para los inputs dentro del formulario */
@@ -240,7 +248,10 @@ section {
 /* Estilo para los campos dobles (para cuando hay dos inputs en una fila) */
 .campos-dobles {
   display: flex;
-  justify-content: space-between; /* Espaciado entre los campos */
+  gap: 40px;
+  flex-wrap: wrap; /* Salta a nueva línea si no hay espacio */
+  justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 /* Estilo para cada campo dentro de los campos dobles */
@@ -256,7 +267,7 @@ section {
   border: none; /* Sin borde */
   border-radius: 4px; /* Bordes redondeados */
   cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
-  margin-top: 20px; /* Margen superior */
+  margin-top: 50px; /* Margen superior */
   align-self: flex-end; /* Alinea el botón al final */
 }
 

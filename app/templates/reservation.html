@@ -171,10 +171,20 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
         <!-- Columna izquierda: Dirección y correo -->
         <div class="left-column">
 
-          <!-- Dirección del usuario -->
+          <!-- Dirección del hospital -->
+           <div class="form-group">
+            <label for="Curp">CURP</label>
+            <input type="text" id="Curp" name="Curp" placeholder="Ingresa tu CURP">
+          </div>
+
+          <!-- Dirección del hospital -->
           <div class="form-group">
-            <label for="direccion">Dirección</label>
-            <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección">
+            <label for="Ubicacion">Ubicación del hospital</label>
+            <select id="horarios" name="horarios">
+              <option value="" disabled selected hidden>Ubicación del hospital</option>
+              <option value="A1">A1</option>
+              <option value="A2">A2</option>
+            </select>
           </div>
 
           <!-- Correo electrónico -->
