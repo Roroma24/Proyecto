@@ -61,6 +61,14 @@ body{
     cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
 }
 
+.container1{
+    display: flex; /* Usamos flexbox para organizar los elementos */
+    align-items: center; /* Alineación vertical centrada */
+    background-color: #b6c4c7;
+    justify-content: space-between; /* Espaciado uniforme entre los elementos */
+    width: auto; /* El ancho se ajusta al contenido */
+}
+
 /* Contenedor para el dropdown (menú desplegable) */
 .dropdown {
     position: relative; /* Necesario para el posicionamiento de los elementos del menú */
