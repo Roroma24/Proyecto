@@ -141,12 +141,6 @@ input{
     margin-bottom: 30px; /* Margen inferior de 30px */
     margin: 30px; /* Márgenes de 30px */
 }
-
-/* Ajuste específico para el campo de cédula profesional */
-.form-group.cedula {
-    max-width: 585px; /* Reduce el ancho del campo */
-    margin: auto; /* Centra el elemento */
-}
   
 /* Grupo de campos individuales dentro de una fila */
 .form-group{
