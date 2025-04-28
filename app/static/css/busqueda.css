@@ -267,7 +267,7 @@ section {
   border: none; /* Sin borde */
   border-radius: 4px; /* Bordes redondeados */
   cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
-  margin-top: 50px; /* Margen superior */
+  margin-top: 20px; /* Margen superior */
   align-self: flex-end; /* Alinea el botón al final */
 }
 
