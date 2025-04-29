@@ -475,3 +475,21 @@ body {
     display: inline-block; /* Alinea las cajas en línea */
     vertical-align: top; /* Alineación vertical */
 }
+.escribí-aquí {
+  width: 100%; /* Ajusta el ancho para que ocupe todo el div */
+  height: 100%; /* Ajusta la altura para que ocupe todo el div */
+  display: flex; /* Usamos Flexbox para centrar el contenido */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  text-align: center;
+  font-size: 20px; /* Tamaño de la fuente */
+}
+
+
+.custom-input {
+  width: 100%; /* Ajusta el ancho */
+  height: 40%; /* Ajusta la altura */
+  padding: 10%; /* Espaciado interno */
+  font-size: 70%; /* Tamaño de fuente */
+  text-align: center; /* Centrado del texto */
+}
