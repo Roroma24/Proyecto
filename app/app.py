@@ -119,7 +119,7 @@ def pago():
 @app.route('/file')
 def file():
     opcion = request.args.get('opcion', '')  # Obtiene la opción seleccionada en la URL.
-    return render_template('busqueda.html')  # Renderiza la página de búsqueda de archivo.
+    return render_template('busqueda.html', opcion=opcion)  # Renderiza la página de búsqueda de archivo.
 
 # Ruta para procesar la cita: modificación o cancelación dependiendo de la opción seleccionada.
 @app.route('/procesar_cita', methods=['POST'])
@@ -130,15 +130,31 @@ def procesar_cita():
     # Verificamos si se ingresó un folio.
     if not folio:
         return "Error: Debes ingresar un folio.", 400
-
-    # Redirige a la página de modificación si la opción seleccionada es "modification".
-    if opcion == "modification":
-        return redirect(url_for('modification', folio=folio))  
-    # Redirige a la página de cancelación si la opción seleccionada es "cancel".
-    elif opcion == "cancel":
-        return redirect(url_for('cancel', folio=folio))  
-    else:
-        return "Error: No se ha seleccionado una opción válida.", 400
+    
+    conn = conectar_db()
+    if conn:
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id_cita FROM cita WHERE id_cita = %s", (folio,))
+            resultado = cursor.fetchone()
+            cursor.close()
+            conn.close()
+            
+            if resultado:
+                # Redirige a la página de modificación si la opción seleccionada es "modification".
+                if opcion == "modification":
+                    return redirect(url_for('modification', folio=folio))
+                # Redirige a la página de cancelación si la opción seleccionada es "cancel".
+                elif opcion == "cancel":
+                    return redirect(url_for('cancel', folio=folio))  
+                else:
+                    return "Error: Opción no válida.", 400
+            else:
+                return "Error: El folio de cita no existe.", 404
+        except mysql.connector.Error as err:
+            return f"❌ Error al consultar la base de datos: {err}"
+        
+        return "Error: No se pudo conectar a la base de datos.", 500
 
 @app.route('/pacient')
 def pacient():
