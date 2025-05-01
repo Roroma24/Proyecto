@@ -1,0 +1,120 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Página de inicio. Permite navegar a las vistas de login, registro, reserva y cancelación de citas médicas.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Enlace a la hoja de estilos CSS del menú principal -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Título de la página que aparece en la pestaña del navegador -->
+    <title>Menu principal</title>
+</head>
+
+<body>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <div class="icon-title">
+            <div class="icon"></div>
+            <h1 class="titulo-principal">Hospital Qualitas</h1>
+        </div>
+
+        <!-- Menú desplegable con botones y enlaces -->
+        <div class="dropdown">
+            <!-- Botón que activa el menú desplegable -->
+            <button class="btn"></button>
+
+            <!-- Contenido del menú desplegable -->
+            <div class="dropdown-content">
+                <!-- Enlace a la vista de login -->
+                <a href="{{ url_for('login') }}">Login</a>
+
+                <!-- Enlace a la vista de registro de un nuevo usuario -->
+                <a href="{{ url_for('registro') }}">New user</a>
+            </div>
+        </div>
+
+    </div> <!-- Fin del contenedor principal -->
+
+    <div class="body_image">
+        <!-- Imagen o fondo decorativo que puede ocupar una parte destacada de la página -->
+        <div class="image"></div>
+
+        <!-- Caja de texto -->
+        <div class="dashed-box">
+            <p class="text_style">Proporcionar atención médica de excelencia, basada en la empatía, la dedicación y un
+                fuerte compromiso<br> con la salud de cada paciente.
+                Garantizar que todos reciban el mejor cuidado posible, priorizando sus<br> necesidades y asegurando un
+                tratamiento adecuado y personalizado.
+                Fomentar un ambiente<br> de confianza y respeto, donde cada paciente se sienta valorado y escuchado.
+            </p>
+        </div>
+
+        <!-- Segundo contenedor principal -->
+        <div class="container">
+            <!-- Tres logos que se estilizan en CSS -->
+            <div class="logo_reserv"></div>
+            <div class="logo_mod"></div>
+            <div class="logo_cancel"></div>
+        </div>
+
+        <!-- Contenedor para los títulos o nombres de las secciones -->
+        <div class="container">
+            <!-- Títulos o encabezados -->
+            <div class="title">
+                <h1>Reservar</h1>
+            </div>
+            <div class="title">
+                <h1>Modíficar</h1>
+            </div>
+            <div class="title">
+                <h1>Cancelar</h1>
+            </div>
+        </div>
+
+        <!-- Contenedor para los botones o accesos rápidos -->
+        <div class="container_a">
+            <a href="{{ url_for('reserva') }}" style="text-decoration: none;">
+                <div class="next"
+                    style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                    Continuar</div>
+            </a>
+            <a href="{{ url_for('file', opcion='modification') }}" style="text-decoration: none;">
+                <div class="next"
+                    style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                    Continuar</div>
+            </a>
+            <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
+                <div class="next"
+                    style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                    Continuar</div>
+            </a>
+        </div>
+    </div>
+    <div class="container1">
+        <div class="icon-title">
+            <div class="icon"></div>
+            <h2>Para más información</h2>
+        </div>
+        <h2>Contactanos al: 55-96-82-68-00</h2>
+    </div>
+
+</body>
+
+</html>

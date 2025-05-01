@@ -1,0 +1,105 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Enlace al archivo CSS para estilos específicos de esta página -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/paciente.css') }}" />
+    <title>Busqueda de citas</title> <!-- Título de la página -->
+</head>
+
+<body>
+    <section>
+        <!-- Contenedor principal -->
+        <div class="container_1">
+            <!-- Barra de iconos y título principal -->
+            <div class="icon-bar">
+                <div class="icon"></div> <!-- Espacio para un ícono -->
+                <h1 class="titulo-principal">Busqueda de paciente</h1> <!-- Título principal -->
+            </div>
+            <!-- Contenedor para el botón de salir -->
+            <div class="container_2">
+                <div class="nexttop">
+                    <a href="{{ url_for('index') }}"> <!-- Enlace para salir -->
+                        <button class="next">Salir</button> <!-- Botón para salir -->
+                    </a>
+                </div>
+            </div>
+            <!-- Menú desplegable -->
+            <div class="dropdown">
+                <button class="btn"></button> <!-- Botón para abrir el menú -->
+                <div class="dropdown-content">
+                    <a href="{{ url_for('login') }}">Login</a> <!-- Enlace a la página de inicio de sesión -->
+                    <a href="{{ url_for('registro') }}">New user</a> <!-- Enlace para registrar un nuevo usuario -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de imagen y formulario -->
+        <!-- Sección de imagen y formulario -->
+        <div class="image">
+            <div class="container_1 flex-container">
+                <!-- Lado Izquierdo -->
+                <div class="Left">
+                    <!-- Logo -->
+                    <div class="logo_1"></div>
+                    <!-- Formulario -->
+                    <div class="formulario">
+                        <div class="campos-dobles">
+                            <div class="campo">
+                                <input type="text" id="nombres" placeholder="Nombres" />
+                            </div>
+                            <div class="campo">
+                                <input type="text" id="primerapellido" placeholder="Primer Apellido" />
+                            </div>
+                        </div>
+                        <div class="campos-dobles">
+                            <div class="campo">
+                                <input type="text" id="segundoapellido" placeholder="Segundo Apellido" />
+                            </div>
+                            <div class="campo">
+                                <input type="text" id="id_paciente" name="id_paciente" placeholder="Id del Paciente" required />
+                            </div>
+                        </div>
+
+                        <form action="{{ url_for('procesar_cita') }}" method="POST">
+                            <input type="hidden" name="opcion" value="{{ opcion }}">
+                            <a href="" style="text-decoration: none;">
+                                <div class="accion">
+                                    Continuar
+                                </div>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Lado Derecho -->
+                <div class="Right">
+                    <div class="cuadro">
+                        <h2>Información Importante</h2>
+                        <p>Este cuadro sirve para mostrar información de manera destacada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+</body>
+
+</html>

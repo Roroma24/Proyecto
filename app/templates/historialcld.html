@@ -1,0 +1,175 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Este archivo HTML es la plantilla para la página de búsqueda de citas.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Configuración básica del documento -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Enlace al archivo CSS para estilos específicos de esta página -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/historiacld.css') }}" />
+  <title>Historial Clinico</title> <!-- Título de la página -->
+</head>
+
+<body>
+  <section>
+    <!-- Contenedor principal -->
+    <div class="container_1">
+      <!-- Barra de iconos y título principal -->
+      <div class="icon-bar">
+        <div class="icon"></div> <!-- Espacio para un ícono -->
+        <h1 class="titulo-principal">Historial Clinico</h1> <!-- Título principal -->
+      </div>
+      <!-- Contenedor para el botón de salir -->
+      <div class="container_2">
+        <div class="nexttop">
+          <a href="{{ url_for('index') }}"> <!-- Enlace para salir -->
+            <button class="next">Regresar</button> <!-- Botón para salir -->
+          </a>
+        </div>
+      </div>
+      <!-- Menú desplegable -->
+
+    </div>
+
+    <!-- Sección de imagen y formulario -->
+    <div class="image">
+      <div class="container_1">
+        <div class="container_3">
+          <!-- Contenedor para los títulos en forma horizontal -->
+          <div class="horizontal-container">
+            <h2 class="titulo">Citas</h2>
+            <h2 class="titulo">Hora</h2>
+            <h2 class="titulo">Día</h2>
+            <h2 class="titulo">Comentarios</h2>
+          </div>
+          <!-- Contenedor para 4 cajas de punteados que contienen información de citas haciendo la figura de (1x5)-->
+          <div class="caja-punteados">
+            <div class="caja-punteados-1">
+              <div class="caja-punteados-1-1">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+              <div class="caja-punteados-1-2">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+              <div class="caja-punteados-1-3">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+              <div class="caja-punteados-1-4">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+              <div class="caja-punteados-1-5">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+            </div>
+            <!-- Caja 1 -->
+            <div class="caja-punteados-2">
+              <div class="caja-punteados-2-1">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+              <div class="caja-punteados-2-2">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+              <div class="caja-punteados-2-3">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+              <div class="caja-punteados-2-4">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+              <div class="caja-punteados-2-5">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+            </div> <!-- Caja 2 -->
+            <div class="caja-punteados-3">
+              <div class="caja-punteados-3-1">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+              <div class="caja-punteados-3-2">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+              <div class="caja-punteados-3-3">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+              <div class="caja-punteados-3-4">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+              <div class="caja-punteados-3-5">
+                <ul>
+                  <li>información a visualizar</li>
+                </ul>
+              </div>
+            </div> <!-- Caja 3 -->
+            <div class="caja-punteados-4">
+              <div class="caja-punteados-4-1">
+                <div class="escribí-aquí">
+                  <input type="text" class="custom-input" placeholder="Escribí aquí" />
+                </div>
+              </div>
+              <div class="caja-punteados-4-2">
+                <div class="escribí-aquí">
+                  <input type="text" class="custom-input" placeholder="Escribí aquí" />
+                </div>
+              </div>
+              <div class="caja-punteados-4-3">
+                <div class="escribí-aquí">
+                  <input type="text" class="custom-input" placeholder="Escribí aquí" />
+                </div>
+              </div>
+              <div class="caja-punteados-4-4">
+                <div class="escribí-aquí">
+                  <input type="text" class="custom-input" placeholder="Escribí aquí" />
+                </div>
+              </div>
+              <div class="caja-punteados-4-5">
+                <div class="escribí-aquí">
+                  <input type="text" class="custom-input" placeholder="Escribí aquí" />
+                </div>
+              </div>
+            </div> <!-- Caja 4 -->
+          </div>
+        </div>
+      </div>
+  </section>
+</body>
+
+</html>

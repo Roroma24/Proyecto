@@ -1,0 +1,115 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Página de registro de nuevos usuarios. Se solicitan datos personales del usuario, como nombre, apellidos y correo electrónico.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Enlace al archivo CSS de estilos para el usuario -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userstyles.css') }}">
+
+    <!-- Título de la página -->
+    <title>Nuevo Usuario</title>
+</head>
+
+<body>
+
+    <!-- Contenedor principal del botón de salida -->
+    <div class="container">
+        <!-- Botón de salida que redirige a la función 'exit' -->
+        <a href="{{ url_for('index') }}" style="text-decoration: none;">
+            <div class="exit_btn"
+                style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                Salir</div> <!-- Botón estilizado para salir -->
+        </a>
+    </div>
+
+    <!-- Contenedor principal de la página de registro -->
+    <div class="container-body">
+
+        <!-- Sección de imagen del perfil -->
+        <div class="profile"></div>
+
+        <!-- Barra con título -->
+        <div class="bar">
+            <h1 class="titulo-principal">Nuevo Usuario</h1>
+        </div>
+
+        <!-- Caja con borde punteado para mostrar información -->
+        <div class="dashed-box">
+            <p class="text_style">Registrar un nuevo usuario para priorizar el bienestar y acceder a un servicio de
+                salud eficiente y accesible. Contar con atención de calidad brindada por profesionales capacitados,
+                asegurando un cuidado integral y facilitando el acceso a recursos que mejoren la experiencia del
+                paciente en su camino hacia una mejor salud.
+            </p>
+        </div>
+
+        <!-- Formulario de registro de usuario -->
+        <form method="POST" action="{{ url_for('registro') }}">
+            <!-- Primera fila de campos (Nombres y Apellidos) -->
+            <div class="form-row">
+                <!-- Campo: Nombres -->
+                <div class="form-group">
+                    <label for="nombre">Nombres</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+                </div>
+                <!-- Campo: Primer Apellido -->
+                <div class="form-group">
+                    <label for="apellido1">Primer Apellido</label>
+                    <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa tu primer apellido"
+                        required>
+                </div>
+                <!-- Campo: Segundo Apellido -->
+                <div class="form-group">
+                    <label for="apellido2">Segundo Apellido</label>
+                    <input type="text" id="apellido2" name="apellido2" placeholder="Ingresa tu segundo apellido">
+                </div>
+            </div>
+
+            <!-- Segunda fila de campos (Correo y Contraseña) -->
+            <div class="form-row">
+                <!-- Campo: Correo Electrónico -->
+                <div class="form-group">
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" name="correo" placeholder="Correo electrónico">
+                </div>
+                <!-- Campo: Contraseña -->
+                <div class="form-group">
+                    <label for="confirmacion">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña">
+                </div>
+            </div>
+
+            <!-- Sección de botones de acción -->
+            <div class="info">
+                <div class="buttons">
+                    <!-- Botón de continuar -->
+                    <button type="submit" class="btn"
+                        style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</button>
+                    <!-- Botón de registro como doctor -->
+                    <a href="{{ url_for('newdoc') }}" style="text-decoration: none;">
+                        <div class="btn"
+                            style="text-align: center; color: #fff; font-size: 22px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                            Registro como doctor</div>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:
+Página de método de pago. Se recopilan datos personales del usuario, incluyendo nombre, apellidos, correo y número de cuenta. 
+Se ofrece la selección de método de pago mediante imágenes y un botón para confirmar la transacción
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Metadatos del documento -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Enlace a la hoja de estilos CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/metodopago.css') }}">
+
+  <title>Pago</title>
+</head>
+<body>
+
+  <!-- ENCABEZADO PRINCIPAL DEL FORMULARIO -->
+  <div class="header-container">
+    <div class="header">
+      <div class="header-left">
+        <!-- Icono de círculo  -->
+        <div class="circle red"></div>
+
+        <!-- Título principal de la página -->
+        <h1 class="titulo-principal">Metodo de Pago</h1>
+      </div>
+
+      <!-- Contenedor de botones en el encabezado derecho -->
+      <div class="header-right">
+        <a href="{{ url_for('reserva') }}">
+          <button>Regresar</button>
+        </a>
+        <a href="{{ url_for('index') }}">
+          <button>Inicio</button>
+        </a>
+
+        <!-- Menú desplegable para login o registro -->
+        <div class="dropdown">
+          <button class="circle purple"></button>
+          <div class="dropdown-content">
+              <a href="{{ url_for('login') }}">Login</a>
+              <a href="{{ url_for('registro') }}">New user</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENEDOR PRINCIPAL DEL FORMULARIO -->
+  <div class="container">
+
+    <!-- Imagen de perfil del usuario (puede personalizarse) -->
+    <div class="profile-pic"></div>
+
+
+    <!-- FORMULARIO DE RESERVA DE CITAS -->
+    <form>
+
+      <!-- FILA DE DATOS PERSONALES -->
+      <div class="form-row">
+
+        <!-- Campo para nombres del usuario -->
+        <div class="form-group">
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+        </div>
+
+        <!-- Primer apellido -->
+        <div class="form-group">
+          <input type="text" id="apellido1" name="apellido1" placeholder="Apellido">
+        </div>
+
+        <!-- Segundo apellido -->
+        <div class="form-group">
+          <input type="text" id="apellido2" name="apellido2" placeholder="Apellido">
+        </div>
+
+      </div>
+
+
+      <!-- SECCIÓN INFERIOR DEL FORMULARIO -->
+      <div class="bottom-section">
+
+        <!-- Columna izquierda: Dirección y correo -->
+        <div class="left-column">
+
+          <!-- Dirección del usuario -->
+          <!-- Discapacidad: opciones desplegables -->
+        <div class="form-group">
+          <select id="ubicación" name="ubicaciónhospital">
+            <option value="" disabled selected hidden>Ubicación de hospital</option>
+            <option value="ninguna">A1</option>
+            <option value="motora">A2</option>
+            <option value="visual">A3</option>
+            <option value="auditiva">A4</option>
+          </select>
+        </div>
+         
+        <!--No. cuenta -->
+        <div class="form-group">
+          <input type="text" id="cuenta" name="cuenta" placeholder="Número de cuenta">
+        </div>
+
+        <!-- Confirmación No. cuenta -->
+        <div class="form-group">
+          <input type="text" id="cuenta2" name="cuenta2" placeholder="Confirmar número de cuenta">
+        </div>
+          <!-- Correo electrónico -->
+          <div class="form-group">
+            <input type="email" id="correo" name="correo" placeholder="Correo electrónico">
+          </div>
+        
+        </div>
+
+        <!-- Columna derecha: Fecha de la cita -->
+        <div class="right-column">
+          <div class="form-group">
+            <select id="concepto" name="concepto">
+              <option value="" disabled selected hidden>Concepto</option>
+              <option value="ninguna">A1</option>
+              <option value="motora">A2</option>
+              <option value="visual">A3</option>
+              <option value="auditiva">A4</option>
+              <div class="form-group">
+                <input type="monto" id="monto" name="monto" placeholder="monto">
+              </div>
+            
+          </div>
+          
+      </div>
+      <!-- Botones para seleccionar el método de pago -->
+      <div class="payment-methods">
+        <label class="payment-label">Seleccionar el método de pago:</label>
+        <div id="metodo-pago">
+          <img src="{{ url_for('static', filename='imagen/mastercard.png') }}" alt="MasterCard">
+          <img src="{{ url_for('static', filename='imagen/visa.png') }}" alt="Visa">
+          <img src="{{ url_for('static', filename='imagen/amex.png') }}" alt="American Express">
+          <img src="{{ url_for('static', filename='imagen/maestro.png') }}" alt="Maestro">
+        </div>
+      </div>
+      <!-- Botón para enviar el formulario y realizar la reserva -->
+      <button class="submit-btn" type="submit">Confirmar pago</button>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>

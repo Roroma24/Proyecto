@@ -1,0 +1,66 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Página de inicio de sesión. Se solicitan datos de usuario y contraseña para acceder a la plataforma.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Configuración básica del documento -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Enlace al archivo CSS con los estilos del formulario de login -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/loginstyles.css') }}">
+
+  <!-- Título de la pestaña en el navegador -->
+  <title>Interfaz de Inicio de Sesión</title>
+</head>
+<body>
+
+  <!-- Sección izquierda de la interfaz -->
+  <div class="left-side"></div>
+
+  <!-- Sección derecha de la interfaz que contiene el formulario de login -->
+  <div class="right-side">
+
+    <!-- Botón para salir de la vista actual  -->
+    <a href="{{ url_for('index') }}">
+      <button class="btn-exit">Salir</button> <!-- Botón de salir -->
+    </a>
+
+    <!-- Contenedor principal del formulario -->
+    <div class="container">
+
+      <!-- Icono superior -->
+      <div class="icon"></div>
+
+      <!-- Texto que indica el propósito del formulario -->
+      <div class="login-text">Iniciar sesión</div>
+
+      <!-- Caja de texto -->
+      <div class="dashed-box">Descripción</div>
+
+      <!-- Campo de entrada para el nombre de usuario o correo -->
+      <input type="text" placeholder="Nombre o Correo">
+
+      <!-- Campo de entrada para la contraseña -->
+      <input type="password" placeholder="contraseña">
+
+      <!-- Botón para enviar el formulario y continuar -->
+      <button class="btn-continue">continuar</button>
+
+    </div> <!-- Fin del contenedor -->
+
+  </div> <!-- Fin de la sección derecha -->
+
+</body>
+</html>

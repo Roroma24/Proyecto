@@ -1,0 +1,261 @@
+/* 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Este archivo contiene los estilos CSS para la página de cancelación de la aplicación web.
+*/
+
+/* Establece el color de fondo de la página */
+body {
+  background-color: #fff; /* Fondo blanco para la página */
+  font-family: Arial, sans-serif; /* Establece la fuente para todo el texto */
+}
+
+.section {
+  width: auto; /* El ancho se ajusta al contenido */
+  margin: 10px auto; /* Centra la sección y añade un margen superior e inferior */
+}
+
+/* Contenedor principal que usa flexbox */
+.container {
+  display: flex; /* Usamos flexbox para organizar los elementos */
+  align-items: center; /* Alineación vertical centrada */
+  justify-content: space-between; /* Espaciado uniforme entre los elementos */
+  width: auto; /* El ancho se ajusta al contenido */
+  margin: 10px auto; /* Márgenes automáticos para centrar el contenedor */
+}
+
+.icon-title {
+  display: flex; /* Usa flexbox para alinear icono y título */
+  align-items: center; /* Alinea los elementos verticalmente */
+  gap: 15px; /* Espacio de 15px entre los elementos */
+}
+
+/* Estilo para cada icono */
+.icon {
+  width: 90px; /* Ancho del icono */
+  height: 90px; /* Alto del icono */
+  background-image: url('imagen/logo.png'); /* Fondo rojo para los iconos */
+  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+}
+
+.titulo-principal {
+  font-size: 50px; /* Tamaño grande para el título */
+  font-weight: bold; /* Pone el texto en negritas */
+  margin: 0; /* Elimina el margen exterior */
+}
+
+.container_1 {
+  display: flex; /* Usa flexbox para organizar los elementos */
+  align-items: center; /* Alineación vertical centrada */
+  justify-content: space-between; /* Espaciado uniforme entre los elementos */
+  width: 70%; /* El contenedor ocupa el 70% del ancho */
+  margin: 10px auto; /* Centra el contenedor con un margen automático */
+}
+
+.container_2 {
+  display: flex; /* Usa flexbox para organizar los elementos */
+  align-items: center; /* Alineación vertical centrada */
+  justify-content: flex-end; /* Alinea los elementos al final */
+  width: auto; /* El ancho se ajusta al contenido */
+  gap: 5px; /* Espacio entre los elementos */
+}
+
+.container_3 {
+  position: relative;
+  display: flex; /* Usa flexbox para organizar los elementos */
+  flex-direction: column; /* Organiza los elementos en una columna */
+  align-items: center; /* Centra los elementos verticalmente */
+  justify-content: flex-start;
+  width: 1400px; /* Ancho del contenedor */
+  height: 720px; /* Altura del contenedor */
+  margin: 20px auto; /* Centra el contenedor con márgenes automáticos */
+  background-color: #fff; /* Fondo blanco para el contenedor */
+  border-radius: 20px; /* Bordes redondeados */
+}
+
+.container_4 {
+  display: flex; /* Usa flexbox para organizar los elementos */
+  align-items: center; /* Alineación vertical centrada */
+  justify-content: space-between; /* Espaciado uniforme entre los elementos */
+  width: auto; /* El ancho se ajusta al contenido */
+  margin: 10px auto; /* Centra el contenedor con márgenes automáticos */
+  grid-column: auto; /* Permite que el contenedor ocupe varias columnas */
+}
+
+.icon-bar {
+  display: flex; /* Usa flexbox para organizar los iconos */
+  align-items: center; /* Alineación vertical centrada */
+  gap: 40px; /* Espacio de 40px entre los iconos */
+}
+
+/* Estilo para los botones */
+.btn {
+  width: 90px; /* Ancho del botón */
+  height: 90px; /* Alto del botón */
+  background-color: #fff; /* Fondo blanco para el botón */
+  background-image: url('imagen/logoregistro.png'); /* Imagen de fondo para el botón */
+  background-size: cover; /* Ajusta la imagen de fondo */
+  border-radius: 40%; /* Bordes redondeados para el botón */
+  border: none; /* Sin borde por defecto */
+  cursor: pointer; /* Cambia el cursor cuando pasa sobre el botón */
+}
+
+.dropdown {
+  position: relative; /* Necesario para el posicionamiento del contenido desplegable */
+  display: inline-block; /* Comporta como un bloque en línea */
+}
+
+/* Contenido del dropdown, que está oculto por defecto */
+.dropdown-content {
+  display: none; /* El contenido está oculto inicialmente */
+  position: absolute; /* Se posiciona de manera absoluta */
+  background-color: #f9f9f9; /* Fondo gris claro */
+  min-width: 120px; /* Ancho mínimo del menú */
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Sombra para dar profundidad */
+  z-index: 1; /* Asegura que el menú esté por encima de otros elementos */
+}
+
+/* Estilo de los enlaces dentro del dropdown */
+.dropdown-content a {
+  display: block; /* Los enlaces ocupan todo el ancho disponible */
+  padding: 8px 12px; /* Espaciado dentro de los enlaces */
+  text-decoration: none; /* Elimina el subrayado por defecto */
+  color: black; /* Color de texto negro */
+}
+
+/* Estilo cuando el cursor está sobre los enlaces del dropdown */
+.dropdown-content a:hover {
+  background-color: #ddd; /* Fondo gris claro al pasar el mouse sobre el enlace */
+}
+
+/* Mostrar el contenido del dropdown cuando se pasa el mouse sobre el contenedor */
+.dropdown:hover .dropdown-content {
+  display: block; /* Muestra el menú */
+}
+
+.bar {
+  width: 400px; /* Ancho de la barra */
+  height: 70px; /* Altura de la barra */
+  background-color: #9c9898; /* Color de fondo gris para la barra */
+  border-radius: 40px; /* Bordes redondeados */
+}
+
+.image {
+  width: auto; /* El ancho se ajusta automáticamente */
+  height: 45vw; /* Altura de la imagen */
+  background-image: url('imagen/fondo.jpeg'); /* Imagen de fondo */
+  background-size: cover; /* Ajusta la imagen de fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+.logo_1 {
+  width: 160px; /* Ancho del logo */
+  height: 160px; /* Alto del logo */
+  background-image: url('imagen/logo_cancel.png'); /* Fondo gris claro */
+  background-size: cover;
+  border-radius: 40%; /* Bordes redondeados */
+  margin: 20px auto; /* Centra el logo */
+}
+
+.title {
+  width: 1000px; /* Ancho del título */
+  height: 120px; /* Altura del título */
+  border: 2px dashed #000000; /* Borde punteado negro */
+  margin: 10px auto; /* Centra el título */
+}
+
+.next {
+  width: 120px; /* Ancho del botón siguiente */
+  height: 70px; /* Alto del botón siguiente */
+  background-color: #656464; /* Fondo gris para el botón */
+  border-radius: 40px; /* Bordes redondeados */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  margin: 10px auto; /* Centra el botón */
+}
+
+.next_1 {
+  width: 120px; /* Ancho del botón siguiente */
+  height: 50px; /* Alto del botón siguiente */
+  background-color: #656464; /* Fondo gris para el botón */
+  border-radius: 40px; /* Bordes redondeados */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  position: absolute; /* Posiciona el botón de forma absoluta */
+  bottom: 260px; /* Distancia desde la parte inferior */
+  left: 46%; /* Lo centra horizontalmente */
+  bottom: 20%; /* Distancia desde la parte inferior */
+}
+
+.nexttop {
+  display: flex; /* Usa flexbox para organizar los elementos */
+  align-items: center; /* Alineación vertical centrada */
+  gap: 40px; /* Espacio de 40px entre los elementos */
+}
+
+.formulario {
+  width: 1000px; /* Ancho del formulario */
+  padding: 20px; /* Espaciado interno del formulario */
+  background-color: #fff; /* Fondo blanco para el formulario */
+  border-radius: 8px; /* Bordes redondeados */
+  text-align: center; /* Centra el texto dentro del formulario */
+}
+
+.campo {
+  margin: 10px 0; /* Margen superior e inferior para los campos */
+}
+
+.campo input {
+  width: calc(100% - 22px); /* Ajusta el ancho del input */
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+.campos-dobles {
+  display: flex; /* Usa flexbox para organizar los elementos */
+  justify-content: space-between; /* Espaciado entre los elementos */
+}
+
+.campos-dobles .campo {
+  width: 30%; /* Ancho de cada campo */
+}
+
+.cancelar {
+  background-color: #6c757d; /* Fondo gris oscuro para el botón cancelar */
+  color: white; /* Color blanco para el texto */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  margin-top: 20px; /* Márgenes superiores para separar el botón */
+  align-self: flex-end; /* Alinea el botón al final */
+}
+
+.cancelar:hover {
+  background-color: #5a6268; /* Cambia el fondo a un gris más oscuro al pasar el mouse */
+}
+
+.dashed-box {
+  width: 70%; /* Ancho de la caja */
+  height: 18%; /* Alto de la caja */
+  border: 2px dashed #000000; /* Borde punteado negro */
+  margin: 10px auto; /* Márgenes automáticos para centrarla */
+}
+
+.accion{
+  width: 160px; /* Ancho del botón de acción */
+  height: 50px; /* Altura del botón de acción */
+  background-color: #494949; /* Fondo gris oscuro para el botón */
+  border-radius: 25px; /* Bordes redondeados para el botón */
+  border: none; /* Sin borde para el botón */
+  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
+  margin: auto; /* Centra el botón dentro de su contenedor */
+}

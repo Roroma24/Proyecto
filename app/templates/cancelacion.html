@@ -1,0 +1,111 @@
+<!-- 
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Página de cancelación de cita. Se solicitan datos personales, como nombre, teléfono, edad, correo, hora y 
+fecha de la cita a cancelar.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Configuración básica del documento -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Enlace al archivo CSS para estilos específicos de esta página -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/cancelacion.css') }}">
+  <title>Cancelar cita</title>
+</head>
+
+<body>
+  <section>
+    <!-- Contenedor principal -->
+    <div class="container">
+      <!-- Barra de iconos y título principal -->
+      <div class="icon-bar">
+        <div class="icon"></div> <!-- Espacio para un ícono -->
+        <h1 class="titulo-principal">Cancelación de cita</h1> <!-- Título principal -->
+      </div>
+      <!-- Contenedor para botones de navegación -->
+      <div class="container_2">
+        <div class="nexttop">
+          <a href="{{ url_for('index') }}"> <!-- Enlace para salir -->
+            <div class="accion" style="text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;background-color: #656464">Inicio</div> <!-- Botón para ir a la página de inicio -->
+          </a>
+
+          <!-- Botón de regresar (sin enlace asignado aún) -->
+          <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
+            <div class="accion" style="text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;background-color: #656464">Regresar</div>
+          </a>
+
+          <!-- Menú desplegable -->
+          <div class="dropdown">
+            <button class="btn"></button>
+            <div class="dropdown-content">
+              <a href="{{ url_for('login') }}">Login</a> <!-- Enlace a la página de inicio de sesión -->
+              <a href="{{ url_for('registro') }}">New user</a> <!-- Enlace para registrar un nuevo usuario -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de imagen y formulario -->
+    <div class="image">
+      <div class="container_1">
+        <div class="container_3">
+          <!-- Espacio para un logo -->
+          <div class="logo_1"></div>
+          <!-- Caja con borde punteado -->
+          <div class="dashed-box"></div>
+          <!-- Formulario para cancelar una cita -->
+          <div class="formulario">
+            <!-- Campo para el nombre completo -->
+            <div class="campo nombre">
+              <input type="text" id="nombre" placeholder="Nombre completo" />
+            </div>
+            <!-- Campos dobles para teléfono, edad y correo -->
+            <div class="campos-dobles">
+              <div class="campo">
+                <input type="tel" id="telefono" placeholder="Teléfono" />
+              </div>
+              <div class="campo">
+                <input type="number" id="edad" placeholder="Edad" />
+              </div>
+              <div class="campo">
+                <input type="email" id="correo" placeholder="Correo" />
+              </div>
+            </div>
+            <!-- Campos dobles para hora y fecha -->
+            <div class="campos-dobles">
+              <div class="campo">
+                <input type="time" id="hora" />
+              </div>
+              <div class="campo">
+                <input type="date" id="fecha" />
+              </div>
+            </div>
+            <!-- Botón para cancelar la cita -->
+            <div class="campo">
+              <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
+                <div class="accion" style="position: absolute;left: 75%;bottom: 13%;text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px; width: 150px;background-color: #656464 ">
+                    Cancelar
+                </div>
+            </a>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+/*  
+Autores: 
+Axel Castañeda Sánchez 
+Antonio Albuerne Silva
+Alyn Layla Nila Vélez
+Luis Roberto Rodríguez Marroquin 
+Sebastián Villaluz Martínez
+Daniela Zuno Aguilar
+
+Descripción:   
+Este archivo contiene los estilos CSS para la página de inicio de sesión de la aplicación web.
+*/
+
+body {
+  display: flex; /* Usamos flexbox para organizar la disposición de los elementos en la página */
+  height: 100vh; /* Altura completa de la ventana del navegador */
+  background-color: #ffffff; /* Fondo blanco */
+  margin: 0; /* Eliminamos el margen por defecto */
+  font-family: Arial, sans-serif; /* Establecemos la fuente de la página */
+}
+
+.left-side {
+  flex: 0.4; /* El lado izquierdo ocupa el 40% del espacio */
+  background-image: url('imagen/fondo.jpeg'); /* Imagen de fondo para el lado izquierdo */
+  background-size: cover; /* Asegura que la imagen cubra completamente el área */
+  background-position: center; /* Centra la imagen en el área */
+  display: flex; /* Usamos flexbox para la disposición de los elementos */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+}
+
+.right-side {
+  flex: 0.6;  /* El lado derecho ocupa el 60% del espacio */
+  display: flex; /* Usamos flexbox para la disposición de los elementos */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  position: relative; /* Establece la posición relativa para los elementos dentro */
+}
+
+.container {
+  display: flex; /* Usamos flexbox para la disposición de los elementos */
+  flex-direction: column;  /* Los elementos se organizan en columna */
+  align-items: center; /* Centra los elementos horizontalmente */
+  justify-content: center; /* Centra los elementos verticalmente */
+  gap: 15px; /* Espacio entre los elementos dentro del contenedor */
+}
+
+.icon {
+  width: 110px; /* Ancho de cada icono */
+  height: 110px; /* Alto de cada icono */
+  background-image: url('imagen/logo.png'); /* Imagen de fondo para el icono */
+  background-size: cover; /* Asegura que la imagen cubra completamente el área del icono */
+  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+}
+
+.login-text {
+  width: 500px; /* Ancho del cuadro de texto */
+  text-align: center; /* Centra el texto */
+  font-size: 20px; /* Tamaño de la fuente */
+  font-weight: bold; /* Establece el texto en negrita */
+  margin-bottom: 15px; /* Añade un margen en la parte inferior */
+}
+
+.dashed-box {
+  width: 500px; /* Ancho del cuadro */
+  height: 50px; /* Altura del cuadro */
+  border: 2px dashed black; /* Borde discontinuo de color negro */
+  background: transparent; /* Fondo transparente */
+  display: flex; /* Usamos flexbox para la disposición de los elementos dentro del cuadro */
+  align-items: center;  /* Centra los elementos verticalmente */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  font-size: 16px; /* Tamaño de la fuente */
+  font-weight: bold; /* Establece el texto en negrita */
+  color: black; /* Color del texto */
+}
+
+.login-box {
+  background-color: #808080; /* Color de fondo gris para el cuadro de inicio de sesión */
+  border-radius: 15px; /* Bordes redondeados */
+  padding: 20px; /* Añade espacio interior */
+  width: 300px; /* Ancho del cuadro de inicio de sesión */
+  display: flex; /* Usamos flexbox para la disposición de los elementos dentro del cuadro */
+  flex-direction: column; /* Organiza los elementos en columna */
+  align-items: center; /* Centra los elementos dentro del cuadro */
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 150%; /* El ancho de los campos de entrada es del 100% */
+  padding: 10px; /* Añade espacio dentro de los campos de entrada */
+  margin: 5px 0; /* Añade margen entre los campos de entrada */
+  border: 2px solid #ccc; /* Borde de los campos de entrada */
+  border-radius: 5px; /* Bordes redondeados para los campos de entrada */
+  text-align: center; /* Centra el texto dentro de los campos */
+}
+
+button.btn-continue {
+  background-color: #656464; /* Fondo gris para el botón */
+  color: white; /* Texto en color blanco */
+  padding: 10px; /* Añade espacio interior al botón */
+  width: 100px; /* Ancho del botón */
+  border-radius: 20px; /* Bordes redondeados para el botón */
+  border: none; /* Sin borde en el botón */
+  box-shadow: none; /* Sin sombra */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+.btn-exit {
+  background-color: #656464; /* Fondo gris para el botón de salir */
+  color: white; /* Texto en color blanco */
+  position: absolute; /* Posicionamiento absoluto del botón */
+  top: 20px; /* Ubica el botón a 20px desde la parte superior */
+  right: 20px; /* Ubica el botón a 20px desde la derecha */
+  width: 100px; /* Ancho del botón */
+  height: 40px; /* Altura del botón */
+  font-size: 16px; /* Tamaño de la fuente */
+  border-radius: 20px; /* Bordes redondeados para el botón */
+  border: none; /* Sin borde */
+  box-shadow: none; /* Sin sombra */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+
+
+  
+  
