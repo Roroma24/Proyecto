@@ -12,7 +12,7 @@ Este archivo contiene el código para la creación de la aplicación web con Fla
 """
 
 # Importamos Flask y las funciones necesarias para manejar las rutas y plantillas HTML.
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 import mysql.connector  # Cambiado para usar mysql.connector
 
 # ---------------- CONEXIÓN A LA BASE DE DATOS ----------------
@@ -21,7 +21,7 @@ def conectar_db():  # Función para conectar a la base de datos
         conn = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Ror@$2405",  # Se ajusta según la configuración
+            password="Meliodas1.",  # Se ajusta según la configuración
             database="hospital",  # Nombre de la base de datos
         )
         print("✅ Conexión exitosa a la base de datos.")
@@ -31,21 +31,56 @@ def conectar_db():  # Función para conectar a la base de datos
         return None
 
 # Creamos una instancia de la aplicación Flask.
-app = Flask(__name__)  
+app = Flask(__name__)
+
+app.secret_key = 'aL#9v@!fQz7k2Wm3T$xB1eNpLuY6rVc0'
 
 # Ruta para la página principal (index.html).
 @app.route('/')
 def index():
-    return render_template('index.html')  # Renderiza la página HTML llamada 'index.html'.
+    return render_template('index.html', nombre=session.get('nombre') if 'user_id' in session else None)
 
 @app.route('/docindex')
 def docindex():
-    return render_template('indexdoc.html')
+    if 'user_id' in session and session.get('rol') == 'Doctor':
+        return render_template('indexdoc.html', nombre=session.get('nombre'))
+    return redirect(url_for('login'))
 
 # Ruta para la página de login (login.html).
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if  request.method == 'POST':
+        correo = request.form.get('usuario')
+        password = request.form.get('contrasena')
+        
+        conn = conectar_db()
+        if conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id_usuario, rol, nombre FROM usuario WHERE correo = %s AND contraseña = SHA2(%s, 256)", (correo, password))
+            user = cursor.fetchone()
+            conn.close()
+            
+            if user:
+                session['user_id'] = user[0]
+                session['rol'] = user[1]
+                session['nombre'] = user[2]
+                
+                if user[1] == 'Paciente':
+                    return redirect(url_for('index'))
+                elif user[1] == 'Doctor':
+                    return redirect(url_for('docindex'))
+            else:
+                return "Correo o contraseña incorrectos"
+            
     return render_template('login.html')  # Renderiza la página HTML llamada 'login.html'.
+
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    session.pop('rol', None)
+    session.pop('nombre', None)
+    
+    return redirect(url_for('index'))
 
 # Ruta para la página de registro de usuario (registrouser.html).
 @app.route('/registro', methods=['GET', 'POST'])

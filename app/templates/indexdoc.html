@@ -8,7 +8,7 @@ Sebastián Villaluz Martínez
 Daniela Zuno Aguilar
 
 Descripción:   
-Página de inicio. Permite navegar a las vistas de login, registro, reserva y cancelación de citas médicas.
+Página de inicio para doctor. Permite navegar a las vistas de login, registro, reserva, cancelación de citas médicas e historial clínico.
 -->
 
 <!DOCTYPE html>
@@ -42,11 +42,16 @@ Página de inicio. Permite navegar a las vistas de login, registro, reserva y ca
 
             <!-- Contenido del menú desplegable -->
             <div class="dropdown-content">
-                <!-- Enlace a la vista de login -->
-                <a href="{{ url_for('login') }}">Login</a>
+                {% if session['nombre'] %}
+                    <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                {% else %}
+                    <!-- Enlace a la vista de login -->
+                    <a href="{{ url_for('login') }}">Login</a>
 
-                <!-- Enlace a la vista de registro de un nuevo usuario -->
-                <a href="{{ url_for('registro') }}">New user</a>
+                    <!-- Enlace a la vista de registro de un nuevo usuario -->
+                    <a href="{{ url_for('registro') }}">New user</a>
+                {% endif %}
             </div>
         </div>
 
