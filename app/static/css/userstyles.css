@@ -173,10 +173,11 @@ select{
     box-sizing: border-box; /* Asegura compatibilidad con padding */
 }
 
+/* Define una clase llamada 'text_style' que aplicará los siguientes estilos */
 .text_style{
-    text-align: center;
-    justify-items: center;
-    background-color: #bebebe82;
-    border-radius: 2%;
-    font-size: 28px;
+    text-align: center; /* Alinea el texto horizontalmente al centro */
+    justify-items: center; /* Centra los elementos hijos horizontalmente si el contenedor usa display: grid */
+    background-color: #bebebe82; /* Aplica un color de fondo gris con transparencia */
+    border-radius: 2%;  /* Redondea ligeramente las esquinas del contenedor */
+    font-size: 28px; /* Establece el tamaño del texto en 28 píxeles */
 }

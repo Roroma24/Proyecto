@@ -68,31 +68,36 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
             <!-- Formulario para enviar los datos -->
             <form action="{{ url_for('procesar_cita') }}" method="POST">
               <input type="hidden" name="opcion" value="{{ opcion }}"> <!-- Campo oculto para enviar una opción -->
+              
               <!-- Campos dobles para nombres y apellidos -->
               <div class="campos-dobles">
-                <div class="campo">Nombres<label>
-                    <input type="text" id="nombres" name="nombres" placeholder="Nombres" /> <!-- Campo para nombres -->
+                <div class="campo">
+                  <label for="nombres">Nombre</label> <!-- Etiqueta para nombres -->
+                  <input type="text" id="nombres" name="nombres" placeholder="Ingrese su nombre" />
                 </div>
                 <div class="campo">
-                  <input type="text" id="primerapellido" name="primerapellido" placeholder="Primer Apellido" />
-                  <!-- Campo para primer apellido -->
+                  <label for="primerapellido">Primer Apellido</label> <!-- Etiqueta para primer apellido -->
+                  <input type="text" id="primerapellido" name="primerapellido" placeholder="Ingrese su primer apellido" />
                 </div>
                 <div class="campo">
-                  <input type="text" id="segundoapellido" name="segundoapellido" placeholder="Segundo Apellido" />
-                  <!-- Campo para segundo apellido -->
+                  <label for="segundoapellido">Segundo Apellido</label> <!-- Etiqueta para segundo apellido -->
+                  <input type="text" id="segundoapellido" name="segundoapellido" placeholder="Ingrese su segundo apellido" />
                 </div>
               </div>
+
               <!-- Campos dobles para folio de cita y correo -->
               <div class="campos-dobles">
                 <div class="campo">
-                  <input type="text" id="foliodecita" name="foliodecita" placeholder="Folio de cita" required />
-                  <!-- Campo para folio de cita -->
+                  <label for="foliodecita">Folio de cita</label> <!-- Etiqueta para folio de cita -->
+                  <input type="text" id="foliodecita" name="foliodecita" placeholder="Ingrese su folio de cita" required />
                 </div>
                 <div class="campo">
-                  <input type="email" id="correo" name="correo" placeholder="Correo" required />
-                  <!-- Campo para correo -->
+                  <label for="correo">Correo</label> <!-- Etiqueta para correo -->
+                  <input type="email" id="correo" name="correo" placeholder="Ingrese su correo" required />
                 </div>
               </div>
+
+              <!-- Botón para continuar -->
               <button type="submit" class="accion"
                 style="left: 46%;bottom: 35%;text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px; width: 150px;">
                 Continuar

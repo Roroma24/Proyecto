@@ -195,10 +195,10 @@ body{
 }
 
 .text_style{
-    text-align: center;
-    justify-items: center;
-    background-color: #bebebe82;
-    border-radius: 2%;
-    font-size: 30px;
-    color: #000000;
+   text-align: center;  /* Alinea el texto al centro */
+   justify-items: center; /* Centra los elementos hijos dentro del contenedor en el eje horizontal si se usa grid */
+   background-color: #bebebe82; /* Asigna un color de fondo gris con algo de transparencia */
+   border-radius: 2%; /* Aplica esquinas redondeadas con un pequeño radio */
+   font-size: 30px; /* Establece un tamaño de fuente grande */
+   color: #000000; /* Define el color del texto como negro */
 }

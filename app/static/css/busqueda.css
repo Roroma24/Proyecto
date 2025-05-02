@@ -14,47 +14,47 @@ Este archivo contiene los estilos CSS para la página de búsqueda de la aplicac
 /* Estilo general del cuerpo de la página */
 body {
   background-color: #fff; /* Fondo blanco para la página */
-  font-family: Arial, sans-serif; /* Establece la fuente de la página */
+  font-family: Arial, sans-serif; /* Fuente sans-serif legible */
 }
 
 /* Estilos para la sección principal */
 section {
-  width: auto px; /* Ancho fijo para la sección */
-  margin: 10px auto; /* Centra la sección y añade un margen superior e inferior */
+  width: auto; /* Ancho automático (corregido: antes decía "auto px") */
+  margin: 10px auto; /* Margen vertical y centrado horizontal */
 }
 
 /* Contenedor principal que utiliza Flexbox para alinear los elementos */
 .container {
-  display: flex; /* Usamos Flexbox para organizar los elementos */
-  align-items: center; /* Alineación vertical centrada */
-  justify-content: space-between; /* Espaciado uniforme entre los elementos */
-  width: auto; /* El ancho se ajusta al contenido */
-  margin: 10px auto; /* Márgenes automáticos para centrar el contenedor */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  margin: 10px auto;
 }
 
-/* Estilos para el título con iconos */
+/* Estilos para la sección con íconos y título */
 .icon-title {
   display: flex;
   align-items: center;
-  gap: 15px; /* Espaciado entre iconos */
+  gap: 15px; /* Espacio entre el icono y el texto */
 }
 
-/* Estilo para cada icono */
+/* Estilo para cada icono redondo */
 .icon {
-  width: 90px; /* Ancho de cada icono */
-  height: 90px; /* Alto de cada icono */
-  background-image: url('imagen/logo.png'); /* Fondo con imagen de los iconos */
-  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+  width: 90px;
+  height: 90px;
+  background-image: url('imagen/logo.png');
+  border-radius: 40%;
 }
 
-/* Estilo del título principal */
+/* Estilo del texto del título principal */
 .titulo-principal {
-  font-size: 50px; /* Tamaño grande de la fuente */
-  font-weight: bold; /* Texto en negrita */
-  margin: 0; /* Eliminar márgenes */
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0;
 }
 
-/* Estilos para el contenedor 1 */
+/* Contenedor adicional 1 */
 .container_1 {
   display: flex;
   align-items: center;
@@ -63,14 +63,14 @@ section {
   margin: 10px auto;
 }
 
-/* Estilos para el contenedor 2 con posición absoluta */
+/* Contenedor adicional 2 en posición absoluta */
 .container_2 {
-  position: absolute; /* Posicionamiento absoluto */
+  position: absolute;
   top: 12px;
   right: 200px;
 }
 
-/* Estilos para el contenedor 3 con dimensiones fijas */
+/* Contenedor adicional 3 con dimensiones fijas */
 .container_3 {
   width: 1400px;
   height: 720px;
@@ -78,11 +78,11 @@ section {
   flex-direction: column;
   align-items: center;
   margin: 20px auto;
-  background-color: #fff; /* Fondo blanco */
-  border-radius: 20px; /* Bordes redondeados */
+  background-color: #fff;
+  border-radius: 20px;
 }
 
-/* Estilos para el contenedor 4 */
+/* Contenedor adicional 4 tipo grid-flex */
 .container_4 {
   display: flex;
   align-items: center;
@@ -92,201 +92,208 @@ section {
   grid-column: auto;
 }
 
-/* Barra de iconos con separación */
+/* Barra de iconos con espacio entre ellos */
 .icon-bar {
   display: flex;
   align-items: center;
-  gap: 40px; /* Espaciado entre los iconos */
+  gap: 40px;
 }
 
-/* Estilo para los botones */
+/* Estilo para los botones con imagen de fondo */
 .btn {
-  width: 90px; /* Ancho del botón */
-  height: 90px; /* Alto del botón */
-  background-color: #fff; /* Fondo blanco para el botón */
-  background-image: url('imagen/logoregistro.png'); /* Imagen de fondo para el botón */
-  background-size: cover; /* Ajustar la imagen para que cubra el botón */
-  border-radius: 40%; /* Bordes redondeados para el botón */
-  border: none; /* Sin borde por defecto */
-  cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
+  width: 90px;
+  height: 90px;
+  background-color: #fff;
+  background-image: url('imagen/logoregistro.png');
+  background-size: cover;
+  border-radius: 40%;
+  border: none;
+  cursor: pointer;
 }
 
-/* Estilos para el menú desplegable */
+/* Contenedor para menú desplegable */
 .dropdown {
   position: relative;
-  display: inline-block; /* Hacer que el menú sea un bloque en línea */
+  display: inline-block;
 }
 
+/* Menú desplegable oculto por defecto */
 .dropdown-content {
-  display: none; /* Oculta el contenido del menú por defecto */
+  display: none;
   position: absolute;
-  background-color: #f9f9f9; /* Fondo gris claro para el menú */
+  background-color: #f9f9f9;
   min-width: 120px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Sombra alrededor del menú */
-  z-index: 1; /* Asegura que el menú esté por encima de otros elementos */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
+/* Estilo para los enlaces del menú desplegable */
 .dropdown-content a {
   display: block;
   padding: 8px 12px;
-  text-decoration: none; /* Elimina el subrayado de los enlaces */
-  color: black; /* Color negro para los enlaces */
+  text-decoration: none;
+  color: black;
 }
 
+/* Hover sobre enlaces del menú */
 .dropdown-content a:hover {
-  background-color: #ddd; /* Fondo gris oscuro al pasar el ratón sobre los enlaces */
+  background-color: #ddd;
 }
 
+/* Mostrar menú al pasar el mouse */
 .dropdown:hover .dropdown-content {
-  display: block; /* Muestra el menú al pasar el ratón sobre el contenedor */
+  display: block;
 }
 
-/* Estilo para la barra */
+/* Barra decorativa gris */
 .bar {
   width: 400px;
   height: 70px;
-  background-color: #9c9898; /* Color gris para la barra */
-  border-radius: 40px; /* Bordes redondeados */
+  background-color: #9c9898;
+  border-radius: 40px;
 }
 
-/* Estilo para la imagen de fondo */
+/* Imagen de fondo para toda la página */
 .image {
-  width: auto; /* Ocupa el 100% del ancho de la ventana */
-  height: 90vh; /* Ocupa el 100% del alto de la ventana */
-  background-image: url('imagen/fondo.jpeg'); /* Imagen de fondo */
-  background-size: cover; /* Ajustar la imagen para cubrir todo el contenedor */
-  background-repeat: no-repeat; /* Evita la repetición de la imagen */
-  background-position: center; /* Centra la imagen */
+  width: auto;
+  height: 90vh;
+  background-image: url('imagen/fondo.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   margin: 0;
   padding: 0;
 }
 
-/* Estilo para el primer logo */
+/* Logo principal circular */
 .logo_1 {
   width: 160px;
   height: 160px;
-  background-image: url('imagen/logo_search.png'); /* Fondo gris claro para el logo */
+  background-image: url('imagen/logo_search.png');
   background-size: cover;
-  border-radius: 40%; /* Bordes redondeados para el logo */
-  margin: 20px auto; /* Centra el logo con márgenes */
+  border-radius: 40%;
+  margin: 20px auto;
 }
 
-/* Estilo para el título de la sección */
+/* Título con borde punteado */
 .title {
   width: 1000px;
   height: 120px;
-  border: 2px dashed #000000; /* Borde punteado negro */
+  border: 2px dashed #000000;
   margin: 10px auto;
 }
 
-/* Estilo para el botón siguiente */
+/* Botón "Siguiente" grande */
 .next {
-  background-color: #656464; /* Fondo gris oscuro para el botón */
-  border-radius: 40px; /* Bordes redondeados */
-  border: none; /* Sin borde por defecto */
-  cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
+  background-color: #656464;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
   margin: 10px auto;
-  color: #fff; 
-  font-size: 24px; 
-  font-weight: bolder; 
-  align-items: center; 
-  justify-content: center; 
-  height: 50px; 
-  width: 150px; 
+  color: #fff;
+  font-size: 24px;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 150px;
   right: -40%;
   bottom: -10%;
   position: relative;
 }
 
-/* Estilo para el botón siguiente pequeño */
+/* Botón "Siguiente" pequeño */
 .next_1 {
   width: 120px;
   height: 50px;
-  background-color: #656464; /* Fondo gris oscuro para el botón */
-  border-radius: 40px; /* Bordes redondeados */
-  border: none; /* Sin borde por defecto */
-  cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
+  background-color: #656464;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
 }
 
-/* Estilos para la parte superior con botones alineados */
+/* Contenedor superior con botones en fila */
 .nexttop {
   display: flex;
   align-items: center;
-  gap: 40px; /* Espaciado entre los elementos */
+  gap: 40px;
 }
 
-/* Estilo para el formulario */
+/* Estilo general del formulario */
 .formulario {
   width: 1000px;
   padding: 20px;
-  background-color: #fff; /* Fondo blanco para el formulario */
-  border-radius: 8px; /* Bordes redondeados para el formulario */
-  text-align: center; /* Centrado del texto en el formulario */
+  background-color: #fff;
+  border-radius: 8px;
+  text-align: left;
 }
 
-/* Estilo para cada campo del formulario */
+/* Estilo para los campos individuales del formulario */
 .campo {
-  flex: 1 1 calc(25% - 30px); /* Mantiene la distribución horizontal original */
+  flex: 1 1 calc(25% - 30px);
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Espacio entre label e input */
-  background-color: #fff;         /* Fondo blanco que cubre título e input */
-  border: 1px solid #333;         /* Borde para delimitar el área del grupo */
-  border-radius: 4px;             /* Bordes redondeados */
-  padding: 10px;                  /* Espaciado interno */
-  box-sizing: border-box;         /* Asegura que el padding no modifique el tamaño total */
+  gap: 10px;
+  background-color: #fff;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-weight: bold;
 }
 
-/* Estilo para los inputs dentro del formulario */
+/* Estilo para los inputs de los campos */
 .campo input {
-  width: calc(100% - 22px); /* Ancho que ocupa todo el campo menos los bordes */
-  padding: 10px; /* Espaciado interno */
-  border: 1px solid #ddd; /* Borde gris claro */
-  border-radius: 4px; /* Bordes redondeados */
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-/* Estilo para los campos dobles (para cuando hay dos inputs en una fila) */
+/* Contenedor para campos dobles en línea */
 .campos-dobles {
   display: flex;
   gap: 40px;
-  flex-wrap: wrap; /* Salta a nueva línea si no hay espacio */
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 40px;
 }
 
-/* Estilo para cada campo dentro de los campos dobles */
+/* Cada campo en un contenedor doble ocupa 30% */
 .campos-dobles .campo {
-  width: 30%; /* Ancho de cada campo */
+  width: 30%;
 }
 
-/* Estilo para el botón de cancelar */
+/* Botón de cancelar */
 .cancelar {
-  background-color: #6c757d; /* Fondo gris para el botón */
-  color: white; /* Texto blanco */
-  padding: 10px 20px; /* Espaciado interno */
-  border: none; /* Sin borde */
-  border-radius: 4px; /* Bordes redondeados */
-  cursor: pointer; /* Muestra un puntero cuando el cursor pasa sobre el botón */
-  margin-top: 20px; /* Margen superior */
-  align-self: flex-end; /* Alinea el botón al final */
+  background-color: #6c757d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  align-self: flex-end;
 }
 
-/* Estilo para el botón de cancelar al pasar el ratón sobre él */
+/* Hover para botón de cancelar */
 .cancelar:hover {
-  background-color: #5a6268; /* Cambio de color al pasar el ratón */
+  background-color: #5a6268;
 }
 
-.accion{
-  width: 160px; /* Ancho del botón de acción */
-  height: 50px; /* Altura del botón de acción */
-  background-color: #656464; /* Fondo gris oscuro para el botón */
-  border-radius: 25px; /* Bordes redondeados para el botón */
-  border: none; /* Sin borde para el botón */
-  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
-  margin: auto; /* Centra el botón dentro de su contenedor */
+/* Botón de acción principal */
+.accion {
+  width: 160px;
+  height: 50px;
+  background-color: #656464;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  margin: auto;
 }
 
-.text_style{
+/* Estilo para texto estilizado centrado */
+.text_style {
   text-align: center;
   justify-items: center;
   font-size: 20px;
