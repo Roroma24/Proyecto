@@ -69,7 +69,7 @@ Descripción:
                         <form action="{{ url_for('procesar_cita') }}" method="POST">
                             <input type="hidden" name="opcion" value="{{ opcion }}">
                             <a href="" style="text-decoration: none;">
-                                <div class="accion">
+                                <div class="accion1">
                                     Continuar
                                 </div>
                             </a>
@@ -85,14 +85,40 @@ Descripción:
                             <h2 class="campos">Nombre:</h2>
                             <h2 class="campos">Primer Apellido:</h2>
                             <h2 class="campos">Segundo Apellido:</h2>
-                            
+
+                        </div>
+                        <div class="datos-paciente2">
+                            <h2 class="campos"></h2>
+                            <h2 class="campos"></h2>
+                            <h2 class="campos"></h2>
                         </div>
                         <div class="datos-paciente3">
                             <h2 class="campos">Edad:</h2>
                             <h2 class="campos">Correo:</h2>
                             <h2 class="campos">Curp:</h2>
                         </div>
-                    </div>
+                        <div class="datos-paciente4">
+                            <h2 class="campos"></h2>
+                            <h2 class="campos"></h2>
+                            <h2 class="campos"></h2>
+                        </div>
+                            <!-- Dos cajas punteadas en posición horizontal que dicen Alergias y Discapacidad-->
+                            <div class="container-horizontal">
+                            <div class="alergias">
+                                <h2 class="campos">Alergias:</h2>
+                            </div>
+                            <div class="discapacidad">
+                                <h2 class="campos">Discapacidad:</h2>
+                            </div>
+                        </div>
+                        <form action="{{ url_for('procesar_cita') }}" method="POST">
+                            <input type="hidden" name="opcion" value="{{ opcion }}">
+                            <a href="" style="text-decoration: none;">
+                                <div class="accion2">
+                                    Historial
+                                </div>
+                            </a>
+                        </form>
                 </div>
             </div>
         </div>

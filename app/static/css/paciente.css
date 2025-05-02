@@ -91,24 +91,29 @@ section {
 .flex-container {
   display: flex;
   justify-content: space-between;
-  align-items: stretch; /* <<< Cambia de flex-start a stretch */
+  align-items: stretch;
+  /* <<< Cambia de flex-start a stretch */
   gap: 50px;
   padding: 20px;
-  height: 90%; /* <<< Ocupar todo el alto de la ventana */
+  height: 90%;
+  /* <<< Ocupar todo el alto de la ventana */
 }
 
-.Left, .Right {
+.Left,
+.Right {
   background-color: #fff;
   border-radius: 2%;
   flex: 1 1 0;
   width: 50%;
   padding: 20px;
   box-sizing: border-box;
-  height: 105%; /* <<< Ocupar todo el alto del contenedor padre */
+  height: 105%;
+  /* <<< Ocupar todo el alto del contenedor padre */
 }
 
 .Left {
-  width: 30%; /* Reduce el ancho del contenedor */
+  width: 30%;
+  /* Reduce el ancho del contenedor */
   height: 60%;
   align-content: center;
   padding: 20px;
@@ -373,18 +378,35 @@ section {
   /* Cambio de color al pasar el ratón */
 }
 
-.accion {
+.accion1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 15%;
   background-color: #000000;
   border-radius: 40px;
-  text-align: center;
   color: white;
   font-size: 20px;
   font-weight: bold;
   padding: 10px;
-  margin: 10px auto;
-  margin-top: 20px;
+  margin: 20px auto;
   cursor: pointer;
+}
+
+.accion2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #000000;
+  border-radius: 40px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10%;
+  margin: 20px auto;
+  cursor: pointer;
+  margin-top: 50%;
 }
 
 .text_style {
@@ -408,6 +430,7 @@ section {
   text-align: center;
   /* Alinea el texto dentro del input */
 }
+
 .titulo1 {
   font-size: 34px;
   /* Tamaño de fuente mediano */
@@ -435,6 +458,7 @@ section {
   text-align: center;
   /* Centrado del contenido dentro del campo */
 }
+
 .datos-paciente1 {
   font-size: 15px;
   /* Tamaño de fuente mediano */
@@ -453,6 +477,26 @@ section {
   gap: 5%;
   /* Espaciado entre los datos */
 }
+
+.datos-paciente2 {
+  font-size: 15px;
+  /* Tamaño de fuente mediano */
+  display: flex;
+  /* Usamos Flexbox para organizar los datos */
+  flex-direction: row;
+  /* Alineación horizontal */
+  justify-content: space-between;
+  /* Espaciado uniforme entre los datos */
+  text-align: center;
+  /* Centrado del texto */
+  margin: 20px auto;
+  /* Espaciado entre los campos y centrado horizontalmente */
+  color: #000000;
+  /* Color gris oscuro */
+  gap: 5%;
+  /* Espaciado entre los datos */
+}
+
 .datos-paciente3 {
   font-size: 15px;
   /* Tamaño de fuente mediano */
@@ -470,4 +514,79 @@ section {
   /* Color gris oscuro */
   gap: 5%;
   /* Espaciado entre los datos */
+}
+
+.datos-paciente4 {
+  font-size: 15px;
+  /* Tamaño de fuente mediano */
+  display: flex;
+  /* Usamos Flexbox para organizar los datos */
+  flex-direction: row;
+  /* Alineación horizontal */
+  justify-content: space-between;
+  /* Espaciado uniforme entre los datos */
+  text-align: center;
+  /* Centrado del texto */
+  margin: 20px auto;
+  /* Espaciado entre los campos y centrado horizontalmente */
+  color: #000000;
+  /* Color gris oscuro */
+  gap: 5%;
+  /* Espaciado entre los datos */
+}
+
+.datos-delicados {
+  width: 50%;
+  height: 10%;
+  font-size: 15px;
+  /* Tamaño de fuente mediano */
+  display: flex;
+  /* Usamos Flexbox para organizar los datos */
+  flex-direction: row;
+  /* Alineación horizontal */
+  justify-content: space-between;
+  /* Espaciado uniforme entre los datos */
+  text-align: center;
+  /* Centrado del texto */
+  margin: 20px auto;
+  /* Espaciado entre los campos y centrado horizontalmente */
+  color: #000000;
+  /* Color gris oscuro */
+  gap: 5%;
+  /* Espaciado entre los datos */
+  border: 2px dashed #000;
+  flex-direction: row;
+  /* Alineación horizontal */
+}
+
+.alergias,
+.discapacidad {
+  height: 70%;
+  width: 65%;
+  /* Reduce el ancho para que ambas cajas quepan en una fila */
+  height: auto;
+  /* Ajusta el alto automáticamente */
+  background-color: #fff;
+  /* Fondo blanco para las cajas */
+  border: 2px dashed #000;
+  /* Borde punteado negro */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* Alinea el texto a la parte superior */
+  text-align: center;
+  margin: 10%;
+  /* Elimina márgenes adicionales */
+  box-sizing: border-box;
+  padding: 20%;
+}
+
+.container-horizontal {
+  display: flex;
+  justify-content: center;
+  /* Espaciado uniforme entre las cajas */
+  align-items:  center;
+  /* Alineación vertical centrada */
+  gap: 10%;
+  /* Espaciado entre las cajas */
 }
