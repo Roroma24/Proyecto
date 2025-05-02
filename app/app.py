@@ -21,7 +21,7 @@ def conectar_db():  # Función para conectar a la base de datos
         conn = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Meliodas1.",  # Se ajusta según la configuración
+            password="Ror@$2405",  # Se ajusta según la configuración
             database="hospital",  # Nombre de la base de datos
         )
         print("✅ Conexión exitosa a la base de datos.")
@@ -76,14 +76,70 @@ def registro():
     return render_template('registrouser.html')  # Renderiza la página de registro de usuario.
 
 # Ruta para la página de registro de doctor (registrodoc.html).
-@app.route('/newdoc')
+@app.route('/newdoc', methods=['GET', 'POST'])
 def newdoc():
+    if request.method == 'POST':
+        cedula = request.form.get('cedula')
+        curp = request.form.get('curp')
+        rfc = request.form.get('rfc')
+        nombre = request.form.get('nombre')
+        apellido1 = request.form.get('apellido1')
+        apellido2 = request.form.get('apellido2')
+        telefono = request.form.get('telefono')
+        correo = request.form.get('correo')
+        password = request.form.get('password')
+        
+        conn = conectar_db()
+        if conn:
+            try:
+                cursor = conn.cursor()
+                cursor.execute("SET @new_id_doctor = 0;")
+                cursor.callproc('registro_doctor', (nombre, apellido1, apellido2, correo, password, telefono, cedula, curp, rfc, '@new_id_doctor'))
+                cursor.execute("SELECT @new_id_doctor;")
+                new_id = cursor.fetchone()[0]
+                print(f"🆕 Nuevo ID de doctor registrado: {new_id}")
+                conn.commit()
+                cursor.close()
+                conn.close()
+                return redirect(url_for('index'))
+            except mysql.connector.Error as err:
+                return f"❌ Error al registrar al doctor: {err}"
+            
     return render_template('newdoctor.html')  # Renderiza la página de registro de doctor.
 
 # Ruta para la página de reserva de cita (reservation.html).
-@app.route('/reserva')
+@app.route('/reserva', methods=['GET', 'POST'])
 def reserva():
-    return render_template('reservation.html')  # Renderiza la página HTML llamada 'reservation.html'.
+    if request.method == 'POST':
+        curp = request.form.get('curp')
+        edad = request.form.get('edad')
+        telefono = request.form.get('telefono')
+        alergias = request.form.get('alergias')
+        discapacidad = request.form.get('discapacidad')
+        fecha = request.form.get('fecha')
+        horario = request.form.get('horarios')
+        ubicacion = request.form.get('ubicacion')
+        correo = request.form.get('correo')
+        confirmacion = request.form.get('confirmacion')
+        
+        if correo != confirmacion:
+            return "⚠️ Los correos no coinciden. Intenta de nuevo."
+        
+        conn = conectar_db()
+        if conn:
+            try:
+                cursor = conn.cursor()
+                cursor.callproc('insertar_cita', (
+                    curp, int(edad), telefono, alergias, discapacidad, fecha, horario, ubicacion
+                    ))
+                conn.commit()
+                cursor.close()
+                conn.close()
+                return redirect(url_for('index'))
+            except mysql.connector.Error as err:
+                return f"❌ Error al registrar la cita: {err}"
+ 
+    return render_template('reservation.html')
 
 # Ruta para la página de métodos de pago (metodopago.html).
 @app.route('/pago')
