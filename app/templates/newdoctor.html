@@ -13,6 +13,7 @@ apellidos y correo electrónico.
 -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
@@ -26,33 +27,40 @@ apellidos y correo electrónico.
 
     <style>
         .form-group.cedula {
-            width: 30%; /* Reduce el ancho del grupo */
-            min-width: 250px; /* Evita que sea demasiado pequeño */
-            margin: 0 auto; /* Centra el elemento */
+            width: 30%;
+            /* Reduce el ancho del grupo */
+            min-width: 250px;
+            /* Evita que sea demasiado pequeño */
+            margin: 0 auto;
+            /* Centra el elemento */
         }
     </style>
 </head>
+
 <body>
 
-<!-- Contenedor principal de los botones (fuera del contenedor principal de los elementos) -->
-<div class="container-buttons" style="position: absolute; top: 10px; right: 10px; display: flex; padding: 10px;">
-    <!-- Botón de regresar -->
-    <a href="{{ url_for('registro') }}" style="text-decoration: none; margin-right: 10px;">
-        <div class="btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px">
-            Regresar
-        </div>
-    </a>
-    
-    <!-- Botón de salida -->
-    <a href="{{ url_for('index') }}" style="text-decoration: none;">
-        <div class="exit_btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px">
-            Salir
-        </div>
-    </a>
-</div>
+    <!-- Contenedor principal de los botones (fuera del contenedor principal de los elementos) -->
+    <div class="container-buttons" style="position: absolute; top: 10px; right: 10px; display: flex; padding: 10px;">
+        <!-- Botón de regresar -->
+        <a href="{{ url_for('registro') }}" style="text-decoration: none; margin-right: 10px;">
+            <div class="btn"
+                style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px">
+                Regresar
+            </div>
+        </a>
+
+        <!-- Botón de salida -->
+        <a href="{{ url_for('index') }}" style="text-decoration: none;">
+            <div class="exit_btn"
+                style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px">
+                Salir
+            </div>
+        </a>
+    </div>
 
     <!-- Contenedor principal de la página de registro -->
-    <div class="container-body" style="margin-top: 80px;"> <!-- Ajuste el margen superior para que no se superpongan los botones -->
+    <div class="container-body" style="margin-top: 80px;">
+        <!-- Ajuste el margen superior para que no se superpongan los botones -->
         <!-- Sección de imagen del perfil -->
         <div class="profile"></div>
 
@@ -67,7 +75,7 @@ apellidos y correo electrónico.
         </div>
 
         <!-- Formulario de registro de usuario -->
-        <form>
+        <form method="POST" action="{{ url_for('newdoc') }}">
             <!-- Primera fila: Cédula Profesional -->
             <div class="form-row">
                 <div class="form-group">
@@ -83,7 +91,7 @@ apellidos y correo electrónico.
                     <input type="text" id="rfc" name="rfc" placeholder="Ingresa tu RFC">
                 </div>
             </div>
-        
+
             <!-- Segunda fila: Nombre, Primer Apellido y Segundo Apellido -->
             <div class="form-row">
                 <div class="form-group">
@@ -99,20 +107,20 @@ apellidos y correo electrónico.
                     <input type="text" id="apellido2" name="apellido2" placeholder="Ingresa tu segundo apellido">
                 </div>
             </div>
-        
+
             <!-- Tercera fila: Correo y Contraseña -->
             <div class="form-row">
                 <div class="form-group ">
                     <label for="telefono">Teléfono</label>
-                    <input type="text" id="telefono" name="telefon" placeholder="Ingresa tu teléfono">
+                    <input type="text" id="telefono" name="telefono" placeholder="Ingresa tu teléfono">
                 </div>
                 <div class="form-group">
                     <label for="correo">Correo</label>
                     <input type="email" id="correo" name="correo" placeholder="Correo electrónico">
                 </div>
                 <div class="form-group">
-                    <label for="contraseña">Contraseña</label>
-                    <input type="password" id="contraseña" name="contraseña" placeholder="Ingresa tu contraseña">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña">
                 </div>
             </div>
 
@@ -120,10 +128,13 @@ apellidos y correo electrónico.
             <div class="info">
                 <div class="buttons">
                     <!-- Botón de continuar -->
-                    <div class="btn" style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</div>
+                    <button type="submit" class="btn"
+                        style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</button>
+
                 </div>
             </div>
         </form>
     </div>
 </body>
+
 </html>

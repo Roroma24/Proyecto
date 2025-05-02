@@ -38,6 +38,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')  # Renderiza la página HTML llamada 'index.html'.
 
+@app.route('/docindex')
+def docindex():
+    return render_template('indexdoc.html')
+
 # Ruta para la página de login (login.html).
 @app.route('/login')
 def login():
@@ -72,8 +76,35 @@ def registro():
     return render_template('registrouser.html')  # Renderiza la página de registro de usuario.
 
 # Ruta para la página de registro de doctor (registrodoc.html).
-@app.route('/newdoc')
+@app.route('/newdoc', methods=['GET', 'POST'])
 def newdoc():
+    if request.method == 'POST':
+        cedula = request.form.get('cedula')
+        curp = request.form.get('curp')
+        rfc = request.form.get('rfc')
+        nombre = request.form.get('nombre')
+        apellido1 = request.form.get('apellido1')
+        apellido2 = request.form.get('apellido2')
+        telefono = request.form.get('telefono')
+        correo = request.form.get('correo')
+        password = request.form.get('password')
+        
+        conn = conectar_db()
+        if conn:
+            try:
+                cursor = conn.cursor()
+                cursor.execute("SET @new_id_doctor = 0;")
+                cursor.callproc('registro_doctor', (nombre, apellido1, apellido2, correo, password, telefono, cedula, curp, rfc, '@new_id_doctor'))
+                cursor.execute("SELECT @new_id_doctor;")
+                new_id = cursor.fetchone()[0]
+                print(f"🆕 Nuevo ID de doctor registrado: {new_id}")
+                conn.commit()
+                cursor.close()
+                conn.close()
+                return redirect(url_for('index'))
+            except mysql.connector.Error as err:
+                return f"❌ Error al registrar al doctor: {err}"
+            
     return render_template('newdoctor.html')  # Renderiza la página de registro de doctor.
 
 # Ruta para la página de reserva de cita (reservation.html).
