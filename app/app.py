@@ -38,6 +38,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')  # Renderiza la página HTML llamada 'index.html'.
 
+@app.route('/docindex')
+def docindex():
+    return render_template('indexdoc.html')
+
 # Ruta para la página de login (login.html).
 @app.route('/login')
 def login():

@@ -288,7 +288,7 @@ select {
 
 /* Estilo para el botón fuera del contenedor */
 .submit-btn {
-  position: absolute; /* Mantenerlo fijo en la pantalla */
+  position: static; /* Mantenerlo fijo en la pantalla */
   bottom: 20px;    /* Distancia desde el fondo */
   right: 415px;     /* Distancia desde el lado derecho */
   background-color: #656464;
@@ -357,4 +357,13 @@ select {
   height: 90px;
   background-image: url("imagen/logo.png");
   border-radius: 40%; /* NO es completamente circular, es más un óvalo redondeado */
+}
+
+.Paypal{
+  width: 160px; /* Ancho del logo */
+  height: 160px; /* Alto del logo */
+  background-image: url('imagen/logo_reserva.png'); /* Fondo gris para el logo */
+  background-size: cover;
+  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+  margin: 20px auto; /* Márgenes automáticos para centrar */
 }
