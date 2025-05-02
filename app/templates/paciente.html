@@ -49,8 +49,7 @@ Descripción:
                 </div>
             </div>
         </div>
-
-        <!-- Sección de imagen y formulario -->
+        <!-- Contenedor principal para la imagen y el formulario -->
         <!-- Sección de imagen y formulario -->
         <div class="image">
             <div class="container_1 flex-container">
@@ -62,19 +61,9 @@ Descripción:
                     <div class="formulario">
                         <div class="campos-dobles">
                             <div class="campo">
-                                <input type="text" id="nombres" placeholder="Nombres" />
+                                <input type="text" id="idpaciente" placeholder="Id del paciente" />
                             </div>
-                            <div class="campo">
-                                <input type="text" id="primerapellido" placeholder="Primer Apellido" />
-                            </div>
-                        </div>
-                        <div class="campos-dobles">
-                            <div class="campo">
-                                <input type="text" id="segundoapellido" placeholder="Segundo Apellido" />
-                            </div>
-                            <div class="campo">
-                                <input type="text" id="id_paciente" name="id_paciente" placeholder="Id del Paciente" required />
-                            </div>
+
                         </div>
 
                         <form action="{{ url_for('procesar_cita') }}" method="POST">
@@ -90,9 +79,19 @@ Descripción:
 
                 <!-- Lado Derecho -->
                 <div class="Right">
-                    <div class="cuadro">
-                        <h2>Información Importante</h2>
-                        <p>Este cuadro sirve para mostrar información de manera destacada.</p>
+                    <div class="datos">
+                        <h2 class="titulo1">Datos del paciente</h2>
+                        <div class="datos-paciente1">
+                            <h2 class="campos">Nombre:</h2>
+                            <h2 class="campos">Primer Apellido:</h2>
+                            <h2 class="campos">Segundo Apellido:</h2>
+                            
+                        </div>
+                        <div class="datos-paciente3">
+                            <h2 class="campos">Edad:</h2>
+                            <h2 class="campos">Correo:</h2>
+                            <h2 class="campos">Curp:</h2>
+                        </div>
                     </div>
                 </div>
             </div>
