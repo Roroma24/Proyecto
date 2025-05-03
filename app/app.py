@@ -38,7 +38,12 @@ app.secret_key = 'aL#9v@!fQz7k2Wm3T$xB1eNpLuY6rVc0'
 # Ruta para la página principal (index.html).
 @app.route('/')
 def index():
-    return render_template('index.html', nombre=session.get('nombre') if 'user_id' in session else None)
+    nombre = session.get('nombre') if 'user_id' in session else None
+    rol = session.get('rol') if 'user_id' in session else None
+
+    if rol == 'Paciente':
+        return render_template('index.html', nombre=nombre)
+    return render_template('index.html')
 
 @app.route('/docindex')
 def docindex():
@@ -108,7 +113,7 @@ def registro():
             except mysql.connector.Error as err:
                 return f"❌ Error al insertar datos: {err}"
 
-    return render_template('registrouser.html')  # Renderiza la página de registro de usuario.
+    return render_template('newuser.html')  # Renderiza la página de registro de usuario.
 
 # Ruta para la página de registro de doctor (registrodoc.html).
 @app.route('/newdoc', methods=['GET', 'POST'])

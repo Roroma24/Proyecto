@@ -42,15 +42,15 @@ Página de inicio para paciente. Permite navegar a las vistas de login, registro
 
             <!-- Contenido del menú desplegable -->
             <div class="dropdown-content">
-                {% if session['nombre'] in session %}
-                    <span style="color: black; font-weight: bold;">{{ session['nombre'] }}</span>
-                    <a href="{{ url_for('logout') }}">Logout</a>
+                {% if session['nombre'] %}
+                <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
+                <a href="{{ url_for('logout') }}">Logout</a>
                 {% else %}
-                    <!-- Enlace a la vista de login -->
-                    <a href="{{ url_for('login') }}">Login</a>
+                <!-- Enlace a la vista de login -->
+                <a href="{{ url_for('login') }}">Login</a>
 
-                    <!-- Enlace a la vista de registro de un nuevo usuario -->
-                    <a href="{{ url_for('registro') }}">New user</a>
+                <!-- Enlace a la vista de registro de un nuevo usuario -->
+                <a href="{{ url_for('registro') }}">New user</a>
                 {% endif %}
             </div>
         </div>

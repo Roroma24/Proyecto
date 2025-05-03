@@ -187,8 +187,8 @@ body{
 .next{
     width: 180px; /* Ancho del botón */
     height: 40px; /* Alto del botón */
-    background-color: #494949; /* Fondo gris oscuro para el botón */
-    border-radius: 10px; /* Bordes redondeados */
+    background-color: #000000; /* Fondo gris oscuro para el botón */
+    border-radius: 25px; /* Bordes redondeados */
     border: none; /* Sin borde por defecto */
     cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
     margin: 10px auto; /* Márgenes automáticos para centrarlo */

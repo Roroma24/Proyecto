@@ -84,12 +84,12 @@ body {
   align-items: center; /* Centra los elementos dentro del cuadro */
 }
 
-button.btn-continue {
+.btn-continue {
   display: block; /* Muestra el botón como un bloque */
   width: 180px; /* Ancho del botón */
   padding: 14px; /* Añade espacio dentro del botón */
   margin: 40px auto 0; /* Añade margen superior e inferior */
-  background-color: #656464; /* Color de fondo gris para el botón */
+  background-color: #000000; /* Color de fondo gris para el botón */
   color: #fff; /* Color del texto en blanco */
   border: none; /* Sin borde para el botón */
   border-radius: 25px; /* Bordes redondeados para el botón */
@@ -105,7 +105,7 @@ button.btn-continue {
   right: 20px; /* Ajusta la distancia desde la derecha */
   width: 180px; /* Ancho del botón */
   padding: 14px; /* Añade espacio dentro del botón */
-  background-color: #656464; /* Color de fondo gris para el botón */
+  background-color: #000000; /* Color de fondo gris para el botón */
   color: #fff; /* Color del texto en blanco */
   border: none; /* Sin borde para el botón */
   border-radius: 25px; /* Bordes redondeados para el botón */
