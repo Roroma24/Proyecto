@@ -24,8 +24,6 @@ body {
     /* Utiliza flexbox para organizar los elementos en fila */
     align-items: center;
     /* Alinea los elementos verticalmente al centro */
-    background-color: #fff;
-    /* Fondo blanco para el contenedor */
     justify-content: space-between;
     /* Distribuye los elementos uniformemente en la fila */
     width: auto;
@@ -115,11 +113,12 @@ body {
 
 /* BOTÓN DE ACCIÓN */
 .accion {
+    display: flex;
     width: 160px;
     /* Ancho del botón de acción */
     height: 50px;
     /* Altura del botón de acción */
-    background-color: #656464;
+    background-color: #000000;
     /* Fondo gris oscuro para el botón */
     border-radius: 25px;
     /* Bordes redondeados para el botón */
@@ -129,6 +128,12 @@ body {
     /* Cambia el cursor al pasar el mouse sobre el botón */
     margin: auto;
     /* Centra el botón dentro de su contenedor */
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
 }
 
 /* CONTENEDOR DESPLEGABLE */

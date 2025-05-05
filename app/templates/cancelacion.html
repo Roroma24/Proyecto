@@ -36,13 +36,17 @@ fecha de la cita a cancelar.
       <!-- Contenedor para botones de navegación -->
       <div class="container_2">
         <div class="nexttop">
-          <a href="{{ url_for('index') }}"> <!-- Enlace para salir -->
-            <div class="accion" style="text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;background-color: #656464">Inicio</div> <!-- Botón para ir a la página de inicio -->
+          <a href="{{ url_for('index') }}" style="text-decoration: none;"> <!-- Enlace para salir -->
+            <div class="accion">
+              Inicio
+            </div> <!-- Botón para ir a la página de inicio -->
           </a>
 
           <!-- Botón de regresar (sin enlace asignado aún) -->
           <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
-            <div class="accion" style="text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;background-color: #656464">Regresar</div>
+            <div class="accion">
+              Regresar
+            </div>
           </a>
 
           <!-- Menú desplegable -->
@@ -95,11 +99,11 @@ fecha de la cita a cancelar.
             <!-- Botón para cancelar la cita -->
             <div class="campo">
               <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
-                <div class="accion" style="position: absolute;left: 75%;bottom: 13%;text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px; width: 150px;background-color: #656464 ">
-                    Cancelar
+                <div class="accion" style="position: absolute;left: 75%;bottom: 13%;">
+                  Cancelar
                 </div>
-            </a>
-            
+              </a>
+
             </div>
           </div>
         </div>

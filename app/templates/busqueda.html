@@ -26,33 +26,34 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
 <body>
   <section>
     <!-- Contenedor principal -->
-    <div class="container_1">
+    <div class="container">
       <!-- Barra de iconos y título principal -->
-      <div class="icon-bar">
+      <div class="icon-title">
         <div class="icon"></div> <!-- Espacio para un ícono -->
         <h1 class="titulo-principal">Busqueda de cita</h1> <!-- Título principal -->
       </div>
       <!-- Contenedor para el botón de salir -->
       <div class="container_2">
-        <div class="nexttop">
-          <a href="{{ url_for('index') }}"> <!-- Enlace para salir -->
-            <button class="next">Salir</button> <!-- Botón para salir -->
-          </a>
-        </div>
-      </div>
-      <!-- Menú desplegable -->
-      <div class="dropdown">
-        <button class="btn"></button> <!-- Botón para abrir el menú -->
-        <div class="dropdown-content">
-          <a href="{{ url_for('login') }}">Login</a> <!-- Enlace a la página de inicio de sesión -->
-          <a href="{{ url_for('registro') }}">New user</a> <!-- Enlace para registrar un nuevo usuario -->
+        <!-- Enlace para salir -->
+        <a href="{{ url_for('index') }}" style="text-decoration: none;">
+          <button class="accion">
+            Salir
+          </button> <!-- Botón para salir -->
+        </a>
+        <!-- Menú desplegable -->
+        <div class="dropdown">
+          <button class="btn"></button> <!-- Botón para abrir el menú -->
+          <div class="dropdown-content">
+            <a href="{{ url_for('login') }}">Login</a> <!-- Enlace a la página de inicio de sesión -->
+            <a href="{{ url_for('registro') }}">New user</a> <!-- Enlace para registrar un nuevo usuario -->
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Sección de imagen y formulario -->
     <div class="image">
-      <div class="container_1">
+      <div class="container">
         <div class="container_3">
           <!-- Espacio para un logo -->
           <div class="logo_1"></div>
@@ -68,7 +69,7 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
             <!-- Formulario para enviar los datos -->
             <form action="{{ url_for('procesar_cita') }}" method="POST">
               <input type="hidden" name="opcion" value="{{ opcion }}"> <!-- Campo oculto para enviar una opción -->
-              
+
               <!-- Campos dobles para nombres y apellidos -->
               <div class="campos-dobles">
                 <div class="campo">
@@ -77,11 +78,13 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
                 </div>
                 <div class="campo">
                   <label for="primerapellido">Primer Apellido</label> <!-- Etiqueta para primer apellido -->
-                  <input type="text" id="primerapellido" name="primerapellido" placeholder="Ingrese su primer apellido" />
+                  <input type="text" id="primerapellido" name="primerapellido"
+                    placeholder="Ingrese su primer apellido" />
                 </div>
                 <div class="campo">
                   <label for="segundoapellido">Segundo Apellido</label> <!-- Etiqueta para segundo apellido -->
-                  <input type="text" id="segundoapellido" name="segundoapellido" placeholder="Ingrese su segundo apellido" />
+                  <input type="text" id="segundoapellido" name="segundoapellido"
+                    placeholder="Ingrese su segundo apellido" />
                 </div>
               </div>
 
@@ -89,7 +92,8 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
               <div class="campos-dobles">
                 <div class="campo">
                   <label for="foliodecita">Folio de cita</label> <!-- Etiqueta para folio de cita -->
-                  <input type="text" id="foliodecita" name="foliodecita" placeholder="Ingrese su folio de cita" required />
+                  <input type="text" id="foliodecita" name="foliodecita" placeholder="Ingrese su folio de cita"
+                    required />
                 </div>
                 <div class="campo">
                   <label for="correo">Correo</label> <!-- Etiqueta para correo -->
@@ -98,8 +102,7 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
               </div>
 
               <!-- Botón para continuar -->
-              <button type="submit" class="accion"
-                style="left: 46%;bottom: 35%;text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px; width: 150px;">
+              <button type="submit" class="accion">
                 Continuar
               </button>
             </form>

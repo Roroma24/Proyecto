@@ -13,14 +13,18 @@ Este archivo contiene los estilos CSS para la página de búsqueda de la aplicac
 
 /* Estilo general del cuerpo de la página */
 body {
-  background-color: #fff; /* Fondo blanco para la página */
-  font-family: Arial, sans-serif; /* Fuente sans-serif legible */
+  background-color: #fff;
+  /* Fondo blanco para la página */
+  font-family: Arial, sans-serif;
+  /* Fuente sans-serif legible */
 }
 
 /* Estilos para la sección principal */
 section {
-  width: auto; /* Ancho automático (corregido: antes decía "auto px") */
-  margin: 10px auto; /* Margen vertical y centrado horizontal */
+  width: auto;
+  /* Ancho automático (corregido: antes decía "auto px") */
+  margin: 10px auto;
+  /* Margen vertical y centrado horizontal */
 }
 
 /* Contenedor principal que utiliza Flexbox para alinear los elementos */
@@ -36,7 +40,8 @@ section {
 .icon-title {
   display: flex;
   align-items: center;
-  gap: 15px; /* Espacio entre el icono y el texto */
+  gap: 15px;
+  /* Espacio entre el icono y el texto */
 }
 
 /* Estilo para cada icono redondo */
@@ -55,7 +60,7 @@ section {
 }
 
 /* Contenedor adicional 1 */
-.container_1 {
+.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -65,9 +70,15 @@ section {
 
 /* Contenedor adicional 2 en posición absoluta */
 .container_2 {
-  position: absolute;
-  top: 12px;
-  right: 200px;
+  display: flex;
+  /* Utiliza flexbox para alinear los botones de acción */
+  align-items: center;
+  /* Alinea los elementos verticalmente */
+  justify-content: flex-end;
+  /* Alinea los elementos hacia el extremo derecho */
+  width: auto;
+  gap: 15px;
+  /* Espacio de 15px entre los botones */
 }
 
 /* Contenedor adicional 3 con dimensiones fijas */
@@ -161,8 +172,7 @@ section {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 0;
-  padding: 0;
+  margin-top: 0;
 }
 
 /* Logo principal circular */
@@ -185,7 +195,7 @@ section {
 
 /* Botón "Siguiente" grande */
 .next {
-  background-color: #656464;
+  background-color: #000000;
   border-radius: 40px;
   border: none;
   cursor: pointer;
@@ -200,23 +210,6 @@ section {
   right: -40%;
   bottom: -10%;
   position: relative;
-}
-
-/* Botón "Siguiente" pequeño */
-.next_1 {
-  width: 120px;
-  height: 50px;
-  background-color: #656464;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-}
-
-/* Contenedor superior con botones en fila */
-.nexttop {
-  display: flex;
-  align-items: center;
-  gap: 40px;
 }
 
 /* Estilo general del formulario */
@@ -264,32 +257,22 @@ section {
   width: 30%;
 }
 
-/* Botón de cancelar */
-.cancelar {
-  background-color: #6c757d;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 20px;
-  align-self: flex-end;
-}
-
-/* Hover para botón de cancelar */
-.cancelar:hover {
-  background-color: #5a6268;
-}
-
 /* Botón de acción principal */
 .accion {
+  display: flex;
   width: 160px;
   height: 50px;
-  background-color: #656464;
+  background-color: #000000;
   border-radius: 25px;
   border: none;
   cursor: pointer;
   margin: auto;
+  text-align: center;
+  color: #fff;
+  font-size: 25px;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Estilo para texto estilizado centrado */
@@ -297,5 +280,5 @@ section {
   text-align: center;
   justify-items: center;
   font-size: 20px;
-  color: #453a3e;
+  color: #000000;
 }

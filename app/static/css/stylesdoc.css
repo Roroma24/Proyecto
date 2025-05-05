@@ -81,7 +81,7 @@ body{
     position: absolute; /* Se posiciona absolutamente respecto al contenedor */
     background-color: #f9f9f9; /* Fondo blanco para el menú */
     min-width: 120px; /* Ancho mínimo del menú */
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Sombra para dar profundidad */
+    box-shadow: 0px 8px 16px #00000033; /* Sombra para dar profundidad */
     z-index: 1; /* Para asegurarse de que el menú esté por encima de otros elementos */
 }
 
@@ -193,14 +193,28 @@ body{
 }
 
 /* Botón siguiente */
-.next{
-    width: 180px; /* Ancho del botón */
-    height: 40px; /* Alto del botón */
-    background-color: #494949; /* Fondo gris oscuro para el botón */
-    border-radius: 10px; /* Bordes redondeados */
-    border: none; /* Sin borde por defecto */
-    cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
-    margin: 10px auto; /* Márgenes automáticos para centrarlo */
+.next {
+    display: flex;
+    width: 180px;
+    /* Ancho del botón */
+    height: 50px;
+    /* Alto del botón */
+    background-color: #000000;
+    /* Fondo gris oscuro para el botón */
+    border-radius: 25px;
+    /* Bordes redondeados */
+    border: none;
+    /* Sin borde por defecto */
+    cursor: pointer;
+    /* Muestra un puntero al pasar sobre el botón */
+    margin: 10px auto;
+    /* Márgenes automáticos para centrarlo */
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 25px;
+    text-align: center;
+    color: #fff;
 }
 
 .text_style{
