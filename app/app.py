@@ -12,7 +12,7 @@ Este archivo contiene el código para la creación de la aplicación web con Fla
 """
 
 # Importamos Flask y las funciones necesarias para manejar las rutas y plantillas HTML.
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import mysql.connector  # Cambiado para usar mysql.connector
 
 # ---------------- CONEXIÓN A LA BASE DE DATOS ----------------
@@ -88,98 +88,130 @@ def logout():
     return redirect(url_for('index'))
 
 # Ruta para la página de registro de usuario (registrouser.html).
-@app.route('/registro', methods=['GET', 'POST'])
-def registro():
-    if request.method == 'POST':
-        nombre = request.form.get('nombre')
-        apellido1 = request.form.get('apellido1')
-        apellido2 = request.form.get('apellido2')
-        correo = request.form.get('correo')
-        password = request.form.get('password')
+@app.route('/api/registro', methods=['GET', 'POST'])
+def api_registro():
+    if request.method == 'GET':
+        return render_template('newuser.html')
+    
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No se recibieron datos JSON"}), 400
+    
+    nombre = data.get('nombre')
+    apellido1 = data.get('apellido1')
+    apellido2 = data.get('apellido2')
+    correo = data.get('correo')
+    password = data.get('password')
 
-        conn = conectar_db()
-        if conn:
-            try:
-                cursor = conn.cursor()
-                cursor.execute("SET @new_id_usuario = 0;")
-                cursor.callproc('registro_usuario', (nombre, apellido1, apellido2, correo, password, '@new_id_usuario'))
-                cursor.execute("SELECT @new_id_usuario;")
-                new_id = cursor.fetchone()[0]
-                print(f"🆕 Nuevo ID de usuario registrado: {new_id}")
-                conn.commit()
-                cursor.close()
-                conn.close()
-                return redirect(url_for('index'))
-            except mysql.connector.Error as err:
-                return f"❌ Error al insertar datos: {err}"
-
-    return render_template('newuser.html')  # Renderiza la página de registro de usuario.
+    if not all([nombre, apellido1, apellido2, correo, password]):
+        return jsonify({"error": "Faltan campos requeridos "}), 400
+    
+    conn = conectar_db()
+    if conn:
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SET @new_id_usuario = 0;")
+            cursor.callproc('registro_usuario', (nombre, apellido1, apellido2, correo, password, '@new_id_usuario'))
+            cursor.execute("SELECT @new_id_usuario;")
+            new_id = cursor.fetchone()[0]
+            conn.commit()
+            cursor.close()
+            conn.close()
+            return jsonify({
+                "message": "Usuario registrado exitosamente",
+                "id_usuario": new_id
+            }), 201
+        except mysql.connector.Error as err:
+            return jsonify({"error": f"Error al insertar datos: {str(err)}"}), 500
+    else:
+        return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
 
 # Ruta para la página de registro de doctor (registrodoc.html).
-@app.route('/newdoc', methods=['GET', 'POST'])
-def newdoc():
-    if request.method == 'POST':
-        cedula = request.form.get('cedula')
-        curp = request.form.get('curp')
-        rfc = request.form.get('rfc')
-        nombre = request.form.get('nombre')
-        apellido1 = request.form.get('apellido1')
-        apellido2 = request.form.get('apellido2')
-        telefono = request.form.get('telefono')
-        correo = request.form.get('correo')
-        password = request.form.get('password')
+@app.route('/api/newdoc', methods=['GET', 'POST'])
+def api_newdoc():
+    if request.method == 'GET':
+        return render_template('newdoctor.html')
         
-        conn = conectar_db()
-        if conn:
-            try:
-                cursor = conn.cursor()
-                cursor.execute("SET @new_id_doctor = 0;")
-                cursor.callproc('registro_doctor', (nombre, apellido1, apellido2, correo, password, telefono, cedula, curp, rfc, '@new_id_doctor'))
-                cursor.execute("SELECT @new_id_doctor;")
-                new_id = cursor.fetchone()[0]
-                print(f"🆕 Nuevo ID de doctor registrado: {new_id}")
-                conn.commit()
-                cursor.close()
-                conn.close()
-                return redirect(url_for('index'))
-            except mysql.connector.Error as err:
-                return f"❌ Error al registrar al doctor: {err}"
-            
-    return render_template('newdoctor.html')  # Renderiza la página de registro de doctor.
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "Faltan campos requeridos "}), 400
+
+    cedula = data.get('cedula')
+    curp = data.get('curp')
+    rfc = data.get('rfc')
+    nombre = data.get('nombre')
+    apellido1 = data.get('apellido1')
+    apellido2 = data.get('apellido2')
+    telefono = data.get('telefono')
+    correo = data.get('correo')
+    password = data.get('password')
+
+    if not all([cedula, curp, rfc, nombre, apellido1, apellido2, telefono, correo, password]):
+        return jsonify({"error": "Faltan campos requeridos "}), 400
+        
+    conn = conectar_db()
+    if conn:
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SET @new_id_doctor = 0;")
+            cursor.callproc('registro_doctor', (nombre, apellido1, apellido2, correo, password, telefono, cedula, curp, rfc, '@new_id_doctor'))
+            cursor.execute("SELECT @new_id_doctor;")
+            new_id = cursor.fetchone()[0]
+            conn.commit()
+            cursor.close()
+            conn.close()
+            return jsonify({
+                "message": "Doctor registrado exitosamente",
+                "id_usuario": new_id
+            }), 201
+        except mysql.connector.Error as err:
+            return jsonify({"error": f"Error al insertar datos: {str(err)}"}), 500
+    else:
+        return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
 
 # Ruta para la página de reserva de cita (reservation.html).
-@app.route('/reserva', methods=['GET', 'POST'])
-def reserva():
-    if request.method == 'POST':
-        curp = request.form.get('curp')
-        edad = request.form.get('edad')
-        telefono = request.form.get('telefono')
-        alergias = request.form.get('alergias')
-        discapacidad = request.form.get('discapacidad')
-        fecha = request.form.get('fecha')
-        horario = request.form.get('horarios')
-        ubicacion = request.form.get('ubicacion')
-        correo = request.form.get('correo')
-        confirmacion = request.form.get('confirmacion')
+@app.route('/api/reserva', methods=['GET', 'POST'])
+def api_reserva():
+    if request.method == 'GET':
+        return render_template('reservation.html')
+
+    if 'user_id' not in session:
+        return jsonify({"error": "No autorizado. Inicia sesión."}), 401
+    
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "Faltan datos en la solicitud "}), 400
+    
+    curp = data.get('curp')
+    edad = data.get('edad')
+    telefono = data.get('telefono')
+    alergias = data.get('alergias')
+    discapacidad = data.get('discapacidad')
+    fecha = data.get('fecha')
+    horario = data.get('horarios')
+    ubicacion = data.get('ubicacion')
+    correo = data.get('correo')
+    confirmacion = data.get('confirmacion')
         
-        if correo != confirmacion:
-            return "⚠️ Los correos no coinciden. Intenta de nuevo."
+    if correo != confirmacion:
+        return jsonify({"error": "Los correos no coinciden"}), 400
+    
+    if not all([curp, edad, telefono, alergias, discapacidad, fecha, horario, ubicacion, correo, confirmacion]):
+        return jsonify({"error": "Faltan campos requeridos"}), 400
         
-        conn = conectar_db()
-        if conn:
-            try:
-                cursor = conn.cursor()
-                cursor.callproc('insertar_cita', (
-                    curp, int(edad), telefono, alergias, discapacidad, fecha, horario, ubicacion
-                    ))
-                conn.commit()
-                cursor.close()
-                conn.close()
-                return redirect(url_for('index'))
-            except mysql.connector.Error as err:
-                return f"❌ Error al registrar la cita: {err}"
- 
-    return render_template('reservation.html')
+    conn = conectar_db()
+    if conn:
+        try:
+            cursor = conn.cursor()
+            cursor.callproc('insertar_cita', (curp, int(edad), telefono, alergias, discapacidad, fecha, horario, ubicacion))
+            conn.commit()
+            cursor.close()
+            conn.close()
+            return jsonify({"message": "Cita registrada exitosamente"}), 201
+        except mysql.connector.Error as err:
+            return jsonify({"error": f"Error al registrar la cita: {str(err)}"}), 500
+    else:
+        return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
 
 # Ruta para la página de métodos de pago (metodopago.html).
 @app.route('/pago')
@@ -225,7 +257,7 @@ def procesar_cita():
         except mysql.connector.Error as err:
             return f"❌ Error al consultar la base de datos: {err}"
         
-        return "Error: No se pudo conectar a la base de datos.", 500
+    return "Error: No se pudo conectar a la base de datos.", 500
 
 @app.route('/pacient')
 def pacient():

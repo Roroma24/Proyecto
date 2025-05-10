@@ -59,7 +59,7 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
         </div>
 
         <!-- Formulario de registro de usuario -->
-        <form method="POST" action="{{ url_for('registro') }}">
+        <form id="registroForm">
             <!-- Primera fila de campos (Nombres y Apellidos) -->
             <div class="form-row">
                 <!-- Campo: Nombres -->
@@ -99,17 +99,54 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
                 <div class="buttons">
                     <!-- Botón de continuar -->
                     <button type="submit" class="btn"
-                        style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</button>
+                        style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                        Continuar
+                    </button>
                     <!-- Botón de registro como doctor -->
-                    <a href="{{ url_for('newdoc') }}" style="text-decoration: none;">
+                    <a href="{{ url_for('api_newdoc') }}" style="text-decoration: none;">
                         <div class="btn"
                             style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
-                            New doctor</div>
+                            New doctor
+                        </div>
                     </a>
                 </div>
             </div>
         </form>
     </div>
+
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            fetch("{{ url_for('api_registro') }}", {
+                method: 'POST',
+                headers: {
+                    'content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(Response => Response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);
+                    window.location.href = "{{ url_for('index') }}";
+                } else if (data.error) {
+                    alert(data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("Hubo un error al registrar el usuario.");
+            });
+        });
+    </script>
+    
 </body>
 
 </html>

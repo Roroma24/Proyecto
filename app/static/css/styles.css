@@ -28,7 +28,7 @@ body {
     /* Espaciado uniforme entre los elementos */
     width: auto;
     /* El ancho se ajusta al contenido */
-    margin: 25px auto;
+    margin: 10px auto;
     /* Márgenes automáticos para centrar el contenedor */
 }
 
