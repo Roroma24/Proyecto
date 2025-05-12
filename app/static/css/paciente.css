@@ -7,40 +7,29 @@ Luis Roberto Rodríguez Marroquin
 Sebastián Villaluz Martínez
 Daniela Zuno Aguilar
 
-/* Descripción: 
-  Esta hoja de estilos define el diseño y la apariencia de la página de pacientes,
-  incluyendo contenedores, botones, formularios, y otros elementos visuales
-  para garantizar una experiencia de usuario clara y atractiva.
+Descripción: Esta hoja de estilos define el diseño y la apariencia de la página de pacientes, incluyendo contenedores, 
+botones, formularios, y otros elementos visuales para garantizar una experiencia de usuario clara y atractiva.
 */
 
 /* Estilo general del cuerpo de la página */
 body {
   background-color: #fff;
-  /* Fondo blanco para la página */
   font-family: Arial, sans-serif;
-  /* Establece la fuente de la página */
 }
 
 /* Estilos para la sección principal */
 section {
   width: auto px;
-  /* Ancho fijo para la sección */
   margin: 10px auto;
-  /* Centra la sección y añade un margen superior e inferior */
 }
 
 /* Contenedor principal que utiliza Flexbox para alinear los elementos */
 .container {
   display: flex;
-  /* Usamos Flexbox para organizar los elementos */
   align-items: center;
-  /* Alineación vertical centrada */
   justify-content: space-between;
-  /* Espaciado uniforme entre los elementos */
   width: auto;
-  /* El ancho se ajusta al contenido */
   margin: 10px auto;
-  /* Márgenes automáticos para centrar el contenedor */
 }
 
 /* Estilos para el título con iconos */
@@ -48,29 +37,21 @@ section {
   display: flex;
   align-items: center;
   gap: 15px;
-  /* Espaciado entre iconos */
 }
 
 /* Estilo para cada icono */
 .icon {
   width: 90px;
-  /* Ancho de cada icono */
   height: 90px;
-  /* Alto de cada icono */
   background-image: url('imagen/logo.png');
-  /* Fondo con imagen de los iconos */
   border-radius: 40%;
-  /* Bordes redondeados para darle forma circular */
 }
 
 /* Estilo del título principal */
 .titulo-principal {
   font-size: 50px;
-  /* Tamaño grande de la fuente */
   font-weight: bold;
-  /* Texto en negrita */
   margin: 0;
-  /* Eliminar márgenes */
 }
 
 /* Estilos para el contenedor 1 */
@@ -85,22 +66,21 @@ section {
 /* Estilos para el contenedor 2 con posición absoluta */
 .container_2 {
   position: absolute;
-  /* Posicionamiento absoluto */
   top: 12px;
   right: 200px;
 }
 
+/* Estilos para usar flex en el contenedor */
 .flex-container {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  /* <<< Cambia de flex-start a stretch */
   gap: 50px;
   padding: 20px;
   height: 90%;
-  /* <<< Ocupar todo el alto de la ventana */
 }
 
+/* Estilos para los contenedores izquierdo y derecho */
 .Left,
 .Right {
   background-color: #fff;
@@ -110,30 +90,26 @@ section {
   padding: 20px;
   box-sizing: border-box;
   height: 105%;
-  /* <<< Ocupar todo el alto del contenedor padre */
 }
 
+/* Estilos para el contenedor izquierdo */
 .Left {
   width: 30%;
-  /* Reduce el ancho del contenedor */
   height: 60%;
   align-content: center;
   padding: 20px;
-  /* Espaciado interno */
   margin: auto;
-  /* Centra el contenedor horizontal y verticalmente */
   display: flex;
   flex-direction: column;
-  /* Organiza los contenidos de forma vertical */
   justify-content: center;
   align-items: center;
 }
 
+/* Estilos para el contenedor derecho */
 .Right {
   width: 50%;
   height: 100%;
   padding: 20px;
-  /* Espaciado interno */
 }
 
 /* Estilos para el contenedor 4 */
@@ -151,66 +127,52 @@ section {
   display: flex;
   align-items: center;
   gap: 40px;
-  /* Espaciado entre los iconos */
 }
 
-/* Estilo para los botones */
+/* Estilo para el botón de registro */
 .btn {
   width: 90px;
-  /* Ancho del botón */
   height: 90px;
-  /* Alto del botón */
   background-color: #fff;
-  /* Fondo blanco para el botón */
   background-image: url('imagen/logoregistro.png');
-  /* Imagen de fondo para el botón */
   background-size: cover;
-  /* Ajustar la imagen para que cubra el botón */
   border-radius: 40%;
-  /* Bordes redondeados para el botón */
   border: none;
-  /* Sin borde por defecto */
   cursor: pointer;
-  /* Muestra un puntero cuando el cursor pasa sobre el botón */
 }
 
 /* Estilos para el menú desplegable */
 .dropdown {
   position: relative;
   display: inline-block;
-  /* Hacer que el menú sea un bloque en línea */
 }
 
+/* Estilo para el contenido del menú desplegable */
 .dropdown-content {
   display: none;
-  /* Oculta el contenido del menú por defecto */
   position: absolute;
   background-color: #f9f9f9;
-  /* Fondo gris claro para el menú */
   min-width: 120px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  /* Sombra alrededor del menú */
   z-index: 1;
-  /* Asegura que el menú esté por encima de otros elementos */
 }
 
+/* Estilo para los enlaces dentro del menú desplegable */
 .dropdown-content a {
   display: block;
   padding: 8px 12px;
   text-decoration: none;
-  /* Elimina el subrayado de los enlaces */
   color: black;
-  /* Color negro para los enlaces */
 }
 
+/* Estilo para los enlaces dentro del menú desplegable al pasar el ratón */
 .dropdown-content a:hover {
   background-color: #ddd;
-  /* Fondo gris oscuro al pasar el ratón sobre los enlaces */
 }
 
+/* Estilo para el contenedor del menú desplegable al pasar el ratón */
 .dropdown:hover .dropdown-content {
   display: block;
-  /* Muestra el menú al pasar el ratón sobre el contenedor */
 }
 
 /* Estilo para la barra */
@@ -218,25 +180,17 @@ section {
   width: 400px;
   height: 70px;
   background-color: #9c9898;
-  /* Color gris para la barra */
   border-radius: 40px;
-  /* Bordes redondeados */
 }
 
 /* Estilo para la imagen de fondo */
 .image {
   width: auto;
-  /* Ocupa el 100% del ancho de la ventana */
   height: 90vh;
-  /* Ocupa el 100% del alto de la ventana */
   background-image: url('imagen/fondo.jpeg');
-  /* Imagen de fondo */
   background-size: cover;
-  /* Ajustar la imagen para cubrir todo el contenedor */
   background-repeat: no-repeat;
-  /* Evita la repetición de la imagen */
   background-position: center;
-  /* Centra la imagen */
   margin: 0;
   padding: 0;
 }
@@ -246,12 +200,9 @@ section {
   width: 160px;
   height: 170px;
   background-image: url('imagen/logo_search.png');
-  /* Fondo gris claro para el logo */
   background-size: cover;
   border-radius: 20%;
-  /* Bordes redondeados para el logo */
   margin: 20px auto;
-  /* Centra el logo con márgenes */
 }
 
 /* Estilo para el título de la sección */
@@ -259,20 +210,15 @@ section {
   width: 1000px;
   height: 120px;
   border: 2px dashed #000000;
-  /* Borde punteado negro */
   margin: 10px auto;
 }
 
-/* Estilo para el botón siguiente */
+/* Estilo para el botón de siguiente */
 .next {
   background-color: #000000;
-  /* Fondo gris oscuro para el botón */
   border-radius: 40px;
-  /* Bordes redondeados */
   border: none;
-  /* Sin borde por defecto */
   cursor: pointer;
-  /* Muestra un puntero cuando el cursor pasa sobre el botón */
   margin: 10px auto;
   color: #fff;
   font-size: 24px;
@@ -291,13 +237,9 @@ section {
   width: 120px;
   height: 50px;
   background-color: #656464;
-  /* Fondo gris oscuro para el botón */
   border-radius: 40px;
-  /* Bordes redondeados */
   border: none;
-  /* Sin borde por defecto */
   cursor: pointer;
-  /* Muestra un puntero cuando el cursor pasa sobre el botón */
 }
 
 /* Estilos para la parte superior con botones alineados */
@@ -305,7 +247,6 @@ section {
   display: flex;
   align-items: center;
   gap: 40px;
-  /* Espaciado entre los elementos */
 }
 
 /* Estilo para el formulario */
@@ -313,73 +254,54 @@ section {
   width: 95%;
   padding: 20px;
   background-color: #fff;
-  /* Fondo blanco para el formulario */
   border-radius: 8px;
-  /* Bordes redondeados para el formulario */
   text-align: center;
-  /* Centrado del texto en el formulario */
 }
 
 /* Estilo para cada campo del formulario */
 .campo {
   margin: 20px auto;
-  /* Espaciado entre los campos y centrado horizontalmente */
   text-align: center;
-  /* Centrado del contenido dentro del campo */
 }
 
 /* Estilo para los inputs dentro del formulario */
 .campo input {
   width: calc(100% - 22px);
-  /* Ancho que ocupa todo el campo menos los bordes */
   padding: 10px;
-  /* Espaciado interno */
   border: 1px solid #ddd;
-  /* Borde gris claro */
   border-radius: 4px;
-  /* Bordes redondeados */
 }
 
 /* Estilo para los campos dobles (para cuando hay dos inputs en una fila) */
 .campos-dobles {
   display: flex;
   justify-content: space-between;
-  /* Espaciado entre los campos */
 }
 
 /* Estilo para cada campo dentro de los campos dobles */
 .campos-dobles .campo {
   width: 45%;
   text-align: center;
-  /* Ancho de cada campo */
 }
 
 /* Estilo para el botón de cancelar */
 .cancelar {
   background-color: #6c757d;
-  /* Fondo gris para el botón */
   color: white;
-  /* Texto blanco */
   padding: 10px 20px;
-  /* Espaciado interno */
   border: none;
-  /* Sin borde */
   border-radius: 4px;
-  /* Bordes redondeados */
   cursor: pointer;
-  /* Muestra un puntero cuando el cursor pasa sobre el botón */
   margin-top: 20px;
-  /* Margen superior */
   align-self: flex-end;
-  /* Alinea el botón al final */
 }
 
 /* Estilo para el botón de cancelar al pasar el ratón sobre él */
 .cancelar:hover {
   background-color: #5a6268;
-  /* Cambio de color al pasar el ratón */
 }
 
+/* Estilo para el botón de continuar */
 .accion1 {
   display: flex;
   justify-content: center;
@@ -395,6 +317,7 @@ section {
   cursor: pointer;
 }
 
+/* Estilo para el botón historial */
 .accion2 {
   display: flex;
   justify-content: center;
@@ -411,6 +334,7 @@ section {
   margin-top: 50%;
 }
 
+/* Estilo para el texto de las dashed-box */
 .text_style {
   text-align: center;
   justify-items: center;
@@ -418,6 +342,7 @@ section {
   color: #453a3e;
 }
 
+/* Estilo para el texto de los datos */
 .datos {
   font-size: 20px;
   text-align: center;
@@ -425,170 +350,117 @@ section {
   font-weight: bold;
 }
 
+/* Estilo para el input del paciente */
 #idpaciente {
   display: block;
   margin: 0 auto;
-  /* Centra horizontalmente el input */
   text-align: center;
-  /* Alinea el texto dentro del input */
 }
 
+/* Estilo para el titulo de la sección de contenedores */
 .titulo1 {
   font-size: 34px;
-  /* Tamaño de fuente mediano */
   font-weight: bold;
-  /* Texto en negrita */
   color: #1836b2;
-  /* Color gris oscuro */
   text-align: center;
-  /* Centrado del texto */
   margin: 20px 0;
-  /* Espaciado superior e inferior */
 }
 
+/* Estilo para el contenedor de los campos */
 .campos {
   font-size: 28px;
-  /* Tamaño de fuente grande */
   display: flex;
-  /* Usamos Flexbox para organizar los campos */
   flex-direction: row;
-  /* Alineación horizontal */
   justify-content: space-between;
-  /* Espaciado entre los campos */
   margin: 20px auto;
-  /* Espaciado entre los campos y centrado horizontalmente */
   text-align: center;
-  /* Centrado del contenido dentro del campo */
 }
 
+/* Estilo para los datos del paciente */
 .datos-paciente1 {
   font-size: 15px;
-  /* Tamaño de fuente mediano */
   display: flex;
-  /* Usamos Flexbox para organizar los datos */
   flex-direction: row;
-  /* Alineación horizontal */
   justify-content: space-between;
-  /* Espaciado uniforme entre los datos */
   text-align: center;
-  /* Centrado del texto */
   margin: 20px auto;
-  /* Espaciado entre los campos y centrado horizontalmente */
   color: #000000;
-  /* Color gris oscuro */
   gap: 5%;
-  /* Espaciado entre los datos */
 }
 
+/* Estilo para los datos del paciente */
 .datos-paciente2 {
   font-size: 15px;
-  /* Tamaño de fuente mediano */
   display: flex;
-  /* Usamos Flexbox para organizar los datos */
   flex-direction: row;
-  /* Alineación horizontal */
   justify-content: space-between;
-  /* Espaciado uniforme entre los datos */
   text-align: center;
-  /* Centrado del texto */
   margin: 20px auto;
-  /* Espaciado entre los campos y centrado horizontalmente */
   color: #000000;
-  /* Color gris oscuro */
   gap: 5%;
-  /* Espaciado entre los datos */
 }
 
+/* Estilo para los datos del paciente */
 .datos-paciente3 {
   font-size: 15px;
-  /* Tamaño de fuente mediano */
   display: flex;
-  /* Usamos Flexbox para organizar los datos */
   flex-direction: row;
-  /* Alineación horizontal */
   justify-content: space-between;
-  /* Espaciado uniforme entre los datos */
   text-align: center;
-  /* Centrado del texto */
   margin: 20px auto;
-  /* Espaciado entre los campos y centrado horizontalmente */
   color: #000000;
-  /* Color gris oscuro */
   gap: 5%;
-  /* Espaciado entre los datos */
 }
 
+/* Estilo para los datos del paciente */
 .datos-paciente4 {
   font-size: 15px;
-  /* Tamaño de fuente mediano */
   display: flex;
-  /* Usamos Flexbox para organizar los datos */
   flex-direction: row;
-  /* Alineación horizontal */
   justify-content: space-between;
-  /* Espaciado uniforme entre los datos */
   text-align: center;
-  /* Centrado del texto */
   margin: 20px auto;
-  /* Espaciado entre los campos y centrado horizontalmente */
   color: #000000;
-  /* Color gris oscuro */
   gap: 5%;
-  /* Espaciado entre los datos */
 }
 
+/* Estilo para los datos delicados del paciente */
 .datos-delicados {
   width: 50%;
   height: 10%;
   font-size: 15px;
-  /* Tamaño de fuente mediano */
   display: flex;
-  /* Usamos Flexbox para organizar los datos */
   flex-direction: row;
-  /* Alineación horizontal */
   justify-content: space-between;
-  /* Espaciado uniforme entre los datos */
   text-align: center;
-  /* Centrado del texto */
   margin: 20px auto;
-  /* Espaciado entre los campos y centrado horizontalmente */
   color: #000000;
-  /* Color gris oscuro */
   gap: 5%;
-  /* Espaciado entre los datos */
   border: 2px dashed #000;
   flex-direction: row;
-  /* Alineación horizontal */
 }
 
+/* Estilo para los campos de alergias y discapacidad */
 .alergias,
 .discapacidad {
   height: 70%;
   width: 65%;
-  /* Reduce el ancho para que ambas cajas quepan en una fila */
   height: auto;
-  /* Ajusta el alto automáticamente */
   background-color: #fff;
-  /* Fondo blanco para las cajas */
   border: 2px dashed #000;
-  /* Borde punteado negro */
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  /* Alinea el texto a la parte superior */
   text-align: center;
   margin: 10%;
-  /* Elimina márgenes adicionales */
   box-sizing: border-box;
   padding: 20%;
 }
 
+/* Estilo para el contenedor horizontal */
 .container-horizontal {
   display: flex;
   justify-content: center;
-  /* Espaciado uniforme entre las cajas */
   align-items:  center;
-  /* Alineación vertical centrada */
   gap: 10%;
-  /* Espaciado entre las cajas */
 }

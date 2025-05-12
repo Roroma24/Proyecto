@@ -14,17 +14,13 @@ Este archivo contiene los estilos CSS para la página de búsqueda de la aplicac
 /* Estilo general del cuerpo de la página */
 body {
   background-color: #fff;
-  /* Fondo blanco para la página */
   font-family: Arial, sans-serif;
-  /* Fuente sans-serif legible */
 }
 
 /* Estilos para la sección principal */
 section {
   width: auto;
-  /* Ancho automático (corregido: antes decía "auto px") */
   margin: 10px auto;
-  /* Margen vertical y centrado horizontal */
 }
 
 /* Contenedor principal que utiliza Flexbox para alinear los elementos */
@@ -41,7 +37,6 @@ section {
   display: flex;
   align-items: center;
   gap: 15px;
-  /* Espacio entre el icono y el texto */
 }
 
 /* Estilo para cada icono redondo */
@@ -71,14 +66,10 @@ section {
 /* Contenedor adicional 2 en posición absoluta */
 .container_2 {
   display: flex;
-  /* Utiliza flexbox para alinear los botones de acción */
   align-items: center;
-  /* Alinea los elementos verticalmente */
   justify-content: flex-end;
-  /* Alinea los elementos hacia el extremo derecho */
   width: auto;
   gap: 15px;
-  /* Espacio de 15px entre los botones */
 }
 
 /* Contenedor adicional 3 con dimensiones fijas */
@@ -193,7 +184,7 @@ section {
   margin: 10px auto;
 }
 
-/* Botón "Siguiente" grande */
+/* Botón "Siguiente" */
 .next {
   background-color: #000000;
   border-radius: 40px;

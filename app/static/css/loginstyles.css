@@ -11,138 +11,151 @@ Descripción:
 Este archivo contiene los estilos CSS para la página de inicio de sesión de la aplicación web.
 */
 
+/* Estilo para el cuerpo de la página */
 body {
-  display: flex; /* Usamos flexbox para organizar la disposición de los elementos en la página */
-  height: 100vh; /* Altura completa de la ventana del navegador */
-  background-color: #ffffff; /* Fondo blanco */
-  margin: 0; /* Eliminamos el margen por defecto */
-  font-family: Arial, sans-serif; /* Establecemos la fuente de la página */
+  display: flex; 
+  height: 100vh; 
+  background-color: #ffffff; 
+  margin: 0; 
+  font-family: Arial, sans-serif; 
 }
 
+/* Estilo para la sección principal de la parte izquierda */
 .left-side {
-  flex: 0.4; /* El lado izquierdo ocupa el 40% del espacio */
-  background-image: url('imagen/fondo.jpeg'); /* Imagen de fondo para el lado izquierdo */
-  background-size: cover; /* Asegura que la imagen cubra completamente el área */
-  background-position: center; /* Centra la imagen en el área */
-  display: flex; /* Usamos flexbox para la disposición de los elementos */
-  justify-content: center; /* Centra el contenido horizontalmente */
-  align-items: center; /* Centra el contenido verticalmente */
+  flex: 0.4; 
+  background-image: url('imagen/fondo.jpeg'); 
+  background-size: cover; 
+  background-position: center; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
 }
 
+/* Estilo para la sección principal de la parte derecha */
 .right-side {
-  flex: 0.6;  /* El lado derecho ocupa el 60% del espacio */
-  display: flex; /* Usamos flexbox para la disposición de los elementos */
-  justify-content: center; /* Centra el contenido horizontalmente */
-  align-items: center; /* Centra el contenido verticalmente */
-  position: relative; /* Establece la posición relativa para los elementos dentro */
+  flex: 0.6; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  position: relative; 
 }
 
+/* Estilo para el contenedor principal que contiene los iconos y el texto */
 .container {
-  display: flex; /* Usamos flexbox para la disposición de los elementos */
-  flex-direction: column;  /* Los elementos se organizan en columna */
-  align-items: center; /* Centra los elementos horizontalmente */
-  justify-content: center; /* Centra los elementos verticalmente */
-  gap: 15px; /* Espacio entre los elementos dentro del contenedor */
+  display: flex; 
+  flex-direction: column;  
+  align-items: center; 
+  justify-content: center; 
+  gap: 15px; 
 }
 
+/* Estilo para el ícono de la página */
 .icon {
-  width: 110px; /* Ancho de cada icono */
-  height: 110px; /* Alto de cada icono */
-  background-image: url('imagen/logo.png'); /* Imagen de fondo para el icono */
-  background-size: cover; /* Asegura que la imagen cubra completamente el área del icono */
-  border-radius: 40%; /* Bordes redondeados para darle forma circular */
+  width: 110px; 
+  height: 110px; 
+  background-image: url('imagen/logo.png'); 
+  background-size: cover; 
+  border-radius: 40%; 
 }
 
+/* Estilo para el texto */
 .login-text {
-  width: 500px; /* Ancho del cuadro de texto */
-  text-align: center; /* Centra el texto */
-  font-size: 20px; /* Tamaño de la fuente */
-  font-weight: bold; /* Establece el texto en negrita */
-  margin-bottom: 15px; /* Añade un margen en la parte inferior */
+  width: 500px; 
+  text-align: center; 
+  font-size: 20px; 
+  font-weight: bold; 
+  margin-bottom: 15px; 
 }
 
+/* Estilo para el cuadro con borde discontinuo */
 .dashed-box {
-  width: 500px; /* Ancho del cuadro */
-  height: 50px; /* Altura del cuadro */
-  border: 2px dashed black; /* Borde discontinuo de color negro */
-  background: transparent; /* Fondo transparente */
-  display: flex; /* Usamos flexbox para la disposición de los elementos dentro del cuadro */
-  align-items: center;  /* Centra los elementos verticalmente */
-  justify-content: center; /* Centra los elementos horizontalmente */
-  font-size: 16px; /* Tamaño de la fuente */
-  font-weight: bold; /* Establece el texto en negrita */
-  color: black; /* Color del texto */
+  width: 500px; 
+  height: 50px; 
+  border: 2px dashed black;
+  background: transparent; 
+  display: flex; 
+  align-items: center;  
+  justify-content: center; 
+  font-size: 16px; 
+  font-weight: bold; 
+  color: black; 
 }
 
+/* Estilo para el cuadro de inicio de sesión */
 .login-box {
-  background-color: #808080; /* Color de fondo gris para el cuadro de inicio de sesión */
-  border-radius: 15px; /* Bordes redondeados */
-  padding: 20px; /* Añade espacio interior */
-  width: 300px; /* Ancho del cuadro de inicio de sesión */
-  display: flex; /* Usamos flexbox para la disposición de los elementos dentro del cuadro */
-  flex-direction: column; /* Organiza los elementos en columna */
-  align-items: center; /* Centra los elementos dentro del cuadro */
+  background-color: #808080; 
+  border-radius: 15px; 
+  padding: 20px;
+  width: 300px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
 }
 
+/* Estilo para el botón de continuar */
 .btn-continue {
-  display: block; /* Muestra el botón como un bloque */
-  width: 180px; /* Ancho del botón */
-  padding: 14px; /* Añade espacio dentro del botón */
-  margin: 40px auto 0; /* Añade margen superior e inferior */
-  background-color: #000000; /* Color de fondo gris para el botón */
-  color: #fff; /* Color del texto en blanco */
-  border: none; /* Sin borde para el botón */
-  border-radius: 25px; /* Bordes redondeados para el botón */
-  font-weight: bold; /* Establece el texto en negrita */
-  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
-  font-size: 24px; /* Tamaño de la fuente */
-  transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+  display: block; 
+  width: 180px;
+  padding: 14px; 
+  margin: 40px auto 0; 
+  background-color: #000000; 
+  color: #fff;
+  border: none; 
+  border-radius: 25px; 
+  font-weight: bold; 
+  cursor: pointer; 
+  font-size: 24px; 
+  transition: background-color 0.3s ease; 
 }
 
+/* Estilo para el botón de salir */
 .btn-exit {
-  position: absolute; /* O usa fixed si quieres que permanezca fijo al hacer scroll */
-  top: 20px; /* Ajusta la distancia desde la parte superior */
-  right: 20px; /* Ajusta la distancia desde la derecha */
-  width: 180px; /* Ancho del botón */
-  padding: 14px; /* Añade espacio dentro del botón */
-  background-color: #000000; /* Color de fondo gris para el botón */
-  color: #fff; /* Color del texto en blanco */
-  border: none; /* Sin borde para el botón */
-  border-radius: 25px; /* Bordes redondeados para el botón */
-  font-weight: bold; /* Establece el texto en negrita */
-  cursor: pointer; /* Cambia el cursor al pasar el mouse sobre el botón */
-  font-size: 24px; /* Tamaño de la fuente */
-  transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+  position: absolute; 
+  top: 20px;
+  right: 20px; 
+  width: 180px; 
+  padding: 14px; 
+  background-color: #000000; 
+  color: #fff; 
+  border: none; 
+  border-radius: 25px;
+  font-weight: bold; 
+  cursor: pointer; 
+  font-size: 24px; 
+  transition: background-color 0.3s ease; 
 }
 
+/* Estilo para los grupos de campos del formulario */
 .form-group {
-  width: 800px; /* Ancho del grupo de formulario */
-  display: flex; /* Usamos flexbox para la disposición de los elementos dentro del grupo */
-  flex-direction: column; /* Organiza los elementos en columna */
-  align-items: center; /* Centra los elementos dentro del grupo */
-  gap: 10px; /* Espacio entre los elementos dentro del grupo */
-  background-color: #fff; /* Color de fondo blanco */
-  border: 1px solid #333; /* Borde gris oscuro para delimitar el área del grupo */
-  border-radius: 4px; /* Bordes redondeados */
-  padding: 10px; /* Añade espacio interior */
-  box-sizing: border-box; /* Asegura que el padding y el borde se incluyan en el ancho total del elemento */
+  width: 800px; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  gap: 10px; 
+  background-color: #fff; 
+  border: 1px solid #333; 
+  border-radius: 4px; 
+  padding: 10px; 
+  box-sizing: border-box; 
 }
 
+/* Estilo para los labels de los campos individuales del formulario */
 .form-group label {
-  align-self: flex-start; /* Alinea la etiqueta al inicio del grupo */
-  font-weight: bold; /* Establece el texto en negrita */
-  margin-left: 5px; /* Añade un margen a la izquierda para separar de los bordes */
-  font-size: 16px; /* Tamaño de la fuente */
+  align-self: flex-start; 
+  font-weight: bold; 
+  margin-left: 5px; 
+  font-size: 16px; 
 }
 
+/* Estilo para los inputs de los campos individuales del formulario */
 input[type="text"],
 input[type="password"] {
-  width: 95%; /* Ancho del campo de entrada */
-  padding: 10px; /* Añade espacio dentro del campo de entrada */
-  border: 2px solid #ccc; /* Borde gris claro */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 16px; /* Tamaño de la fuente */
-  text-align: left; /* Alinea el texto a la izquierda */
+  width: 95%; 
+  padding: 10px; 
+  border: 2px solid #ccc; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  text-align: left; 
 }
 
   
