@@ -13,6 +13,7 @@ Página de inicio de sesión. Se solicitan datos de usuario y contraseña para a
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <!-- Configuración básica del documento -->
   <meta charset="UTF-8">
@@ -24,6 +25,7 @@ Página de inicio de sesión. Se solicitan datos de usuario y contraseña para a
   <!-- Título de la pestaña en el navegador -->
   <title>Interfaz de Inicio de Sesión</title>
 </head>
+
 <body>
 
   <!-- Sección izquierda de la interfaz -->
@@ -40,7 +42,6 @@ Página de inicio de sesión. Se solicitan datos de usuario y contraseña para a
     <!-- Contenedor principal del formulario -->
     <div class="container">
 
-      <!-- Icono superior -->
       <div class="icon"></div>
 
       <!-- Texto que indica el propósito del formulario -->
@@ -49,18 +50,28 @@ Página de inicio de sesión. Se solicitan datos de usuario y contraseña para a
       <!-- Caja de texto -->
       <div class="dashed-box">Descripción</div>
 
-      <!-- Campo de entrada para el nombre de usuario o correo -->
-      <input type="text" placeholder="Nombre o Correo">
+      <form action="{{ url_for('login') }}" method="POST">
+        <!-- Icono superior -->
+        <!-- Grupo de campos del formulario -->
+        <div class="form-group">
+          <label for="usuario">Correo</label>
+          <input type="text" id="usuario" name="usuario" placeholder="Ingresa tu correo" required>
+        </div>
 
-      <!-- Campo de entrada para la contraseña -->
-      <input type="password" placeholder="contraseña">
+        <div class="form-group">
+          <label for="contrasena">Contraseña</label>
+          <input type="password" id="contrasena" name="contrasena" placeholder="Ingresa tu contraseña" required>
+        </div>
 
-      <!-- Botón para enviar el formulario y continuar -->
-      <button class="btn-continue">continuar</button>
+        <!-- Botón para enviar el formulario y continuar -->
+        <button class="btn-continue" type="submit">Continuar</button>
+
+      </form>
 
     </div> <!-- Fin del contenedor -->
 
   </div> <!-- Fin de la sección derecha -->
 
 </body>
+
 </html>

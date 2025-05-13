@@ -45,8 +45,8 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
           <!-- Botón de método pago-->
           <a href="{{ url_for('pago') }}" style="text-decoration: none;">
             <div class="accion"
-              style="text-align: center; color: #fff; font-size: 20px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
-              Método de pago</div>
+              style="text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+              Pagar</div>
           </a>
           <!-- Enlace a la página principal (Botón Salir) -->
           <a href="{{ url_for('index') }}" style="text-decoration: none;">
@@ -55,12 +55,21 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
           </a>
           <!-- Menú desplegable -->
           <div class="dropdown">
-            <!-- Botón para abrir el menú desplegable -->
+            <!-- Botón que activa el menú desplegable -->
             <button class="btn"></button>
+
+            <!-- Contenido del menú desplegable -->
             <div class="dropdown-content">
-              <!-- Enlaces dentro del menú desplegable -->
+              {% if session['nombre'] %}
+              <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
+              <a href="{{ url_for('logout') }}">Logout</a>
+              {% else %}
+              <!-- Enlace a la vista de login -->
               <a href="{{ url_for('login') }}">Login</a>
-              <a href="{{ url_for('registro') }}">New user</a>
+
+              <!-- Enlace a la vista de registro de un nuevo usuario -->
+              <a href="{{ url_for('api_registro') }}">New user</a>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -80,20 +89,20 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
     </div>
 
     <!-- FORMULARIO DE RESERVA DE CITAS -->
-    <form method="POST" action="{{ url_for('reserva') }}"> 
+    <form id="reservation-form">
       <!-- FILA DE DATOS PERSONALES -->
       <div class="form-row">
 
         <!-- Campo para nombres del usuario -->
         <div class="form-group">
           <label for="nombre">Nombres</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+          <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
         </div>
 
         <!-- Primer apellido -->
         <div class="form-group">
           <label for="apellido1">Primer Apellido</label>
-          <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa primer apellido">
+          <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa primer apellido" required>
         </div>
 
         <!-- Segundo apellido -->
@@ -172,7 +181,7 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
         <div class="left-column">
 
           <!-- Dirección del hospital -->
-           <div class="form-group">
+          <div class="form-group">
             <label for="curp">CURP</label>
             <input type="text" id="curp" name="curp" placeholder="Ingresa tu CURP">
           </div>
@@ -210,12 +219,47 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
       </div>
 
       <!-- Botón para enviar el formulario y realizar la reserva -->
-      <a href="#" style="text-decoration: none; display: block; text-align: center;">
-        <button type="submit" class="accion"
-          style="color: #fff; font-size: 25px; font-weight: bolder; display: block; margin: 1.5% auto; height: 50px; width: auto;">Reservar</button>
-      </a>
+      <button type="submit" class="accion"
+        style="color: #fff; font-size: 25px; font-weight: bolder; display: block; margin: 1.5% auto; height: 50px; width: auto;">
+        Reservar
+      </button>
     </form>
   </div>
+
+  <script>
+    document.getElementById('reservation-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const formData = {
+        nombre: document.getElementById('nombre').value,
+        apellido1: document.getElementById('apellido1').value,
+        apellido2: document.getElementById('apellido2').value,
+        curp: document.getElementById('curp').value,
+        edad: document.getElementById('edad').value,
+        telefono: document.getElementById('telefono').value,
+        alergias: document.getElementById('alergias').value,
+        discapacidad: document.getElementById('discapacidad').value,
+        fecha: document.getElementById('fecha').value,
+        horarios: document.getElementById('horarios').value,
+        ubicacion: document.getElementById('ubicacion').value,
+        correo: document.getElementById('correo').value,
+        confirmacion: document.getElementById('confirmacion').value
+      };
+
+      fetch('/api/reserva', {
+        method: 'POST',
+        headers: {
+          'content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert(data.message || data.error);
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
 
 </body>
 

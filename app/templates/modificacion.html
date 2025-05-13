@@ -36,23 +36,33 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
         <div class="btn_accion">
             <!-- Enlace a la página principal -->
             <a href="{{ url_for('index') }}" style="text-decoration: none;">
-                <button class="accion"
-                    style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Inicio</button>
+                <button class="accion">
+                    Inicio
+                </button>
             </a>
             <!-- Botón de regresar (sin enlace asignado aún) -->
             <a href="{{ url_for('file', opcion='modification') }}" style="text-decoration: none;">
-                <div class="accion"
-                    style="text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
-                    Regresar</div>
+                <div class="accion">
+                    Regresar
+                </div>
             </a>
             <!-- Menú desplegable -->
             <div class="dropdown">
-                <!-- Botón para abrir el menú desplegable -->
+                <!-- Botón que activa el menú desplegable -->
                 <button class="btn"></button>
+
+                <!-- Contenido del menú desplegable -->
                 <div class="dropdown-content">
-                    <!-- Enlaces dentro del menú desplegable -->
+                    {% if session['nombre'] %}
+                    <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                    {% else %}
+                    <!-- Enlace a la vista de login -->
                     <a href="{{ url_for('login') }}">Login</a>
-                    <a href="{{ url_for('registro') }}">New user</a>
+
+                    <!-- Enlace a la vista de registro de un nuevo usuario -->
+                    <a href="{{ url_for('api_registro') }}">New user</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -169,9 +179,10 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
                 </div>
             </div>
 
-            <a href="#" style="text-decoration: none; display: block; text-align: center;">
-                <button class="accion"
-                    style="color: #fff; font-size: 25px; font-weight: bolder; display: block; margin: 1.5% auto; height: 50px; width: auto;">Modificar</button>
+            <a href="#" style="text-decoration: none;">
+                <button class="accion">
+                    Modificar
+                </button>
             </a>
 
         </form>

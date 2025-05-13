@@ -7,9 +7,11 @@ Luis Roberto Rodríguez Marroquin
 Sebastián Villaluz Martínez
 Daniela Zuno Aguilar
 
-Descripción:   
-
--->
+Descripción:
+Este archivo HTML es la plantilla para la página de busqueda del paciente.
+Donde se muestran los datos del paciente, un botón de busqueda y un botón para visualizar el historial clínico
+de dicho paciente.
+ -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,12 +47,11 @@ Descripción:
                 <button class="btn"></button> <!-- Botón para abrir el menú -->
                 <div class="dropdown-content">
                     <a href="{{ url_for('login') }}">Login</a> <!-- Enlace a la página de inicio de sesión -->
-                    <a href="{{ url_for('registro') }}">New user</a> <!-- Enlace para registrar un nuevo usuario -->
+                    <a href="{{ url_for('api_registro') }}">New user</a> <!-- Enlace para registrar un nuevo usuario -->
                 </div>
             </div>
         </div>
-
-        <!-- Sección de imagen y formulario -->
+        <!-- Contenedor principal para la imagen y el formulario -->
         <!-- Sección de imagen y formulario -->
         <div class="image">
             <div class="container_1 flex-container">
@@ -62,25 +63,15 @@ Descripción:
                     <div class="formulario">
                         <div class="campos-dobles">
                             <div class="campo">
-                                <input type="text" id="nombres" placeholder="Nombres" />
+                                <input type="text" id="idpaciente" placeholder="Id del paciente" />
                             </div>
-                            <div class="campo">
-                                <input type="text" id="primerapellido" placeholder="Primer Apellido" />
-                            </div>
-                        </div>
-                        <div class="campos-dobles">
-                            <div class="campo">
-                                <input type="text" id="segundoapellido" placeholder="Segundo Apellido" />
-                            </div>
-                            <div class="campo">
-                                <input type="text" id="id_paciente" name="id_paciente" placeholder="Id del Paciente" required />
-                            </div>
+
                         </div>
 
                         <form action="{{ url_for('procesar_cita') }}" method="POST">
                             <input type="hidden" name="opcion" value="{{ opcion }}">
                             <a href="" style="text-decoration: none;">
-                                <div class="accion">
+                                <div class="accion1">
                                     Continuar
                                 </div>
                             </a>
@@ -90,10 +81,46 @@ Descripción:
 
                 <!-- Lado Derecho -->
                 <div class="Right">
-                    <div class="cuadro">
-                        <h2>Información Importante</h2>
-                        <p>Este cuadro sirve para mostrar información de manera destacada.</p>
-                    </div>
+                    <div class="datos">
+                        <h2 class="titulo1">Datos del paciente</h2>
+                        <div class="datos-paciente1">
+                            <h2 class="campos">Nombre:</h2>
+                            <h2 class="campos">Primer Apellido:</h2>
+                            <h2 class="campos">Segundo Apellido:</h2>
+
+                        </div>
+                        <div class="datos-paciente2">
+                            <h2 class="campos"></h2>
+                            <h2 class="campos"></h2>
+                            <h2 class="campos"></h2>
+                        </div>
+                        <div class="datos-paciente3">
+                            <h2 class="campos">Edad:</h2>
+                            <h2 class="campos">Correo:</h2>
+                            <h2 class="campos">Curp:</h2>
+                        </div>
+                        <div class="datos-paciente4">
+                            <h2 class="campos"></h2>
+                            <h2 class="campos"></h2>
+                            <h2 class="campos"></h2>
+                        </div>
+                            <!-- Dos cajas punteadas en posición horizontal que dicen Alergias y Discapacidad-->
+                            <div class="container-horizontal">
+                            <div class="alergias">
+                                <h2 class="campos">Alergias:</h2>
+                            </div>
+                            <div class="discapacidad">
+                                <h2 class="campos">Discapacidad:</h2>
+                            </div>
+                        </div>
+                        <form action="{{ url_for('procesar_cita') }}" method="POST">
+                            <input type="hidden" name="opcion" value="{{ opcion }}">
+                            <a href="" style="text-decoration: none;">
+                                <div class="accion2">
+                                    Historial
+                                </div>
+                            </a>
+                        </form>
                 </div>
             </div>
         </div>

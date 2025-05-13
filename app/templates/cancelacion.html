@@ -36,21 +36,36 @@ fecha de la cita a cancelar.
       <!-- Contenedor para botones de navegación -->
       <div class="container_2">
         <div class="nexttop">
-          <a href="{{ url_for('index') }}"> <!-- Enlace para salir -->
-            <div class="accion" style="text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;background-color: #656464">Inicio</div> <!-- Botón para ir a la página de inicio -->
+          <a href="{{ url_for('index') }}" style="text-decoration: none;"> <!-- Enlace para salir -->
+            <div class="accion">
+              Inicio
+            </div> <!-- Botón para ir a la página de inicio -->
           </a>
 
           <!-- Botón de regresar (sin enlace asignado aún) -->
           <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
-            <div class="accion" style="text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;background-color: #656464">Regresar</div>
+            <div class="accion">
+              Regresar
+            </div>
           </a>
 
           <!-- Menú desplegable -->
           <div class="dropdown">
+            <!-- Botón que activa el menú desplegable -->
             <button class="btn"></button>
+
+            <!-- Contenido del menú desplegable -->
             <div class="dropdown-content">
-              <a href="{{ url_for('login') }}">Login</a> <!-- Enlace a la página de inicio de sesión -->
-              <a href="{{ url_for('registro') }}">New user</a> <!-- Enlace para registrar un nuevo usuario -->
+              {% if session['nombre'] %}
+              <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
+              <a href="{{ url_for('logout') }}">Logout</a>
+              {% else %}
+              <!-- Enlace a la vista de login -->
+              <a href="{{ url_for('login') }}">Login</a>
+
+              <!-- Enlace a la vista de registro de un nuevo usuario -->
+              <a href="{{ url_for('api_registro') }}">New user</a>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -95,11 +110,11 @@ fecha de la cita a cancelar.
             <!-- Botón para cancelar la cita -->
             <div class="campo">
               <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
-                <div class="accion" style="position: absolute;left: 75%;bottom: 13%;text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px; width: 150px;background-color: #656464 ">
-                    Cancelar
+                <div class="accion" style="position: absolute;left: 75%;bottom: 13%;">
+                  Cancelar
                 </div>
-            </a>
-            
+              </a>
+
             </div>
           </div>
         </div>
