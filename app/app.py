@@ -13,7 +13,11 @@ Este archivo contiene el código para la creación de la aplicación web con Fla
 
 # Importamos Flask y las funciones necesarias para manejar las rutas y plantillas HTML.
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 import mysql.connector  # Cambiado para usar mysql.connector
+import smtplib
+
 
 # ---------------- CONEXIÓN A LA BASE DE DATOS ----------------
 def conectar_db():  # Función para conectar a la base de datos
@@ -61,7 +65,11 @@ def login():
         conn = conectar_db()
         if conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT id_usuario, rol, nombre FROM usuario WHERE correo = %s AND contraseña = SHA2(%s, 256)", (correo, password))
+            cursor.execute("""
+                SELECT id_usuario, rol, nombre, primer_apellido, segundo_apellido
+                FROM usuario 
+                WHERE correo = %s AND contraseña = SHA2(%s, 256)
+            """, (correo, password))
             user = cursor.fetchone()
             conn.close()
             
@@ -69,6 +77,8 @@ def login():
                 session['user_id'] = user[0]
                 session['rol'] = user[1]
                 session['nombre'] = user[2]
+                session['apellido1'] = user[3]
+                session['apellido2'] = user[4]
                 
                 if user[1] == 'Paciente':
                     return redirect(url_for('index'))
@@ -173,7 +183,12 @@ def api_newdoc():
 @app.route('/api/reserva', methods=['GET', 'POST'])
 def api_reserva():
     if request.method == 'GET':
-        return render_template('reservation.html')
+
+        nombre = session.get('nombre')
+        apellido1 = session.get('apellido1')
+        apellido2 = session.get('apellido2')
+
+        return render_template('reservation.html', nombre=nombre, apellido1=apellido1, apellido2=apellido2)
 
     if 'user_id' not in session:
         return jsonify({"error": "No autorizado. Inicia sesión."}), 401
@@ -196,22 +211,49 @@ def api_reserva():
     if correo != confirmacion:
         return jsonify({"error": "Los correos no coinciden"}), 400
     
-    if not all([curp, edad, telefono, alergias, discapacidad, fecha, horario, ubicacion, correo, confirmacion]):
+    if not all([curp, edad, telefono, fecha, horario, ubicacion]):
         return jsonify({"error": "Faltan campos requeridos"}), 400
+    
+    nombre = session.get('nombre')
+    apellido1 = session.get('apellido1')
+    apellido2 = session.get('apellido2')
+
+    if not all([nombre, apellido1]):
+        return jsonify({"error": "No se pudieron obtener los datos del usuario"}), 400
         
     conn = conectar_db()
-    if conn:
-        try:
-            cursor = conn.cursor()
-            cursor.callproc('insertar_cita', (curp, int(edad), telefono, alergias, discapacidad, fecha, horario, ubicacion))
-            conn.commit()
-            cursor.close()
-            conn.close()
-            return jsonify({"message": "Cita registrada exitosamente"}), 201
-        except mysql.connector.Error as err:
-            return jsonify({"error": f"Error al registrar la cita: {str(err)}"}), 500
-    else:
-        return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
+    if not conn:
+        return jsonify({"error": "No se logro conectar con la base de datos"}), 500
+    
+    try:
+        cursor = conn.cursor()
+
+        query = """ 
+            SELECT id_usuario FROM usuario
+            WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s
+        """
+        cursor.execute(query, (nombre, apellido1, apellido2))
+        result = cursor.fetchone()
+
+        if not result:
+            return jsonify({"error": "Usuario no encontrado en la base de datos"}), 404
+        
+        id_usuario = result[0]
+
+        cursor.callproc('insertar_cita', (
+            id_usuario, curp, int(edad), telefono, alergias, discapacidad, fecha, horario, ubicacion
+        ))
+
+        conn.commit()
+        return jsonify({"message": "Cita registrada exitosamente"}), 201
+    
+    except mysql.connector.Error as err:
+        conn.rollback()
+        return jsonify({"error": f"Error al registrar la cita: {str(err)}"}), 500
+    
+    finally:
+        cursor.close()
+        conn.close()
 
 # Ruta para la página de métodos de pago (metodopago.html).
 @app.route('/pago')

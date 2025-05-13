@@ -406,9 +406,8 @@ section {
   font-size: 20px;
   font-weight: bold;
   padding: 10%;
-  margin: 20px auto;
+  margin: -4px auto;
   cursor: pointer;
-  margin-top: 50%;
 }
 
 .text_style {

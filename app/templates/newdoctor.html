@@ -129,7 +129,9 @@ apellidos y correo electrónico.
                 <div class="buttons">
                     <!-- Botón de continuar -->
                     <button type="submit" class="btn"
-                        style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Continuar</button>
+                        style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                        Continuar
+                    </button>
 
                 </div>
             </div>
@@ -153,19 +155,19 @@ apellidos y correo electrónico.
                 },
                 body: JSON.stringify(data)
             })
-            .then(Response => Response.json())
-            .then(data => {
-                if (data.message) {
-                    alert(data.message);
-                    window.location.href = "{{ url_for('index') }}";
-                } else if (data.error) {
-                    alert(data.error);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("Hubo un error al registrar el usuario.");
-            });
+                .then(Response => Response.json())
+                .then(data => {
+                    if (data.message) {
+                        alert(data.message);
+                        window.location.href = "{{ url_for('index') }}";
+                    } else if (data.error) {
+                        alert(data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Hubo un error al registrar el usuario.");
+                });
         });
     </script>
 

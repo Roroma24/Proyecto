@@ -42,10 +42,21 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
         </a>
         <!-- Menú desplegable -->
         <div class="dropdown">
-          <button class="btn"></button> <!-- Botón para abrir el menú -->
+          <!-- Botón que activa el menú desplegable -->
+          <button class="btn"></button>
+
+          <!-- Contenido del menú desplegable -->
           <div class="dropdown-content">
-            <a href="{{ url_for('login') }}">Login</a> <!-- Enlace a la página de inicio de sesión -->
-            <a href="{{ url_for('registro') }}">New user</a> <!-- Enlace para registrar un nuevo usuario -->
+            {% if session['nombre'] %}
+            <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+            <!-- Enlace a la vista de login -->
+            <a href="{{ url_for('login') }}">Login</a>
+
+            <!-- Enlace a la vista de registro de un nuevo usuario -->
+            <a href="{{ url_for('api_registro') }}">New user</a>
+            {% endif %}
           </div>
         </div>
       </div>

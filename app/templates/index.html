@@ -43,7 +43,7 @@ Página de inicio para paciente. Permite navegar a las vistas de login, registro
             <!-- Contenido del menú desplegable -->
             <div class="dropdown-content">
                 {% if session['nombre'] %}
-                <span style="color: #000000; font-weight: bold; align-items: center; justify-content: center;">{{ session['nombre'] }}</span>
+                <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
                 <a href="{{ url_for('logout') }}">Logout</a>
                 {% else %}
                 <!-- Enlace a la vista de login -->

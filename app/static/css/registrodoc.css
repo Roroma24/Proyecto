@@ -86,14 +86,6 @@ body{
     background-color: #fff; /* Fondo blanco */
 }
 
-.input-box{
-    display: flex; /* Usamos flexbox para organizar los elementos dentro */
-    align-items: center; /* Centra los elementos verticalmente */
-    justify-content: space-around; /* Distribuye los elementos equitativamente */
-    width: 900px; /* Ancho del cuadro de entrada */
-    margin: 10px 0; /* Margen superior e inferior de 10px */
-}
-
 input{
     padding: 8px; /* Añade espacio dentro de los campos de entrada */
     border: 1px solid #000000; /* Borde negro */

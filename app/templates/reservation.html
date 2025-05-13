@@ -55,12 +55,21 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
           </a>
           <!-- Menú desplegable -->
           <div class="dropdown">
-            <!-- Botón para abrir el menú desplegable -->
+            <!-- Botón que activa el menú desplegable -->
             <button class="btn"></button>
+
+            <!-- Contenido del menú desplegable -->
             <div class="dropdown-content">
-              <!-- Enlaces dentro del menú desplegable -->
+              {% if session['nombre'] %}
+              <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
+              <a href="{{ url_for('logout') }}">Logout</a>
+              {% else %}
+              <!-- Enlace a la vista de login -->
               <a href="{{ url_for('login') }}">Login</a>
+
+              <!-- Enlace a la vista de registro de un nuevo usuario -->
               <a href="{{ url_for('api_registro') }}">New user</a>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -80,20 +89,20 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
     </div>
 
     <!-- FORMULARIO DE RESERVA DE CITAS -->
-    <form id="reserva_form">
+    <form id="reservation-form">
       <!-- FILA DE DATOS PERSONALES -->
       <div class="form-row">
 
         <!-- Campo para nombres del usuario -->
         <div class="form-group">
           <label for="nombre">Nombres</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+          <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
         </div>
 
         <!-- Primer apellido -->
         <div class="form-group">
           <label for="apellido1">Primer Apellido</label>
-          <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa primer apellido">
+          <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa primer apellido" required>
         </div>
 
         <!-- Segundo apellido -->
@@ -218,28 +227,37 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
   </div>
 
   <script>
-    document.getElementById('reserva_form').addEventListener('submit', function (e) {
-      e.preventDefault();
+    document.getElementById('reservation-form').addEventListener('submit', function (event) {
+      event.preventDefault();
 
-      const formData = new FormData(this);
-      const data = Object.fromEntries(formData.entries());
+      const formData = {
+        nombre: document.getElementById('nombre').value,
+        apellido1: document.getElementById('apellido1').value,
+        apellido2: document.getElementById('apellido2').value,
+        curp: document.getElementById('curp').value,
+        edad: document.getElementById('edad').value,
+        telefono: document.getElementById('telefono').value,
+        alergias: document.getElementById('alergias').value,
+        discapacidad: document.getElementById('discapacidad').value,
+        fecha: document.getElementById('fecha').value,
+        horarios: document.getElementById('horarios').value,
+        ubicacion: document.getElementById('ubicacion').value,
+        correo: document.getElementById('correo').value,
+        confirmacion: document.getElementById('confirmacion').value
+      };
 
-      fetch("{{ url_for('api_reserva') }}", {
+      fetch('/api/reserva', {
         method: 'POST',
         headers: {
           'content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(formData),
       })
-        .then(async (Response) => {
-          const result = await response.json();
-          if (!response.ok) throw new Error(result.error || "Error desconocido");
-          alert(result.message);
-          window.location.href = "{{ url_for('index') }}";
+        .then(response => response.json())
+        .then(data => {
+          alert(data.message || data.error);
         })
-        .catch(error => {
-          alert("❌ " + error.message)
-        });
+        .catch(error => console.error('Error:', error));
     });
   </script>
 

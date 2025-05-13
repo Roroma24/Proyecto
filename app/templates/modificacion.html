@@ -48,12 +48,21 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
             </a>
             <!-- Menú desplegable -->
             <div class="dropdown">
-                <!-- Botón para abrir el menú desplegable -->
+                <!-- Botón que activa el menú desplegable -->
                 <button class="btn"></button>
+
+                <!-- Contenido del menú desplegable -->
                 <div class="dropdown-content">
-                    <!-- Enlaces dentro del menú desplegable -->
+                    {% if session['nombre'] %}
+                    <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                    {% else %}
+                    <!-- Enlace a la vista de login -->
                     <a href="{{ url_for('login') }}">Login</a>
-                    <a href="{{ url_for('registro') }}">New user</a>
+
+                    <!-- Enlace a la vista de registro de un nuevo usuario -->
+                    <a href="{{ url_for('api_registro') }}">New user</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
