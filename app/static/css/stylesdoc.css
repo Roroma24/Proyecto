@@ -13,28 +13,29 @@ Este archivo contiene los estilos CSS para la página de inicio de la aplicació
 
 /* Estilo para el fondo de la página */
 body{
-    background-color: #fff; /* Fondo blanco para toda la página */
+    background-color: #fff;
     font-family: Arial, sans-serif;
 }
 
 /* Contenedor principal que usa flexbox */
 .container{
-    display: flex; /* Usamos flexbox para organizar los elementos */
-    align-items: center; /* Alineación vertical centrada */
-    justify-content: space-between; /* Espaciado uniforme entre los elementos */
-    width: auto; /* El ancho se ajusta al contenido */
-    margin: 25px auto; /* Márgenes automáticos para centrar el contenedor */
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    width: auto; 
+    margin: 25px auto; 
 }
 
 /* Contenedor para otro grupo de elementos usando flexbox */
 .container_a{
-    display: flex; /* Flexbox para organización */
-    align-items: center; /* Alineación vertical centrada */
-    justify-content: space-around; /* Espaciado uniforme entre los elementos */
+    display: flex; 
+    align-items: center; 
+    justify-content: space-around;
     width: auto;
-    margin: 10px auto; /* Márgenes automáticos para centrar el contenedor */
+    margin: 10px auto; 
 }
 
+/* Estilo contenedor para el título e icono */
 .icon-title{
     display: flex;
     align-items: center;
@@ -43,88 +44,92 @@ body{
 
 /* Estilo para cada icono */
 .icon{
-    width: 90px; /* Ancho de cada icono */
-    height: 90px; /* Alto de cada icono */
-    background-image: url('imagen/logo.png'); /* Fondo rojo para los iconos */
-    border-radius: 40%; /* Bordes redondeados para darle forma circular */
+    width: 90px; 
+    height: 90px; 
+    background-image: url('imagen/logo.png'); 
+    border-radius: 40%; 
 }
 
 /* Estilo para el botón */
 .btn{
-    width: 90px; /* Ancho del botón */
-    height: 90px; /* Alto del botón */
-    background-color: #fff; /* Fondo morado para el botón */
+    width: 90px; 
+    height: 90px;
+    background-color: #fff; 
     background-image: url('imagen/logoregistro.png');
     background-size: cover;
-    border-radius: 40%; /* Bordes redondeados para darle forma circular */
-    border: none; /* Sin borde por defecto */
-    cursor: pointer; /* Muestra un puntero al pasar sobre el botón */
+    border-radius: 40%; 
+    border: none; 
+    cursor: pointer;
 }
 
+/* Estilo para el primer contenedor */
 .container1{
-    display: flex; /* Usamos flexbox para organizar los elementos */
-    align-items: center; /* Alineación vertical centrada */
+    display: flex; 
+    align-items: center;
     background-color: #b6c4c7;
-    justify-content: space-between; /* Espaciado uniforme entre los elementos */
-    width: auto; /* El ancho se ajusta al contenido */
+    justify-content: space-between; 
+    width: auto; 
 }
 
 /* Contenedor para el dropdown (menú desplegable) */
 .dropdown {
-    position: relative; /* Necesario para el posicionamiento de los elementos del menú */
-    display: inline-block; /* El contenedor se comporta como un bloque en línea */
+    position: relative; 
+    display: inline-block; 
 }
 
 /* Contenido del dropdown, que está oculto por defecto */
 .dropdown-content {
-    display: none; /* Oculto inicialmente */
-    position: absolute; /* Se posiciona absolutamente respecto al contenedor */
-    background-color: #f9f9f9; /* Fondo blanco para el menú */
-    min-width: 120px; /* Ancho mínimo del menú */
-    box-shadow: 0px 8px 16px #00000033; /* Sombra para dar profundidad */
-    z-index: 1; /* Para asegurarse de que el menú esté por encima de otros elementos */
+    display: none; 
+    position: absolute; 
+    background-color: #f9f9f9; 
+    min-width: 120px;
+    box-shadow: 0px 8px 16px #00000033; 
+    z-index: 1;
 }
 
 /* Estilo de los enlaces dentro del dropdown */
 .dropdown-content a {
-    display: block; /* Los enlaces ocupan todo el ancho disponible */
-    padding: 8px 12px; /* Espaciado dentro de los enlaces */
-    text-decoration: none; /* Eliminar subrayado por defecto */
-    color: #000000; /* Color de texto negro */
+    display: block; 
+    padding: 8px 12px; 
+    text-decoration: none; 
+    color: #000000; 
 }
 
 /* Estilo cuando el cursor está sobre los enlaces del dropdown */
 .dropdown-content a:hover {
-    background-color: #ddd; /* Fondo gris claro al pasar el mouse sobre el enlace */
+    background-color: #ddd; 
 }
 
 /* Mostrar el contenido del dropdown cuando se pasa el mouse sobre el contenedor */
 .dropdown:hover .dropdown-content {
-    display: block; /* Muestra el menú */
+    display: block; 
 }
 
+/* Estilo para el contenedor del título principal */
 .titulo-principal{
     font-size: 50px;
     font-weight: bold;
     margin: 0;
 }
 
+/* Estilo para el contenedor de la imagen de fondo */
 .body_image {
-    width: auto; /* El ancho se ajusta automáticamente al contenido */
-    height: 46vw; /* La altura se establece como un 55% del ancho de la ventana */
-    background-image: url('imagen/fondo_menu.jpeg'); /* Imagen de fondo */
-    padding-top: 40px; /* Añade espacio en la parte superior */
-    background-size: cover; /* Hace que la imagen cubra todo el área del contenedor */
-    background-position: center; /* Centra la imagen dentro del contenedor */
-    background-repeat: no-repeat; /* No repite la imagen si es más pequeña que el contenedor */
-    margin: auto; /* Centra el contenedor */
+    width: auto;
+    height: 46vw; 
+    background-image: url('imagen/fondo_menu.jpeg'); 
+    padding-top: 40px; 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    margin: auto;
 }
 
+/* Estilo para la imagen del index */
 .image{
     display: block;
-    width: auto; /* El ancho de la imagen se ajusta automáticamente */
-    height: 220px; /* Alto de la imagen */
-    background-image: url('imagen/index.jpg'); /* Fondo suave para la imagen */
+    width: auto;
+    height: 220px; 
+    background-image: url('imagen/index.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
@@ -136,50 +141,51 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%; /* Ancho de la caja */
-    height: 160px; /* Alto de la caja */
-    margin: 40px auto; /* Márgenes automáticos para centrarla */
+    width: 80%; 
+    height: 160px; 
+    margin: 40px auto; 
     margin-top: 3%;
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 10px; 
 }
 
-/* Estilo para el logo */
+/* Estilo para el logo de reserva */
 .logo_reserv{
-    width: 160px; /* Ancho del logo */
-    height: 160px; /* Alto del logo */
-    background-image: url('imagen/logo_reserva.png'); /* Fondo gris para el logo */
+    width: 160px; 
+    height: 160px; 
+    background-image: url('imagen/logo_reserva.png'); 
     background-size: cover;
-    border-radius: 40%; /* Bordes redondeados para darle forma circular */
-    margin: 20px auto; /* Márgenes automáticos para centrar */
+    border-radius: 40%; 
+    margin: 20px auto; 
 }
 
-/* Estilo para el logo */
+/* Estilo para el logo de modificación */
 .logo_mod{
-    width: 160px; /* Ancho del logo */
-    height: 160px; /* Alto del logo */
-    background-image: url('imagen/logo_modif.png'); /* Fondo gris para el logo */
+    width: 160px; 
+    height: 160px;
+    background-image: url('imagen/logo_modif.png'); 
     background-size: cover;
-    border-radius: 40%; /* Bordes redondeados para darle forma circular */
-    margin: 20px auto; /* Márgenes automáticos para centrar */
+    border-radius: 40%; 
+    margin: 20px auto; 
 }
 
-/* Estilo para el logo */
+/* Estilo para el logo de cancelar */
 .logo_cancel{
-    width: 160px; /* Ancho del logo */
-    height: 160px; /* Alto del logo */
-    background-image: url('imagen/logo_cancel.png'); /* Fondo gris para el logo */
+    width: 160px; 
+    height: 160px; 
+    background-image: url('imagen/logo_cancel.png'); 
     background-size: cover;
-    border-radius: 40%; /* Bordes redondeados para darle forma circular */
-    margin: 20px auto; /* Márgenes automáticos para centrar */
+    border-radius: 40%; 
+    margin: 20px auto;
 }
 
+/* Estilo para el logo de historial */
 .logo_historial{
-    width: 160px; /* Ancho del logo */
-    height: 160px; /* Alto del logo */
-    background-image: url('imagen/logo_historial.png'); /* Fondo gris para el logo */
+    width: 160px; 
+    height: 160px; 
+    background-image: url('imagen/logo_historial.png'); 
     background-size: cover;
-    border-radius: 40%; /* Bordes redondeados para darle forma circular */
-    margin: 20px auto; /* Márgenes automáticos para centrar */
+    border-radius: 40%; 
+    margin: 20px auto; 
 }
 
 /* Título con borde punteado */
@@ -187,28 +193,21 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 200px; /* Ancho del título */
-    height: 50px; /* Alto del título */
-    margin: 10px auto; /* Márgenes automáticos para centrar */
+    width: 200px; 
+    height: 50px; 
+    margin: 10px auto; 
 }
 
 /* Botón siguiente */
 .next {
     display: flex;
     width: 180px;
-    /* Ancho del botón */
     height: 50px;
-    /* Alto del botón */
     background-color: #000000;
-    /* Fondo gris oscuro para el botón */
     border-radius: 25px;
-    /* Bordes redondeados */
     border: none;
-    /* Sin borde por defecto */
     cursor: pointer;
-    /* Muestra un puntero al pasar sobre el botón */
     margin: 10px auto;
-    /* Márgenes automáticos para centrarlo */
     justify-content: center;
     align-items: center;
     font-weight: bolder;
@@ -217,6 +216,7 @@ body{
     color: #fff;
 }
 
+/* Estilo para el texto del dashed-box */
 .text_style{
     text-align: center;
     justify-items: center;

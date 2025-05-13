@@ -11,28 +11,22 @@ Descripción:
 Este archivo contiene los estilos CSS para la página de modificación de la aplicación web.
 */
 
+/* Estilo general del cuerpo de la página */
 body {
     background-color: #fff;
-    /* Establece el color de fondo de la página en blanco */
     font-family: Arial, sans-serif;
-    /* Define la fuente de la página */
 }
 
-/* CONTENEDOR PRINCIPAL */
+/* Estilo del contenedor principal */
 .container {
     display: flex;
-    /* Utiliza flexbox para organizar los elementos en fila */
     align-items: center;
-    /* Alinea los elementos verticalmente al centro */
     justify-content: space-between;
-    /* Distribuye los elementos uniformemente en la fila */
     width: auto;
-    /* El ancho se ajusta automáticamente al contenido */
     margin: 10px auto;
-    /* Centra el contenedor con un margen de 10px arriba y abajo */
 }
 
-/* Sección inferior, usualmente para dividir en columnas */
+/* Estilo de sección inferior */
 .bottom-section {
     display: flex;
     flex-wrap: wrap;
@@ -41,7 +35,6 @@ body {
 /* Columna izquierda, parte de la sección inferior */
 .left-column {
     flex: 2;
-    /* Toma el doble de espacio que la columna derecha */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -58,76 +51,50 @@ body {
 /* ICONO Y TÍTULO: Alineación de elementos con espacio entre ellos */
 .icon-title {
     display: flex;
-    /* Utiliza flexbox para alinear icono y título */
     align-items: center;
-    /* Alinea los elementos verticalmente */
     gap: 15px;
-    /* Espacio de 15px entre el icono y el título */
 }
 
+/* Estilo del botón de acción de principal */
 .btn_accion {
     display: flex;
-    /* Utiliza flexbox para alinear los botones de acción */
     align-items: center;
-    /* Alinea los elementos verticalmente */
     justify-content: flex-end;
-    /* Alinea los elementos hacia el extremo derecho */
     width: auto;
     gap: 15px;
-    /* Espacio de 15px entre los botones */
 }
 
 /* ICONO: Estilos para un icono redondeado */
 .icon {
     width: 90px;
-    /* Ancho del icono */
     height: 90px;
-    /* Altura del icono */
     background-image: url('imagen/logo.png');
-    /* Imagen de fondo para el icono */
     background-size: cover;
-    /* Hace que la imagen cubra todo el área del icono */
     border-radius: 40%;
-    /* Bordes redondeados para hacer un círculo */
 }
 
-/* BOTÓN: Botón circular con color de fondo */
+/* BOTÓN: Botón circular con imágen de registro */
 .btn {
     width: 90px;
-    /* Ancho del botón */
     height: 90px;
-    /* Altura del botón */
     background-color: #fff;
-    /* Fondo blanco para el botón */
     background-image: url('imagen/logoregistro.png');
-    /* Imagen de fondo para el botón */
     background-size: cover;
-    /* Hace que la imagen cubra todo el área del botón */
     border-radius: 40%;
-    /* Bordes redondeados para hacer un círculo */
     border: none;
-    /* Sin borde para el botón */
     cursor: pointer;
-    /* Cambia el cursor al pasar el mouse sobre el botón */
 }
 
 /* BOTÓN DE ACCIÓN */
 .accion {
     display: flex;
     width: 160px;
-    /* Ancho del botón de acción */
     height: 50px;
-    /* Altura del botón de acción */
     background-color: #000000;
-    /* Fondo gris oscuro para el botón */
     border-radius: 25px;
-    /* Bordes redondeados para el botón */
     border: none;
-    /* Sin borde para el botón */
     cursor: pointer;
-    /* Cambia el cursor al pasar el mouse sobre el botón */
     margin: auto;
-    /* Centra el botón dentro de su contenedor */
     text-align: center;
     color: #fff;
     font-size: 25px;
@@ -136,181 +103,119 @@ body {
     justify-content: center;
 }
 
-/* CONTENEDOR DESPLEGABLE */
+/* Estilo del contenedor desplegable */
 .dropdown {
     position: relative;
-    /* Permite posicionar los elementos internos de manera relativa */
     display: inline-block;
-    /* Hace que el contenedor se ajuste al tamaño del contenido */
 }
 
-/* CONTENIDO DEL MENÚ DESPLEGABLE (OCULTO POR DEFECTO) */
+/* Contenido del menú desplegable (Oculto por defecto) */
 .dropdown-content {
     display: none;
-    /* Oculta el contenido del menú desplegable por defecto */
     position: absolute;
-    /* Posiciona el menú de manera absoluta respecto al contenedor */
     background-color: #f9f9f9;
-    /* Fondo gris claro para el menú */
     min-width: 120px;
-    /* Establece un ancho mínimo de 120px */
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    /* Agrega sombra al menú */
     z-index: 1;
-    /* Asegura que el menú se muestre por encima de otros elementos */
 }
 
-/* ENLACES DENTRO DEL MENÚ DESPLEGABLE */
+/* Enlaces dentro del menú desplegable */
 .dropdown-content a {
     display: block;
-    /* Hace que los enlaces ocupen todo el ancho disponible */
     padding: 8px 12px;
-    /* Espaciado interno de los enlaces */
     text-decoration: none;
-    /* Elimina el subrayado de los enlaces */
     color: black;
-    /* Color negro para el texto de los enlaces */
 }
 
-/* CAMBIO DE COLOR AL PASAR EL CURSOR SOBRE UN ENLACE */
+/* Cambio de color al pasar el cursor sobre un enlace */
 .dropdown-content a:hover {
     background-color: #ddd;
-    /* Cambia el fondo a gris claro cuando el cursor pasa sobre un enlace */
 }
 
-/* MUESTRA EL MENÚ AL PASAR EL CURSOR SOBRE EL CONTENEDOR */
+/* Muestra el menú al pasar el cursor sobre el contenedor */
 .dropdown:hover .dropdown-content {
     display: block;
-    /* Muestra el contenido del menú cuando se pasa el cursor sobre el contenedor */
 }
 
-/* TÍTULO PRINCIPAL */
+/* Título principal de la página */
 .titulo-principal {
     font-size: 40px;
-    /* Tamaño de fuente grande para el título */
     font-weight: bold;
-    /* Hace que el título sea en negrita */
     margin: 0;
-    /* Elimina el margen exterior del título */
 }
 
-/* CONTENEDOR DE IMAGEN DE FONDO */
+/* Contenedor de la imágen de fondo */
 .body_image {
     width: auto;
-    /* El ancho se ajusta automáticamente al contenido */
     height: 55vw;
-    /* La altura se establece como un 55% del ancho de la ventana */
     background-image: url('imagen/fondo.jpeg');
-    /* Imagen de fondo */
     padding-top: 40px;
-    /* Añade espacio en la parte superior */
     background-size: cover;
-    /* Hace que la imagen cubra todo el área del contenedor */
     background-position: center;
-    /* Centra la imagen dentro del contenedor */
     background-repeat: no-repeat;
-    /* No repite la imagen si es más pequeña que el contenedor */
     margin: auto;
-    /* Centra el contenedor */
 }
 
-/* LOGO DE LA PÁGINA: Estilo de un logo circular */
+/* Logo de la página: Estilo en logo circular */
 .logo_pag {
     width: 160px;
-    /* Ancho del logo */
     height: 160px;
-    /* Altura del logo */
     background-image: url('imagen/logo_modif.png');
-    /* Fondo gris para el logo */
     background-size: cover;
-    /* Hace que la imagen cubra todo el área del logo */
     border-radius: 50%;
-    /* Hace que el logo tenga forma circular */
     margin: auto;
-    /* Centra el logo dentro de su contenedor */
 }
 
+/* Estilo del cuadro con borde discontinuo de texto */
 .dashed-box {
     width: 80%;
-    /* Ancho del cuadro */
     height: 140px;
-    /* Alto del cuadro */
     border: 2px dashed #000;
-    /* Borde discontinuo negro */
     margin: 30px auto 50px;
-    /* Márgenes superior, inferior y lateral */
     display: flex;
-    /* Usamos flexbox para organizar los elementos dentro */
     align-items: center;
-    /* Centra los elementos verticalmente */
     justify-content: center;
-    /* Centra los elementos horizontalmente */
     color: #000000;
-    /* Color del texto */
     font-size: 16px;
-    /* Tamaño de la fuente */
     text-align: center;
-    /* Centra el texto */
     border-radius: 10px;
-    /* Bordes redondeados */
     background-color: #fff;
-    /* Fondo blanco */
 }
 
-/* Contenedor principal del formulario */
+/* Estilo del contenedor principal del formulario */
 .form {
     display: flex;
-    /* Usamos flexbox para organizar los elementos */
     flex-direction: column;
-    /* Organiza los elementos en columna */
     gap: 40px;
-    /* Espaciado vertical entre los elementos */
 }
 
 /* Fila del formulario para organizar inputs horizontalmente */
 .form-row {
     display: flex;
-    /* Usamos flexbox para organizar los elementos */
     gap: 30px;
-    /* Espacio entre los elementos */
     flex-wrap: wrap;
-    /* Los elementos saltan a nueva línea si no hay espacio suficiente */
     justify-content: space-between;
-    /* Distribuye los elementos equitativamente */
     margin-bottom: 30px;
-    /* Margen inferior de 30px */
     margin: 30px;
-    /* Márgenes de 30px */
 }
 
 /* Grupo de campos individuales dentro de una fila */
 .form-group {
     flex: 1 1 calc(25% - 30px);
-    /* Mantiene la distribución horizontal original */
     display: flex;
-    /* Usamos flexbox para organizar los elementos dentro del grupo */
     flex-direction: column;
-    /* Organiza los elementos en columna */
     gap: 10px;
-    /* Espacio entre label e input */
     background-color: #fff;
-    /* Fondo blanco */
     border: 1px solid #333;
-    /* Borde gris oscuro */
     border-radius: 4px;
-    /* Bordes redondeados */
     padding: 10px;
-    /* Añade espacio dentro del grupo */
     box-sizing: border-box;
-    /* Asegura que el padding no modifique el tamaño total */
     margin: 1%;
-    /* Margen del 1% */
 }
 
 /* Etiqueta de cada campo */
 .form-group label {
     font-weight: bold;
-    /* Texto en negrita */
 }
 
 /* Inputs estándar y selectores de tipo texto, email, número, fecha, etc. */
@@ -319,17 +224,11 @@ input[type="email"],
 input[type="date"],
 select {
     width: 100%;
-    /* Ancho del campo al 100% */
     padding: 12px;
-    /* Añade espacio dentro de los campos */
     border: 1px solid #333;
-    /* Borde gris oscuro */
     border-radius: 4px;
-    /* Bordes redondeados */
     font-size: 14px;
-    /* Tamaño de la fuente */
     box-sizing: border-box;
-    /* Asegura compatibilidad con padding */
 }
 
 /* Contenedor del calendario, puede usarse para mostrar un selector de fechas */
