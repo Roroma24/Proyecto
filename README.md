@@ -26,7 +26,7 @@ El sistema está construido utilizando **Flask** como framework web principal, y
 - **Backend:** Flask (Python)  
 - **Base de Datos:** MySQL  
 - **Frontend:** HTML, CSS, JavaScript  
-- **Comunicación Cliente-Servidor:** AJAX, JSON  
+- **Comunicación Cliente-Servidor:** JSON  
 
 ---
 
