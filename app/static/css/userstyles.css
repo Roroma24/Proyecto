@@ -80,20 +80,6 @@ body{
 
 /* Estilo del cuadro de texto dashed-box */
 .dashed-box {
-<<<<<<< HEAD
-    width: 80%; /* Ancho del cuadro */
-    height: 140px; /* Alto del cuadro */
-    margin: 30px auto 50px; /* Márgenes superior, inferior y lateral */
-    display: flex; /* Usamos flexbox para organizar los elementos dentro */
-    align-items: center; /* Centra los elementos verticalmente */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    color: #000000; /* Color del texto */
-    font-size: 16px; /* Tamaño de la fuente */
-    text-align: center; /* Centra el texto */
-    border-radius: 10px; /* Bordes redondeados */
-}
-
-=======
     width: 80%; 
     height: 140px; 
     margin: 30px auto 50px; 
@@ -107,7 +93,6 @@ body{
 }
 
 /* Estilo para el cuadro de entrada */
->>>>>>> b004951063a6b7cc326e3880ad0621d86fa5d1b8
 input{
     padding: 8px; 
     border: 1px solid #000000; 
