@@ -137,6 +137,7 @@ body {
   border-radius: 4px; 
   padding: 10px; 
   box-sizing: border-box; 
+  margin-bottom: 20px;
 }
 
 /* Estilo para los labels de los campos individuales del formulario */
