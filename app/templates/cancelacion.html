@@ -31,7 +31,7 @@ fecha de la cita a cancelar.
       <!-- Barra de iconos y título principal -->
       <div class="icon-bar">
         <div class="icon"></div> <!-- Espacio para un ícono -->
-        <h1 class="titulo-principal">Cancelación de cita</h1> <!-- Título principal -->
+        <h1 class="titulo-principal">Cancelar cita</h1> <!-- Título principal -->
       </div>
       <!-- Contenedor para botones de navegación -->
       <div class="container_2">
@@ -84,33 +84,38 @@ fecha de la cita a cancelar.
           <div class="formulario">
             <!-- Campo para el nombre completo -->
             <div class="campo nombre">
+              <label for="nombres">Nombre</label> <!-- Etiqueta para nombres -->
               <input type="text" id="nombre" placeholder="Nombre completo" />
             </div>
             <!-- Campos dobles para teléfono, edad y correo -->
             <div class="campos-dobles">
               <div class="campo">
+                <label for="telefono">Teléfono</label> <!-- Etiqueta para teléfono -->
                 <input type="tel" id="telefono" placeholder="Teléfono" />
               </div>
               <div class="campo">
+                <label for="edad">Edad</label> <!-- Etiqueta para edad -->
                 <input type="number" id="edad" placeholder="Edad" />
               </div>
               <div class="campo">
+                <label for="correo">Correo</label> <!-- Etiqueta para correo -->
                 <input type="email" id="correo" placeholder="Correo" />
               </div>
             </div>
             <!-- Campos dobles para hora y fecha -->
             <div class="campos-dobles">
               <div class="campo">
+                <label for="hora">Hora</label> <!-- Etiqueta para hora -->
                 <input type="time" id="hora" />
               </div>
               <div class="campo">
+                <label for="fecha">Fecha</label> <!-- Etiqueta para fecha -->
                 <input type="date" id="fecha" />
               </div>
             </div>
             <!-- Botón para cancelar la cita -->
-            <div class="campo">
               <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
-                <div class="accion" style="position: absolute;left: 75%;bottom: 13%;">
+                <div class="accion" style="position: absolute;left: 75%;bottom: 3%;">
                   Cancelar
                 </div>
               </a>

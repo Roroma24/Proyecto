@@ -80,7 +80,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   width: 1400px;
-  height: 720px;
+  height: 800px;
   margin: 20px auto;
   background-color: #fff;
   border-radius: 20px;
@@ -216,21 +216,31 @@ body {
   gap: 40px;
 }
 
-/* Estilo para el formulario*/
+/* Estilo general del formulario */
 .formulario {
   width: 1000px;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
-  text-align: center;
+  text-align: left;
 }
 
-/* Estilo para el campo del formulario */
+/* Estilo para los campos individuales del formulario */
 .campo {
-  margin: 10px 0;
+  flex: 1 1 calc(25% - 30px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-/* Estilo para los input de los campos del formulario */
+/* Estilo para los inputs de los campos */
 .campo input {
   width: calc(100% - 22px);
   padding: 10px;
@@ -238,13 +248,16 @@ body {
   border-radius: 4px;
 }
 
-/* Estilo los campos que se encuentra dobles del formulario */
+/* Contenedor para campos dobles en línea */
 .campos-dobles {
   display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 
-/* Estilo para ajustar el ancho de los campos */
+/* Cada campo en un contenedor doble ocupa 30% */
 .campos-dobles .campo {
   width: 30%;
 }
