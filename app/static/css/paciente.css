@@ -446,7 +446,7 @@ section {
   width: 65%;
   height: auto;
   background-color: #fff;
-  border: 2px dashed #000;
+  border: 2px solid #000;
   display: flex;
   justify-content: center;
   align-items: flex-start;
