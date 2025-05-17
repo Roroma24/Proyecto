@@ -80,22 +80,6 @@ body{
 
 /* Estilos para el cuadro de texto dashed-box */
 .dashed-box {
-<<<<<<< HEAD
-    width: 80%; /* Ancho del cuadro */
-    height: 140px; /* Alto del cuadro */
-    border: 2px dashed #000; /* Borde discontinuo negro */
-    margin: 30px auto 50px; /* Márgenes superior, inferior y lateral */
-    display: flex; /* Usamos flexbox para organizar los elementos dentro */
-    align-items: center; /* Centra los elementos verticalmente */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    color: #000000; /* Color del texto */
-    font-size: 16px; /* Tamaño de la fuente */
-    text-align: center; /* Centra el texto */
-    border-radius: 10px; /* Bordes redondeados */
-    background-color: #fff; /* Fondo blanco */
-}
-
-=======
     width: 80%; 
     height: 140px;
     border: 2px dashed #000; 
@@ -111,7 +95,6 @@ body{
 }
 
 /* Estilos para los input */
->>>>>>> b004951063a6b7cc326e3880ad0621d86fa5d1b8
 input{
     padding: 8px; 
     border: 1px solid #000000; 
@@ -185,6 +168,7 @@ input{
 /* Inputs estándar y selectores de tipo texto, email, número, fecha, etc. */
 input[type="text"],
 input[type="email"],
+input[type="password"],
 select{
     width: 100%; 
     padding: 12px; 
