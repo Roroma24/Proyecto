@@ -25,8 +25,13 @@ El sistema está construido utilizando **Flask** como framework web principal, y
 
 - **Backend:** Flask (Python)  
 - **Base de Datos:** MySQL  
+<<<<<<< HEAD
 - **Frontend:** HTML, CSS, JavaScript 
 - **Comunicación Cliente-Servidor:** AJAX, JSON  
+=======
+- **Frontend:** HTML, CSS, JavaScript  
+- **Comunicación Cliente-Servidor:** JSON  
+>>>>>>> 6baafe32a0324b324c6a47408fbe5292b87ae904
 
 ---
 
@@ -175,3 +180,7 @@ Se utilizan **procedimientos almacenados** para mantener la lógica en el servid
 | Tablas             |
 | Procedimientos SP  |
 +--------------------+
+
+```
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Roroma24/Proyecto)
