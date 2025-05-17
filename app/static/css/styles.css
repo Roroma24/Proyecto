@@ -23,7 +23,8 @@ body {
     align-items: center;
     justify-content: space-between;
     width: auto;
-    margin: 10px auto;
+    height: auto;
+    margin: 5px auto;
 }
 
 /* Contenedor para otro grupo de elementos usando flexbox */
@@ -128,7 +129,7 @@ body {
 .image {
     display: block;
     width: auto;
-    height: 220px;
+    height: 150px;
     background-image: url('imagen/index.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -141,17 +142,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: auto;
     height: 160px;
-    margin: 40px auto;
+    margin: 20px auto;
     margin-top: 3%;
     border-radius: 10px;
 }
 
 /* Estilo para el logo de reserva */
 .logo_reserv {
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
     background-image: url('imagen/logo_reserva.png');
     background-size: cover;
     border-radius: 40%;
@@ -160,8 +161,8 @@ body {
 
 /* Estilo para el logo de modificación */
 .logo_mod {
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
     background-image: url('imagen/logo_modif.png');
     background-size: cover;
     border-radius: 40%;
@@ -170,8 +171,8 @@ body {
 
 /* Estilo para el logo de cancelar */
 .logo_cancel {
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
     background-image: url('imagen/logo_cancel.png');
     background-size: cover;
     border-radius: 40%;
@@ -214,4 +215,5 @@ body {
     border-radius: 2%;
     font-size: 30px;
     color: #000000;
+    size: 25px;
 }
