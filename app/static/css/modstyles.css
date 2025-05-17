@@ -30,6 +30,7 @@ body {
 .bottom-section {
     display: flex;
     flex-wrap: wrap;
+    margin-top: -30px;
 }
 
 /* Columna izquierda, parte de la sección inferior */
@@ -58,10 +59,11 @@ body {
 /* Estilo del botón de acción de principal */
 .btn_accion {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    align-items: center;      /* Centrado vertical */
+    justify-content: center;  /* Centrado horizontal (opcional) */
     width: auto;
     gap: 15px;
+    height: 100%;             /* O una altura fija como 100px */
 }
 
 /* ICONO: Estilos para un icono redondeado */
@@ -85,8 +87,10 @@ body {
     cursor: pointer;
 }
 
-/* BOTÓN DE ACCIÓN */
+/* Botón de modificar */
 .accion {
+    position: relative;
+    top: -15px; 
     display: flex;
     width: 160px;
     height: 50px;
@@ -94,7 +98,7 @@ body {
     border-radius: 25px;
     border: none;
     cursor: pointer;
-    margin: auto;
+    margin: 0 auto;
     text-align: center;
     color: #fff;
     font-size: 25px;
@@ -147,7 +151,7 @@ body {
 /* Contenedor de la imágen de fondo */
 .body_image {
     width: auto;
-    height: 55vw;
+    height: 100%;
     background-image: url('imagen/fondo.jpeg');
     padding-top: 40px;
     background-size: cover;

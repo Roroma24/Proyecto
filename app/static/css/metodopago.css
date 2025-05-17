@@ -84,7 +84,7 @@ body {
   width: 80%;
   max-width: 100vw;
   min-height: 80vh;
-  margin: 50px auto 0;
+  margin: 30px auto 30px; 
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
@@ -109,6 +109,13 @@ body {
   border-radius: 40%;
   border: none;
   cursor: pointer;
+}
+
+/* Estilo para el logo de profile al pasar el mouse */
+.circle.purple:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: #fff !important;
 }
 
 /* Contenedor para el dropdown */
@@ -386,6 +393,7 @@ select {
   transform: scale(1.1);
 }
 
+/* Estilo para el botón de envío dentro del contenedor de métodos de pago */
 #metodo-pago .submit-btn {
   margin-left: 85%;
   margin-top: 60px;
@@ -394,3 +402,5 @@ select {
   align-self: center;
   display: block;
 }
+
+

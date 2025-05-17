@@ -79,7 +79,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 1400px;
+  width: 100%;
   height: 800px;
   margin: 20px auto;
   background-color: #fff;
@@ -160,7 +160,7 @@ body {
 /* Estilo para el contenedor de la imagen de fondo */
 .image {
   width: auto;
-  height: 45vw;
+  height: 100%;
   background-image: url('imagen/fondo.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
