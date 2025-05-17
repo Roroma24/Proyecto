@@ -175,3 +175,7 @@ Se utilizan **procedimientos almacenados** para mantener la lógica en el servid
 | Tablas             |
 | Procedimientos SP  |
 +--------------------+
+
+```
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Roroma24/Proyecto)
