@@ -221,6 +221,7 @@ body {
 /* Inputs estándar y selectores de tipo texto, email, número, fecha, etc. */
 input[type="text"],
 input[type="email"],
+input[type="number"],
 input[type="date"],
 select {
     width: 100%;

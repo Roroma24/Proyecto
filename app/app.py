@@ -15,8 +15,10 @@ Este archivo contiene el código para la creación de la aplicación web con Fla
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from datetime import datetime
 import mysql.connector  # Cambiado para usar mysql.connector
 import smtplib
+import calendar
 
 
 # ---------------- CONEXIÓN A LA BASE DE DATOS ----------------
@@ -228,11 +230,10 @@ def api_reserva():
     try:
         cursor = conn.cursor()
 
-        query = """ 
+        cursor.execute("""
             SELECT id_usuario FROM usuario
-            WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s
-        """
-        cursor.execute(query, (nombre, apellido1, apellido2))
+            WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido =%s
+        """, (nombre, apellido1, apellido2))
         result = cursor.fetchone()
 
         if not result:
@@ -240,9 +241,45 @@ def api_reserva():
         
         id_usuario = result[0]
 
-        cursor.callproc('insertar_cita', (
-            id_usuario, curp, int(edad), telefono, alergias, discapacidad, fecha, horario, ubicacion
-        ))
+        dia_semana = calendar.day_name[datetime.strptime(fecha, "%Y-%m-%d").weekday()]
+        dia_es = {
+            'Monday': 'Lunes',
+            'Tuesday': 'Martes',
+            'Wednesday': 'Miercoles',
+            'Thursday': 'Jueves',
+            'Friday': 'Viernes',
+            'Saturday': 'Sabado',
+            'Sunday': 'Domingo'
+        }
+        dia = dia_es[dia_semana]
+
+        cursor.execute("SELECT id_clinica FROM clinica WHERE direccion = %s", (ubicacion,))
+        clinica_row = cursor.fetchone()
+
+        if not clinica_row:
+            return jsonify({"error": "Ubicación no encontrada"}), 404
+        
+        id_clinica = clinica_row[0]
+
+        cursor.execute("""
+            SELECT dd.id_doctor
+            FROM doctor_disponibilidad dd
+            JOIN doctor_clinica dc ON dd.id_doctor = dc.id_doctor
+            WHERE dd.dia = %s
+                AND dd.horario_inicio <= %s
+                AND dd.horario_final > %s
+                AND dc.id_clinica = %s
+            Limit 1
+        """, (dia, horario, horario, id_clinica))
+
+        doctor_row = cursor.fetchone()
+
+        if not doctor_row:
+            return jsonify({"error": "No hay doctores disponibles en ese horario y ubicación"}), 404
+        
+        id_doctor = doctor_row[0]
+
+        cursor.callproc('insertar_cita', (id_usuario, curp, int(edad), telefono, alergias, discapacidad, fecha, horario, ubicacion, id_doctor))
 
         conn.commit()
         return jsonify({"message": "Cita registrada exitosamente"}), 201
