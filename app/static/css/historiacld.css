@@ -73,13 +73,13 @@ section {
 /* Estilos para el contenedor 3 con dimensiones fijas */
 .container_3 {
   width: 98%;
-  height: 90%;
+  height: 800px; /* Ajusta según el espacio blanco que desees ocupar */
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 20px auto;
   background-color: #fff;
   border-radius: 20px;
+  justify-content: flex-start;
 }
 
 /* Estilos para el contenedor 4 */
@@ -292,249 +292,325 @@ section {
 .horizontal-container {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   width: 75%;
   margin: 10px auto;
   padding: 10px;
   gap: 11.5%;
+  margin-bottom: 10px;
 }
 
 /* Estilo para el titulo del contenedor */
-.horizontal-container .titulo {
+.titulo {
   background-color: #52a7ff;
+  border: #000000 solid 2px;
   border-radius: 15px;
   padding: 10px 30px;
   color: white;
   font-weight: bold;
   text-align: center;
+  width: 100%;
 }
 
 /* Estilo para el contenedor punteado */
 .caja-punteados {
-  width: 90%;
-  height: 80%;
+  width: 95%;
+  height: 90%; /* Ocupa casi todo el espacio de .container_3 */
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   margin: 0 auto;
   text-align: center;
+  gap: 0;
 }
 
 /* Estilo para el contenedor punteado con borde */
 .caja-punteados-1 {
   width: 25%;
-  height: 95%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
   margin: 10px;
-  display: inline-block;
   vertical-align: top;
+  align-items: stretch;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor */
 .caja-punteados-1-1 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor */
 .caja-punteados-1-2 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor */
 .caja-punteados-1-3 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor */
 .caja-punteados-1-4 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor */
 .caja-punteados-1-5 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para el contenedor punteado 2 */
 .caja-punteados-2 {
   width: 20%;
-  height: 95%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
   margin: 10px;
-  display: inline-block;
   vertical-align: top;
+  align-items: stretch;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 2 */
 .caja-punteados-2-1 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 2 */
 .caja-punteados-2-2 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 2 */
 .caja-punteados-2-3 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 2 */
 .caja-punteados-2-4 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 2 */
 .caja-punteados-2-5 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para el contenedor punteado 3 */
 .caja-punteados-3 {
   width: 20%;
-  height: 95%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
   margin: 10px;
-  display: inline-block;
   vertical-align: top;
+  align-items: stretch;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 3 */
 .caja-punteados-3-1 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 3 */
 .caja-punteados-3-2 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 3 */
 .caja-punteados-3-3 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 3 */
 .caja-punteados-3-4 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 3 */
 .caja-punteados-3-5 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block; 
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para el contenedor punteado 4 */
 .caja-punteados-4 {
   width: 55%;
-  height: 95%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
   margin: 10px;
-  display: inline-block;
   vertical-align: top;
+  align-items: stretch;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 4 */
 .caja-punteados-4-1 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 4 */
 .caja-punteados-4-2 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 4 */
 .caja-punteados-4-3 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 4 */
 .caja-punteados-4-4 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para las cajas punteadas dentro del contenedor 4 */
 .caja-punteados-4-5 {
   width: 100%;
-  height: 20%;
+  height: 18.5%;
+  min-height: 0;
   border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* Estilo para el recuadro donde escribe el doctor */
@@ -550,9 +626,23 @@ section {
 
 /* Estilo para el input del doctor */
 .custom-input {
-  width: 100%;
-  height: 5%;
-  padding: 8.7%;
-  font-size: 70%;
+  width: 99.9%;
+  height: 96%;
+  padding: 0;
+  font-size: 1em;
   text-align: center;
+}
+
+/* Ajustes para los títulos dentro de las cajas punteadas */
+.caja-punteados-1 .titulo,
+.caja-punteados-2 .titulo,
+.caja-punteados-3 .titulo,
+.caja-punteados-4 .titulo {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
 }
