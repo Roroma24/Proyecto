@@ -32,9 +32,9 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
     <div class="container">
         <!-- Botón de salida que redirige a la función 'exit' -->
         <a href="{{ url_for('index') }}" style="text-decoration: none;">
-            <div class="exit_btn"
-                style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
-                Salir</div> <!-- Botón estilizado para salir -->
+            <div class="exit_btn">
+                Salir
+            </div> <!-- Botón estilizado para salir -->
         </a>
     </div>
 
@@ -51,10 +51,10 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
 
         <!-- Caja con borde punteado para mostrar información -->
         <div class="dashed-box">
-            <p class="text_style">Registrar un nuevo usuario para priorizar el bienestar y acceder a un servicio de
-                salud eficiente y accesible. Contar con atención de calidad brindada por profesionales capacitados,
-                asegurando un cuidado integral y facilitando el acceso a recursos que mejoren la experiencia del
-                paciente en su camino hacia una mejor salud.
+            <p class="text_style">El registrar un nuevo usuario sirve para priorizar el bienestar y acceder a un servicio de salud<br>
+                eficiente y accesible. Contar con atención de calidad brindada por profesionales capacitados,<br>
+                asegurando un cuidado integral y facilitando el acceso a recursos que mejoren la experiencia<br>
+                del paciente en su camino hacia una mejor salud.
             </p>
         </div>
 
@@ -98,14 +98,12 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
             <div class="info">
                 <div class="buttons">
                     <!-- Botón de continuar -->
-                    <button type="submit" class="btn"
-                        style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                    <button type="submit" class="btn">
                         Continuar
                     </button>
                     <!-- Botón de registro como doctor -->
                     <a href="{{ url_for('api_newdoc') }}" style="text-decoration: none;">
-                        <div class="btn"
-                            style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
+                        <div class="btn">
                             Nuevo Doctor
                         </div>
                     </a>
@@ -131,22 +129,22 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
                 },
                 body: JSON.stringify(data)
             })
-            .then(Response => Response.json())
-            .then(data => {
-                if (data.message) {
-                    alert(data.message);
-                    window.location.href = "{{ url_for('index') }}";
-                } else if (data.error) {
-                    alert(data.error);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert("Hubo un error al registrar el usuario.");
-            });
+                .then(Response => Response.json())
+                .then(data => {
+                    if (data.message) {
+                        alert(data.message);
+                        window.location.href = "{{ url_for('index') }}";
+                    } else if (data.error) {
+                        alert(data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Hubo un error al registrar el usuario.");
+                });
         });
     </script>
-    
+
 </body>
 
 </html>

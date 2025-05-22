@@ -44,14 +44,15 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
         <div class="btn_accion">
           <!-- Botón de método pago-->
           <a href="{{ url_for('pago') }}" style="text-decoration: none;">
-            <div class="accion"
-              style="text-align: center; color: #fff; font-size: 24px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">
-              Pagar</div>
+            <button class="accion">
+              Pagar
+            </button>
           </a>
           <!-- Enlace a la página principal (Botón Salir) -->
           <a href="{{ url_for('index') }}" style="text-decoration: none;">
-            <button class="accion"
-              style="text-align: center; color: #fff; font-size: 25px; font-weight: bolder; display: flex; align-items: center; justify-content: center; height: 50px;">Salir</button>
+            <button class="accion">
+              Salir
+            </button>
           </a>
           <!-- Menú desplegable -->
           <div class="dropdown">
@@ -85,7 +86,13 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
 
     <!-- Área de texto -->
     <div class="textbox">
-      Texto
+      <p class="text_style">
+        Realizar la reserva de la cita médica es esencial para asegurar la atención. Se solicitará un monto equivalente al 20% del total<br>
+        a pagar para confirmar la cita. Se permiten hasta 2 modificaciones en la reservación, los cuales deben hacerse con al menos<br>
+        2 días de anticipación antes de la fecha programada. Si se excede este límite, se aplicará una amonestación la cual sera el<br>
+        anticipo cobrado anteriormente, y será necesario hacer una nueva reservación. Al finalizar la consulta, se deberá abonar<br>
+        el resto del monto acordado para completar el proceso.
+      </p>
     </div>
 
     <!-- FORMULARIO DE RESERVA DE CITAS -->
@@ -219,8 +226,7 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
       </div>
 
       <!-- Botón para enviar el formulario y realizar la reserva -->
-      <button type="submit" class="accion"
-        style="color: #fff; font-size: 25px; font-weight: bolder; display: block; margin: 1.5% auto; height: 50px; width: auto;">
+      <button type="submit" class="accion" style="display: block; margin: 1.5% auto;">
         Reservar
       </button>
     </form>

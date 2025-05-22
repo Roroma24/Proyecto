@@ -36,7 +36,9 @@ Página de inicio de sesión. Se solicitan datos de usuario y contraseña para a
 
     <!-- Botón para salir de la vista actual  -->
     <a href="{{ url_for('index') }}">
-      <button class="btn-exit">Salir</button> <!-- Botón de salir -->
+      <button class="btn-exit">
+        Salir
+      </button> <!-- Botón de salir -->
     </a>
 
     <!-- Contenedor principal del formulario -->
@@ -48,7 +50,11 @@ Página de inicio de sesión. Se solicitan datos de usuario y contraseña para a
       <div class="login-text">Iniciar sesión</div>
 
       <!-- Caja de texto -->
-      <div class="dashed-box">Descripción</div>
+      <div class="dashed-box">
+        <p class="text_style">
+          Tu salud comienza aquí. Inicia sesión para seguir cuidándote.
+        </p>
+      </div>
 
       <form action="{{ url_for('login') }}" method="POST">
         <!-- Icono superior -->

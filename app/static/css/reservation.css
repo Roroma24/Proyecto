@@ -32,7 +32,7 @@ body {
 
 /* Estilo del contenido principal del encabezado */
 .header {
-  width: 95%;
+  width: auto;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -57,7 +57,9 @@ body {
 
 /* Título principal, usualmente h1 o similar */
 .titulo-principal {
-  margin: 0; 
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0;
 }
 
 /* Contenedor principal del contenido de la página */
@@ -169,13 +171,20 @@ body {
 
 /* Estilo de botón de acción */
 .accion{
+  display: flex;
   width: 160px; 
   height: 50px; 
   background-color: #000000; 
   border-radius: 25px;
   border: none; 
   cursor: pointer; 
-  margin: auto; 
+  margin: auto;
+  text-align: center;
+  color: #fff;
+  font-size: 25px;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Estilo botón de salir */
@@ -191,8 +200,8 @@ body {
 
 /* Imagen de perfil */
 .profile-pic {
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   margin: 40px auto 30px;
   border-radius: 50%;
   background-image: url('imagen/logo_reserva.png');
@@ -201,9 +210,8 @@ body {
 
 /* Caja de texto */
 .textbox {
-  width: 95%;
+  width: auto;
   height: 140px;
-  border: 2px dashed #000;
   margin: 30px auto 50px;
   display: flex;
   align-items: center;
@@ -312,23 +320,17 @@ select {
   font-size: 16px;
 }
 
-/* Botón de envío al final del formulario */
-.submit-btn {
-  display: block;
-  width: 180px;
-  padding: 14px;
-  margin: 40px auto 0;
-  background-color: #656464;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
 /* Hover para el botón de envío */
 .submit-btn:hover {
   background-color: #777;
+}
+
+/* Estilo para texto dentro de los dashed-box */
+.text_style {
+    text-align: center;
+    justify-items: center;
+    border-radius: 2%;
+    font-size: 19px;
+    color: #000000;
+    size: 10px;
 }

@@ -34,7 +34,7 @@ body {
   margin: auto;
   text-align: center;
   color: #fff;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bolder;
   align-items: center;
   justify-content: center;
@@ -176,8 +176,8 @@ body {
 
 /* Imágenes de pago*/
 .profile-pic {
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   margin: 40px auto 30px;
   border-radius: 50%;
   background-image: url('imagen/logo_pay.png');

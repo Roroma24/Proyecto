@@ -60,7 +60,8 @@ section {
   align-items: center;
   justify-content: space-between;
   width: auto;
-  margin: 10px auto;
+  height: auto;
+  margin: 5px auto;
 }
 
 /* Estilos para el contenedor 2 con posición absoluta */
@@ -214,9 +215,8 @@ section {
 
 /* Estilos para la parte superior con botones alineados */
 .nexttop {
-  display: flex;
-  align-items: center;
-  gap: 40px;
+  position: relative;
+  display: inline-block;
 }
 
 /* Estilo para el formulario */

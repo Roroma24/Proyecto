@@ -50,6 +50,7 @@ body{
 
 /* Estilo de botón de salir */
 .exit_btn{
+    display: flex;
     width: 160px;
     height: 50px; 
     background-color: #000000; 
@@ -57,6 +58,12 @@ body{
     border: none; 
     cursor: pointer; 
     margin: auto; 
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Estilo del contenedor del logo de perfil */
@@ -80,8 +87,8 @@ body{
 
 /* Estilo del cuadro de texto dashed-box */
 .dashed-box {
-    width: 80%; 
-    height: 140px; 
+    width: auto; 
+    height: auto; 
     margin: 30px auto 50px; 
     display: flex; 
     align-items: center; 
@@ -112,12 +119,20 @@ input{
 
 /* Estilo para un botón*/
 .btn{
-    width: 180px; 
+    display: flex;
+    width: 180px;
+    height: 50px;
     background-color: #000000; 
     border-radius: 25px; 
     border: none;
     cursor: pointer; 
-    margin: auto; 
+    margin: auto;
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Estilo para el titulo principal de la página */
@@ -181,6 +196,8 @@ select{
     text-align: center; 
     justify-items: center; 
     background-color: #bebebe82; 
-    border-radius: 2%; 
-    font-size: 28px; 
+    border-radius: 2%;
+    font-size: 30px;
+    color: #000000;
+    font-size: 26px; 
 }
