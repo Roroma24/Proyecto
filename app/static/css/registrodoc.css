@@ -12,51 +12,51 @@ Este archivo contiene los estilos CSS para la página de registro de doctores de
 */
 
 /* Estilo general del cuerpo de la página */
-body{
-    background-color: #fff; 
-    font-family: Arial, sans-serif; 
+body {
+    background-color: #fff;
+    font-family: Arial, sans-serif;
 }
 
 /* Estilos para el contenedor de la sección principal */
-.container{
-    display: flex; 
-    align-items: center; 
-    justify-content: flex-end; 
-    width: auto; 
-    margin: 1% auto; 
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: auto;
+    margin: 1% auto;
 }
 
 /* Estilos para el contenedor del body */
-.container-body{
-    width: auto; 
-    height: auto; 
-    background-image: url('imagen/fondo.jpeg'); 
+.container-body {
+    width: auto;
+    height: auto;
+    background-image: url('imagen/fondo.jpeg');
     padding-top: 40px;
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-attachment: absolute; 
-    margin: auto; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: absolute;
+    margin: auto;
 }
 
 /* Estilos para el contenedor de la sección de botones */
-.info{
-    display: flex; 
-    align-items: center; 
-    justify-content: space-around; 
-    width: auto; 
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: auto;
     margin: 1% auto;
 }
 
 /* Estilos para el botón de salir */
-.exit_btn{
+.exit_btn {
     display: flex;
     width: 160px;
-    height: 50px; 
-    background-color: #000000; 
-    border-radius: 25px; 
-    border: none; 
-    cursor: pointer; 
+    height: 50px;
+    background-color: #000000;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
     margin: auto;
     text-align: center;
     color: #fff;
@@ -67,67 +67,65 @@ body{
 }
 
 /* Estilos para el logo de profile */
-.profile{
-    width: 120px; 
-    height: 120px; 
-    background-image: url('imagen/logo.png'); 
-    background-size: cover; 
-    border-radius: 50%; 
-    margin: auto; 
+.profile {
+    width: 120px;
+    height: 120px;
+    background-image: url('imagen/logo.png');
+    background-size: cover;
+    border-radius: 50%;
+    margin: auto;
 }
 
 /* Estilos para el contenedor de la barra */
-.bar{
-    width: 40%; 
-    height: 50px; 
-    justify-items: center; 
+.bar {
+    width: 40%;
+    height: 50px;
+    justify-items: center;
     border-radius: 25px;
-    margin: 2% auto; 
+    margin: 2% auto;
 }
 
 /* Estilos para el cuadro de texto dashed-box */
 .dashed-box {
-    width: 80%; 
+    display: flex;
+    width: auto;
     height: 140px;
-    border: 2px dashed #000; 
-    margin: 30px auto 50px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
+    margin: 30px auto 50px;
+    align-items: center;
+    justify-content: center;
     color: #000000;
-    font-size: 16px; 
-    text-align: center; 
-    border-radius: 10px; 
-    background-color: #fff; 
+    font-size: 16px;
+    text-align: center;
+    border-radius: 10px;
 }
 
 /* Estilos para los input */
-input{
-    padding: 8px; 
-    border: 1px solid #000000; 
-    justify-content: space-between; 
-    border-radius: 5px; 
-    width: auto; 
+input {
+    padding: 8px;
+    border: 1px solid #000000;
+    justify-content: space-between;
+    border-radius: 5px;
+    width: auto;
 }
 
 /* Estilos para el contenedor de la sección de botones */
-.buttons{
-    display: flex; 
-    justify-content: space-between; 
-    gap: 140px; 
-    padding: 1%; 
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 140px;
+    padding: 1%;
     margin-top: 20px;
 }
 
 /* Estilos para el botón de siguiente */
-.btn{
+.btn {
     display: flex;
     width: 160px;
-    height: 50px; 
-    background-color: #000000; 
-    border-radius: 25px; 
-    border: none; 
-    cursor: pointer; 
+    height: 50px;
+    background-color: #000000;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
     margin: auto;
     text-align: center;
     color: #fff;
@@ -138,57 +136,67 @@ input{
 }
 
 /* Estilos para el titulo principal */
-.titulo-principal{
+.titulo-principal {
     font-size: 50px;
-    font-weight: bold; 
-    margin: 0; 
+    font-weight: bold;
+    margin: 0;
 }
 
 /* Contenedor principal del formulario */
-.form{
-    display: flex; 
+.form {
+    display: flex;
     flex-direction: column;
-    gap: 40px; 
+    gap: 40px;
 }
-  
+
 /* Fila del formulario para organizar inputs horizontalmente */
-.form-row{
-    display: flex; 
-    gap: 30px; 
-    flex-wrap: wrap; 
-    justify-content: space-between; 
-    margin-bottom: 30px; 
-    margin: 30px; 
+.form-row {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin: 30px;
 }
-  
+
 /* Grupo de campos individuales dentro de una fila */
-.form-group{
-    flex: 1 1 calc(25% - 30px); 
-    display: flex; 
-    flex-direction: column; 
-    gap: 10px; 
-    background-color: #fff; 
-    border: 1px solid #333; 
-    border-radius: 4px; 
-    padding: 10px; 
-    box-sizing: border-box; 
-    margin: 1%; 
+.form-group {
+    flex: 1 1 calc(25% - 30px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #fff;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 1%;
 }
-  
+
 /* Etiqueta de cada campo */
-.form-group label{
-    font-weight: bold; 
+.form-group label {
+    font-weight: bold;
 }
-  
+
 /* Inputs estándar y selectores de tipo texto, email, número, fecha, etc. */
 input[type="text"],
 input[type="email"],
 input[type="password"],
-select{
-    width: 100%; 
-    padding: 12px; 
-    border: 1px solid #333; 
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
     border-radius: 4px;
-    font-size: 14px; 
-    box-sizing: border-box; 
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Estilo para texto dentro de los dashed-box */
+.text_style {
+    text-align: center;
+    justify-items: center;
+    border-radius: 2%;
+    font-size: 19px;
+    color: #000000;
+    size: 10px;
 }

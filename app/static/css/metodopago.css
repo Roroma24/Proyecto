@@ -50,7 +50,7 @@ body {
 
 /* Estilo del contenido principal del encabezado */
 .header {
-  width: 95%;
+  width: auto;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -75,6 +75,8 @@ body {
 
 /* Título principal */
 .titulo-principal {
+  font-size: 50px;
+  font-weight: bold;
   margin: 0;
 }
 
@@ -84,7 +86,7 @@ body {
   width: 80%;
   max-width: 100vw;
   min-height: 80vh;
-  margin: 50px auto 0;
+  margin: 30px auto 30px;
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
@@ -109,6 +111,13 @@ body {
   border-radius: 40%;
   border: none;
   cursor: pointer;
+}
+
+/* Estilo para el logo de profile al pasar el mouse */
+.circle.purple:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: #fff !important;
 }
 
 /* Contenedor para el dropdown */
@@ -182,22 +191,6 @@ body {
   border-radius: 50%;
   background-image: url('imagen/logo_pay.png');
   background-size: cover;
-}
-
-/* Caja de texto */
-.textbox {
-  width: 95%;
-  height: 140px;
-  border: 2px dashed #000;
-  margin: 30px auto 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  font-size: 16px;
-  text-align: center;
-  border-radius: 10px;
-  background-color: #fff;
 }
 
 /* Contenedor principal del formulario */
@@ -297,36 +290,20 @@ select {
   font-size: 16px;
 }
 
-/* Contenedor para centrar el botón con la columna izquierda */
-.submit-btn-container {
-  width: 66%;
-  display: flex;
-  justify-content: center;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-}
-
 /* Estilo para el botón fuera del contenedor */
 .submit-btn {
+  display: block;
+  width: 160px;
+  height: 50px;
   position: static;
   background-color: #000000;
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 15px;
+  border-radius: 25px;
+  font-size: 25px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  z-index: 1000;
-  visibility: visible;
-  display: block;
-  margin: 30px 0 0 0;/
-}
-
-/* Hover para el botón */
-.submit-btn:hover {
-  background-color: #656464;
 }
 
 /* Estilo para el contenedor de la sección de métodos de pago */
@@ -386,6 +363,7 @@ select {
   transform: scale(1.1);
 }
 
+/* Estilo para el botón de envío dentro del contenedor de métodos de pago */
 #metodo-pago .submit-btn {
   margin-left: 85%;
   margin-top: 60px;

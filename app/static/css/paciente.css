@@ -186,7 +186,7 @@ section {
 /* Estilo para la imagen de fondo */
 .image {
   width: auto;
-  height: 90vh;
+  height: 100%;
   background-image: url('imagen/fondo.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
