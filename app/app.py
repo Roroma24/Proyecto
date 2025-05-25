@@ -29,7 +29,7 @@ def conectar_db():  # Función para conectar a la base de datos
         conn = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Ror@$2405",  # Se ajusta según la configuración
+            password="Meliodas1.",  # Se ajusta según la configuración
             database="hospital",  # Nombre de la base de datos
         )
         print("✅ Conexión exitosa a la base de datos.")
