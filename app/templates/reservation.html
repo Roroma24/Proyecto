@@ -23,213 +23,222 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
   <!-- Enlace a la hoja de estilos CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/reservation.css') }}">
 
-  <title>Formulario de Reserva</title>
+  <title>Reserva</title>
 </head>
 
 <body>
 
   <!-- ENCABEZADO PRINCIPAL DEL FORMULARIO -->
   <div class="header-container">
-    <div class="header">
-      <div class="header-left">
-        <!-- Icono de círculo -->
-        <div class="circle red"></div>
+    <div class="header-left">
+      <!-- Icono de círculo -->
+      <div class="circle red"></div>
 
-        <!-- Título principal de la página -->
-        <h1 class="titulo-principal">Reservar</h1>
-      </div>
+      <!-- Título principal de la página -->
+      <h1 class="titulo-principal">Reservar</h1>
+    </div>
 
-      <!-- Contenedor de botones en el encabezado derecho -->
-      <div class="header-right">
-        <div class="btn_accion">
-          <!-- Botón de método pago-->
-          <a href="{{ url_for('pago') }}" style="text-decoration: none;">
-            <button class="accion">
-              Pagar
-            </button>
-          </a>
-          <!-- Enlace a la página principal (Botón Salir) -->
-          <a href="{{ url_for('index') }}" style="text-decoration: none;">
-            <button class="accion">
-              Salir
-            </button>
-          </a>
-          <!-- Menú desplegable -->
-          <div class="dropdown">
-            <!-- Botón que activa el menú desplegable -->
-            <button class="btn"></button>
+    <!-- Contenedor de botones en el encabezado derecho -->
+    <div class="header-right">
+      <div class="btn_accion">
+        <!-- Botón de método pago-->
+        <a href="{{ url_for('pago') }}" style="text-decoration: none;">
+          <button class="accion">
+            Pagar
+          </button>
+        </a>
+        <!-- Enlace a la página principal (Botón Salir) -->
+        <a href="{{ url_for('index') }}" style="text-decoration: none;">
+          <button class="accion">
+            Salir
+          </button>
+        </a>
+        <!-- Menú desplegable -->
+        <div class="dropdown">
+          <!-- Botón que activa el menú desplegable -->
+          <button class="btn"></button>
 
-            <!-- Contenido del menú desplegable -->
-            <div class="dropdown-content">
-              {% if session['nombre'] %}
-              <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
-              <a href="{{ url_for('logout') }}">Logout</a>
-              {% else %}
-              <!-- Enlace a la vista de login -->
-              <a href="{{ url_for('login') }}">Login</a>
+          <!-- Contenido del menú desplegable -->
+          <div class="dropdown-content">
+            {% if session['nombre'] %}
+            <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+            <!-- Enlace a la vista de login -->
+            <a href="{{ url_for('login') }}">Login</a>
 
-              <!-- Enlace a la vista de registro de un nuevo usuario -->
-              <a href="{{ url_for('api_registro') }}">New user</a>
-              {% endif %}
-            </div>
+            <!-- Enlace a la vista de registro de un nuevo usuario -->
+            <a href="{{ url_for('api_registro') }}">New user</a>
+            {% endif %}
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- CONTENEDOR PRINCIPAL DEL FORMULARIO -->
   <div class="container">
+    <div class="container1">
+      <!-- CONTENEDOR PRINCIPAL DEL FORMULARIO -->
+      <div class="container2">
 
-    <!-- Imagen de perfil del usuario (puede personalizarse) -->
-    <div class="profile-pic"></div>
+        <!-- Imagen de perfil del usuario (puede personalizarse) -->
+        <div class="profile-pic"></div>
 
-    <!-- Área de texto -->
-    <div class="textbox">
-      <p class="text_style">
-        Realizar la reserva de la cita médica es esencial para asegurar la atención. Se solicitará un monto equivalente al 20% del total<br>
-        a pagar para confirmar la cita. Se permiten hasta 2 modificaciones en la reservación, los cuales deben hacerse con al menos<br>
-        2 días de anticipación antes de la fecha programada. Si se excede este límite, se aplicará una amonestación la cual sera el<br>
-        anticipo cobrado anteriormente, y será necesario hacer una nueva reservación. Al finalizar la consulta, se deberá abonar<br>
-        el resto del monto acordado para completar el proceso.
-      </p>
+        <!-- Área de texto -->
+        <div class="textbox">
+          <p class="text_style">
+            Realizar la reserva de la cita médica es esencial para asegurar la atención. Se solicitará un monto
+            equivalente
+            al 20% del total<br>
+            a pagar para confirmar la cita. Se permiten hasta 2 modificaciones en la reservación, los cuales deben
+            hacerse
+            con al menos<br>
+            2 días de anticipación antes de la fecha programada. Si se excede este límite, se aplicará una amonestación
+            la
+            cual sera el<br>
+            anticipo cobrado anteriormente, y será necesario hacer una nueva reservación. Al finalizar la consulta, se
+            deberá abonar<br>
+            el resto del monto acordado para completar el proceso.
+          </p>
+        </div>
+
+        <!-- FORMULARIO DE RESERVA DE CITAS -->
+        <form id="reservation-form">
+          <!-- FILA DE DATOS PERSONALES -->
+          <div class="form-row">
+
+            <!-- Campo para nombres del usuario -->
+            <div class="form-group">
+              <label for="nombre">Nombres</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+            </div>
+
+            <!-- Primer apellido -->
+            <div class="form-group">
+              <label for="apellido1">Primer Apellido</label>
+              <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa primer apellido" required>
+            </div>
+
+            <!-- Segundo apellido -->
+            <div class="form-group">
+              <label for="apellido2">Segundo Apellido</label>
+              <input type="text" id="apellido2" name="apellido2" placeholder="Ingresa segundo apellido">
+            </div>
+
+            <!-- Edad del usuario -->
+            <div class="form-group">
+              <label for="edad">Edad</label>
+              <input type="number" id="edad" name="edad" placeholder="Edad">
+            </div>
+          </div>
+
+          <!-- FILA DE INFORMACIÓN ADICIONAL -->
+          <div class="form-row">
+
+            <!-- Teléfono de contacto -->
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="text" id="telefono" name="telefono" placeholder="Número de teléfono">
+            </div>
+
+            <!-- Alergias: opciones desplegables -->
+            <div class="form-group">
+              <label for="alergias">Alergias</label>
+              <select id="alergias" name="alergias">
+                <option value="" disabled selected hidden>Selecciona una opción</option>
+                <option value="ninguna">Ninguna</option>
+                <option value="medicamentos">Medicamentos</option>
+                <option value="alimentos">Alimentos</option>
+                <option value="otros">Otros</option>
+              </select>
+            </div>
+
+            <!-- Discapacidad: opciones desplegables -->
+            <div class="form-group">
+              <label for="discapacidad">Discapacidad</label>
+              <select id="discapacidad" name="discapacidad">
+                <option value="" disabled selected hidden>Selecciona una opción</option>
+                <option value="ninguna">Ninguna</option>
+                <option value="motora">Motora</option>
+                <option value="visual">Visual</option>
+                <option value="auditiva">Auditiva</option>
+              </select>
+            </div>
+
+            <!-- Horario disponible para la cita -->
+            <div class="form-group">
+              <label for="horarios">Horarios</label>
+              <select id="horarios" name="horarios">
+                <option value="" disabled selected hidden>Selecciona un horario</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- SECCIÓN INFERIOR DEL FORMULARIO -->
+          <div class="bottom-section">
+
+            <!-- Columna izquierda: Dirección y correo -->
+            <div class="left-column">
+
+              <!-- Dirección del hospital -->
+              <div class="form-group">
+                <label for="curp">CURP</label>
+                <input type="text" id="curp" name="curp" placeholder="Ingresa tu CURP">
+              </div>
+
+              <!-- Dirección del hospital -->
+              <div class="form-group">
+                <label for="ubicacion">Ubicación del hospital</label>
+                <select id="ubicacion" name="ubicacion">
+                  <option value="" disabled selected hidden>Ubicación del hospital</option>
+                  <option value="A1">A1</option>
+                  <option value="A2">A2</option>
+                </select>
+              </div>
+
+              <!-- Correo electrónico -->
+              <div class="form-group">
+                <label for="correo">Correo</label>
+                <input type="email" id="correo" name="correo" placeholder="Correo electrónico">
+              </div>
+
+              <!-- Confirmación de correo electrónico -->
+              <div class="form-group">
+                <label for="confirmacion">Confirmación de Correo</label>
+                <input type="email" id="confirmacion" name="confirmacion" placeholder="Confirma tu correo">
+              </div>
+            </div>
+
+            <!-- Columna derecha: Fecha de la cita -->
+            <div class="right-column">
+              <div class="calendar-container">
+                <label for="fecha">Selecciona Fecha</label>
+                <input type="date" id="fecha" name="fecha">
+              </div>
+            </div>
+          </div>
+
+          <!-- Botón para enviar el formulario y realizar la reserva -->
+          <button type="submit" class="accion" style="display: block; margin: 1.5% auto;">
+            Reservar
+          </button>
+        </form>
+      </div>
     </div>
-
-    <!-- FORMULARIO DE RESERVA DE CITAS -->
-    <form id="reservation-form">
-      <!-- FILA DE DATOS PERSONALES -->
-      <div class="form-row">
-
-        <!-- Campo para nombres del usuario -->
-        <div class="form-group">
-          <label for="nombre">Nombres</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
-        </div>
-
-        <!-- Primer apellido -->
-        <div class="form-group">
-          <label for="apellido1">Primer Apellido</label>
-          <input type="text" id="apellido1" name="apellido1" placeholder="Ingresa primer apellido" required>
-        </div>
-
-        <!-- Segundo apellido -->
-        <div class="form-group">
-          <label for="apellido2">Segundo Apellido</label>
-          <input type="text" id="apellido2" name="apellido2" placeholder="Ingresa segundo apellido">
-        </div>
-
-        <!-- Edad del usuario -->
-        <div class="form-group">
-          <label for="edad">Edad</label>
-          <input type="number" id="edad" name="edad" placeholder="Edad">
-        </div>
-      </div>
-
-      <!-- FILA DE INFORMACIÓN ADICIONAL -->
-      <div class="form-row">
-
-        <!-- Teléfono de contacto -->
-        <div class="form-group">
-          <label for="telefono">Teléfono</label>
-          <input type="text" id="telefono" name="telefono" placeholder="Número de teléfono">
-        </div>
-
-        <!-- Alergias: opciones desplegables -->
-        <div class="form-group">
-          <label for="alergias">Alergias</label>
-          <select id="alergias" name="alergias">
-            <option value="" disabled selected hidden>Selecciona una opción</option>
-            <option value="ninguna">Ninguna</option>
-            <option value="medicamentos">Medicamentos</option>
-            <option value="alimentos">Alimentos</option>
-            <option value="otros">Otros</option>
-          </select>
-        </div>
-
-        <!-- Discapacidad: opciones desplegables -->
-        <div class="form-group">
-          <label for="discapacidad">Discapacidad</label>
-          <select id="discapacidad" name="discapacidad">
-            <option value="" disabled selected hidden>Selecciona una opción</option>
-            <option value="ninguna">Ninguna</option>
-            <option value="motora">Motora</option>
-            <option value="visual">Visual</option>
-            <option value="auditiva">Auditiva</option>
-          </select>
-        </div>
-
-        <!-- Horario disponible para la cita -->
-        <div class="form-group">
-          <label for="horarios">Horarios</label>
-          <select id="horarios" name="horarios">
-            <option value="" disabled selected hidden>Selecciona un horario</option>
-            <option value="09:00">09:00</option>
-            <option value="10:00">10:00</option>
-            <option value="11:00">11:00</option>
-            <option value="12:00">12:00</option>
-            <option value="13:00">13:00</option>
-            <option value="14:00">14:00</option>
-            <option value="15:00">15:00</option>
-            <option value="16:00">16:00</option>
-            <option value="17:00">17:00</option>
-            <option value="18:00">18:00</option>
-            <option value="19:00">19:00</option>
-            <option value="20:00">20:00</option>
-            <option value="21:00">21:00</option>
-            <option value="22:00">22:00</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- SECCIÓN INFERIOR DEL FORMULARIO -->
-      <div class="bottom-section">
-
-        <!-- Columna izquierda: Dirección y correo -->
-        <div class="left-column">
-
-          <!-- Dirección del hospital -->
-          <div class="form-group">
-            <label for="curp">CURP</label>
-            <input type="text" id="curp" name="curp" placeholder="Ingresa tu CURP">
-          </div>
-
-          <!-- Dirección del hospital -->
-          <div class="form-group">
-            <label for="ubicacion">Ubicación del hospital</label>
-            <select id="ubicacion" name="ubicacion">
-              <option value="" disabled selected hidden>Ubicación del hospital</option>
-              <option value="A1">A1</option>
-              <option value="A2">A2</option>
-            </select>
-          </div>
-
-          <!-- Correo electrónico -->
-          <div class="form-group">
-            <label for="correo">Correo</label>
-            <input type="email" id="correo" name="correo" placeholder="Correo electrónico">
-          </div>
-
-          <!-- Confirmación de correo electrónico -->
-          <div class="form-group">
-            <label for="confirmacion">Confirmación de Correo</label>
-            <input type="email" id="confirmacion" name="confirmacion" placeholder="Confirma tu correo">
-          </div>
-        </div>
-
-        <!-- Columna derecha: Fecha de la cita -->
-        <div class="right-column">
-          <div class="calendar-container">
-            <label for="fecha">Selecciona Fecha</label>
-            <input type="date" id="fecha" name="fecha">
-          </div>
-        </div>
-      </div>
-
-      <!-- Botón para enviar el formulario y realizar la reserva -->
-      <button type="submit" class="accion" style="display: block; margin: 1.5% auto;">
-        Reservar
-      </button>
-    </form>
   </div>
 
   <script>

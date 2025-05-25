@@ -23,7 +23,8 @@ body {
     align-items: center;
     justify-content: space-between;
     width: auto;
-    margin: 10px auto;
+    height: auto;
+    margin: 5px auto;
 }
 
 /* Estilo de sección inferior */
@@ -60,10 +61,9 @@ body {
 .btn_accion {
     display: flex;
     align-items: center;      
-    justify-content: center;  
+    justify-content: flex-end;  
     width: auto;
-    gap: 15px;
-    height: 100%;             
+    gap: 15px;         
 }
 
 /* ICONO: Estilos para un icono redondeado */
@@ -89,8 +89,6 @@ body {
 
 /* Botón de modificar */
 .accion {
-    position: relative;
-    top: -15px; 
     display: flex;
     width: 160px;
     height: 50px;
@@ -143,7 +141,7 @@ body {
 
 /* Título principal de la página */
 .titulo-principal {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     margin: 0;
 }
@@ -162,8 +160,8 @@ body {
 
 /* Logo de la página: Estilo en logo circular */
 .logo_pag {
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
     background-image: url('imagen/logo_modif.png');
     background-size: cover;
     border-radius: 50%;
@@ -172,9 +170,8 @@ body {
 
 /* Estilo del cuadro con borde discontinuo de texto */
 .dashed-box {
-    width: 80%;
+    width: auto;
     height: 140px;
-    border: 2px dashed #000;
     margin: 30px auto 50px;
     display: flex;
     align-items: center;
@@ -183,7 +180,6 @@ body {
     font-size: 16px;
     text-align: center;
     border-radius: 10px;
-    background-color: #fff;
 }
 
 /* Estilo del contenedor principal del formulario */
@@ -254,4 +250,15 @@ select {
 .calendar-container label {
     font-weight: bold;
     font-size: 16px;
+}
+
+/* Estilo para texto dentro de los dashed-box */
+.text_style {
+  text-align: center;
+  justify-items: center;
+  border-radius: 2%;
+  font-size: 24px;
+  color: #000000;
+  size: 10px;
+  background-color: #bebebe82;
 }

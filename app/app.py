@@ -16,6 +16,8 @@ from flask import Flask, render_template, request, redirect, url_for, session, j
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 import mysql.connector  # Cambiado para usar mysql.connector
 import smtplib
 import calendar
@@ -35,11 +37,12 @@ def conectar_db():  # Función para conectar a la base de datos
     except mysql.connector.Error as err:
         print(f"❌ Error al conectar a la base de datos: {err}")
         return None
+    
+load_dotenv()
 
 # Creamos una instancia de la aplicación Flask.
 app = Flask(__name__)
-
-app.secret_key = 'aL#9v@!fQz7k2Wm3T$xB1eNpLuY6rVc0'
+app.secret_key = os.getenv("secret_key")
 
 # Ruta para la página principal (index.html).
 @app.route('/')
