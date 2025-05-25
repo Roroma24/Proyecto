@@ -291,6 +291,7 @@ select {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 40px;
 }
 
 /* Contenedor del calendario, puede usarse para mostrar un selector de fechas */

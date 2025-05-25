@@ -223,16 +223,25 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
               </div>
             </div>
 
-            <!-- Columna derecha: Fecha de la cita -->
+            <!-- Columna derecha: Especialidad y Fecha -->
             <div class="right-column">
+              <!-- Campo de especialidad -->
+              <div class="form-group">
+                <label for="especialidad">Especialidad</label>
+                <input type="text" id="especialidad" name="especialidad" placeholder="Ingresa especialidad">
+                <small style="color: #555; text-align: center;">En caso de no saber a qué especialidad acudir, ingrese la opción 'Consulta general'</small>
+              </div>
+
+              <!-- Calendario -->
               <div class="calendar-container">
                 <label for="fecha">Selecciona Fecha</label>
                 <input type="date" id="fecha" name="fecha">
               </div>
-            </div>
-          </div>
+            </div> 
 
-          <!-- Botón para enviar el formulario y realizar la reserva -->
+          </div> 
+
+          <!-- Botón para enviar el formulario y realizar la reserva (ahora está fuera de la sección de columnas) -->
           <button type="submit" class="accion" style="display: block; margin: 1.5% auto;">
             Reservar
           </button>
