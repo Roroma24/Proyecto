@@ -195,8 +195,9 @@ select {
 .text_style {
     text-align: center;
     justify-items: center;
+    background-color: #bebebe82;
     border-radius: 2%;
-    font-size: 19px;
+    font-size: 25px;
     color: #000000;
     size: 10px;
 }
