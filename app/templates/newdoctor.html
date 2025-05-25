@@ -70,8 +70,10 @@ apellidos y correo electrónico.
         <!-- Caja con borde punteado para mostrar información -->
         <div class="dashed-box">
             <p class="text_style">
-                Poder acceder al espacio médico para administrar el seguimiento de los pacientes de manera eficiente y protegida.<br>
-                Optimizar la gestión de la información y la atención médica, garantizando un enfoque centrado en el paciente<br>
+                Poder acceder al espacio médico para administrar el seguimiento de los pacientes de manera eficiente y
+                protegida.<br>
+                Optimizar la gestión de la información y la atención médica, garantizando un enfoque centrado en el
+                paciente<br>
                 y promoviendo herramientas tecnológicas que faciliten la comunicación
                 y el monitoreo de la salud.
             </p>
@@ -79,12 +81,20 @@ apellidos y correo electrónico.
 
         <!-- Formulario de registro de usuario -->
         <form id="registroForm">
-            <!-- Primera fila: Cédula Profesional -->
+            <!-- Primera fila: Cédula Profesional y Especialidad -->
             <div class="form-row">
                 <div class="form-group">
                     <label for="cedula">Cédula Profesional</label>
                     <input type="text" id="cedula" name="cedula" placeholder="Ingresa tu cédula profesional">
                 </div>
+                <div class="form-group">
+                    <label for="especialidad">Especialidad</label>
+                    <input type="text" id="especialidad" name="especialidad" placeholder="Ingresa tu especialidad">
+                </div>
+            </div>
+
+            <!-- Segunda fila: CURP y RFC -->
+            <div class="form-row">
                 <div class="form-group">
                     <label for="curp">CURP</label>
                     <input type="text" id="curp" name="curp" placeholder="Ingresa tu CURP">
@@ -95,7 +105,7 @@ apellidos y correo electrónico.
                 </div>
             </div>
 
-            <!-- Segunda fila: Nombre, Primer Apellido y Segundo Apellido -->
+            <!-- Tercera fila: Nombre, Primer Apellido y Segundo Apellido -->
             <div class="form-row">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
@@ -110,8 +120,7 @@ apellidos y correo electrónico.
                     <input type="text" id="apellido2" name="apellido2" placeholder="Ingresa tu segundo apellido">
                 </div>
             </div>
-
-            <!-- Tercera fila: Correo y Contraseña -->
+            <!-- Cuarta fila: Teléfono, Correo y Contraseña -->
             <div class="form-row">
                 <div class="form-group ">
                     <label for="telefono">Teléfono</label>
