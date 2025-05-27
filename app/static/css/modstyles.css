@@ -218,6 +218,12 @@ body {
     font-weight: bold;
 }
 
+/* Estilo para el campo concreto de especialidad */
+.form-group.especialidad {
+  flex: none;
+  width: 275px; 
+}
+
 /* Inputs estándar y selectores de tipo texto, email, número, fecha, etc. */
 input[type="text"],
 input[type="email"],

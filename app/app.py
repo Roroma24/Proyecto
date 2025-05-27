@@ -152,6 +152,7 @@ def api_newdoc():
         return jsonify({"error": "Faltan campos requeridos "}), 400
 
     cedula = data.get('cedula')
+    especialidad = data.get('especialidad')
     curp = data.get('curp')
     rfc = data.get('rfc')
     nombre = data.get('nombre')
@@ -161,7 +162,7 @@ def api_newdoc():
     correo = data.get('correo')
     password = data.get('password')
 
-    if not all([cedula, curp, rfc, nombre, apellido1, apellido2, telefono, correo, password]):
+    if not all([cedula, especialidad, curp, rfc, nombre, apellido1, apellido2, telefono, correo, password]):
         return jsonify({"error": "Faltan campos requeridos "}), 400
         
     conn = conectar_db()
@@ -169,7 +170,7 @@ def api_newdoc():
         try:
             cursor = conn.cursor()
             cursor.execute("SET @new_id_doctor = 0;")
-            cursor.callproc('registro_doctor', (nombre, apellido1, apellido2, correo, password, telefono, cedula, curp, rfc, '@new_id_doctor'))
+            cursor.callproc('registro_doctor', (nombre, apellido1, apellido2, correo, password, telefono, cedula, curp, rfc, especialidad, '@new_id_doctor'))
             cursor.execute("SELECT @new_id_doctor;")
             new_id = cursor.fetchone()[0]
             conn.commit()
