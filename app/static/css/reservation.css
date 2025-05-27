@@ -205,6 +205,7 @@ body {
   border-radius: 50%;
   background-image: url('imagen/logo_reserva.png');
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* Caja de texto */

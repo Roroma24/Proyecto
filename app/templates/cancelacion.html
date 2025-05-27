@@ -76,12 +76,20 @@ fecha de la cita a cancelar.
     <div class="image">
       <div class="container_1">
         <div class="container_3">
+
           <!-- Espacio para un logo -->
           <div class="logo_1"></div>
+
           <!-- Caja con borde punteado -->
-          <div class="dashed-box"></div>
+          <div class="dashed-box">
+            <p class="text_style">
+              Para cancelar la cita médica se tendrá que hacer con al menos 2 días de anticipación; esto es fundamental.
+              Al avisar con antelación, se da oportunidad a otros pacientes de recibir atención, optimizando los
+              recursos disponibles y contribuyendo a un servicio de salud de calidad.
+            </p>
+          </div>
           <!-- Formulario para cancelar una cita -->
-          <div class="formulario">
+          <form>
             <!-- Campo para el nombre completo -->
             <div class="campo nombre">
               <label for="nombres">Nombre</label> <!-- Etiqueta para nombres -->
@@ -114,16 +122,16 @@ fecha de la cita a cancelar.
               </div>
             </div>
             <!-- Botón para cancelar la cita -->
-              <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
-                <div class="accion" style="position: absolute;left: 75%;bottom: 3%;">
-                  Cancelar
-                </div>
-              </a>
+            <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
+              <div class="accion" style="position: absolute;left: 75%;bottom: 3%;">
+                Cancelar
+              </div>
+            </a>
 
-            </div>
-          </div>
         </div>
+        </form>
       </div>
+    </div>
     </div>
   </section>
 </body>

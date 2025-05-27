@@ -56,32 +56,25 @@ body {
 
 /* Estilo para el contenedor 1 de la página */
 .container_1 {
+  width: auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 70%;
-  margin: 10px auto;
 }
 
 /* Contenedor adicional 2 */
 .container_2 {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  width: auto;
   gap: 5px;
 }
 
 /* Estilo para el contenedor 3 */
 .container_3 {
-  position: relative;
+  width: 90%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  height: 800px;
-  margin: 20px auto;
+  margin: 30px auto 150px;
   background-color: #fff;
   border-radius: 20px;
 }
@@ -100,7 +93,8 @@ body {
 .icon-bar {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
+  flex-grow: 1;
 }
 
 /* Estilo para los botones */
@@ -160,7 +154,7 @@ body {
 /* Estilo para el contenedor de la imagen de fondo */
 .image {
   width: auto;
-  height: 100%;
+  height: auto;
   background-image: url('imagen/fondo.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -168,12 +162,12 @@ body {
 
 /* Estilo para el logo de la sección de cancelación */
 .logo_1 {
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
+  margin: 40px auto;
   background-image: url('imagen/logo_cancel.png');
   background-size: cover;
-  border-radius: 40%;
-  margin: 20px auto;
+  background-repeat: no-repeat;
 }
 
 /* Estilos para el título de la sección */
@@ -209,11 +203,13 @@ body {
   bottom: 20%;
 }
 
-/* Estilo para la parte superior de la página */ 
+/* Estilo para la parte superior de la página */
 .nexttop {
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: flex-end;
+  width: auto;
+  gap: 15px;
 }
 
 /* Estilo general del formulario */
@@ -282,8 +278,7 @@ body {
 /* Estilo para el cuadro de texto */
 .dashed-box {
   width: 70%;
-  height: 18%;
-  border: 2px dashed #000000;
+  height: auto;
   margin: 10px auto;
 }
 
@@ -300,7 +295,17 @@ body {
   justify-content: center;
   align-items: center;
   font-weight: bolder;
-  font-size: 24px;
+  font-size: 25px;
   text-align: center;
   color: #fff;
+}
+
+/* Estilo para texto dentro de los dashed-box */
+.text_style {
+  text-align: center;
+  justify-items: center;
+  border-radius: 2%;
+  font-size: 19px;
+  color: #000000;
+  size: 10px;
 }
