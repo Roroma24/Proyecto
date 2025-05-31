@@ -17,6 +17,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 from dotenv import load_dotenv
+from datetime import datetime
+import re
 import os
 import mysql.connector  # Cambiado para usar mysql.connector
 import smtplib
@@ -71,7 +73,7 @@ def login():
         if conn:
             cursor = conn.cursor()
             cursor.execute("""
-                SELECT id_usuario, rol, nombre, primer_apellido, segundo_apellido
+                SELECT id_usuario, rol, nombre
                 FROM usuario 
                 WHERE correo = %s AND contraseña = SHA2(%s, 256)
             """, (correo, password))
@@ -82,8 +84,6 @@ def login():
                 session['user_id'] = user[0]
                 session['rol'] = user[1]
                 session['nombre'] = user[2]
-                session['apellido1'] = user[3]
-                session['apellido2'] = user[4]
                 
                 if user[1] == 'Paciente':
                     return redirect(url_for('index'))
@@ -189,112 +189,74 @@ def api_newdoc():
 @app.route('/api/reserva', methods=['GET', 'POST'])
 def api_reserva():
     if request.method == 'GET':
-
-        nombre = session.get('nombre')
-        apellido1 = session.get('apellido1')
-        apellido2 = session.get('apellido2')
-
-        return render_template('reservation.html', nombre=nombre, apellido1=apellido1, apellido2=apellido2)
-
+        return render_template('reservation.html')
+    
     if 'user_id' not in session:
-        return jsonify({"error": "No autorizado. Inicia sesión."}), 401
+        return jsonify({"error": "Debes iniciar sesión para reservar"}), 401
     
+    id_usuario = session['user_id']
     data = request.get_json()
-    if not data:
-        return jsonify({"error": "Faltan datos en la solicitud "}), 400
-    
+
+    nombre = data.get('nombre')
+    apellido1 = data.get('apellido1')
+    apellido2 = data.get('apelllido2')
+
     curp = data.get('curp')
-    edad = data.get('edad')
+    edad_str = data.get('edad')
+    if not edad_str:
+        return jsonify({"error": "Edad es un campo obligatorio"}), 400
+    try:
+        edad = int(edad_str)
+    except ValueError:
+        return jsonify({"error": "Edad debe ser un número válido"}), 400
+
     telefono = data.get('telefono')
     alergias = data.get('alergias')
     discapacidad = data.get('discapacidad')
     fecha = data.get('fecha')
-    horario = data.get('horarios')
-    ubicacion = data.get('ubicacion')
-    correo = data.get('correo')
-    confirmacion = data.get('confirmacion')
-        
-    if correo != confirmacion:
-        return jsonify({"error": "Los correos no coinciden"}), 400
-    
-    if not all([curp, edad, telefono, fecha, horario, ubicacion]):
-        return jsonify({"error": "Faltan campos requeridos"}), 400
-    
-    nombre = session.get('nombre')
-    apellido1 = session.get('apellido1')
-    apellido2 = session.get('apellido2')
-
-    if not all([nombre, apellido1]):
-        return jsonify({"error": "No se pudieron obtener los datos del usuario"}), 400
-        
-    conn = conectar_db()
-    if not conn:
-        return jsonify({"error": "No se logro conectar con la base de datos"}), 500
-    
+    horarios = data.get('horarios', '')
     try:
-        cursor = conn.cursor()
+        datetime.strptime(str(horarios), '%H:%M')
+    except ValueError:
+        return jsonify({"error": "Horario debe tener el formato válido HH:MM, por ejemplo '09:00'"}), 400
+    ubicacion = data.get('ubicacion')
+    especialidad_nombre = data.get('especialidad')
 
-        cursor.execute("""
-            SELECT id_usuario FROM usuario
-            WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido =%s
-        """, (nombre, apellido1, apellido2))
-        result = cursor.fetchone()
+    db = conectar_db()
+    cursor = db.cursor()
 
-        if not result:
-            return jsonify({"error": "Usuario no encontrado en la base de datos"}), 404
-        
-        id_usuario = result[0]
+    cursor.execute("""
+        SELECT id_usuario
+        FROM usuario
+        WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s
+    """, (nombre, apellido1, apellido2))
 
-        dia_semana = calendar.day_name[datetime.strptime(fecha, "%Y-%m-%d").weekday()]
-        dia_es = {
-            'Monday': 'Lunes',
-            'Tuesday': 'Martes',
-            'Wednesday': 'Miercoles',
-            'Thursday': 'Jueves',
-            'Friday': 'Viernes',
-            'Saturday': 'Sabado',
-            'Sunday': 'Domingo'
-        }
-        dia = dia_es[dia_semana]
+    us = cursor.fetchone()
 
-        cursor.execute("SELECT id_clinica FROM clinica WHERE direccion = %s", (ubicacion,))
-        clinica_row = cursor.fetchone()
-
-        if not clinica_row:
-            return jsonify({"error": "Ubicación no encontrada"}), 404
-        
-        id_clinica = clinica_row[0]
-
-        cursor.execute("""
-            SELECT dd.id_doctor
-            FROM doctor_disponibilidad dd
-            JOIN doctor_clinica dc ON dd.id_doctor = dc.id_doctor
-            WHERE dd.dia = %s
-                AND dd.horario_inicio <= %s
-                AND dd.horario_final > %s
-                AND dc.id_clinica = %s
-            Limit 1
-        """, (dia, horario, horario, id_clinica))
-
-        doctor_row = cursor.fetchone()
-
-        if not doctor_row:
-            return jsonify({"error": "No hay doctores disponibles en ese horario y ubicación"}), 404
-        
-        id_doctor = doctor_row[0]
-
-        cursor.callproc('insertar_cita', (id_usuario, curp, int(edad), telefono, alergias, discapacidad, fecha, horario, ubicacion, id_doctor))
-
-        conn.commit()
-        return jsonify({"message": "Cita registrada exitosamente"}), 201
+    if not us:
+        return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
     
+    id_usuario_db = us[0]
+    if id_usuario != id_usuario_db:
+        return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+
+    cursor.execute("SELECT id_especialidad FROM especialidad WHERE nombre_especialidad = %s", (especialidad_nombre,))
+    especialidad = cursor.fetchone()
+    if not especialidad:
+        return jsonify({"error": "Especialidad no registrada"}), 400
+
+    try:
+        cursor.callproc('insertar_cita', (
+            id_usuario, curp, edad, telefono, alergias, discapacidad,
+            fecha, horarios, ubicacion, especialidad_nombre
+        ))
+        db.commit()
+        return jsonify({"message": "Cita reservada correctamente"}), 200
     except mysql.connector.Error as err:
-        conn.rollback()
-        return jsonify({"error": f"Error al registrar la cita: {str(err)}"}), 500
-    
+        return jsonify({"error": f"Error al insertar cita: {err}"}), 500
     finally:
         cursor.close()
-        conn.close()
+        db.close()
 
 # Ruta para la página de métodos de pago (metodopago.html).
 @app.route('/pago')
