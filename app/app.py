@@ -125,6 +125,9 @@ def api_registro():
     if conn:
         try:
             cursor = conn.cursor()
+            cursor.execute("SELECT id_usuario FROM usuario WHERE correo = %s", (correo,))
+            if cursor.fetchone():
+                return jsonify({"error": "El correo ya está registrado"}), 409
             cursor.execute("SET @new_id_usuario = 0;")
             cursor.callproc('registro_usuario', (nombre, apellido1, apellido2, correo, password, '@new_id_usuario'))
             cursor.execute("SELECT @new_id_usuario;")
@@ -169,6 +172,9 @@ def api_newdoc():
     if conn:
         try:
             cursor = conn.cursor()
+            cursor.execute("SELECT id_usuario FROM usuario WHERE correo = %s", (correo,))
+            if cursor.fetchone():
+                return jsonify({"error": "El correo ya está registrado"}), 409
             cursor.execute("SET @new_id_doctor = 0;")
             cursor.callproc('registro_doctor', (nombre, apellido1, apellido2, correo, password, telefono, cedula, curp, rfc, especialidad, '@new_id_doctor'))
             cursor.execute("SELECT @new_id_doctor;")
