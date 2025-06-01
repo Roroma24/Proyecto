@@ -284,7 +284,11 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
       })
         .then(response => response.json())
         .then(data => {
-          alert(data.message || data.error);
+          if(data.redirect) {
+            window.location.href = data.redirect;
+          } else {
+            alert(data.message || data.error);
+          }
         })
         .catch(error => console.error('Error:', error));
     });

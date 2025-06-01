@@ -15,7 +15,6 @@ Este archivo contiene el código para la creación de la aplicación web con Fla
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from datetime import datetime
 from dotenv import load_dotenv
 from datetime import datetime
 import re
@@ -205,7 +204,7 @@ def api_reserva():
 
     nombre = data.get('nombre')
     apellido1 = data.get('apellido1')
-    apellido2 = data.get('apelllido2')
+    apellido2 = data.get('apellido2')
 
     curp = data.get('curp')
     edad_str = data.get('edad')
@@ -257,7 +256,7 @@ def api_reserva():
             fecha, horarios, ubicacion, especialidad_nombre
         ))
         db.commit()
-        return jsonify({"message": "Cita reservada correctamente"}), 200
+        return redirect
     except mysql.connector.Error as err:
         return jsonify({"error": f"Error al insertar cita: {err}"}), 500
     finally:
@@ -270,8 +269,8 @@ def pago():
     return render_template('metodopago.html')  # Renderiza la página de métodos de pago.
 
 # Ruta para la página de búsqueda de archivo (busqueda.html).
-@app.route('/file')
-def file():
+@app.route('/api/file')
+def api_file():
     opcion = request.args.get('opcion', '')  # Obtiene la opción seleccionada en la URL.
     return render_template('busqueda.html', opcion=opcion)  # Renderiza la página de búsqueda de archivo.
 
@@ -310,8 +309,8 @@ def procesar_cita():
         
     return "Error: No se pudo conectar a la base de datos.", 500
 
-@app.route('/pacient')
-def pacient():
+@app.route('/api/pacient')
+def api_pacient():
     return render_template('paciente.html')
 
 # Ruta para la página de modificación de cita (modificacion.html).
