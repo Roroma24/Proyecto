@@ -56,7 +56,7 @@ Página de inicio de sesión. Se solicitan datos de usuario y contraseña para a
         </p>
       </div>
 
-      <form action="{{ url_for('login') }}" method="POST">
+      <form id="login_form">
         <!-- Icono superior -->
         <!-- Grupo de campos del formulario -->
         <div class="form-group">
@@ -77,6 +77,38 @@ Página de inicio de sesión. Se solicitan datos de usuario y contraseña para a
     </div> <!-- Fin del contenedor -->
 
   </div> <!-- Fin de la sección derecha -->
+
+  <script>
+    document.getElementById("login_form").addEventListener("submit", async (event => {
+      event.preventDefault();
+
+      const usuario = document.getElementById("usuario").value;
+      const contrasena = document.getElementById("contrasena").value;
+
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ usuario, contrasena }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          if (data.rol === "Paciente") {
+            window.location.href = "/";
+          } else if (data.rol === "Doctor") {
+            window.location.href = "/docindex";
+          }
+        } else {
+          alert(data.error || "Error en el login");
+        }
+      } catch (error) {
+        alert("Error de conexión o del servidor");
+      }
+    });
+
+  </script>
 
 </body>
 

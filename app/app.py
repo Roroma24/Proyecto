@@ -62,43 +62,46 @@ def docindex():
     return redirect(url_for('login'))
 
 # Ruta para la página de login (login.html).
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if  request.method == 'POST':
-        correo = request.form.get('usuario')
-        password = request.form.get('contrasena')
-        
-        conn = conectar_db()
-        if conn:
-            cursor = conn.cursor()
-            cursor.execute("""
-                SELECT id_usuario, rol, nombre
-                FROM usuario 
-                WHERE correo = %s AND contraseña = SHA2(%s, 256)
-            """, (correo, password))
-            user = cursor.fetchone()
-            conn.close()
-            
-            if user:
-                session['user_id'] = user[0]
-                session['rol'] = user[1]
-                session['nombre'] = user[2]
-                
-                if user[1] == 'Paciente':
-                    return redirect(url_for('index'))
-                elif user[1] == 'Doctor':
-                    return redirect(url_for('docindex'))
-            else:
-                return "Correo o contraseña incorrectos"
-            
-    return render_template('login.html')  # Renderiza la página HTML llamada 'login.html'.
-
-@app.route('/logout')
-def logout():
-    session.pop('user_id', None)
-    session.pop('rol', None)
-    session.pop('nombre', None)
+@app.route('/api/login', methods=['GET', 'POST'])
+def api_login():
+    data = request.get_json()
     
+    if not data:
+        return jsonify({'error': 'No se recibió JSON'}), 400
+    
+    correo = data.get('usuario')
+    password = data.get('contrasena')
+
+    if not correo or not password:
+        return jsonify({'error': 'Falta usuario o contraseña'}), 400
+
+    conn = conectar_db()
+    if not conn:
+        return jsonify({'error': 'Error al conectar con la base de datos'}), 500
+    
+    try:
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT id_usuario, rol, nombre
+            FROM usuario 
+            WHERE correo = %s AND contraseña = SHA2(%s, 256)
+        """, (correo, password))
+        user = cursor.fetchone()
+    finally:
+        conn.close()
+        
+        if user:
+            session['user_id'] = user[0]
+            session['rol'] = user[1]
+            session['nombre'] = user[2]
+
+            return jsonify({'mensaje': 'Login exitoso', 'rol': user[1]})
+        else:
+            return jsonify({'error': 'Correo o contraseña incorrectos'}), 401
+
+@app.route('/api/logout')
+def api_logout():
+    session.clear()
     return redirect(url_for('index'))
 
 # Ruta para la página de registro de usuario (registrouser.html).

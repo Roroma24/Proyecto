@@ -41,7 +41,7 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
                 </button>
             </a>
             <!-- Botón de regresar (sin enlace asignado aún) -->
-            <a href="{{ url_for('file', opcion='modification') }}" style="text-decoration: none;">
+            <a href="{{ url_for('api_file', opcion='modification') }}" style="text-decoration: none;">
                 <div class="accion">
                     Regresar
                 </div>
@@ -55,10 +55,10 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
                 <div class="dropdown-content">
                     {% if session['nombre'] %}
                     <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
-                    <a href="{{ url_for('logout') }}">Logout</a>
+                    <a href="{{ url_for('api_logout') }}">Logout</a>
                     {% else %}
                     <!-- Enlace a la vista de login -->
-                    <a href="{{ url_for('login') }}">Login</a>
+                    <a href="{{ url_for('api_login') }}">Login</a>
 
                     <!-- Enlace a la vista de registro de un nuevo usuario -->
                     <a href="{{ url_for('api_registro') }}">New user</a>
