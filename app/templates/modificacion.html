@@ -186,7 +186,11 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
                         <!-- Dirección para la cita -->
                         <div class="form-group">
                             <label for="direccion">Dirección</label>
-                            <input type="text" id="direccion" name="direccion" placeholder="Ingresa tu dirección">
+                            <select id="direccion" name="direccion">
+                                <option value="" disabled selected hidden>Selecciona una dirección</option>
+                                <option value="A1">A1</option>
+                                <option value="A2">A2</option>
+                            </select>
                         </div>
                     </div>
                 </div>
