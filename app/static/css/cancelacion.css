@@ -70,7 +70,7 @@ body {
 /* Estilo para el contenedor 3 */
 .container_3 {
   width: 90%;
-  height: auto;
+  height: 750px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -234,6 +234,12 @@ body {
   box-sizing: border-box;
   font-weight: bold;
   margin-bottom: 20px;
+}
+
+/* Estilo para los campos hora y fecha */
+.campo.fecha,
+.campo.hora {
+  display: block;
 }
 
 /* Estilo para los inputs de los campos */
