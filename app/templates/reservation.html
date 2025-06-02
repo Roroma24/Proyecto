@@ -48,7 +48,7 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
           </button>
         </a>
         <!-- Enlace a la página principal (Botón Salir) -->
-        <a href="{{ url_for('index') }}" style="text-decoration: none;">
+        <a href="{{ url_for('api_index') }}" style="text-decoration: none;">
           <button class="accion">
             Salir
           </button>
@@ -62,10 +62,10 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
           <div class="dropdown-content">
             {% if session['nombre'] %}
             <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
-            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="{{ url_for('api_logout') }}">Logout</a>
             {% else %}
             <!-- Enlace a la vista de login -->
-            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('api_login') }}">Login</a>
 
             <!-- Enlace a la vista de registro de un nuevo usuario -->
             <a href="{{ url_for('api_registro') }}">New user</a>

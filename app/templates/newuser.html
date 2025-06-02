@@ -31,7 +31,7 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
     <!-- Contenedor principal del botón de salida -->
     <div class="container">
         <!-- Botón de salida que redirige a la función 'exit' -->
-        <a href="{{ url_for('index') }}" style="text-decoration: none;">
+        <a href="{{ url_for('api_index') }}" style="text-decoration: none;">
             <div class="exit_btn">
                 Salir
             </div> <!-- Botón estilizado para salir -->
@@ -133,7 +133,7 @@ Página de registro de nuevos usuarios. Se solicitan datos personales del usuari
                 .then(data => {
                     if (data.message) {
                         alert(data.message);
-                        window.location.href = "{{ url_for('index') }}";
+                        window.location.href = "{{ url_for('api_index') }}";
                     } else if (data.error) {
                         alert(data.error);
                     }

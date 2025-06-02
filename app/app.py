@@ -22,6 +22,7 @@ import os
 import mysql.connector  # Cambiado para usar mysql.connector
 import smtplib
 import calendar
+import hashlib
 
 
 # ---------------- CONEXIÓN A LA BASE DE DATOS ----------------
@@ -46,63 +47,67 @@ app = Flask(__name__)
 app.secret_key = os.getenv("secret_key")
 
 # Ruta para la página principal (index.html).
-@app.route('/')
-def index():
-    nombre = session.get('nombre') if 'user_id' in session else None
-    rol = session.get('rol') if 'user_id' in session else None
+@app.route('/api/index')
+def api_index():
+    nombre = session.get('nombre') if 'id_usuario' in session else None
+    rol = session.get('rol') if 'id_usuario' in session else None
 
     if rol == 'Paciente':
         return render_template('index.html', nombre=nombre)
     return render_template('index.html')
 
-@app.route('/docindex')
-def docindex():
-    if 'user_id' in session and session.get('rol') == 'Doctor':
+@app.route('/api/docindex')
+def api_docindex():
+    if 'id_usuario' in session and session.get('rol') == 'Doctor':
         return render_template('indexdoc.html', nombre=session.get('nombre'))
-    return redirect(url_for('login'))
+    return redirect(url_for('login.html'))
 
 # Ruta para la página de login (login.html).
 @app.route('/api/login', methods=['GET', 'POST'])
 def api_login():
-    data = request.get_json()
+    if request.method == 'GET':
+        return render_template('login.html')
     
+    data = request.get_json()
     if not data:
-        return jsonify({'error': 'No se recibió JSON'}), 400
+        return jsonify({"error": "No se recibieron datos JSON"}), 400
     
     correo = data.get('usuario')
-    password = data.get('contrasena')
+    contrasena = data.get('contrasena')
 
-    if not correo or not password:
-        return jsonify({'error': 'Falta usuario o contraseña'}), 400
+    if not correo or not contrasena:
+        return jsonify({'error': 'Faltan datos'}), 400
+
+    hashed_password = hashlib.sha256(contrasena.encode()).hexdigest()
 
     conn = conectar_db()
-    if not conn:
-        return jsonify({'error': 'Error al conectar con la base de datos'}), 500
-    
-    try:
-        cursor = conn.cursor()
-        cursor.execute("""
-            SELECT id_usuario, rol, nombre
-            FROM usuario 
-            WHERE correo = %s AND contraseña = SHA2(%s, 256)
-        """, (correo, password))
-        user = cursor.fetchone()
-    finally:
-        conn.close()
-        
-        if user:
-            session['user_id'] = user[0]
-            session['rol'] = user[1]
-            session['nombre'] = user[2]
+    cursor = conn.cursor()
 
-            return jsonify({'mensaje': 'Login exitoso', 'rol': user[1]})
-        else:
-            return jsonify({'error': 'Correo o contraseña incorrectos'}), 401
+    cursor.execute("""
+        SELECT id_usuario, nombre, rol
+        FROM usuario
+        WHERE correo = %s AND contraseña = %s
+    """, (correo, hashed_password))
+    res = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    if res:
+        id_usuario, nombre, rol = res
+
+        session['id_usuario'] = id_usuario
+        session['nombre'] = nombre
+        session['rol'] = rol
+
+        return jsonify({'message': 'Inicio de sesion exitoso', 'rol': rol}), 200
+    else:
+        return jsonify({'error': 'Correo o contraseña incorrectos'}), 401
 
 @app.route('/api/logout')
 def api_logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('api_index'))
 
 # Ruta para la página de registro de usuario (registrouser.html).
 @app.route('/api/registro', methods=['GET', 'POST'])
@@ -199,10 +204,10 @@ def api_reserva():
     if request.method == 'GET':
         return render_template('reservation.html')
     
-    if 'user_id' not in session:
+    if 'id_usuario' not in session:
         return jsonify({"error": "Debes iniciar sesión para reservar"}), 401
     
-    id_usuario = session['user_id']
+    id_usuario = session['id_usuario']
     data = request.get_json()
 
     nombre = data.get('nombre')
@@ -252,14 +257,16 @@ def api_reserva():
     especialidad = cursor.fetchone()
     if not especialidad:
         return jsonify({"error": "Especialidad no registrada"}), 400
+    
+    id_especialidad = especialidad[0]
 
     try:
         cursor.callproc('insertar_cita', (
             id_usuario, curp, edad, telefono, alergias, discapacidad,
-            fecha, horarios, ubicacion, especialidad_nombre
+            fecha, horarios, ubicacion, id_especialidad
         ))
         db.commit()
-        return redirect
+        return jsonify({"message": "Cita reservada correctamente", "redirect": url_for('pago')})
     except mysql.connector.Error as err:
         return jsonify({"error": f"Error al insertar cita: {err}"}), 500
     finally:
