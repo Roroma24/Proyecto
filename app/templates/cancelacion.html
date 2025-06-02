@@ -91,9 +91,19 @@ fecha de la cita a cancelar.
           <!-- Formulario para cancelar una cita -->
           <form>
             <!-- Campo para el nombre completo -->
-            <div class="campo nombre">
-              <label for="nombres">Nombre</label> <!-- Etiqueta para nombres -->
-              <input type="text" id="nombre" placeholder="Nombre completo" />
+            <div class="campos-dobles">
+              <div class="campo">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" placeholder="Ingresa tu nombre" />
+              </div>
+              <div class="campo">
+                <label for="apellido1">Primer apellido</label>
+                <input type="text" id="apellido1" placeholder="Ingresa tu primer apellido" />
+              </div>
+              <div class="campo">
+                <label for="apellido2">Segundo apellido</label>
+                <input type="text" id="apellido2" placeholder="Ingresa tu segundo apellido" />
+              </div>
             </div>
             <!-- Campos dobles para teléfono, edad y correo -->
             <div class="campos-dobles">
@@ -112,22 +122,21 @@ fecha de la cita a cancelar.
             </div>
             <!-- Campos dobles para hora y fecha -->
             <div class="campos-dobles">
-              <div class="campo">
+              <div class="campo fecha">
                 <label for="hora">Hora</label> <!-- Etiqueta para hora -->
                 <input type="time" id="hora" />
               </div>
-              <div class="campo">
+              <div class="campo hora">
                 <label for="fecha">Fecha</label> <!-- Etiqueta para fecha -->
                 <input type="date" id="fecha" />
               </div>
             </div>
             <!-- Botón para cancelar la cita -->
-            <a href="{{ url_for('file', opcion='cancel') }}" style="text-decoration: none;">
-              <div class="accion" style="position: absolute;left: 75%;bottom: 3%;">
+            <a href="{{ url_for('api_file', opcion='cancel') }}" style="text-decoration: none;">
+              <div class="accion" style="position: absolute;left: 75%;bottom: -18%;">
                 Cancelar
               </div>
             </a>
-
         </div>
         </form>
       </div>
