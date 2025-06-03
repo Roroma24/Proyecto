@@ -54,10 +54,21 @@ Se ofrece la selección de método de pago mediante imágenes y un botón para c
 
         <!-- Menú desplegable para login o registro -->
         <div class="dropdown">
-          <button class="circle purple"></button>
+          <!-- Botón que activa el menú desplegable -->
+          <button class="circle-purple"></button>
+
+          <!-- Contenido del menú desplegable -->
           <div class="dropdown-content">
+            {% if session['nombre'] %}
+            <span style="color: #000000; font-weight: bold;">{{ session['nombre'] }}</span>
+            <a href="{{ url_for('api_logout') }}">Logout</a>
+            {% else %}
+            <!-- Enlace a la vista de login -->
             <a href="{{ url_for('api_login') }}">Login</a>
+
+            <!-- Enlace a la vista de registro de un nuevo usuario -->
             <a href="{{ url_for('api_registro') }}">New user</a>
+            {% endif %}
           </div>
         </div>
       </div>

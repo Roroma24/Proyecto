@@ -285,10 +285,10 @@ def api_file():
         opcion = request.args.get('opcion', '')  # Obtiene la opción seleccionada en la URL.
         return render_template('busqueda.html', opcion=opcion)  # Renderiza la página de búsqueda de archivo.
     
-    if 'user_id' not in session:
+    if 'id_usuario' not in session:
         return jsonify({"error": "Debes iniciar sesión para buscar cita"}), 401
     
-    id_usuario = session['user_id']
+    id_usuario = session['id_usuario']
     data = request.get_json()
     if not data:
         return jsonify({"error": "No se recibieron datos JSON"}), 400
@@ -338,9 +338,9 @@ def api_file():
     folio = ci[0]
 
     if opcion == "modification":
-        return redirect(url_for('modification', folio=folio))
+        return redirect(url_for('api_modification', folio=folio))
     elif opcion == "cancel":
-        return redirect(url_for('cancel', folio=folio))
+        return redirect(url_for('api_cancel', folio=folio))
     else:
         return jsonify({"error": "Opción no válida"}), 400
 
@@ -366,10 +366,10 @@ def procesar_cita():
             if resultado:
                 # Redirige a la página de modificación si la opción seleccionada es "modification".
                 if opcion == "modification":
-                    return redirect(url_for('modification', folio=folio))
+                    return redirect(url_for('api_modification', folio=folio))
                 # Redirige a la página de cancelación si la opción seleccionada es "cancel".
                 elif opcion == "cancel":
-                    return redirect(url_for('cancel', folio=folio))  
+                    return redirect(url_for('api_cancel', folio=folio))  
                 else:
                     return "Error: Opción no válida.", 400
             else:
@@ -390,7 +390,7 @@ def api_modification():
         folio = request.args.get('folio', '')
         return render_template('modificacion.html', folio=folio)
 
-    if 'user_id' not in session:
+    if 'id_usuario' not in session:
         return jsonify({"error": "Debes iniciar sesión para modificar una cita"}), 401
 
     id_usuario = session['user_id']
@@ -453,7 +453,7 @@ def api_cancel():
         folio = request.args.get('folio', '')
         return render_template('cancelacion.html', folio=folio)
 
-    if 'user_id' not in session:
+    if 'id_usuario' not in session:
         return jsonify({"error": "Debes iniciar sesión para cancelar una cita"}), 401
 
     data = request.get_json()
