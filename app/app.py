@@ -279,10 +279,70 @@ def pago():
     return render_template('metodopago.html')  # Renderiza la página de métodos de pago.
 
 # Ruta para la página de búsqueda de archivo (busqueda.html).
-@app.route('/api/file')
+@app.route('/api/file', methods=['GET', 'POST'])
 def api_file():
-    opcion = request.args.get('opcion', '')  # Obtiene la opción seleccionada en la URL.
-    return render_template('busqueda.html', opcion=opcion)  # Renderiza la página de búsqueda de archivo.
+    if request.method == 'GET':
+        opcion = request.args.get('opcion', '')  # Obtiene la opción seleccionada en la URL.
+        return render_template('busqueda.html', opcion=opcion)  # Renderiza la página de búsqueda de archivo.
+    
+    if 'user_id' not in session:
+        return jsonify({"error": "Debes iniciar sesión para buscar cita"}), 401
+    
+    id_usuario = session['user_id']
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No se recibieron datos JSON"}), 400
+    
+    nombre = data.get('nombre')
+    apellido1 = data.get('apellido1')
+    apellido2 = data.get('apellido2')
+    correo = data.get('correo')
+    opcion = data.get('opcion')  # <-- Recibe la opción (modification/cancel)
+    
+    db = conectar_db()
+    cursor = db.cursor()
+
+    cursor.execute("""
+        SELECT id_usuario
+        FROM usuario
+        WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s AND correo = %s
+    """, (nombre, apellido1, apellido2, correo))
+
+    us = cursor.fetchone()
+
+    if not us:
+        cursor.close()
+        db.close()
+        return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
+
+    id_usuario_db = us[0]
+    if id_usuario != id_usuario_db:
+        cursor.close()
+        db.close()
+        return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+
+    cursor.execute("""
+        SELECT id_cita
+        FROM cita
+        WHERE id_usuario = %s
+    """, (id_usuario,))
+
+    ci = cursor.fetchone()
+
+    cursor.close()
+    db.close()
+
+    if not ci:
+        return jsonify({"error": "No se encontraron citas con ese folio"}), 404
+
+    folio = ci[0]
+
+    if opcion == "modification":
+        return redirect(url_for('modification', folio=folio))
+    elif opcion == "cancel":
+        return redirect(url_for('cancel', folio=folio))
+    else:
+        return jsonify({"error": "Opción no válida"}), 400
 
 # Ruta para procesar la cita: modificación o cancelación dependiendo de la opción seleccionada.
 @app.route('/procesar_cita', methods=['POST'])
@@ -324,16 +384,130 @@ def api_pacient():
     return render_template('paciente.html')
 
 # Ruta para la página de modificación de cita (modificacion.html).
-@app.route('/modification')
-def modification():
-    folio = request.args.get('folio', '')  # Obtiene el folio de la cita desde la URL.
-    return render_template('modificacion.html', folio=folio)
+@app.route('/api/modification', methods=['GET', 'POST'])
+def api_modification():
+    if request.method == 'GET':
+        folio = request.args.get('folio', '')
+        return render_template('modificacion.html', folio=folio)
+
+    if 'user_id' not in session:
+        return jsonify({"error": "Debes iniciar sesión para modificar una cita"}), 401
+
+    id_usuario = session['user_id']
+
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No se recibieron datos JSON"}), 400
+
+    nombre = data.get('nombre')
+    apellido1 = data.get('apellido1')
+    apellido2 = data.get('apellido2')
+    folio = data.get('folio')
+
+    fecha_cita = data.get('fecha_cita')
+    horario = data.get('horario')
+    telefono = data.get('telefono')
+    alergias = data.get('alergias')
+    direccion = data.get('direccion')
+    especialidad = data.get('especialidad')
+
+    if not all([nombre, apellido1, apellido2, folio, fecha_cita, horario, telefono, alergias, direccion, especialidad]):
+        return jsonify({"error": "Faltan campos requeridos"}), 400
+
+    try:
+        folio = int(folio)
+    except ValueError:
+        return jsonify({"error": "Folio inválido"}), 400
+
+    conn = conectar_db()
+    if not conn:
+        return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
+
+    try:
+        cursor = conn.cursor()
+
+        cursor.callproc('modificar_cita', (
+            folio,
+            fecha_cita,
+            horario,
+            telefono,
+            alergias,
+            direccion,
+            especialidad
+        ))
+        conn.commit()
+        return jsonify({"message": "Cita modificada exitosamente"}), 200
+
+    except mysql.connector.Error as err:
+        return jsonify({"error": f"Error al modificar la cita: {err}"}), 500
+
+    finally:
+        if conn.is_connected():
+            cursor.close()
+            conn.close()
 
 # Ruta para la página de cancelación de cita (cancelacion.html).
-@app.route('/cancel')
-def cancel():
-    folio = request.args.get('folio', '')  # Obtiene el folio de la cita desde la URL.
-    return render_template('cancelacion.html', folio=folio)
+@app.route('/api/cancel', methods=['GET', 'POST'])
+def api_cancel():
+    if request.method == 'GET':
+        folio = request.args.get('folio', '')
+        return render_template('cancelacion.html', folio=folio)
+
+    if 'user_id' not in session:
+        return jsonify({"error": "Debes iniciar sesión para cancelar una cita"}), 401
+
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No se recibieron datos JSON"}), 400
+
+    nombre = data.get('nombre')
+    apellido1 = data.get('apellido1')
+    apellido2 = data.get('apellido2')
+    folio = data.get('folio')
+
+    if not all([nombre, apellido1, apellido2, folio]):
+        return jsonify({"error": "Faltan campos requeridos"}), 400
+
+    conn = conectar_db()
+    if not conn:
+        return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
+
+    try:
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT id_usuario
+            FROM usuario
+            WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s
+        """, (nombre, apellido1, apellido2))
+        us = cursor.fetchone()
+        if not us:
+            cursor.close()
+            conn.close()
+            return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
+
+        id_usuario_db = us[0]
+        if session['user_id'] != id_usuario_db:
+            cursor.close()
+            conn.close()
+            return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+
+        cursor.execute("""
+            SELECT id_cita FROM cita WHERE id_cita = %s AND id_usuario = %s
+        """, (folio, id_usuario_db))
+        cita = cursor.fetchone()
+        if not cita:
+            cursor.close()
+            conn.close()
+            return jsonify({"error": "No se encontró la cita para este usuario"}), 404
+
+        cursor.callproc('eliminar_cita', (int(folio),))
+        conn.commit()
+        cursor.close()
+        conn.close()
+        return jsonify({"message": "Cita cancelada exitosamente"}), 200
+
+    except mysql.connector.Error as err:
+        return jsonify({"error": f"Error al cancelar la cita: {err}"}), 500
 
 @app.route('/historial')
 def historial():
