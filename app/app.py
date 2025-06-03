@@ -60,7 +60,7 @@ def api_index():
 def api_docindex():
     if 'id_usuario' in session and session.get('rol') == 'Doctor':
         return render_template('indexdoc.html', nombre=session.get('nombre'))
-    return redirect(url_for('login.html'))
+    return redirect(url_for('api_login'))
 
 # Ruta para la página de login (login.html).
 @app.route('/api/login', methods=['GET', 'POST'])
