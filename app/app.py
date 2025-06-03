@@ -31,7 +31,7 @@ def conectar_db():  # Función para conectar a la base de datos
         conn = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Meliodas1.",  # Se ajusta según la configuración
+            password="Ror@$2405",  # Se ajusta según la configuración
             database="hospital",  # Nombre de la base de datos
         )
         print("✅ Conexión exitosa a la base de datos.")
@@ -338,9 +338,9 @@ def api_file():
     folio = ci[0]
 
     if opcion == "modification":
-        return redirect(url_for('modification', folio=folio))
+        return redirect(url_for('api_modification', folio=folio))
     elif opcion == "cancel":
-        return redirect(url_for('cancel', folio=folio))
+        return redirect(url_for('api_cancel', folio=folio))
     else:
         return jsonify({"error": "Opción no válida"}), 400
 
@@ -366,10 +366,10 @@ def procesar_cita():
             if resultado:
                 # Redirige a la página de modificación si la opción seleccionada es "modification".
                 if opcion == "modification":
-                    return redirect(url_for('modification', folio=folio))
+                    return redirect(url_for('api_modification', folio=folio))
                 # Redirige a la página de cancelación si la opción seleccionada es "cancel".
                 elif opcion == "cancel":
-                    return redirect(url_for('cancel', folio=folio))  
+                    return redirect(url_for('api_cancel', folio=folio))
                 else:
                     return "Error: Opción no válida.", 400
             else:
