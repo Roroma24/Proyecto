@@ -379,9 +379,46 @@ def procesar_cita():
         
     return "Error: No se pudo conectar a la base de datos.", 500
 
-@app.route('/api/pacient')
+@app.route('/api/pacient', methods=['GET', 'POST'])
 def api_pacient():
-    return render_template('paciente.html')
+    if request.method == 'GET':
+        return render_template('paciente.html')
+
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "Faltan campos requeridos "}), 400
+
+    idpaciente = data.get('idpaciente')
+
+    if not all([idpaciente]):
+        return jsonify({"error": "Faltan campos requeridos"}), 400
+    
+    conn = conectar_db()
+    if conn:
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM paciente WHERE idpaciente = %s", (idpaciente,))
+            paciente = cursor.fetchone()
+            if paciente:
+                return jsonify({
+                    "nombre": paciente[0],
+                    "primer_apellido": paciente[1],
+                    "segundo_apellido": paciente[2],
+                    "edad": paciente[3],
+                    "correo": paciente[4],
+                    "curp": paciente[5],
+                    "alergias": paciente[6],
+                    "discapacidad": paciente[7]
+                    
+                })
+            else:
+                return jsonify({"error": "Paciente no encontrado"}), 404
+        finally:
+            conn.close()
+    else:
+        return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
+
+
 
 # Ruta para la página de modificación de cita (modificacion.html).
 @app.route('/api/modification', methods=['GET', 'POST'])
