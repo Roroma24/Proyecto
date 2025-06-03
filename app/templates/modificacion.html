@@ -82,7 +82,7 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
             </p>
         </div>
         <!-- FORMULARIO DE RESERVA DE CITAS -->
-        <form>
+        <form id="modificacion-form">
 
             <!-- FILA DE DATOS PERSONALES -->
             <div class="form-row">
@@ -181,7 +181,8 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
                         <!-- Especialidad para la cita -->
                         <div class="form-group">
                             <label for="especialidad">Especialidad</label>
-                            <input type="text" id="especialidad" name="especialidad" placeholder="Ingresa tu especialidad">
+                            <input type="text" id="especialidad" name="especialidad"
+                                placeholder="Ingresa tu especialidad">
                         </div>
                         <!-- Dirección para la cita -->
                         <div class="form-group">
@@ -204,14 +205,51 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
                 </div>
             </div>
 
-            <a href="#" style="text-decoration: none;">
-                <button class="accion" style="position: relative; top: -15px;">
-                    Modificar
-                </button>
-            </a>
+            <button type="submit" class="accion" style="position: relative; top: -15px;">
+                Modificar
+            </button>
 
         </form>
     </div>
+
+    <script>
+        document.getElementById('modificacion-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = {
+                folio: "{{ folio }}", 
+                nombre: document.getElementById('nombre').value,
+                apellido1: document.getElementById('apellido1').value,
+                apellido2: document.getElementById('apellido2').value,
+                fecha_cita: document.getElementById('fecha').value,
+                horario: document.getElementById('horarios').value,
+                telefono: document.getElementById('telefono').value,
+                alergias: document.getElementById('alergias').value,
+                direccion: document.getElementById('direccion').value,
+                especialidad: document.getElementById('especialidad').value
+            };
+
+            console.log(formData);
+            
+            fetch('/api/modification', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.redirect) {
+                        window.location.href = data.redirect;
+                    } else {
+                        alert(data.message || data.error);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+
 </body>
 
 </html>
