@@ -37,7 +37,7 @@ de dicho paciente.
             <!-- Contenedor para el botón de salir -->
             <div class="container_2">
                 <div class="nexttop">
-                    <a href="{{ url_for('docindex') }}"> <!-- Enlace para salir -->
+                    <a href="{{ url_for('api_docindex') }}"> <!-- Enlace para salir -->
                         <button class="next">Salir</button> <!-- Botón para salir -->
                     </a>
                 </div>
@@ -46,7 +46,7 @@ de dicho paciente.
             <div class="dropdown">
                 <button class="btn"></button> <!-- Botón para abrir el menú -->
                 <div class="dropdown-content">
-                    <a href="{{ url_for('login') }}">Login</a> <!-- Enlace a la página de inicio de sesión -->
+                    <a href="{{ url_for('api_login') }}">Login</a> <!-- Enlace a la página de inicio de sesión -->
                     <a href="{{ url_for('api_registro') }}">New user</a> <!-- Enlace para registrar un nuevo usuario -->
                 </div>
             </div>
