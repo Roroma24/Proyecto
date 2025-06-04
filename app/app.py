@@ -388,16 +388,21 @@ def api_pacient():
     if not data:
         return jsonify({"error": "Faltan campos requeridos "}), 400
 
-    idpaciente = data.get('idpaciente')
+    idpaciente = data.get('id_paciente')
 
-    if not all([idpaciente]):
+    if not idpaciente:
         return jsonify({"error": "Faltan campos requeridos"}), 400
     
     conn = conectar_db()
     if conn:
         try:
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM paciente WHERE idpaciente = %s", (idpaciente,))
+            cursor.execute("""
+                SELECT u.nombre, u.primer_apellido, u.segundo_apellido, p.edad, u.correo, p.curp, p.alergias, p.discapacidad
+                FROM paciente p
+                JOIN usuario u ON p.id_usuario = u.id_usuario
+                WHERE p.id_paciente = %s
+            """, (idpaciente,))
             paciente = cursor.fetchone()
             if paciente:
                 return jsonify({
@@ -409,7 +414,6 @@ def api_pacient():
                     "curp": paciente[5],
                     "alergias": paciente[6],
                     "discapacidad": paciente[7]
-                    
                 })
             else:
                 return jsonify({"error": "Paciente no encontrado"}), 404
