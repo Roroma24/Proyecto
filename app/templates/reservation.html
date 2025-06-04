@@ -227,7 +227,7 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
                 <label for="especialidad">Especialidad</label>
                 <input type="text" id="especialidad" name="especialidad" placeholder="Ingresa especialidad">
                 <small style="color: #555; text-align: center;">En caso de no saber a qué especialidad acudir, ingrese
-                  la opción 'Consulta general'</small>
+                  la opción 'General'</small>
               </div>
 
               <!-- Calendario -->
@@ -251,6 +251,15 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
   <script>
     document.getElementById('reservation-form').addEventListener('submit', function (event) {
       event.preventDefault();
+
+      const correo = document.getElementById('correo').value;
+      const confirmacion = document.getElementById('confirmacion').value;
+
+      // Validación de correos
+      if (correo !== confirmacion) {
+        alert("Los correos no coinciden. Por favor, verifica que ambos campos sean iguales.");
+        return;
+      }
 
       const formData = {
         nombre: document.getElementById('nombre').value,
@@ -284,7 +293,7 @@ discapacidades y horarios disponibles. Se incluye un calendario para seleccionar
       })
         .then(response => response.json())
         .then(data => {
-          if(data.redirect) {
+          if (data.redirect) {
             window.location.href = data.redirect;
           } else {
             alert(data.message || data.error);

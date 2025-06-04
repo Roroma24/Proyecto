@@ -217,7 +217,6 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
             event.preventDefault();
 
             const formData = {
-                folio: "{{ folio }}", 
                 nombre: document.getElementById('nombre').value,
                 apellido1: document.getElementById('apellido1').value,
                 apellido2: document.getElementById('apellido2').value,
@@ -230,7 +229,7 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
             };
 
             console.log(formData);
-            
+
             fetch('/api/modification', {
                 method: 'POST',
                 headers: {
