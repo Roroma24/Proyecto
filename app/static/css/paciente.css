@@ -185,8 +185,8 @@ section {
 
 /* Estilo para la imagen de fondo */
 .image {
-  width: auto;
-  height: 100%;
+  width: 100%;
+  min-height: 84vh; 
   background-image: url('imagen/fondo.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -343,7 +343,7 @@ section {
 
 /* Estilo para el texto de los datos */
 .datos {
-  font-size: 20px;
+  font-size: 12px;
   text-align: center;
   justify-items: center;
   font-weight: bold;
@@ -375,91 +375,62 @@ section {
   text-align: center;
 }
 
-/* Estilo para los datos del paciente */
-.datos-paciente1 {
-  font-size: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: center;
-  margin: 20px auto;
-  color: #000000;
-  gap: 5%;
-}
-
-/* Estilo para los datos del paciente */
-.datos-paciente2 {
-  font-size: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: center;
-  margin: 20px auto;
-  color: #000000;
-  gap: 5%;
-}
-
-/* Estilo para los datos del paciente */
-.datos-paciente3 {
-  font-size: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: center;
-  margin: 20px auto;
-  color: #000000;
-  gap: 5%;
-}
-
-/* Estilo para los datos del paciente */
-.datos-paciente4 {
-  font-size: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: center;
-  margin: 20px auto;
-  color: #000000;
-  gap: 5%;
-}
-
-/* Estilo para los datos delicados del paciente */
-.datos-delicados {
-  width: 50%;
-  height: 10%;
-  font-size: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: center;
-  margin: 20px auto;
-  color: #000000;
-  gap: 5%;
-  border: 2px dashed #000;
-  flex-direction: row;
-}
-
-/* Estilo para los campos de alergias y discapacidad */
-.alergias,
-.discapacidad {
-  height: 70%;
-  width: 65%;
-  height: auto;
-  background-color: #fff;
-  border: 2px solid #000;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  text-align: center;
-  margin: 10%;
-  box-sizing: border-box;
-  padding: 20%;
-}
-
 /* Estilo para el contenedor horizontal */
 .container-horizontal {
   display: flex;
   justify-content: center;
   align-items:  center;
   gap: 10%;
+}
+
+/* Estilo para el cuadro de alergias y discapacidad */
+.alergias, .discapacidad {
+  min-width: 200px;
+  max-width: 350px;
+  min-height: 60px;
+  background-color: #fff;
+  border: 2px solid #000;
+  display: flex;
+  justify-content: center;    
+  align-items: center;      
+  text-align: center;         
+  margin: 10% auto;
+  box-sizing: border-box;
+  padding: 20px;
+  font-size: 16px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Contenedor para mostras tres columnas de datos del paciente */
+.datos-paciente-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 8px 24px;
+  align-items: center;
+  margin: 30px auto;
+  font-size: 18px;
+  width: fit-content;
+  background: #fff;
+  border-radius: 10px;
+  padding: 24px 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+/* Estilos para las etiquetas */
+.datos-paciente-grid .label {
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  padding-bottom: 4px;
+}
+
+/* Estilos para los valores */
+.datos-paciente-grid .value {
+  color: #000;
+  text-align: center;
+  word-break: break-word;
+  padding-top: 4px;
 }

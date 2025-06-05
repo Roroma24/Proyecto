@@ -1,4 +1,4 @@
-<!-- 
+<!--   
 Autores: 
 Axel Castañeda Sánchez 
 Antonio Albuerne Silva
@@ -8,10 +8,10 @@ Sebastián Villaluz Martínez
 Daniela Zuno Aguilar
 
 Descripción:
-Este archivo HTML es la plantilla para la página de busqueda del paciente.
-Donde se muestran los datos del paciente, un botón de busqueda y un botón para visualizar el historial clínico
+Este archivo HTML es la plantilla para la página de búsqueda del paciente.
+Donde se muestran los datos del paciente, un botón de búsqueda y un botón para visualizar el historial clínico
 de dicho paciente.
- -->
+-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,8 +51,8 @@ de dicho paciente.
                 </div>
             </div>
         </div>
+
         <!-- Contenedor principal para la imagen y el formulario -->
-        <!-- Sección de imagen y formulario -->
         <div class="image">
             <div class="container_1 flex-container">
                 <!-- Lado Izquierdo -->
@@ -65,17 +65,14 @@ de dicho paciente.
                             <div class="campo">
                                 <input type="text" id="idpaciente" placeholder="Id del paciente" />
                             </div>
-
                         </div>
 
-                        <form action="{{ url_for('procesar_cita') }}" method="POST">
-                            <input type="hidden" name="opcion" value="{{ opcion }}">
-                            <a href="" style="text-decoration: none;">
-                                <div class="accion1">
-                                    Continuar
-                                </div>
-                            </a>
-                        </form>
+                        <!-- Botón "Continuar" que llama a la función buscarPaciente() -->
+                        <a href="#" style="text-decoration: none;" onclick="buscarPaciente()">
+                            <div class="accion1">
+                                Continuar
+                            </div>
+                        </a>
                     </div>
                 </div>
 
@@ -83,50 +80,102 @@ de dicho paciente.
                 <div class="Right">
                     <div class="datos">
                         <h2 class="titulo1">Datos del paciente</h2>
-                        <div class="datos-paciente1">
-                            <h2 class="campos">Nombre:</h2>
-                            <h2 class="campos">Primer Apellido:</h2>
-                            <h2 class="campos">Segundo Apellido:</h2>
 
+                        <!-- Estructura de datos del paciente -->
+                        <div class="datos-paciente-grid">
+                            <!-- Primera fila -->
+                            <div class="label">Nombre:</div>
+                            <div class="label">Primer Apellido:</div>
+                            <div class="label">Segundo Apellido:</div>
+                            <!-- Segunda fila -->
+                            <div class="value" id="nombre"></div>
+                            <div class="value" id="primer_apellido"></div>
+                            <div class="value" id="segundo_apellido"></div>
+
+                            <!-- Tercera fila -->
+                            <div class="label">Edad:</div>
+                            <div class="label">Correo:</div>
+                            <div class="label">CURP:</div>
+                            <!-- Cuarta fila -->
+                            <div class="value" id="edad"></div>
+                            <div class="value" id="correo"></div>
+                            <div class="value" id="curp"></div>
                         </div>
-                        <div class="datos-paciente2">
-                            <h2 class="campos"></h2>
-                            <h2 class="campos"></h2>
-                            <h2 class="campos"></h2>
+                        <div class="container-horizontal">
+                            <div class="alergias" id="alergias"></div>
+                            <div class="discapacidad" id="discapacidad"></div>
                         </div>
-                        <div class="datos-paciente3">
-                            <h2 class="campos">Edad:</h2>
-                            <h2 class="campos">Correo:</h2>
-                            <h2 class="campos">Curp:</h2>
-                        </div>
-                        <div class="datos-paciente4">
-                            <h2 class="campos"></h2>
-                            <h2 class="campos"></h2>
-                            <h2 class="campos"></h2>
-                        </div>
-                            <!-- Dos cajas punteadas en posición horizontal que dicen Alergias y Discapacidad-->
-                            <div class="container-horizontal">
-                            <div class="alergias">
-                                <h2 class="campos">Alergias:</h2>
+
+                        <!-- Botón "Historial" con mismo formato y validación -->
+                        <form id="formHistorial" action="/historial" method="GET" onsubmit="return validarHistorial()">
+                            <input type="hidden" id="id_historial" name="id_paciente">
+                            <div class="accion2" onclick="document.getElementById('formHistorial').requestSubmit();">
+                                Historial
                             </div>
-                            <div class="discapacidad">
-                                <h2 class="campos">Discapacidad:</h2>
-                            </div>
-                        </div>
-                        <form action="{{ url_for('procesar_cita') }}" method="POST">
-                            <input type="hidden" name="opcion" value="{{ opcion }}">
-                            <a href="" style="text-decoration: none;">
-                                <div class="accion2">
-                                    Historial
-                                </div>
-                            </a>
                         </form>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-        </div>
     </section>
+
+    <!-- Script JavaScript que llama a la API y muestra los datos del paciente -->
+    <script>
+        let pacienteEncontrado = false;
+
+        async function buscarPaciente() {
+            const idpaciente = document.getElementById("idpaciente").value;
+
+            if (!idpaciente) {
+                alert("Por favor, ingresa el ID del paciente.");
+                pacienteEncontrado = false;
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/pacient', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id_paciente: idpaciente })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Mostrar datos
+                    document.getElementById("nombre").textContent = data.nombre;
+                    document.getElementById("primer_apellido").textContent = data.primer_apellido;
+                    document.getElementById("segundo_apellido").textContent = data.segundo_apellido;
+                    document.getElementById("edad").textContent = data.edad;
+                    document.getElementById("correo").textContent = data.correo;
+                    document.getElementById("curp").textContent = data.curp;
+                    document.getElementById("alergias").textContent = "Alergias: " + data.alergias;
+                    document.getElementById("discapacidad").textContent = "Discapacidad: " + data.discapacidad;
+
+                    // Guardar ID y habilitar historial
+                    document.getElementById("id_historial").value = idpaciente;
+                    pacienteEncontrado = true;
+                } else {
+                    alert(data.error || "Paciente no encontrado.");
+                    pacienteEncontrado = false;
+                }
+            } catch (error) {
+                console.error("Error al buscar paciente:", error);
+                alert("Error al conectar con el servidor.");
+                pacienteEncontrado = false;
+            }
+        }
+
+        function validarHistorial() {
+            if (!pacienteEncontrado) {
+                alert("Primero debes buscar un paciente antes de ver su historial.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 
 </html>
