@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 import re
 import os
-import mysql.connector  # Cambiado para usar mysql.connector
+import mysql.connector  
 import smtplib
 import calendar
 import hashlib
