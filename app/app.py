@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 import re
 import os
-import mysql.connector  # Cambiado para usar mysql.connector
+import mysql.connector  
 import smtplib
 import calendar
 import hashlib
@@ -72,6 +72,8 @@ def api_login():
     if not data:
         return jsonify({"error": "No se recibieron datos JSON"}), 400
     
+    data = {k: v.strip() if isinstance(v, str) else v for k, v in data.items()}
+    
     correo = data.get('usuario')
     contrasena = data.get('contrasena')
 
@@ -119,6 +121,8 @@ def api_registro():
     if not data:
         return jsonify({"error": "No se recibieron datos JSON"}), 400
     
+    data = {k: v.strip() if isinstance(v, str) else v for k, v in data.items()}
+    
     nombre = data.get('nombre')
     apellido1 = data.get('apellido1')
     apellido2 = data.get('apellido2')
@@ -160,6 +164,8 @@ def api_newdoc():
     data = request.get_json()
     if not data:
         return jsonify({"error": "Faltan campos requeridos "}), 400
+    
+    data = {k: v.strip() if isinstance(v, str) else v for k, v in data.items()}
 
     cedula = data.get('cedula')
     especialidad = data.get('especialidad')
@@ -209,6 +215,8 @@ def api_reserva():
     
     id_usuario = session['id_usuario']
     data = request.get_json()
+
+    data = {k: v.strip() if isinstance(v, str) else v for k, v in data.items()}
 
     nombre = data.get('nombre')
     apellido1 = data.get('apellido1')
@@ -296,6 +304,8 @@ def api_file():
     data = request.get_json()
     if not data:
         return jsonify({"error": "No se recibieron datos JSON"}), 400
+    
+    data = {k: v.strip() if isinstance(v, str) else v for k, v in data.items()}
     
     nombre = data.get('nombre')
     apellido1 = data.get('apellido1')
@@ -396,14 +406,15 @@ def api_modification():
         return render_template('modificacion.html')
     
     if 'id_usuario' not in session:
-        return jsonify({"error": "Debes iniciar sesión para reservar"}), 401
-    
-    if 'folio' not in session:
-        return jsonify({"error": "No se encontró ninguna cita activa para modificar"}), 400
+        return jsonify({"error": "Debes iniciar sesión para modificar una cita"}), 401
+
+    id_usuario = session['user_id']
 
     folio = session['folio']
     id_usuario = session['id_usuario']
     data = request.get_json()
+    if not data:
+        return jsonify({"error": "No se recibieron datos JSON"}), 400
 
     nombre = data.get('nombre')
     apellido1 = data.get('apellido1')
@@ -478,6 +489,8 @@ def api_cancel():
     data = request.get_json()
     if not data:
         return jsonify({"error": "No se recibieron datos JSON"}), 400
+    
+    data = {k: v.strip() if isinstance(v, str) else v for k, v in data.items()}
 
     nombre = data.get('nombre')
     apellido1 = data.get('apellido1')
