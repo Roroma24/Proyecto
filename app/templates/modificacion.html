@@ -35,7 +35,7 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
         <!-- Botones de acción -->
         <div class="btn_accion">
             <!-- Enlace a la página principal -->
-            <a href="{{ url_for('api_index') }}" style="text-decoration: none;">
+            <a href="{{ url_for('api_exit') }}" style="text-decoration: none;">
                 <button class="accion">
                     Inicio
                 </button>
@@ -186,9 +186,9 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
                         </div>
                         <!-- Dirección para la cita -->
                         <div class="form-group">
-                            <label for="direccion">Dirección</label>
-                            <select id="direccion" name="direccion">
-                                <option value="" disabled selected hidden>Selecciona una dirección</option>
+                            <label for="ubicacion">Ubicación del hospital</label>
+                            <select id="ubicacion" name="ubicacion">
+                                <option value="" disabled selected hidden>Ubicación del hospital</option>
                                 <option value="A1">A1</option>
                                 <option value="A2">A2</option>
                             </select>
@@ -220,15 +220,22 @@ Página de modificación de cita. Se solicitan datos personales, como nombre, fe
                 nombre: document.getElementById('nombre').value,
                 apellido1: document.getElementById('apellido1').value,
                 apellido2: document.getElementById('apellido2').value,
-                fecha_cita: document.getElementById('fecha').value,
-                horario: document.getElementById('horarios').value,
+                edad: document.getElementById('edad').value,
                 telefono: document.getElementById('telefono').value,
+                correo: document.getElementById('correo').value,
+                discapacidad: document.getElementById('discapacidad').value,
                 alergias: document.getElementById('alergias').value,
-                direccion: document.getElementById('direccion').value,
-                especialidad: document.getElementById('especialidad').value
+                horarios: document.getElementById('horarios').value,
+                especialidad: document.getElementById('especialidad').value,
+                ubicacion: document.getElementById('ubicacion').value,
+                fecha: document.getElementById('fecha').value
             };
 
-            console.log(formData);
+            const horarioRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
+            if (!horarioRegex.test(formData.horarios)) {
+                alert("Horario debe tener el formato válido HH:MM, por ejemplo '09:00'");
+                return;
+            }
 
             fetch('/api/modification', {
                 method: 'POST',

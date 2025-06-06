@@ -281,13 +281,18 @@ def pago():
 @app.route('/api/file', methods=['GET', 'POST'])
 def api_file():
     if request.method == 'GET':
-        opcion = request.args.get('opcion', '')  # Obtiene la opción seleccionada en la URL.
-        return render_template('busqueda.html', opcion=opcion)  # Renderiza la página de búsqueda de archivo.
+        return render_template('busqueda.html')  # Renderiza la página de búsqueda de archivo.
     
     if 'id_usuario' not in session:
         return jsonify({"error": "Debes iniciar sesión para buscar cita"}), 401
     
     id_usuario = session['id_usuario']
+    folio = request.form.get('foliodecita')
+    opcion = request.form.get('opcion')
+
+    if not folio:
+        return "Error: Debes ingresar un número de folio.", 400
+
     data = request.get_json()
     if not data:
         return jsonify({"error": "No se recibieron datos JSON"}), 400
@@ -380,50 +385,9 @@ def procesar_cita():
         
     return "Error: No se pudo conectar a la base de datos.", 500
 
-@app.route('/api/pacient', methods=['GET', 'POST'])
+@app.route('/api/pacient')
 def api_pacient():
-    if request.method == 'GET':
-        return render_template('paciente.html')
-
-    data = request.get_json()
-    if not data:
-        return jsonify({"error": "Faltan campos requeridos "}), 400
-
-    idpaciente = data.get('id_paciente')
-
-    if not idpaciente:
-        return jsonify({"error": "Faltan campos requeridos"}), 400
-    
-    conn = conectar_db()
-    if conn:
-        try:
-            cursor = conn.cursor()
-            cursor.execute("""
-                SELECT u.nombre, u.primer_apellido, u.segundo_apellido, p.edad, u.correo, p.curp, p.alergias, p.discapacidad
-                FROM paciente p
-                JOIN usuario u ON p.id_usuario = u.id_usuario
-                WHERE p.id_paciente = %s
-            """, (idpaciente,))
-            paciente = cursor.fetchone()
-            if paciente:
-                return jsonify({
-                    "nombre": paciente[0],
-                    "primer_apellido": paciente[1],
-                    "segundo_apellido": paciente[2],
-                    "edad": paciente[3],
-                    "correo": paciente[4],
-                    "curp": paciente[5],
-                    "alergias": paciente[6],
-                    "discapacidad": paciente[7]
-                })
-            else:
-                return jsonify({"error": "Paciente no encontrado"}), 404
-        finally:
-            conn.close()
-    else:
-        return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
-
-
+    return render_template('paciente.html')
 
 # Ruta para la página de modificación de cita (modificacion.html).
 @app.route('/api/modification', methods=['GET', 'POST'])
@@ -434,6 +398,10 @@ def api_modification():
     if 'id_usuario' not in session:
         return jsonify({"error": "Debes iniciar sesión para reservar"}), 401
     
+    if 'folio' not in session:
+        return jsonify({"error": "No se encontró ninguna cita activa para modificar"}), 400
+
+    folio = session['folio']
     id_usuario = session['id_usuario']
     data = request.get_json()
 
@@ -456,8 +424,8 @@ def api_modification():
         datetime.strptime(str(horarios), '%H:%M')
     except ValueError:
         return jsonify({"error": "Horario debe tener el formato válido HH:MM, por ejemplo '09:00'"}), 400
-    ubicacion = data.get('ubicacion')
     especialidad_nombre = data.get('especialidad')
+    ubicacion = data.get('ubicacion')
     fecha = data.get('fecha')
 
     db = conectar_db()
@@ -466,15 +434,36 @@ def api_modification():
     cursor.execute("""
         SELECT id_usuario
         FROM usuario
-        WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s AND correo = %s
-    """, (nombre, apellido1, apellido2, correo))
+        WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s AND correo = %s AND Edad = %s
+    """, (nombre, apellido1, apellido2, correo, edad))
 
-    us = cursor.fetchone()
+    user = cursor.fetchone()
 
-    if not us:
+    if not user:
         return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
     
+    id_user_db = user[0]
+    if id_usuario != id_user_db:
+        return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
     
+    cursor.execute("SELECT id_especialidad FROM especialidad WHERE nombre_especialidad = %s", (especialidad_nombre,))
+    especialidad = cursor.fetchone()
+    if not especialidad:
+        return jsonify({"error": "Especialidad no registrada"}), 400
+    
+    id_especialidad = especialidad[0]
+
+    try:
+        cursor.callproc('modificar_cita', (
+            telefono, discapacidad, alergias, horarios, id_especialidad, ubicacion, fecha
+        ))
+        db.commit
+        return jsonify({"message": "Cita modificada correctamente"}), 200
+    except mysql.connector.Error as err:
+        return jsonify({"error": f"Error al modificar cita: {err}"}), 500
+    finally:
+        cursor.close()
+        db.close()
 
 # Ruta para la página de cancelación de cita (cancelacion.html).
 @app.route('/api/cancel', methods=['GET', 'POST'])
@@ -542,6 +531,16 @@ def api_cancel():
 @app.route('/historial')
 def historial():
     return render_template('historialcld.html')
+
+@app.route('/api/exit')
+def api_exit():
+    rol = session.get('rol')
+    if rol == 'Paciente':
+        return redirect(url_for('api_index'))
+    elif rol == 'Doctor':
+        return redirect(url_for('api_docindex'))
+    else:
+        return redirect(url_for('api_logout'))
 
 # Si este archivo es ejecutado como principal, inicia la aplicación Flask en modo debug.
 if __name__ == '__main__':  
