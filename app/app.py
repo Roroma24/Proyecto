@@ -431,7 +431,7 @@ def api_modification():
     user = cursor.fetchone()
 
     if not user:
-        return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
+        return jsonify({"error": "Nombre, correo o edad del usuario incorrectos"}), 404
     
     id_user_db = user[0]
     if id_usuario != id_user_db:
