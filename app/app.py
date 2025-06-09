@@ -389,6 +389,8 @@ def api_modification():
     if not data:
         return jsonify({"error": "No se recibieron datos JSON"}), 400
 
+    data = {k: v.strip() if isinstance(v, str) else v for k, v in data.items()}
+
     nombre = data.get('nombre')
     apellido1 = data.get('apellido1')
     apellido2 = data.get('apellido2')
