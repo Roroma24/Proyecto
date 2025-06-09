@@ -447,7 +447,7 @@ def api_modification():
             folio, fecha, horarios, telefono, alergias, direccion, id_especialidad, discapacidad
         ))
         db.commit()
-        return jsonify({"message": "Cita modificada correctamente"}), 200
+        return jsonify({"message": "Cita modificada correctamente", "redirect": url_for('api_exit')}), 200
     except mysql.connector.Error as err:
         return jsonify({"error": f"Error al modificar cita: {err}"}), 500
     finally:
