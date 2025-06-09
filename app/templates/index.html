@@ -100,16 +100,14 @@ Página de inicio para paciente. Permite navegar a las vistas de login, registro
                     Continuar
                 </div>
             </a>
-            <a href="{{ url_for('api_file', opcion='modification') }}" style="text-decoration: none;">
-                <div class="next">
-                    Continuar
-                </div>
-            </a>
-            <a href="{{ url_for('api_file', opcion='cancel') }}" style="text-decoration: none;">
-                <div class="next">
-                    Continuar
-                </div>
-            </a>
+            <form action="{{ url_for('api_procesar_cita') }}" method="POST" style="display: inline;">
+                <input type="hidden" name="opcion" value="modification"/>
+                <button type="submit" class="next">Continuar</button>
+            </form>
+            <form action="{{ url_for('api_procesar_cita') }}" method="POST" style="display: inline;">
+                <input type="hidden" name="opcion" value="cancel"/>
+                <button type="submit" class="next">Continuar</button>
+            </form>
         </div>
     </div>
     <div class="container1">

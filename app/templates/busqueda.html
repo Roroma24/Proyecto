@@ -78,8 +78,7 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
           <!-- Formulario para buscar una cita -->
           <div class="formulario">
             <!-- Formulario para enviar los datos -->
-            <form action="{{ url_for('procesar_cita') }}" method="POST">
-              <input type="hidden" name="opcion" value="{{ opcion }}"> <!-- Campo oculto para enviar una opción -->
+            <form id="fileform">
 
               <!-- Campos dobles para nombres y apellidos -->
               <div class="campos-dobles">
@@ -122,6 +121,38 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
       </div>
     </div>
   </section>
+
+  <script>
+    document.getElementById('fileform').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const formData = {
+        nombres: document.getElementById('nombres').value,
+        primerapellido: document.getElementById('primerapellido').value,
+        segundoapellido: document.getElementById('segundoapellido').value,
+        foliodecita: document.getElementById('foliodecita').value,
+        correo: document.getElementById('correo').value
+      };
+
+      fetch('/api/file', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.redirect) {
+            window.location.href = data.redirect;
+          } else {
+            alert(data.message || data.error);
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
+
 </body>
 
 </html>

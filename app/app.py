@@ -295,23 +295,23 @@ def api_file():
         return jsonify({"error": "Debes iniciar sesión para buscar cita"}), 401
     
     id_usuario = session['id_usuario']
-    folio = request.form.get('foliodecita')
-    opcion = request.form.get('opcion')
-
-    if not folio:
-        return "Error: Debes ingresar un número de folio.", 400
+    opcion = session['opcion']
 
     data = request.get_json()
+
     if not data:
         return jsonify({"error": "No se recibieron datos JSON"}), 400
     
-    data = {k: v.strip() if isinstance(v, str) else v for k, v in data.items()}
-    
-    nombre = data.get('nombre')
-    apellido1 = data.get('apellido1')
-    apellido2 = data.get('apellido2')
+    nombre = data.get('nombres')
+    apellido1 = data.get('primerapellido')
+    apellido2 = data.get('segundoapellido')
     correo = data.get('correo')
-    opcion = data.get('opcion')  # <-- Recibe la opción (modification/cancel)
+    folio = data.get('foliodecita')
+
+    opcion = session.get('opcion')
+
+    if not opcion:
+        return jsonify({"error": "No se especificó una opción válida"}), 400
     
     db = conectar_db()
     cursor = db.cursor()
@@ -325,21 +325,17 @@ def api_file():
     us = cursor.fetchone()
 
     if not us:
-        cursor.close()
-        db.close()
         return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
 
     id_usuario_db = us[0]
     if id_usuario != id_usuario_db:
-        cursor.close()
-        db.close()
         return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
 
     cursor.execute("""
         SELECT id_cita
         FROM cita
-        WHERE id_usuario = %s
-    """, (id_usuario,))
+        WHERE id_cita = %s
+    """, (folio,))
 
     ci = cursor.fetchone()
 
@@ -350,50 +346,27 @@ def api_file():
         return jsonify({"error": "No se encontraron citas con ese folio"}), 404
 
     folio = ci[0]
-
     session['folio'] = folio
 
     if opcion == "modification":
-        return redirect(url_for('api_modification', folio=folio))
+        return jsonify({"redirect": url_for('api_modification', folio = folio)})
     elif opcion == "cancel":
-        return redirect(url_for('api_cancel', folio=folio))
+        return jsonify({"redirect": url_for('api_cancel', folio = folio)})
     else:
         return jsonify({"error": "Opción no válida"}), 400
 
 # Ruta para procesar la cita: modificación o cancelación dependiendo de la opción seleccionada.
-@app.route('/procesar_cita', methods=['POST'])
-def procesar_cita():
-    folio = request.form.get('foliodecita')  # Obtiene el folio de la cita desde el formulario.
-    opcion = request.form.get('opcion')  # Obtiene la opción seleccionada: modificación o cancelación.
-
-    # Verificamos si se ingresó un folio.
-    if not folio:
-        return "Error: Debes ingresar un folio.", 400
+@app.route('/api/procesar_cita', methods=['POST'])
+def api_procesar_cita():
     
-    conn = conectar_db()
-    if conn:
-        try:
-            cursor = conn.cursor()
-            cursor.execute("SELECT id_cita FROM cita WHERE id_cita = %s", (folio,))
-            resultado = cursor.fetchone()
-            cursor.close()
-            conn.close()
-            
-            if resultado:
-                # Redirige a la página de modificación si la opción seleccionada es "modification".
-                if opcion == "modification":
-                    return redirect(url_for('api_modification', folio=folio))
-                # Redirige a la página de cancelación si la opción seleccionada es "cancel".
-                elif opcion == "cancel":
-                    return redirect(url_for('cancel', folio=folio))  
-                else:
-                    return "Error: Opción no válida.", 400
-            else:
-                return "Error: El folio de cita no existe.", 404
-        except mysql.connector.Error as err:
-            return f"❌ Error al consultar la base de datos: {err}"
-        
-    return "Error: No se pudo conectar a la base de datos.", 500
+    opcion = request.form.get('opcion')
+
+    if opcion not in ['modification', 'cancel']:
+        return "Error: Opción no válida.", 400
+
+    session['opcion'] = opcion
+
+    return redirect(url_for('api_file'))
 
 @app.route('/api/pacient')
 def api_pacient():
@@ -408,9 +381,9 @@ def api_modification():
     if 'id_usuario' not in session:
         return jsonify({"error": "Debes iniciar sesión para modificar una cita"}), 401
 
-    id_usuario = session['user_id']
-
+    id_usuario = session['id_usuario']
     folio = session['folio']
+
     id_usuario = session['id_usuario']
     data = request.get_json()
     if not data:
@@ -436,16 +409,21 @@ def api_modification():
     except ValueError:
         return jsonify({"error": "Horario debe tener el formato válido HH:MM, por ejemplo '09:00'"}), 400
     especialidad_nombre = data.get('especialidad')
-    ubicacion = data.get('ubicacion')
+    direccion = data.get('ubicacion')
     fecha = data.get('fecha')
+    try:
+        datetime.strptime(fecha, '%Y-%m-%d')
+    except ValueError:
+        return jsonify({"error": "La fecha debe tener el formato YYYY-MM-DD"}), 400
 
     db = conectar_db()
     cursor = db.cursor()
 
     cursor.execute("""
-        SELECT id_usuario
-        FROM usuario
-        WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s AND correo = %s AND Edad = %s
+        SELECT u.id_usuario
+        FROM usuario u
+        JOIN paciente p ON u.id_usuario = p.id_usuario
+        WHERE u.nombre = %s AND u.primer_apellido = %s AND u.segundo_apellido = %s AND u.correo = %s AND p.edad = %s
     """, (nombre, apellido1, apellido2, correo, edad))
 
     user = cursor.fetchone()
@@ -466,9 +444,9 @@ def api_modification():
 
     try:
         cursor.callproc('modificar_cita', (
-            telefono, discapacidad, alergias, horarios, id_especialidad, ubicacion, fecha
+            folio, fecha, horarios, telefono, alergias, direccion, id_especialidad, discapacidad
         ))
-        db.commit
+        db.commit()
         return jsonify({"message": "Cita modificada correctamente"}), 200
     except mysql.connector.Error as err:
         return jsonify({"error": f"Error al modificar cita: {err}"}), 500
@@ -518,7 +496,7 @@ def api_cancel():
             return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
 
         id_usuario_db = us[0]
-        if session['user_id'] != id_usuario_db:
+        if session['id_usuario'] != id_usuario_db:
             cursor.close()
             conn.close()
             return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
