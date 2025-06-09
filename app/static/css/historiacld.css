@@ -74,7 +74,7 @@ section {
 /* Estilos para el contenedor 3 con dimensiones fijas */
 .container_3 {
   width: 98%;
-  height: 800px; /* Ajusta según el espacio blanco que desees ocupar */
+  height: 875px; 
   display: flex;
   flex-direction: column;
   margin: 20px auto;
@@ -157,7 +157,7 @@ section {
 /* Estilo para la imagen de fondo */
 .image {
   width: auto;
-  height: auto;
+  height: 60vi;
   background-image: url('imagen/fondo.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -184,7 +184,7 @@ section {
   margin: 10px auto;
 }
 
-/* Estilo para el botón siguiente */
+/* Estilo para el botón de regresar */
 .next {
   background-color: #000000;
   border-radius: 40px;
@@ -198,7 +198,6 @@ section {
   justify-content: center;
   height: 50px;
   width: 150px;
-  right: -40%;
   bottom: -10%;
   position: relative;
 }
@@ -250,23 +249,6 @@ section {
 /* Estilo para cada campo dentro de los campos dobles */
 .campos-dobles .campo {
   width: 30%;
-}
-
-/* Estilo para el botón de cancelar */
-.cancelar {
-  background-color: #6c757d;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 20px;
-  align-self: flex-end;
-}
-
-/* Estilo para el botón de cancelar al pasar el ratón sobre él */
-.cancelar:hover {
-  background-color: #5a6268;
 }
 
 /* Estilo para el botón de acción principal */
@@ -645,4 +627,22 @@ section {
   align-items: center;
   justify-content: center;
   min-height: 60px;
+}
+
+/* Estilo para el botón de enviar comentarios */
+#enviar-comentarios {
+  align-self: center;
+  margin: 2px auto 0 auto; 
+  background-color: #000000;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+  height: 65px;
+  width: 155px;
+  position: relative;
 }
