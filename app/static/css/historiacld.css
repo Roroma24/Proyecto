@@ -74,7 +74,7 @@ section {
 /* Estilos para el contenedor 3 con dimensiones fijas */
 .container_3 {
   width: 98%;
-  height: 875px; 
+  height: 1020px; 
   display: flex;
   flex-direction: column;
   margin: 20px auto;
@@ -157,7 +157,7 @@ section {
 /* Estilo para la imagen de fondo */
 .image {
   width: auto;
-  height: 60vi;
+  height: 70vi;
   background-image: url('imagen/fondo.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -632,7 +632,6 @@ section {
 /* Estilo para el botón de enviar comentarios */
 #enviar-comentarios {
   align-self: center;
-  margin: 2px auto 0 auto; 
   background-color: #000000;
   border-radius: 40px;
   border: none;
@@ -642,7 +641,7 @@ section {
   font-weight: bolder;
   align-items: center;
   justify-content: center;
-  height: 65px;
-  width: 155px;
+  height: 50px;
+  width: 150px;
   position: relative;
 }

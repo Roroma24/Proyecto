@@ -15,159 +15,112 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
 <html lang="en">
 
 <head>
-  <!-- Configuración básica del documento -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Enlace al archivo CSS para estilos específicos de esta página -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/historiacld.css') }}" />
-  <title>Historial Clinico</title> <!-- Título de la página -->
+  <title>Historial Clinico</title>
 </head>
 
 <body>
   <section>
-    <!-- Contenedor principal -->
     <div class="container_1">
-      <!-- Barra de iconos y título principal -->
       <div class="icon-title">
-        <div class="icon"></div> <!-- Espacio para un ícono -->
-        <h1 class="titulo-principal">Historial Clinico</h1> <!-- Título principal -->
+        <div class="icon"></div>
+        <h1 class="titulo-principal">Historial Clinico</h1>
       </div>
-      <!-- Contenedor para el botón de salir -->
       <div class="nexttop">
-        <a href="{{ url_for('api_docindex') }}"> <!-- Enlace para salir -->
-          <button class="next">Regresar</button> <!-- Botón para salir -->
+        <a href="{{ url_for('api_docindex') }}">
+          <button class="next">Regresar</button>
         </a>
       </div>
-      <!-- Menú desplegable -->
-
     </div>
 
-    <!-- Sección de imagen y formulario -->
     <div class="image">
       <div class="container_1">
         <div class="container_3">
           <div class="caja-punteados">
+            <!-- Citas -->
             <div class="caja-punteados-1">
               <h2 class="titulo">Citas</h2>
-              <div class="caja-punteados-1-1">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-              <div class="caja-punteados-1-2">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-              <div class="caja-punteados-1-3">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-              <div class="caja-punteados-1-4">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-              <div class="caja-punteados-1-5">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
+              <div class="caja-punteados-1-1"><ul><li></li></ul></div>
+              <div class="caja-punteados-1-2"><ul><li></li></ul></div>
+              <div class="caja-punteados-1-3"><ul><li></li></ul></div>
+              <div class="caja-punteados-1-4"><ul><li></li></ul></div>
+              <div class="caja-punteados-1-5"><ul><li></li></ul></div>
             </div>
+            <!-- Hora -->
             <div class="caja-punteados-2">
               <h2 class="titulo">Hora</h2>
-              <div class="caja-punteados-2-1">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-              <div class="caja-punteados-2-2">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-              <div class="caja-punteados-2-3">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-              <div class="caja-punteados-2-4">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-              <div class="caja-punteados-2-5">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-            </div> <!-- Caja 2 -->
+              <div class="caja-punteados-2-1"><ul><li></li></ul></div>
+              <div class="caja-punteados-2-2"><ul><li></li></ul></div>
+              <div class="caja-punteados-2-3"><ul><li></li></ul></div>
+              <div class="caja-punteados-2-4"><ul><li></li></ul></div>
+              <div class="caja-punteados-2-5"><ul><li></li></ul></div>
+            </div>
+            <!-- Día -->
             <div class="caja-punteados-3">
               <h2 class="titulo">Día</h2>
-              <div class="caja-punteados-3-1">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-              <div class="caja-punteados-3-2">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-              <div class="caja-punteados-3-3">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-              <div class="caja-punteados-3-4">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-              <div class="caja-punteados-3-5">
-                <ul>
-                  <li>información a visualizar</li>
-                </ul>
-              </div>
-            </div> <!-- Caja 3 -->
+              <div class="caja-punteados-3-1"><ul><li></li></ul></div>
+              <div class="caja-punteados-3-2"><ul><li></li></ul></div>
+              <div class="caja-punteados-3-3"><ul><li></li></ul></div>
+              <div class="caja-punteados-3-4"><ul><li></li></ul></div>
+              <div class="caja-punteados-3-5"><ul><li></li></ul></div>
+            </div>
+            <!-- Comentarios -->
             <div class="caja-punteados-4">
               <h2 class="titulo">Comentarios</h2>
-              <div class="caja-punteados-4-1">
-                <div class="escribí-aquí">
-                  <input type="text" class="custom-input" placeholder="Escribí aquí" />
-                </div>
-              </div>
-              <div class="caja-punteados-4-2">
-                <div class="escribí-aquí">
-                  <input type="text" class="custom-input" placeholder="Escribí aquí" />
-                </div>
-              </div>
-              <div class="caja-punteados-4-3">
-                <div class="escribí-aquí">
-                  <input type="text" class="custom-input" placeholder="Escribí aquí" />
-                </div>
-              </div>
-              <div class="caja-punteados-4-4">
-                <div class="escribí-aquí">
-                  <input type="text" class="custom-input" placeholder="Escribí aquí" />
-                </div>
-              </div>
-              <div class="caja-punteados-4-5">
-                <div class="escribí-aquí">
-                  <input type="text" class="custom-input" placeholder="Escribí aquí" />
-                </div>
-              </div>
-              
-            </div> <!-- Caja 4 -->
+              <div class="caja-punteados-4-1"><div class="escribí-aquí"><input type="text" class="custom-input" /></div></div>
+              <div class="caja-punteados-4-2"><div class="escribí-aquí"><input type="text" class="custom-input" /></div></div>
+              <div class="caja-punteados-4-3"><div class="escribí-aquí"><input type="text" class="custom-input" /></div></div>
+              <div class="caja-punteados-4-4"><div class="escribí-aquí"><input type="text" class="custom-input" /></div></div>
+              <div class="caja-punteados-4-5"><div class="escribí-aquí"><input type="text" class="custom-input" /></div></div>
+            </div>
           </div>
+
           <button class="accion" id="enviar-comentarios" type="button"
-                style="margin: 30px auto 0 auto; display: block;">
-                Enviar comentarios
-              </button>
+            style="margin: 30px auto 0 auto; display: block;">
+            Comentar
+          </button>
         </div>
       </div>
+    </div>
   </section>
-</body>
 
+  <!-- Script para cargar los datos desde la API -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Obtén el id_paciente desde sessionStorage si existe
+      const idPaciente = sessionStorage.getItem('id_paciente_historial');
+      let fetchOptions = { method: 'POST', headers: { 'Content-Type': 'application/json' } };
+      if (idPaciente) {
+        fetchOptions.body = JSON.stringify({ id_paciente: idPaciente });
+      }
+      fetch("/api/historial", fetchOptions)
+        .then(response => response.json())
+        .then(data => llenarHistorial(data))
+        .catch(error => console.error("Error al cargar el historial:", error));
+    });
+
+    function llenarHistorial(historial) {
+      for (let i = 0; i < 5; i++) {
+        // Citas
+        const citaLi = document.querySelector(`.caja-punteados-1-${i + 1} li`);
+        // Hora
+        const horaLi = document.querySelector(`.caja-punteados-2-${i + 1} li`);
+        // Día
+        const diaLi = document.querySelector(`.caja-punteados-3-${i + 1} li`);
+
+        if (historial[i]) {
+          citaLi.textContent = historial[i].id_cita;
+          horaLi.textContent = historial[i].hora;
+          diaLi.textContent = historial[i].dia;
+        } else {
+          citaLi.textContent = '';
+          horaLi.textContent = '';
+          diaLi.textContent = '';
+        }
+      }
+    }
+  </script>
+</body>
 </html>
