@@ -22,7 +22,7 @@ de dicho paciente.
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Enlace al archivo CSS para estilos específicos de esta página -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/paciente.css') }}" />
-    <title>Busqueda de citas</title> <!-- Título de la página -->
+    <title>Busqueda de citas</title>
 </head>
 
 <body>
@@ -31,23 +31,23 @@ de dicho paciente.
         <div class="container_1">
             <!-- Barra de iconos y título principal -->
             <div class="icon-bar">
-                <div class="icon"></div> <!-- Espacio para un ícono -->
-                <h1 class="titulo-principal">Busqueda de paciente</h1> <!-- Título principal -->
+                <div class="icon"></div>
+                <h1 class="titulo-principal">Busqueda de paciente</h1>
             </div>
             <!-- Contenedor para el botón de salir -->
             <div class="container_2">
                 <div class="nexttop">
-                    <a href="{{ url_for('api_docindex') }}"> <!-- Enlace para salir -->
-                        <button class="next">Salir</button> <!-- Botón para salir -->
+                    <a href="{{ url_for('api_docindex') }}">
+                        <button class="next">Salir</button>
                     </a>
                 </div>
             </div>
             <!-- Menú desplegable -->
             <div class="dropdown">
-                <button class="btn"></button> <!-- Botón para abrir el menú -->
+                <button class="btn"></button>
                 <div class="dropdown-content">
-                    <a href="{{ url_for('api_login') }}">Login</a> <!-- Enlace a la página de inicio de sesión -->
-                    <a href="{{ url_for('api_registro') }}">New user</a> <!-- Enlace para registrar un nuevo usuario -->
+                    <a href="{{ url_for('api_login') }}">Login</a>
+                    <a href="{{ url_for('api_registro') }}">New user</a>
                 </div>
             </div>
         </div>
@@ -66,7 +66,6 @@ de dicho paciente.
                                 <input type="text" id="idpaciente" placeholder="Id del paciente" />
                             </div>
                         </div>
-
                         <!-- Botón "Continuar" que llama a la función buscarPaciente() -->
                         <a href="#" style="text-decoration: none;" onclick="buscarPaciente()">
                             <div class="accion1">
@@ -80,7 +79,6 @@ de dicho paciente.
                 <div class="Right">
                     <div class="datos">
                         <h2 class="titulo1">Datos del paciente</h2>
-
                         <!-- Estructura de datos del paciente -->
                         <div class="datos-paciente-grid">
                             <!-- Primera fila -->
@@ -91,7 +89,6 @@ de dicho paciente.
                             <div class="value" id="nombre"></div>
                             <div class="value" id="primer_apellido"></div>
                             <div class="value" id="segundo_apellido"></div>
-
                             <!-- Tercera fila -->
                             <div class="label">Edad:</div>
                             <div class="label">Correo:</div>
@@ -105,9 +102,8 @@ de dicho paciente.
                             <div class="alergias" id="alergias"></div>
                             <div class="discapacidad" id="discapacidad"></div>
                         </div>
-
-                        <!-- Botón "Historial" con mismo formato y validación -->
-                        <form id="formHistorial" action="/historial" method="GET" onsubmit="return validarHistorial()">
+                        <!-- Botón "Historial" con validación -->
+                        <form id="formHistorial" onsubmit="return enviarHistorial(event)">
                             <input type="hidden" id="id_historial" name="id_paciente">
                             <div class="accion2" onclick="document.getElementById('formHistorial').requestSubmit();">
                                 Historial
@@ -168,14 +164,18 @@ de dicho paciente.
             }
         }
 
-        function validarHistorial() {
+        function enviarHistorial(event) {
+            event.preventDefault();
             if (!pacienteEncontrado) {
                 alert("Primero debes buscar un paciente antes de ver su historial.");
                 return false;
             }
-            return true;
+            // Redirige a historial y pasa el id_paciente por sessionStorage
+            const idPaciente = document.getElementById("id_historial").value;
+            sessionStorage.setItem('id_paciente_historial', idPaciente);
+            window.location.href = "/api/historial";
+            return false;
         }
     </script>
 </body>
-
 </html>

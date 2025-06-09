@@ -561,10 +561,49 @@ def api_cancel():
     except mysql.connector.Error as err:
         return jsonify({"error": f"Error al cancelar la cita: {err}"}), 500
 
-@app.route('/historial')
-def historial():
-    return render_template('historialcld.html')
+# Ruta para la página de historial de citas (historial.html).
+@app.route('/api/historial', methods=['GET', 'POST'])
+def api_historial():
+    if request.method == 'GET':
+        return render_template('historialcld.html')
 
+    data = request.get_json()
+    id_paciente = data.get('id_paciente') if data else None
+
+    if not id_paciente:
+        # Si no se envía, usa el usuario de la sesión (opcional)
+        id_usuario = session.get('id_usuario')
+        if not id_usuario:
+            return jsonify({"error": "Debes iniciar sesión"}), 401
+        query = "SELECT id_cita, hora, fecha FROM cita WHERE id_usuario = %s ORDER BY fecha DESC"
+        params = (id_usuario,)
+    else:
+        # RELACIÓN DIRECTA POR id_paciente
+        query = """
+            SELECT id_cita, hora, fecha
+            FROM cita
+            WHERE id_paciente = %s
+            ORDER BY fecha DESC
+        """
+        params = (id_paciente,)
+
+    conn = conectar_db()
+    if not conn:
+        return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
+
+    try:
+        cursor = conn.cursor()
+        cursor.execute(query, params)
+        citas = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return jsonify([
+            {"id_cita": row[0], "hora": row[1], "dia": row[2]}
+            for row in citas
+        ])
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
 @app.route('/api/exit')
 def api_exit():
     rol = session.get('rol')
