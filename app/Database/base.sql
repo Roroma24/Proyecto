@@ -168,11 +168,11 @@ CREATE PROCEDURE insertar_cita(
   IN p_fecha DATE,
   IN p_horario TIME,
   IN p_direccion VARCHAR(200),
-  IN nombre_especialidad VARCHAR(50)
+  IN nombre_especialidad VARCHAR(50),
+  OUT new_id_cita INT
 )
 BEGIN
   DECLARE existing_id_paciente INT;
-  DECLARE new_id_cita INT;
   DECLARE id_clinica_existente INT;
   DECLARE id_sucursal_existente INT;
 
@@ -219,6 +219,8 @@ BEGIN
 
   INSERT INTO cita (id_paciente, fecha_cita, horario, id_sucursal)
   VALUES (existing_id_paciente, p_fecha, p_horario, id_sucursal_existente);
+
+  SET new_id_cita = LAST_INSERT_ID();
 
   IF NOT EXISTS (
     SELECT 1 FROM especialidad WHERE nombre_especialidad = nombre_especialidad
