@@ -221,6 +221,7 @@ Se ofrece la selección de método de pago mediante imágenes y un botón para c
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify(formData),
       })
         .then(response => response.json())

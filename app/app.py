@@ -289,20 +289,21 @@ def api_reserva():
     id_especialidad = especialidad[0]
 
     try:
-        cursor.execute("SET @new_id_cita = 0;")
+        args = (
+            id_usuario, curp, edad, telefono, alergias, discapacidad, fecha, horarios, ubicacion, id_especialidad, 0
+        )
 
-        cursor.callproc('insertar_cita', (
-            id_usuario, curp, edad, telefono, alergias, discapacidad,
-            fecha, horarios, ubicacion, id_especialidad, '@new_id_cita'
-        ))
+        result = cursor.callproc('insertar_cita', args)
 
-        cursor.execute("SELECT @new_id_cita;")
+        id_cita = result[-1]
 
-        id_cita = cursor.fetchone()[0]
+        if not id_cita:
+            return jsonify({"error": "No se pudo obtener el ID de la cita"}), 500
+
+        session['id_cita'] = id_cita
 
         db.commit()
 
-        session['id_cita'] = id_cita
         return jsonify({"message": "Cita reservada correctamente", "redirect": url_for('api_pago')})
     except mysql.connector.Error as err:
         return jsonify({"error": f"Error al insertar cita: {err}"}), 500
