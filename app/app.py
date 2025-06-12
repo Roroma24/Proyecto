@@ -15,6 +15,7 @@ Este archivo contiene el código para la creación de la aplicación web con Fla
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from password_validator import PasswordValidator
 from dotenv import load_dotenv
 from datetime import datetime
 import re
@@ -45,6 +46,15 @@ load_dotenv()
 # Creamos una instancia de la aplicación Flask.
 app = Flask(__name__)
 app.secret_key = os.getenv("secret_key")
+
+password_valid = PasswordValidator()
+password_valid \
+    .min(8) \
+    .max(14) \
+    .has().uppercase() \
+    .has().lowercase() \
+    .has().symbols() \
+    .no().spaces()
 
 # Ruta para la página principal (index.html).
 @app.route('/api/index')
@@ -132,6 +142,9 @@ def api_registro():
     if not all([nombre, apellido1, apellido2, correo, password]):
         return jsonify({"error": "Faltan campos requeridos "}), 400
     
+    if not password_valid.validate(password):
+        return jsonify({"error": "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minuscula y un simbolo especial."}), 400
+    
     conn = conectar_db()
     if conn:
         try:
@@ -214,6 +227,7 @@ def api_reserva():
         return jsonify({"error": "Debes iniciar sesión para reservar"}), 401
     
     id_usuario = session['id_usuario']
+
     data = request.get_json()
 
     data = {k: v.strip() if isinstance(v, str) else v for k, v in data.items()}
@@ -273,7 +287,7 @@ def api_reserva():
             fecha, horarios, ubicacion, id_especialidad
         ))
         db.commit()
-        return jsonify({"message": "Cita reservada correctamente", "redirect": url_for('pago')})
+        return jsonify({"message": "Cita reservada correctamente", "redirect": url_for('api_pago')})
     except mysql.connector.Error as err:
         return jsonify({"error": f"Error al insertar cita: {err}"}), 500
     finally:
@@ -281,9 +295,103 @@ def api_reserva():
         db.close()
 
 # Ruta para la página de métodos de pago (metodopago.html).
-@app.route('/pago')
-def pago():
-    return render_template('metodopago.html')  # Renderiza la página de métodos de pago.
+@app.route('/api/pago', methods=['GET', 'POST'])
+def api_pago():
+    if request.method == 'GET':
+        return render_template('metodopago.html')  # Renderiza la página de búsqueda de archivo.
+    
+    if 'id_usuario' not in session:
+        return jsonify({"error": "Debes iniciar sesión para buscar cita"}), 401
+    
+    id_usuario = session['id_usuario']
+
+    data = request.get_json()
+
+    if not data:
+        return jsonify({"error": "No se recibieron datos JSON"}), 400
+
+    data = {k: v.strip() if isinstance(v, str) else v for k, v in data.items()}
+    
+    nombre = data.get('nombre')
+    apellido1 = data.get('apellido1')
+    apellido2 = data.get('apellido2')
+    ubicacion = data.get('ubicacion')
+    cuenta = data.get('cuenta')
+    correo = data.get('correo')
+    concepto = data.get('concepto')
+    monto = data.get('monto')
+    metodo = data.get('metodo')
+
+    db = conectar_db()
+    cursor = db.cursor()
+
+    cursor.execute("""
+        SELECT id_usuario
+        FROM usuario
+        WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s AND correo = %s
+    """, (nombre, apellido1, apellido2, correo))
+
+    user = cursor.fetchone()
+
+    if not user:
+        return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
+    
+    id_usuario_db = user[0]
+    if id_usuario != id_usuario_db:
+        return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+    
+    cursor.execute("""
+        SELECT id_clinica
+        FROM sucursal
+        WHERE direccion = %s
+    """, (ubicacion,))
+
+    ubi = cursor.fetchone()
+
+    if not ubi:
+        return jsonify({"error": "La ubicación no coincide con la seleccionada anteriormente."}), 404
+    
+    cursor.execute("""
+        SELECT id_paciente
+        FROM paciente
+        WHERE id_usuario = %s
+    """, (id_usuario,))
+
+    paciente = cursor.fetchone()
+
+    if not paciente:
+        return jsonify({"error": "No se encontró un paciente para ese usuario."}), 404
+    
+    id_paciente = paciente[0]
+
+    cursor.execute("""
+        SELECT id_cita
+        FROM cita
+        WHERE id_paciente = %s
+    """, (id_paciente,))
+
+    cita = cursor.fetchone()
+
+    if not cita:
+        return jsonify({"error": "No se encontró una cita para ese paciente."}), 404
+    
+    id_cita = cita[0]
+    
+    try:
+        cursor.callproc('registrar_pago', (
+            concepto, monto, metodo, cuenta, id_cita
+        ))
+
+        for result in cursor.stored_results():
+            result.fetchall()
+            
+        db.commit()
+        return jsonify({"message": "Pago exitoso", "redirect": url_for('api_index')})
+    except mysql.connector.Error as err:
+        return jsonify({"error": f"Error al procesar el pago: {err}"}), 500
+    finally:
+        cursor.close()
+        db.close()
 
 # Ruta para la página de búsqueda de archivo (busqueda.html).
 @app.route('/api/file', methods=['GET', 'POST'])

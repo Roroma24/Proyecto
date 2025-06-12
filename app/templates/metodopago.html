@@ -83,7 +83,7 @@ Se ofrece la selección de método de pago mediante imágenes y un botón para c
 
 
     <!-- FORMULARIO DE RESERVA DE CITAS -->
-    <form>
+    <form id="pago-form">
 
       <!-- FILA DE DATOS PERSONALES -->
       <div class="form-row">
@@ -118,12 +118,10 @@ Se ofrece la selección de método de pago mediante imágenes y un botón para c
           <!-- Dirección del usuario -->
           <div class="form-group">
             <label for="ubicación">Ubicación de hospital</label>
-            <select id="ubicación" name="ubicaciónhospital">
+            <select id="ubicacion" name="ubicacion">
               <option value="" disabled selected hidden>Selecciona una ubicación</option>
-              <option value="ninguna">A1</option>
-              <option value="motora">A2</option>
-              <option value="visual">A3</option>
-              <option value="auditiva">A4</option>
+              <option value="A1">A1</option>
+              <option value="A2">A2</option>
             </select>
           </div>
 
@@ -152,10 +150,8 @@ Se ofrece la selección de método de pago mediante imágenes y un botón para c
             <label for="concepto">Concepto</label>
             <select id="concepto" name="concepto">
               <option value="" disabled selected hidden>Concepto</option>
-              <option value="ninguna">A1</option>
-              <option value="motora">A2</option>
-              <option value="visual">A3</option>
-              <option value="auditiva">A4</option>
+              <option value="adelanto">Adelanto</option>
+              <option value="pago total">Pago Total</option>
             </select>
           </div>
           <div class="form-group">
@@ -167,10 +163,14 @@ Se ofrece la selección de método de pago mediante imágenes y un botón para c
         <div class="payment-methods">
           <label class="payment-label">Seleccionar el método de pago:</label>
           <div id="metodo-pago">
-            <img src="{{ url_for('static', filename='css/imagen/MC.png') }}">
-            <img src="{{ url_for('static', filename='css/imagen/visa.png') }}">
-            <img src="{{ url_for('static', filename='css/imagen/AE.png') }}">
-            <img src="{{ url_for('static', filename='css/imagen/PayPal.png') }}">
+            <img src="{{ url_for('static', filename='css/imagen/MC.png') }}" data-metodo="MasterCard"
+              class="metodo-img">
+            <img src="{{ url_for('static', filename='css/imagen/visa.png') }}" data-metodo="Visa" class="metodo-img">
+            <img src="{{ url_for('static', filename='css/imagen/AE.png') }}" data-metodo="AmericanExpress"
+              class="metodo-img">
+            <img src="{{ url_for('static', filename='css/imagen/PayPal.png') }}" data-metodo="Paypal"
+              class="metodo-img">
+            <input type="hidden" id="metodo" name="metodo">
             <button class="submit-btn" type="submit">Pagar</button>
           </div>
         </div>
@@ -179,6 +179,61 @@ Se ofrece la selección de método de pago mediante imágenes y un botón para c
 
     </form>
   </div>
+
+  <script>
+    document.querySelectorAll('.metodo-img').forEach(img => {
+      img.addEventListener('click', function () {
+        
+        document.querySelectorAll('.metodo-img').forEach(i => i.classList.remove('selected'));
+
+        this.classList.add('selected');
+
+        document.getElementById('metodo').value = this.dataset.metodo;
+      });
+    });
+
+    document.getElementById('pago-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const cuenta = document.getElementById('cuenta').value;
+      const cuenta2 = document.getElementById('cuenta2').value;
+
+      // Validación de cuenta
+      if (cuenta !== cuenta2) {
+        alert("Las cuentas no coinciden. Por favor, verifica que ambos campos sean iguales.");
+        return;
+      }
+
+      const formData = {
+        nombre: document.getElementById('nombre').value,
+        apellido1: document.getElementById('apellido1').value,
+        apellido2: document.getElementById('apellido2').value,
+        ubicacion: document.getElementById('ubicacion').value,
+        cuenta: document.getElementById('cuenta').value,
+        correo: document.getElementById('correo').value,
+        concepto: document.getElementById('concepto').value,
+        monto: document.getElementById('monto').value,
+        metodo: document.getElementById('metodo').value
+      };
+
+      fetch('/api/pago', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.redirect) {
+            window.location.href = data.redirect;
+          } else {
+            alert(data.message || data.error);
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
 
 </body>
 
