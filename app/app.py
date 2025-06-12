@@ -128,6 +128,7 @@ def api_registro():
         return render_template('newuser.html')
     
     data = request.get_json()
+
     if not data:
         return jsonify({"error": "No se recibieron datos JSON"}), 400
     
@@ -175,8 +176,9 @@ def api_newdoc():
         return render_template('newdoctor.html')
         
     data = request.get_json()
+
     if not data:
-        return jsonify({"error": "Faltan campos requeridos "}), 400
+        return jsonify({"error": "No se recibieron datos JSON"}), 400
     
     data = {k: v.strip() if isinstance(v, str) else v for k, v in data.items()}
 
@@ -193,11 +195,15 @@ def api_newdoc():
 
     if not all([cedula, especialidad, curp, rfc, nombre, apellido1, apellido2, telefono, correo, password]):
         return jsonify({"error": "Faltan campos requeridos "}), 400
+    
+    if not password_valid.validate(password):
+        return jsonify({"error": "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minuscula y un simbolo especial."}), 400
         
     conn = conectar_db()
     if conn:
         try:
             cursor = conn.cursor()
+
             cursor.execute("SELECT id_usuario FROM usuario WHERE correo = %s", (correo,))
             if cursor.fetchone():
                 return jsonify({"error": "El correo ya está registrado"}), 409
@@ -212,6 +218,7 @@ def api_newdoc():
                 "message": "Doctor registrado exitosamente",
                 "id_usuario": new_id
             }), 201
+        
         except mysql.connector.Error as err:
             return jsonify({"error": f"Error al insertar datos: {str(err)}"}), 500
     else:
@@ -282,11 +289,20 @@ def api_reserva():
     id_especialidad = especialidad[0]
 
     try:
+        cursor.execute("SET @new_id_cita = 0;")
+
         cursor.callproc('insertar_cita', (
             id_usuario, curp, edad, telefono, alergias, discapacidad,
-            fecha, horarios, ubicacion, id_especialidad
+            fecha, horarios, ubicacion, id_especialidad, '@new_id_cita'
         ))
+
+        cursor.execute("SELECT @new_id_cita;")
+
+        id_cita = cursor.fetchone()[0]
+
         db.commit()
+
+        session['id_cita'] = id_cita
         return jsonify({"message": "Cita reservada correctamente", "redirect": url_for('api_pago')})
     except mysql.connector.Error as err:
         return jsonify({"error": f"Error al insertar cita: {err}"}), 500
@@ -351,31 +367,10 @@ def api_pago():
     if not ubi:
         return jsonify({"error": "La ubicación no coincide con la seleccionada anteriormente."}), 404
     
-    cursor.execute("""
-        SELECT id_paciente
-        FROM paciente
-        WHERE id_usuario = %s
-    """, (id_usuario,))
+    id_cita = session.get('id_cita')
 
-    paciente = cursor.fetchone()
-
-    if not paciente:
-        return jsonify({"error": "No se encontró un paciente para ese usuario."}), 404
-    
-    id_paciente = paciente[0]
-
-    cursor.execute("""
-        SELECT id_cita
-        FROM cita
-        WHERE id_paciente = %s
-    """, (id_paciente,))
-
-    cita = cursor.fetchone()
-
-    if not cita:
-        return jsonify({"error": "No se encontró una cita para ese paciente."}), 404
-    
-    id_cita = cita[0]
+    if not id_cita:
+        return jsonify({"error": "No se encontró la cita reservada para el pago."}), 404
     
     try:
         cursor.callproc('registrar_pago', (
