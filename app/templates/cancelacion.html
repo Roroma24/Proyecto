@@ -89,7 +89,7 @@ fecha de la cita a cancelar.
             </p>
           </div>
           <!-- Formulario para cancelar una cita -->
-          <form>
+          <form id="cancel-form">
             <!-- Campo para el nombre completo -->
             <div class="campos-dobles">
               <div class="campo">
@@ -109,7 +109,7 @@ fecha de la cita a cancelar.
             <div class="campos-dobles">
               <div class="campo">
                 <label for="telefono">Teléfono</label> <!-- Etiqueta para teléfono -->
-                <input type="tel" id="telefono" placeholder="Teléfono" />
+                <input type="text" id="telefono" placeholder="Teléfono" />
               </div>
               <div class="campo">
                 <label for="edad">Edad</label> <!-- Etiqueta para edad -->
@@ -122,27 +122,82 @@ fecha de la cita a cancelar.
             </div>
             <!-- Campos dobles para hora y fecha -->
             <div class="campos-dobles">
-              <div class="campo fecha">
-                <label for="hora">Hora</label> <!-- Etiqueta para hora -->
-                <input type="time" id="hora" />
-              </div>
               <div class="campo hora">
+                <label for="horarios">Horarios</label> <!-- Etiqueta para hora -->
+                <select id="horarios" name="horarios" required>
+                  <option value="" disabled selected hidden>Selecciona un horario</option>
+                  <option value="09:00">09:00</option>
+                  <option value="10:00">10:00</option>
+                  <option value="11:00">11:00</option>
+                  <option value="12:00">12:00</option>
+                  <option value="13:00">13:00</option>
+                  <option value="14:00">14:00</option>
+                  <option value="15:00">15:00</option>
+                  <option value="16:00">16:00</option>
+                  <option value="17:00">17:00</option>
+                  <option value="18:00">18:00</option>
+                  <option value="19:00">19:00</option>
+                  <option value="20:00">20:00</option>
+                  <option value="21:00">21:00</option>
+                  <option value="22:00">22:00</option>
+                </select>
+              </div>
+              <div class="campo fecha">
                 <label for="fecha">Fecha</label> <!-- Etiqueta para fecha -->
                 <input type="date" id="fecha" />
               </div>
             </div>
             <!-- Botón para cancelar la cita -->
-            <a href="{{ url_for('api_file', opcion='cancel') }}" style="text-decoration: none;">
-              <div class="accion" style="position: absolute;left: 75%;bottom: -18%;">
-                Cancelar
-              </div>
-            </a>
+            <button type="submit" class="accion" style="position: relative; top: -15px;">
+              Cancelar
+            </button>
         </div>
         </form>
       </div>
     </div>
     </div>
   </section>
+
+  <script>
+    document.getElementById('cancel-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const formData = {
+        nombre: document.getElementById('nombre').value,
+        apellido1: document.getElementById('apellido1').value,
+        apellido2: document.getElementById('apellido2').value,
+        telefono: document.getElementById('telefono').value,
+        edad: document.getElementById('edad').value,
+        correo: document.getElementById('correo').value,
+        horarios: document.getElementById('horarios').value,
+        fecha: document.getElementById('fecha').value
+      };
+
+      const horarioRegex = /^([01]\d|2[0-3]):([0-5]\d)$/;
+      if (!horarioRegex.test(formData.horarios)) {
+        alert("Horario debe tener el formato válido HH:MM, por ejemplo '09:00'");
+        return;
+      }
+
+      fetch('/api/cancel', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.redirect) {
+            window.location.href = data.redirect;
+          } else {
+            alert(data.message || data.error);
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
+
 </body>
 
 </html>

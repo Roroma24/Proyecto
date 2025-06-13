@@ -1,3 +1,5 @@
+DROP SCHEMA hospital;
+
 CREATE DATABASE hospital;
 
 USE hospital;
@@ -14,10 +16,7 @@ CREATE TABLE usuario (
 
 CREATE TABLE notificacion (
   id_notificacion INT AUTO_INCREMENT PRIMARY KEY,
-  mensaje TEXT,
-  fecha_de_envio DATETIME,
-  id_usuario INT,
-  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+  mensaje TEXT
 ) AUTO_INCREMENT = 100;
 
 CREATE TABLE doctor (
@@ -316,7 +315,7 @@ CREATE PROCEDURE registrar_pago(
   IN p_tipo_de_pago ENUM('adelanto', 'pago total'),
   IN p_monto DECIMAL(10,2),
   IN p_metodo_de_pago VARCHAR(100),
-  IN p_numero_cuenta VARCHAR(16),
+  IN p_numero_cuenta VARCHAR(18),
   IN p_id_cita INT
 )
 BEGIN
@@ -325,3 +324,10 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+INSERT INTO especialidad(nombre_especialidad) VALUES ("General");
+
+INSERT INTO notificacion(mensaje) VALUES
+("Paciente registrado con exito su ID de paciente es: "),
+("Doctor registrado con exito su ID de doctor es: "),
+("Su cita se reservo correctamente. Adjuntamos la información de su cita:");

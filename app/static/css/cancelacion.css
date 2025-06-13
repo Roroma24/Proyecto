@@ -239,7 +239,15 @@ body {
 /* Estilo para los campos hora y fecha */
 .campo.fecha,
 .campo.hora {
-  display: block;
+  display: flex;
+  flex: 1 1 calc(25% - 30px);
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 /* Estilo para los inputs de los campos */
@@ -314,4 +322,18 @@ body {
   font-size: 19px;
   color: #000000;
   size: 10px;
+}
+
+/* Inputs estándar y selectores de tipo texto, email, número, fecha, etc. */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
 }

@@ -128,13 +128,13 @@ Se ofrece la selección de método de pago mediante imágenes y un botón para c
           <!--No. cuenta -->
           <div class="form-group">
             <label for="cuenta">Número de cuenta</label>
-            <input type="text" id="cuenta" name="cuenta" placeholder="Número de cuenta">
+            <input type="text" id="cuenta" name="cuenta" placeholder="Número de cuenta" required>
           </div>
 
           <!-- Confirmación No. cuenta -->
           <div class="form-group">
             <label for="cuenta2">Confirmar número de cuenta</label>
-            <input type="text" id="cuenta2" name="cuenta2" placeholder="Confirmar número de cuenta">
+            <input type="text" id="cuenta2" name="cuenta2" placeholder="Confirmar número de cuenta" required>
           </div>
           <!-- Correo electrónico -->
           <div class="form-group">
@@ -148,7 +148,7 @@ Se ofrece la selección de método de pago mediante imágenes y un botón para c
         <div class="right-column">
           <div class="form-group">
             <label for="concepto">Concepto</label>
-            <select id="concepto" name="concepto">
+            <select id="concepto" name="concepto" required>
               <option value="" disabled selected hidden>Concepto</option>
               <option value="adelanto">Adelanto</option>
               <option value="pago total">Pago Total</option>
@@ -156,7 +156,7 @@ Se ofrece la selección de método de pago mediante imágenes y un botón para c
           </div>
           <div class="form-group">
             <label for="monto">Monto</label>
-            <input type="text" id="monto" name="monto" placeholder=" $ Monto">
+            <input type="text" id="monto" name="monto" placeholder=" $ Monto" required>
           </div>
         </div>
         <!-- Botones para seleccionar el método de pago -->
@@ -170,7 +170,7 @@ Se ofrece la selección de método de pago mediante imágenes y un botón para c
               class="metodo-img">
             <img src="{{ url_for('static', filename='css/imagen/PayPal.png') }}" data-metodo="Paypal"
               class="metodo-img">
-            <input type="hidden" id="metodo" name="metodo">
+            <input type="hidden" id="metodo" name="metodo" required>
             <button class="submit-btn" type="submit">Pagar</button>
           </div>
         </div>

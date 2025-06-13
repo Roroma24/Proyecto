@@ -263,6 +263,9 @@ def api_reserva():
     ubicacion = data.get('ubicacion')
     especialidad_nombre = data.get('especialidad')
 
+    if not all([nombre, apellido1, apellido2, curp, edad, telefono, alergias, discapacidad, fecha, horarios, ubicacion, especialidad_nombre]):
+        return jsonify({"error": "Faltan campos requeridos "}), 400
+
     db = conectar_db()
     cursor = db.cursor()
 
@@ -339,6 +342,9 @@ def api_pago():
     monto = data.get('monto')
     metodo = data.get('metodo')
 
+    if not all([nombre, apellido1, apellido2, ubicacion, cuenta, correo, concepto, monto, metodo]):
+        return jsonify({"error": "Faltan campos requeridos "}), 400
+
     db = conectar_db()
     cursor = db.cursor()
 
@@ -411,6 +417,9 @@ def api_file():
     apellido2 = data.get('segundoapellido')
     correo = data.get('correo')
     folio = data.get('foliodecita')
+
+    if not all([nombre, apellido1, apellido2, correo, folio]):
+        return jsonify({"error": "Faltan campos requeridos "}), 400
 
     opcion = session.get('opcion')
 
@@ -528,7 +537,6 @@ def api_modification():
     id_usuario = session['id_usuario']
     folio = session['folio']
 
-    id_usuario = session['id_usuario']
     data = request.get_json()
     if not data:
         return jsonify({"error": "No se recibieron datos JSON"}), 400
@@ -561,6 +569,9 @@ def api_modification():
         datetime.strptime(fecha, '%Y-%m-%d')
     except ValueError:
         return jsonify({"error": "La fecha debe tener el formato YYYY-MM-DD"}), 400
+    
+    if not all([nombre, apellido1, apellido2, edad_str, telefono, correo, discapacidad, alergias, horarios, especialidad_nombre, direccion, fecha]):
+        return jsonify({"error": "Faltan campos requeridos "}), 400
 
     db = conectar_db()
     cursor = db.cursor()
@@ -604,11 +615,13 @@ def api_modification():
 @app.route('/api/cancel', methods=['GET', 'POST'])
 def api_cancel():
     if request.method == 'GET':
-        folio = request.args.get('folio', '')
-        return render_template('cancelacion.html', folio=folio)
-
+        return render_template('cancelacion.html')
+    
     if 'id_usuario' not in session:
-        return jsonify({"error": "Debes iniciar sesión para cancelar una cita"}), 401
+        return jsonify({"error": "Debes iniciar sesión para modificar una cita"}), 401
+
+    id_usuario = session['id_usuario']
+    folio = session['folio']
 
     data = request.get_json()
     if not data:
@@ -619,51 +632,70 @@ def api_cancel():
     nombre = data.get('nombre')
     apellido1 = data.get('apellido1')
     apellido2 = data.get('apellido2')
-    folio = data.get('folio')
-
-    if not all([nombre, apellido1, apellido2, folio]):
-        return jsonify({"error": "Faltan campos requeridos"}), 400
-
-    conn = conectar_db()
-    if not conn:
-        return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
-
+    telefono = data.get('telefono')
+    edad_str = data.get('edad')
+    if not edad_str:
+        return jsonify({"error": "Edad es un campo obligatorio"}), 400
     try:
-        cursor = conn.cursor()
-        cursor.execute("""
-            SELECT id_usuario
-            FROM usuario
-            WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s
-        """, (nombre, apellido1, apellido2))
-        us = cursor.fetchone()
-        if not us:
-            cursor.close()
-            conn.close()
-            return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
+        edad = int(edad_str)
+    except ValueError:
+        return jsonify({"error": "Edad debe ser un número válido"}), 400
+    correo = data.get('correo')
+    horarios = data.get('horarios', '')
+    try:
+        datetime.strptime(str(horarios), '%H:%M')
+    except ValueError:
+        return jsonify({"error": "Horario debe tener el formato válido HH:MM, por ejemplo '09:00'"}), 400
+    fecha = data.get('fecha')
+    try:
+        datetime.strptime(fecha, '%Y-%m-%d')
+    except ValueError:
+        return jsonify({"error": "La fecha debe tener el formato YYYY-MM-DD"}), 400
 
-        id_usuario_db = us[0]
-        if session['id_usuario'] != id_usuario_db:
-            cursor.close()
-            conn.close()
-            return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+    if not all([nombre, apellido1, apellido2, telefono, edad_str, correo, horarios, fecha]):
+        return jsonify({"error": "Faltan campos requeridos"}), 400
+    
+    db = conectar_db()
+    cursor = db.cursor()
 
-        cursor.execute("""
-            SELECT id_cita FROM cita WHERE id_cita = %s AND id_usuario = %s
-        """, (folio, id_usuario_db))
-        cita = cursor.fetchone()
-        if not cita:
-            cursor.close()
-            conn.close()
-            return jsonify({"error": "No se encontró la cita para este usuario"}), 404
+    cursor.execute("""
+        SELECT u.id_usuario
+        FROM usuario u
+        JOIN paciente p ON u.id_usuario = p.id_usuario
+        WHERE u.nombre = %s AND u.primer_apellido = %s AND u.segundo_apellido = %s AND u.correo = %s AND p.edad = %s AND p.telefono = %s
+    """, (nombre, apellido1, apellido2, correo, edad, telefono))
 
-        cursor.callproc('eliminar_cita', (int(folio),))
-        conn.commit()
-        cursor.close()
-        conn.close()
-        return jsonify({"message": "Cita cancelada exitosamente"}), 200
+    user = cursor.fetchone()
 
+    if not user:
+        return jsonify({"error": "Nombre, correo o edad del usuario incorrectos"}), 404
+    
+    id_user_db = user[0]
+    if id_usuario != id_user_db:
+        return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+    
+    cursor.execute("""
+        SELECT id_cita
+        FROM cita
+        WHERE horario = %s AND fecha_cita = %s
+    """, (horarios, fecha))
+
+    cit = cursor.fetchone()
+
+    if not cit:
+        return jsonify({"error": "Fecha u hora no coincide"}), 404
+    
+    try:
+        cursor.callproc('eliminar_cita', (
+            folio,
+        ))
+        db.commit()
+        return jsonify({"message": "Cita cancelada exitosamente", "redirect": url_for('api_exit')}), 200
     except mysql.connector.Error as err:
-        return jsonify({"error": f"Error al cancelar la cita: {err}"}), 500
+        return jsonify({"error": f"Error al modificar cita: {err}"}), 500
+    finally:
+        cursor.close()
+        db.close()
 
 # Ruta para la página de historial de citas (historial.html).
 @app.route('/api/historial', methods=['GET', 'POST'])
