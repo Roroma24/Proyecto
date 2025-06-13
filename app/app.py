@@ -30,10 +30,10 @@ import hashlib
 def conectar_db():  # Función para conectar a la base de datos
     try:
         conn = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="Meliodas1.",  # Se ajusta según la configuración
-            database="hospital",  # Nombre de la base de datos
+            host=os.getenv("DB_HOST"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),  # Se ajusta según la configuración
+            database=os.getenv("DB_NAME"),  # Nombre de la base de datos
         )
         print("✅ Conexión exitosa a la base de datos.")
         return conn
