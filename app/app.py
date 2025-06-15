@@ -34,6 +34,7 @@ def conectar_db():  # Función para conectar a la base de datos
             user=os.getenv("DB_USER"),
             password=os.getenv("DB_PASSWORD"),  # Se ajusta según la configuración
             database=os.getenv("DB_NAME"),  # Nombre de la base de datos
+            charset='utf8mb4',
         )
         print("✅ Conexión exitosa a la base de datos.")
         return conn
@@ -330,19 +331,24 @@ def api_reserva():
 
     try:
         args = (
-            id_usuario, curp, edad, telefono, alergias, discapacidad, fecha, horarios, ubicacion, id_especialidad, 0
+            id_usuario, curp, edad, telefono, alergias, discapacidad, fecha, horarios, ubicacion, id_especialidad, 0, 0
         )
 
-        result = cursor.callproc('insertar_cita', args)
-
-        id_cita = result[-1]
+        new_args = list(cursor.callproc('insertar_cita', args))
+        id_cita = new_args[-2]
+        id_paciente = new_args[-1]
 
         if not id_cita:
-            return jsonify({"error": "No se pudo obtener el ID de la cita"}), 500
-
+            return jsonify({"error": "No se pudo registrar la cita"}), 500
+        
         session['id_cita'] = id_cita
+        session['id_paciente'] = id_paciente
 
         db.commit()
+
+        correo_dest = (id_usuario)
+        extra_texto = (id_paciente)
+        notification(correo_dest, 100, extra_texto)
 
         return jsonify({"message": "Cita reservada correctamente", "redirect": url_for('api_pago')})
     except mysql.connector.Error as err:
@@ -417,9 +423,17 @@ def api_pago():
         return jsonify({"error": "No se encontró la cita reservada para el pago."}), 404
     
     try:
-        cursor.callproc('registrar_pago', (
-            concepto, monto, metodo, cuenta, id_cita
-        ))
+
+        argu = (concepto, monto, metodo, cuenta, id_cita, 0)
+
+        res = cursor.callproc('registrar_pago', argu)
+
+        id_pago = res[-1]
+
+        if not id_pago:
+            return jsonify({"error": "No se pudo obtener el ID del pago"}), 500
+
+        session['id_pago'] = id_pago
 
         for result in cursor.stored_results():
             result.fetchall()
