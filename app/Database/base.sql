@@ -131,13 +131,12 @@ CREATE PROCEDURE registro_doctor (
   IN p_curp VARCHAR(18),
   IN p_rfc VARCHAR(13),
   IN p_especialidad VARCHAR(50),
-  OUT new_id INT
+  OUT new_id_doctor INT
 )
 BEGIN
   DECLARE especialidad_id INT;
   DECLARE id_usuario INT;
   DECLARE id_doctor INT;
-  DECLARE notificacion_id INT DEFAULT 101;
 
   INSERT INTO usuario (nombre, primer_apellido, segundo_apellido, rol, correo, contraseña)
   VALUES (p_nombre, p_apellido1, p_apellido2, 'Doctor', p_correo, SHA2(p_contraseña, 256));
@@ -145,7 +144,7 @@ BEGIN
   SET id_usuario = LAST_INSERT_ID();
 
   INSERT INTO doctor (telefono, cedula_profesional, curp, rfc, id_usuario, id_notificacion)
-  VALUES (p_telefono, p_cedula, p_curp, p_rfc, id_usuario, notificacion_id);
+  VALUES (p_telefono, p_cedula, p_curp, p_rfc, id_usuario, 101);
 
   SET id_doctor = LAST_INSERT_ID();
 
@@ -163,7 +162,7 @@ BEGIN
   INSERT INTO doctor_especialidad(id_doctor, id_especialidad)
   VALUES (id_doctor, especialidad_id);
 
-  SET new_id = id_doctor;
+  SET new_id_doctor = id_doctor;
 END$$
 
 CREATE PROCEDURE insertar_cita(
@@ -177,14 +176,13 @@ CREATE PROCEDURE insertar_cita(
   IN p_horario TIME,
   IN p_direccion VARCHAR(200),
   IN nombre_especialidad VARCHAR(50),
-  OUT new_id_cita INT
+  OUT new_id_cita INT,
+  OUT new_id_paciente INT
 )
 BEGIN
   DECLARE existing_id_paciente INT;
   DECLARE id_clinica_existente INT;
   DECLARE id_sucursal_existente INT;
-  DECLARE notificacion_paciente_id INT DEFAULT 100;
-  DECLARE notificacion_cita_id INT DEFAULT 102;
 
   SELECT id_paciente INTO existing_id_paciente
   FROM paciente
@@ -193,7 +191,7 @@ BEGIN
 
   IF existing_id_paciente IS NULL THEN
     INSERT INTO paciente (curp, edad, telefono, alergias, discapacidad, id_usuario, id_notificacion)
-    VALUES (p_curp, p_edad, p_telefono, p_alergias, p_discapacidad, p_id_usuario, notificacion_paciente_id);
+    VALUES (p_curp, p_edad, p_telefono, p_alergias, p_discapacidad, p_id_usuario, 100);
 
     SET existing_id_paciente = LAST_INSERT_ID();
   ELSE
@@ -228,9 +226,10 @@ BEGIN
   END IF;
 
   INSERT INTO cita (id_paciente, fecha_cita, horario, id_sucursal, id_notificacion)
-  VALUES (existing_id_paciente, p_fecha, p_horario, id_sucursal_existente, notificacion_cita_id);
+  VALUES (existing_id_paciente, p_fecha, p_horario, id_sucursal_existente, 102);
 
   SET new_id_cita = LAST_INSERT_ID();
+  SET new_id_paciente = existing_id_paciente;
 
   IF NOT EXISTS (
     SELECT 1 FROM especialidad WHERE nombre_especialidad = nombre_especialidad
@@ -327,11 +326,17 @@ CREATE PROCEDURE registrar_pago(
   IN p_monto DECIMAL(10,2),
   IN p_metodo_de_pago VARCHAR(100),
   IN p_numero_cuenta VARCHAR(18),
-  IN p_id_cita INT
+  IN p_id_cita INT,
+  OUT new_id_pago INT
 )
 BEGIN
-  DECLARE notificacion_pago_id INT DEFAULT 103;
-
   INSERT INTO pago (tipo_de_pago, monto, fecha_de_pago, metodo_de_pago, numero_cuenta, id_cita, id_notificacion)
-  VALUES (p_tipo_de_pago, p_monto, NOW(), p_metodo_de_pago, p_numero_cuenta, p_id_cita, notificacion_pago_id);
+  VALUES (p_tipo_de_pago, p_monto, NOW(), p_metodo_de_pago, p_numero_cuenta, p_id_cita, 103);
+
+  SET new_id_pago = LAST_INSERT_ID();
 END$$
+
+DELIMITER ;
+
+INSERT INTO especialidad(nombre_especialidad) VALUES ("General");
+
