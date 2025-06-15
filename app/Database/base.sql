@@ -340,3 +340,8 @@ DELIMITER ;
 
 INSERT INTO especialidad(nombre_especialidad) VALUES ("General");
 
+INSERT INTO notificacion(mensaje) VALUES
+("Paciente registrado con exito, su ID de paciente es: "),
+("Doctor registrado con exito, su ID de doctor es: "),
+("Su cita se reservo correctamente. Adjuntamos la información de su cita:"),
+("Su pago se reservo correctamente. Adjuntamos la información de confirmación:");
