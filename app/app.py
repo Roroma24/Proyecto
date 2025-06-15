@@ -41,6 +41,40 @@ def conectar_db():  # Función para conectar a la base de datos
         print(f"❌ Error al conectar a la base de datos: {err}")
         return None
     
+def notification(correo_dest, id_notificacion, extra_texto=""):
+    try:
+        conn = conectar_db()
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT mensaje FROM notificacion WHERE idnotificacion = %s", (id_notificacion,))
+        obtenido = cursor.fetchone()
+        cursor.close()
+        conn.close()
+
+        if not obtenido:
+            print(f"⚠️ No se encontró la notificación con ID {id_notificacion}")
+            return
+        
+        mensaje = obtenido[0]
+        msg_complete = mensaje + extra_texto if extra_texto else mensaje
+
+        msg = MIMEMultipart()
+        msg['FROM'] = os.getenv('SMTP_USER')
+        msg['To'] = correo_dest
+        msg['Subject'] = "Notificación del Hospital Qualitas"
+        msg.attach(MIMEText(msg_complete, 'plain'))
+
+        server = smtplib.SMTP(os.getenv('SMTP_SERVER'), int(os.getenv('SMTP_PORT')))
+        server.starttls()
+        server.login(os.getenv('SMTP_USER'), os.getenv('SMTP_PASSWORD'))
+        server.send_message(msg)
+        server.quit()
+
+        print(f"📧 Notificación enviada a {correo_dest}")
+
+    except Exception as e:
+        print(f"❌ Error al enviar notificación: {e}")
+    
 load_dotenv()
 
 # Creamos una instancia de la aplicación Flask.
@@ -214,6 +248,9 @@ def api_newdoc():
             conn.commit()
             cursor.close()
             conn.close()
+
+            notification(correo, 101)
+
             return jsonify({
                 "message": "Doctor registrado exitosamente",
                 "id_usuario": new_id
@@ -705,23 +742,8 @@ def api_historial():
 
     data = request.get_json()
     id_paciente = data.get('id_paciente') if data else None
-
-    if not id_paciente:
-        # Si no se envía, usa el usuario de la sesión (opcional)
-        id_usuario = session.get('id_usuario')
-        if not id_usuario:
-            return jsonify({"error": "Debes iniciar sesión"}), 401
-        query = "SELECT id_cita, hora, fecha FROM cita WHERE id_usuario = %s ORDER BY fecha DESC"
-        params = (id_usuario,)
-    else:
-        # RELACIÓN DIRECTA POR id_paciente
-        query = """
-            SELECT id_cita, hora, fecha
-            FROM cita
-            WHERE id_paciente = %s
-            ORDER BY fecha DESC
-        """
-        params = (id_paciente,)
+    comentario = data.get('comentario')
+    id_cita = data.get('id_cita')
 
     conn = conectar_db()
     if not conn:
@@ -729,16 +751,36 @@ def api_historial():
 
     try:
         cursor = conn.cursor()
+
+        # Si el usuario envía un comentario, se guarda en la BD
+        if id_cita and comentario:
+            cursor.execute("INSERT INTO comentarios (id_cita, comentario) VALUES (%s, %s)", (id_cita, comentario))
+            conn.commit()
+            return jsonify({"mensaje": "Comentario guardado exitosamente"})
+
+        # Si solo se consulta historial, se obtienen las citas
+        if not id_paciente:
+            id_usuario = session.get('id_usuario')
+            if not id_usuario:
+                return jsonify({"error": "Debes iniciar sesión"}), 401
+            query = "SELECT id_cita, hora, fecha FROM cita WHERE id_usuario = %s ORDER BY fecha DESC"
+            params = (id_usuario,)
+        else:
+            query = """SELECT id_cita, hora, fecha FROM cita WHERE id_paciente = %s ORDER BY fecha DESC"""
+            params = (id_paciente,)
+
         cursor.execute(query, params)
         citas = cursor.fetchall()
         cursor.close()
         conn.close()
+
         return jsonify([
             {"id_cita": row[0], "hora": row[1], "dia": row[2]}
             for row in citas
         ])
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
     
 @app.route('/api/exit')
 def api_exit():

@@ -26,7 +26,9 @@ CREATE TABLE doctor (
   curp VARCHAR(18) NOT NULL,
   rfc VARCHAR(13) NOT NULL,
   id_usuario INT NOT NULL,
-  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+  id_notificacion INT NOT NULL,
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+  FOREIGN KEY (id_notificacion) REFERENCES notificacion(id_notificacion)
 ) AUTO_INCREMENT = 2000;
 
 CREATE TABLE especialidad (
@@ -49,7 +51,9 @@ CREATE TABLE paciente (
   alergias VARCHAR(200),
   discapacidad VARCHAR(50),
   id_usuario INT NOT NULL,
-  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+  id_notificacion INT NOT NULL,
+  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+  FOREIGN KEY (id_notificacion) REFERENCES notificacion(id_notificacion)
 ) AUTO_INCREMENT = 6000;
 
 CREATE TABLE clinica (
@@ -72,8 +76,10 @@ CREATE TABLE cita (
   horario TIME NOT NULL,
   id_paciente INT NOT NULL,
   id_sucursal INT NOT NULL,
+  id_notificacion INT NOT NULL,
   FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente),
-  FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal)
+  FOREIGN KEY (id_sucursal) REFERENCES sucursal(id_sucursal),
+  FOREIGN KEY (id_notificacion) REFERENCES notificacion(id_notificacion)
 ) AUTO_INCREMENT = 600;
 
 CREATE TABLE pago (
@@ -84,7 +90,9 @@ CREATE TABLE pago (
   metodo_de_pago VARCHAR(100) NOT NULL,
   numero_cuenta VARCHAR(18) NOT NULL,
   id_cita INT NOT NULL,
-  FOREIGN KEY (id_cita) REFERENCES cita(id_cita)
+  id_notificacion INT NOT NULL,
+  FOREIGN KEY (id_cita) REFERENCES cita(id_cita),
+  FOREIGN KEY (id_notificacion) REFERENCES notificacion(id_notificacion)
 ) AUTO_INCREMENT = 700;
 
 CREATE TABLE historial_medico (

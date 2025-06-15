@@ -42,85 +42,117 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
             <!-- Citas -->
             <div class="caja-punteados-1">
               <h2 class="titulo">Citas</h2>
-              <div class="caja-punteados-1-1"><ul><li></li></ul></div>
-              <div class="caja-punteados-1-2"><ul><li></li></ul></div>
-              <div class="caja-punteados-1-3"><ul><li></li></ul></div>
-              <div class="caja-punteados-1-4"><ul><li></li></ul></div>
-              <div class="caja-punteados-1-5"><ul><li></li></ul></div>
+              <ul id="citas-list"></ul>
             </div>
             <!-- Hora -->
             <div class="caja-punteados-2">
               <h2 class="titulo">Hora</h2>
-              <div class="caja-punteados-2-1"><ul><li></li></ul></div>
-              <div class="caja-punteados-2-2"><ul><li></li></ul></div>
-              <div class="caja-punteados-2-3"><ul><li></li></ul></div>
-              <div class="caja-punteados-2-4"><ul><li></li></ul></div>
-              <div class="caja-punteados-2-5"><ul><li></li></ul></div>
+              <ul id="horas-list"></ul>
             </div>
             <!-- Día -->
             <div class="caja-punteados-3">
               <h2 class="titulo">Día</h2>
-              <div class="caja-punteados-3-1"><ul><li></li></ul></div>
-              <div class="caja-punteados-3-2"><ul><li></li></ul></div>
-              <div class="caja-punteados-3-3"><ul><li></li></ul></div>
-              <div class="caja-punteados-3-4"><ul><li></li></ul></div>
-              <div class="caja-punteados-3-5"><ul><li></li></ul></div>
+              <ul id="dias-list"></ul>
             </div>
             <!-- Comentarios -->
             <div class="caja-punteados-4">
               <h2 class="titulo">Comentarios</h2>
-              <div class="caja-punteados-4-1"><div class="escribí-aquí"><input type="text" class="custom-input" /></div></div>
-              <div class="caja-punteados-4-2"><div class="escribí-aquí"><input type="text" class="custom-input" /></div></div>
-              <div class="caja-punteados-4-3"><div class="escribí-aquí"><input type="text" class="custom-input" /></div></div>
-              <div class="caja-punteados-4-4"><div class="escribí-aquí"><input type="text" class="custom-input" /></div></div>
-              <div class="caja-punteados-4-5"><div class="escribí-aquí"><input type="text" class="custom-input" /></div></div>
+              <ul id="comentarios-list"></ul>
             </div>
-          </div>
 
-          <button class="accion" id="enviar-comentarios" type="button"
-            style="margin: 30px auto 0 auto; display: block;">
-            Comentar
-          </button>
+            <button class="accion" id="enviar-comentarios" type="button"
+              style="margin: 30px auto 0 auto; display: block;">
+              Comentar
+            </button>
+          </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- Script para cargar los datos desde la API -->
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Obtén el id_paciente desde sessionStorage si existe
-      const idPaciente = sessionStorage.getItem('id_paciente_historial');
-      let fetchOptions = { method: 'POST', headers: { 'Content-Type': 'application/json' } };
-      if (idPaciente) {
-        fetchOptions.body = JSON.stringify({ id_paciente: idPaciente });
-      }
-      fetch("/api/historial", fetchOptions)
-        .then(response => response.json())
-        .then(data => llenarHistorial(data))
-        .catch(error => console.error("Error al cargar el historial:", error));
-    });
+    // Cargar el historial al iniciar la página
+    window.onload = function () {
+      const idPaciente = sessionStorage.getItem("id_paciente_historial");
 
+      fetch("/api/historial", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id_paciente: idPaciente }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          llenarHistorial(data);
+        })
+        .catch((err) => {
+          console.error("Error al obtener historial:", err);
+        });
+    };
+
+    // Llenar las listas del historial
     function llenarHistorial(historial) {
-      for (let i = 0; i < 5; i++) {
-        // Citas
-        const citaLi = document.querySelector(`.caja-punteados-1-${i + 1} li`);
-        // Hora
-        const horaLi = document.querySelector(`.caja-punteados-2-${i + 1} li`);
-        // Día
-        const diaLi = document.querySelector(`.caja-punteados-3-${i + 1} li`);
+      const citasContainer = document.querySelector("#citas-list");
+      const horasContainer = document.querySelector("#horas-list");
+      const diasContainer = document.querySelector("#dias-list");
+      const comentariosContainer = document.querySelector("#comentarios-list");
 
-        if (historial[i]) {
-          citaLi.textContent = historial[i].id_cita;
-          horaLi.textContent = historial[i].hora;
-          diaLi.textContent = historial[i].dia;
-        } else {
-          citaLi.textContent = '';
-          horaLi.textContent = '';
-          diaLi.textContent = '';
-        }
-      }
+      citasContainer.innerHTML = "";
+      horasContainer.innerHTML = "";
+      diasContainer.innerHTML = "";
+      comentariosContainer.innerHTML = "";
+
+      historial.forEach((cita) => {
+        // Citas
+        let citaLi = document.createElement("li");
+        citaLi.textContent = cita.id_cita;
+        citaLi.setAttribute("data-id", cita.id_cita);
+        citasContainer.appendChild(citaLi);
+
+        // Hora
+        let horaLi = document.createElement("li");
+        horaLi.textContent = cita.hora;
+        horasContainer.appendChild(horaLi);
+
+        // Día
+        let diaLi = document.createElement("li");
+        diaLi.textContent = cita.dia;
+        diasContainer.appendChild(diaLi);
+
+        // Comentario
+        let comentarioLi = document.createElement("li");
+        let input = document.createElement("input");
+        input.type = "text";
+        input.classList.add("custom-input");
+        input.placeholder = "Escribe tu comentario";
+        comentarioLi.appendChild(input);
+        comentariosContainer.appendChild(comentarioLi);
+      });
     }
+
+    // Enviar comentarios
+    document.querySelector("#enviar-comentarios").addEventListener("click", function () {
+      const comentarios = document.querySelectorAll("#comentarios-list .custom-input");
+      const citas = document.querySelectorAll("#citas-list li");
+
+      comentarios.forEach((input, index) => {
+        const idCita = citas[index].getAttribute("data-id");
+        const comentario = input.value.trim();
+
+        if (!comentario) return;
+
+        fetch("/api/historial", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id_cita: idCita, comentario: comentario }),
+        })
+          .then((response) => response.json())
+          .then((data) => console.log("Comentario guardado:", data))
+          .catch((error) => console.error("Error al guardar comentario:", error));
+      });
+    });
   </script>
 </body>
+
 </html>
