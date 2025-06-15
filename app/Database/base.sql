@@ -1,4 +1,4 @@
-DROP SCHEMA hospital;
+DROP DATABASE IF EXISTS hospital;
 
 CREATE DATABASE hospital;
 
@@ -137,14 +137,15 @@ BEGIN
   DECLARE especialidad_id INT;
   DECLARE id_usuario INT;
   DECLARE id_doctor INT;
+  DECLARE notificacion_id INT DEFAULT 101;
 
   INSERT INTO usuario (nombre, primer_apellido, segundo_apellido, rol, correo, contraseña)
   VALUES (p_nombre, p_apellido1, p_apellido2, 'Doctor', p_correo, SHA2(p_contraseña, 256));
 
   SET id_usuario = LAST_INSERT_ID();
 
-  INSERT INTO doctor (telefono, cedula_profesional, curp, rfc, id_usuario)
-  VALUES (p_telefono, p_cedula, p_curp, p_rfc, id_usuario);
+  INSERT INTO doctor (telefono, cedula_profesional, curp, rfc, id_usuario, id_notificacion)
+  VALUES (p_telefono, p_cedula, p_curp, p_rfc, id_usuario, notificacion_id);
 
   SET id_doctor = LAST_INSERT_ID();
 
@@ -182,6 +183,8 @@ BEGIN
   DECLARE existing_id_paciente INT;
   DECLARE id_clinica_existente INT;
   DECLARE id_sucursal_existente INT;
+  DECLARE notificacion_paciente_id INT DEFAULT 100;
+  DECLARE notificacion_cita_id INT DEFAULT 102;
 
   SELECT id_paciente INTO existing_id_paciente
   FROM paciente
@@ -189,8 +192,8 @@ BEGIN
   LIMIT 1;
 
   IF existing_id_paciente IS NULL THEN
-    INSERT INTO paciente (curp, edad, telefono, alergias, discapacidad, id_usuario)
-    VALUES (p_curp, p_edad, p_telefono, p_alergias, p_discapacidad, p_id_usuario);
+    INSERT INTO paciente (curp, edad, telefono, alergias, discapacidad, id_usuario, id_notificacion)
+    VALUES (p_curp, p_edad, p_telefono, p_alergias, p_discapacidad, p_id_usuario, notificacion_paciente_id);
 
     SET existing_id_paciente = LAST_INSERT_ID();
   ELSE
@@ -224,8 +227,8 @@ BEGIN
     SET id_sucursal_existente = LAST_INSERT_ID();
   END IF;
 
-  INSERT INTO cita (id_paciente, fecha_cita, horario, id_sucursal)
-  VALUES (existing_id_paciente, p_fecha, p_horario, id_sucursal_existente);
+  INSERT INTO cita (id_paciente, fecha_cita, horario, id_sucursal, id_notificacion)
+  VALUES (existing_id_paciente, p_fecha, p_horario, id_sucursal_existente, notificacion_cita_id);
 
   SET new_id_cita = LAST_INSERT_ID();
 
@@ -327,10 +330,8 @@ CREATE PROCEDURE registrar_pago(
   IN p_id_cita INT
 )
 BEGIN
-  INSERT INTO pago (tipo_de_pago, monto, fecha_de_pago, metodo_de_pago, numero_cuenta, id_cita)
-  VALUES (p_tipo_de_pago, p_monto, NOW(), p_metodo_de_pago, p_numero_cuenta, p_id_cita);
+  DECLARE notificacion_pago_id INT DEFAULT 103;
+
+  INSERT INTO pago (tipo_de_pago, monto, fecha_de_pago, metodo_de_pago, numero_cuenta, id_cita, id_notificacion)
+  VALUES (p_tipo_de_pago, p_monto, NOW(), p_metodo_de_pago, p_numero_cuenta, p_id_cita, notificacion_pago_id);
 END$$
-
-DELIMITER ;
-
-INSERT INTO especialidad(nombre_especialidad) VALUES ("General");
