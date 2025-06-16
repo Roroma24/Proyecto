@@ -32,7 +32,7 @@ def conectar_db():  # Función para conectar a la base de datos
         conn = mysql.connector.connect(
             host=os.getenv("DB_HOST"),
             user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD2"),  # Se ajusta según la configuración
+            password=os.getenv("DB_PASSWORD"),  # Se ajusta según la configuración
             database=os.getenv("DB_NAME"),  # Nombre de la base de datos
             charset='utf8mb4',
         )
