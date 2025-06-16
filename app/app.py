@@ -192,6 +192,9 @@ def api_registro():
             cursor.callproc('registro_usuario', (nombre, apellido1, apellido2, correo, password, '@new_id_usuario'))
             cursor.execute("SELECT @new_id_usuario;")
             new_id = cursor.fetchone()[0]
+
+            session['correo'] = correo
+
             conn.commit()
             cursor.close()
             conn.close()
@@ -273,6 +276,7 @@ def api_reserva():
         return jsonify({"error": "Debes iniciar sesión para reservar"}), 401
     
     id_usuario = session['id_usuario']
+    correo = session['correo']
 
     data = request.get_json()
 
@@ -347,9 +351,23 @@ def api_reserva():
 
         db.commit()
 
-        correo_dest = (id_usuario)
-        extra_texto = (id_paciente)
-        notification(correo_dest, 100, extra_texto)
+        notification(correo, 100, f"{id_paciente}")
+
+        info_cita = (
+            f"\nID de cita: {id_cita}\n"
+            f"Nombre: {nombre} {apellido1} {apellido2}\n"
+            f"CURP: {curp}\n"
+            f"Edad: {edad}\n"
+            f"Teléfono: {telefono}\n"
+            f"Alergias: {alergias}\n"
+            f"Discapacidad: {discapacidad}\n"
+            f"Fecha: {fecha}\n"
+            f"Horario: {horarios}\n"
+            f"Ubicación: {ubicacion}\n"
+            f"Especialidad: {especialidad_nombre}\n"
+        )
+
+        notification(correo, 102, info_cita)
 
         return jsonify({"message": "Cita reservada correctamente", "redirect": url_for('api_pago')})
     except mysql.connector.Error as err:
