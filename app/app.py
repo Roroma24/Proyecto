@@ -32,7 +32,7 @@ def conectar_db():  # Función para conectar a la base de datos
         conn = mysql.connector.connect(
             host=os.getenv("DB_HOST"),
             user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD"),  # Se ajusta según la configuración
+            password=os.getenv("DB_PASSWORD2"),  # Se ajusta según la configuración
             database=os.getenv("DB_NAME"),  # Nombre de la base de datos
             charset='utf8mb4',
         )
@@ -747,7 +747,7 @@ def api_cancel():
     finally:
         cursor.close()
         db.close()
-
+    
 # Ruta para la página de historial de citas (historial.html).
 @app.route('/api/historial', methods=['GET', 'POST'])
 def api_historial():
@@ -756,8 +756,6 @@ def api_historial():
 
     data = request.get_json()
     id_paciente = data.get('id_paciente') if data else None
-    comentario = data.get('comentario')
-    id_cita = data.get('id_cita')
 
     conn = conectar_db()
     if not conn:
@@ -766,35 +764,40 @@ def api_historial():
     try:
         cursor = conn.cursor()
 
-        # Si el usuario envía un comentario, se guarda en la BD
-        if id_cita and comentario:
-            cursor.execute("INSERT INTO comentarios (id_cita, comentario) VALUES (%s, %s)", (id_cita, comentario))
-            conn.commit()
-            return jsonify({"mensaje": "Comentario guardado exitosamente"})
-
-        # Si solo se consulta historial, se obtienen las citas
+        # Si no se recibe id_paciente, buscar el id_paciente del usuario autenticado
         if not id_paciente:
             id_usuario = session.get('id_usuario')
             if not id_usuario:
+                cursor.close()
+                conn.close()
                 return jsonify({"error": "Debes iniciar sesión"}), 401
-            query = "SELECT id_cita, hora, fecha FROM cita WHERE id_usuario = %s ORDER BY fecha DESC"
-            params = (id_usuario,)
-        else:
-            query = """SELECT id_cita, hora, fecha FROM cita WHERE id_paciente = %s ORDER BY fecha DESC"""
-            params = (id_paciente,)
+            cursor.execute("SELECT id_paciente FROM paciente WHERE id_usuario = %s", (id_usuario,))
+            row = cursor.fetchone()
+            if not row:
+                cursor.close()
+                conn.close()
+                return jsonify([])  # No hay paciente para este usuario
+            id_paciente = row[0]
+
+        # Ahora sí, buscar las citas por id_paciente
+        query = "SELECT id_cita, horario, fecha_cita FROM cita WHERE id_paciente = %s ORDER BY fecha_cita DESC"
+        params = (id_paciente,)
 
         cursor.execute(query, params)
         citas = cursor.fetchall()
         cursor.close()
         conn.close()
 
+        # Si no hay citas, devolver lista vacía
+        if not citas:
+            return jsonify([])
+
         return jsonify([
-            {"id_cita": row[0], "hora": row[1], "dia": row[2]}
+            {"id_cita": row[0], "hora": str(row[1]), "dia": str(row[2])}
             for row in citas
         ])
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
     
 @app.route('/api/exit')
 def api_exit():
