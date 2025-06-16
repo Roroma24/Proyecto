@@ -7,8 +7,8 @@ Luis Roberto Rodríguez Marroquin
 Sebastián Villaluz Martínez
 Daniela Zuno Aguilar
 
-Descripción:   
-Este archivo HTML es la plantilla para la página de búsqueda de citas.
+Descripción:
+Este archivo HTML es la plantilla para la página de historial clínico.
 -->
 
 <!DOCTYPE html>
@@ -135,6 +135,7 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
     document.querySelector("#enviar-comentarios").addEventListener("click", function () {
       const comentarios = document.querySelectorAll("#comentarios-list .custom-input");
       const citas = document.querySelectorAll("#citas-list li");
+      const idPaciente = sessionStorage.getItem("id_paciente_historial"); 
 
       comentarios.forEach((input, index) => {
         const idCita = citas[index].getAttribute("data-id");
@@ -145,7 +146,7 @@ Este archivo HTML es la plantilla para la página de búsqueda de citas.
         fetch("/api/historial", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ id_cita: idCita, comentario: comentario }),
+          body: JSON.stringify({ id_cita: idCita, comentario: comentario, id_paciente: idPaciente }), 
         })
           .then((response) => response.json())
           .then((data) => console.log("Comentario guardado:", data))
