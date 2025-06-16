@@ -47,7 +47,7 @@ def notification(correo_dest, id_notificacion, extra_texto=""):
         conn = conectar_db()
         cursor = conn.cursor()
 
-        cursor.execute("SELECT mensaje FROM notificacion WHERE idnotificacion = %s", (id_notificacion,))
+        cursor.execute("SELECT mensaje FROM notificacion WHERE id_notificacion = %s", (id_notificacion,))
         obtenido = cursor.fetchone()
         cursor.close()
         conn.close()
