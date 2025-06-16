@@ -41,7 +41,7 @@ Este archivo HTML es la plantilla para la página de historial clínico.
           <div class="caja-punteados">
             <!-- Citas -->
             <div class="caja-punteados-1">
-              <h2 class="titulo">Citas</h2>
+              <h2 class="titulo">ID de citas</h2>
               <ul id="citas-list"></ul>
             </div>
             <!-- Hora -->
@@ -149,8 +149,13 @@ Este archivo HTML es la plantilla para la página de historial clínico.
           body: JSON.stringify({ id_cita: idCita, comentario: comentario, id_paciente: idPaciente }), 
         })
           .then((response) => response.json())
-          .then((data) => console.log("Comentario guardado:", data))
-          .catch((error) => console.error("Error al guardar comentario:", error));
+          .then((data) => {
+            if (data.message) {
+              alert(data.message);
+            } else if (data.error) {
+              alert("Error: "+ data.error)
+            }
+          })
       });
     });
   </script>

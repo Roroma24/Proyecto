@@ -42,7 +42,7 @@ def conectar_db():  # Función para conectar a la base de datos
         print(f"❌ Error al conectar a la base de datos: {err}")
         return None
     
-def notification(correo_dest, id_notificacion, extra_texto=""):
+def notification(correo, id_notificacion, extra_texto=""):
     try:
         conn = conectar_db()
         cursor = conn.cursor()
@@ -60,18 +60,18 @@ def notification(correo_dest, id_notificacion, extra_texto=""):
         msg_complete = mensaje + extra_texto if extra_texto else mensaje
 
         msg = MIMEMultipart()
-        msg['FROM'] = os.getenv('SMTP_USER')
-        msg['To'] = correo_dest
+        msg['From'] = os.getenv('SMTP_USER')
+        msg['To'] = correo
         msg['Subject'] = "Notificación del Hospital Qualitas"
         msg.attach(MIMEText(msg_complete, 'plain'))
 
         server = smtplib.SMTP(os.getenv('SMTP_SERVER'), int(os.getenv('SMTP_PORT')))
         server.starttls()
         server.login(os.getenv('SMTP_USER'), os.getenv('SMTP_PASSWORD'))
-        server.send_message(msg)
+        server.sendmail(msg['From'], msg['To'], msg.as_string())
         server.quit()
 
-        print(f"📧 Notificación enviada a {correo_dest}")
+        print(f"📧 Notificación enviada a {correo}")
 
     except Exception as e:
         print(f"❌ Error al enviar notificación: {e}")
@@ -242,19 +242,20 @@ def api_newdoc():
             cursor.execute("SELECT id_usuario FROM usuario WHERE correo = %s", (correo,))
             if cursor.fetchone():
                 return jsonify({"error": "El correo ya está registrado"}), 409
-            cursor.execute("SET @new_id_doctor = 0;")
-            cursor.callproc('registro_doctor', (nombre, apellido1, apellido2, correo, password, telefono, cedula, curp, rfc, especialidad, '@new_id_doctor'))
-            cursor.execute("SELECT @new_id_doctor;")
-            new_id = cursor.fetchone()[0]
+
+            args = [nombre, apellido1, apellido2, correo, password, telefono, cedula, curp, rfc, especialidad, 0]
+            res = cursor.callproc('registro_doctor', args)
+            id_doctor = res[-1]
+
             conn.commit()
             cursor.close()
             conn.close()
 
-            notification(correo, 101)
+            notification(correo, 101, f"{id_doctor}")
 
             return jsonify({
                 "message": "Doctor registrado exitosamente",
-                "id_usuario": new_id
+                "id_usuario": id_doctor
             }), 201
         
         except mysql.connector.Error as err:
@@ -763,11 +764,12 @@ def api_historial():
     id_paciente = data.get('id_paciente') or request.args.get('id_paciente')
 
     conn = conectar_db()
+    cursor = conn.cursor()
+
     if not conn:
         return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
 
     try:
-        cursor = conn.cursor()
 
         # Si viene comentario, se trata de un insert al historial
         if detalle and id_cita and id_paciente:
@@ -775,26 +777,19 @@ def api_historial():
             result_args = cursor.callproc('insertar_historial_medico', args)
             new_id_historial = result_args[3]
             conn.commit()
-            cursor.close()
-            conn.close()
-            return jsonify({
-                "message": "Comentario agregado al historial médico",
-                "id_historial": new_id_historial
-            }), 201
+
+            return jsonify({"message": "Comentario agregado al historial médico"}), 201
 
         # Si no hay comentario, se asume que es una solicitud de citas (historial)
         # Buscar el id_paciente si no viene
         if not id_paciente:
             id_usuario = session.get('id_usuario')
             if not id_usuario:
-                cursor.close()
-                conn.close()
                 return jsonify({"error": "Debes iniciar sesión"}), 401
+
             cursor.execute("SELECT id_paciente FROM paciente WHERE id_usuario = %s", (id_usuario,))
             row = cursor.fetchone()
             if not row:
-                cursor.close()
-                conn.close()
                 return jsonify([])  # No hay paciente
             id_paciente = row[0]
 
