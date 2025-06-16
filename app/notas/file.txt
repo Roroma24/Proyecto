@@ -1,1 +1,4 @@
 Corregir acentos en nombres.
+El registro de docto no manda mensaje de exito.
+El insertar cometarios en historial no manda mensaje de exito.
+Checar el formato SMTP.

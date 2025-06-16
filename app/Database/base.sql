@@ -98,8 +98,9 @@ CREATE TABLE pago (
 CREATE TABLE historial_medico (
   id_historial INT AUTO_INCREMENT PRIMARY KEY,
   detalle TEXT,
-  fecha DATE,
+  id_cita INT,
   id_paciente INT,
+  FOREIGN KEY (id_cita) REFERENCES cita(id_cita),
   FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente)
 ) AUTO_INCREMENT = 800;
 
@@ -334,6 +335,39 @@ BEGIN
   VALUES (p_tipo_de_pago, p_monto, NOW(), p_metodo_de_pago, p_numero_cuenta, p_id_cita, 103);
 
   SET new_id_pago = LAST_INSERT_ID();
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE insertar_historial_medico(
+  IN p_detalle TEXT,
+  IN p_id_cita INT,
+  IN p_id_paciente INT,
+  OUT new_id_historial INT
+)
+BEGIN
+  DECLARE existing_id INT;
+
+  SELECT id_historial INTO existing_id
+  FROM historial_medico
+  WHERE id_cita = p_id_cita AND id_paciente = p_id_paciente
+  LIMIT 1;
+
+  IF existing_id IS NOT NULL THEN
+    UPDATE historial_medico
+    SET detalle = p_detalle
+    WHERE id_historial = existing_id;
+
+    SET new_id_historial = existing_id;
+
+  ELSE
+    INSERT INTO historial_medico (detalle, id_cita, id_paciente)
+    VALUES (p_detalle, p_id_cita, p_id_paciente);
+
+    SET new_id_historial = LAST_INSERT_ID();
+  END IF;
 END$$
 
 DELIMITER ;

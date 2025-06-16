@@ -755,7 +755,12 @@ def api_historial():
         return render_template('historialcld.html')
 
     data = request.get_json()
-    id_paciente = data.get('id_paciente') if data else None
+    if not data:
+        return jsonify({"error": "No se recibieron datos JSON"}), 400
+
+    detalle = data.get('comentario', '').strip() or data.get('detalle', '').strip()
+    id_cita = data.get('id_cita')
+    id_paciente = data.get('id_paciente') or request.args.get('id_paciente')
 
     conn = conectar_db()
     if not conn:
@@ -764,7 +769,21 @@ def api_historial():
     try:
         cursor = conn.cursor()
 
-        # Si no se recibe id_paciente, buscar el id_paciente del usuario autenticado
+        # Si viene comentario, se trata de un insert al historial
+        if detalle and id_cita and id_paciente:
+            args = (detalle, int(id_cita), int(id_paciente), 0)
+            result_args = cursor.callproc('insertar_historial_medico', args)
+            new_id_historial = result_args[3]
+            conn.commit()
+            cursor.close()
+            conn.close()
+            return jsonify({
+                "message": "Comentario agregado al historial médico",
+                "id_historial": new_id_historial
+            }), 201
+
+        # Si no hay comentario, se asume que es una solicitud de citas (historial)
+        # Buscar el id_paciente si no viene
         if not id_paciente:
             id_usuario = session.get('id_usuario')
             if not id_usuario:
@@ -776,28 +795,22 @@ def api_historial():
             if not row:
                 cursor.close()
                 conn.close()
-                return jsonify([])  # No hay paciente para este usuario
+                return jsonify([])  # No hay paciente
             id_paciente = row[0]
 
-        # Ahora sí, buscar las citas por id_paciente
+        # Consultar citas del paciente
         query = "SELECT id_cita, horario, fecha_cita FROM cita WHERE id_paciente = %s ORDER BY fecha_cita DESC"
-        params = (id_paciente,)
-
-        cursor.execute(query, params)
+        cursor.execute(query, (id_paciente,))
         citas = cursor.fetchall()
         cursor.close()
         conn.close()
-
-        # Si no hay citas, devolver lista vacía
-        if not citas:
-            return jsonify([])
 
         return jsonify([
             {"id_cita": row[0], "hora": str(row[1]), "dia": str(row[2])}
             for row in citas
         ])
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": f"Error: {str(e)}"}), 500
     
 @app.route('/api/exit')
 def api_exit():
