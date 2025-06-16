@@ -348,10 +348,26 @@ CREATE PROCEDURE insertar_historial_medico(
   OUT new_id_historial INT
 )
 BEGIN
-  INSERT INTO historial_medico (detalle, id_cita, id_paciente)
-  VALUES (p_detalle, p_id_cita, p_id_paciente);
-  
-  SET new_id_historial = LAST_INSERT_ID();
+  DECLARE existing_id INT;
+
+  SELECT id_historial INTO existing_id
+  FROM historial_medico
+  WHERE id_cita = p_id_cita AND id_paciente = p_id_paciente
+  LIMIT 1;
+
+  IF existing_id IS NOT NULL THEN
+    UPDATE historial_medico
+    SET detalle = p_detalle
+    WHERE id_historial = existing_id;
+
+    SET new_id_historial = existing_id;
+
+  ELSE
+    INSERT INTO historial_medico (detalle, id_cita, id_paciente)
+    VALUES (p_detalle, p_id_cita, p_id_paciente);
+
+    SET new_id_historial = LAST_INSERT_ID();
+  END IF;
 END$$
 
 DELIMITER ;
