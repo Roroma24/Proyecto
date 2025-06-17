@@ -784,6 +784,7 @@ def api_historial():
         return render_template('historialcld.html')
 
     data = request.get_json()
+
     if not data:
         return jsonify({"error": "No se recibieron datos JSON"}), 400
 
@@ -798,14 +799,33 @@ def api_historial():
         return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
 
     try:
-
         # Si viene comentario, se trata de un insert al historial
         if detalle and id_cita and id_paciente:
-            args = (detalle, int(id_cita), int(id_paciente), 0)
-            result_args = cursor.callproc('insertar_historial_medico', args)
-            new_id_historial = result_args[3]
+            # Buscar si ya existe historial para esa cita y paciente
+            cursor.execute("""
+                SELECT id_historial, detalle FROM historial_medico
+                WHERE id_cita = %s AND id_paciente = %s
+                LIMIT 1
+            """, (id_cita, id_paciente))
+            row = cursor.fetchone()
+            fecha_hora = datetime.now().strftime('%Y-%m-%d %H:%M')
+            comentario_formateado = f"[{fecha_hora}] {detalle}"
+            if row:
+                id_historial, detalle_actual = row
+                nuevo_detalle = (detalle_actual or "") + f"\n{comentario_formateado}"
+                cursor.execute("""
+                    UPDATE historial_medico
+                    SET detalle = %s
+                    WHERE id_historial = %s
+                """, (nuevo_detalle, id_historial))
+            else:
+                cursor.execute("""
+                    INSERT INTO historial_medico (detalle, id_cita, id_paciente)
+                    VALUES (%s, %s, %s)
+                """, (comentario_formateado, id_cita, id_paciente))
             conn.commit()
-
+            cursor.close()
+            conn.close()
             return jsonify({"message": "Comentario agregado al historial médico"}), 201
 
         # Si no hay comentario, se asume que es una solicitud de citas (historial)
@@ -833,6 +853,8 @@ def api_historial():
             for row in citas
         ])
     except Exception as e:
+        cursor.close()
+        conn.close()
         return jsonify({"error": f"Error: {str(e)}"}), 500
     
 @app.route('/api/exit')
