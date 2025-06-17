@@ -453,11 +453,21 @@ def api_pago():
             return jsonify({"error": "No se pudo obtener el ID del pago"}), 500
 
         session['id_pago'] = id_pago
-
-        for result in cursor.stored_results():
-            result.fetchall()
             
         db.commit()
+
+        info_pago = (
+            f"\nID de pago: {id_pago}\n"
+            f"Nombre: {nombre} {apellido1} {apellido2}\n"
+            f"Ubicación: {ubicacion}\n"
+            f"Cuenta: {cuenta}\n"
+            f"Concepto: {concepto}\n"
+            f"Monto: {monto}\n"
+            f"Método de pago: {metodo}\n"
+        )
+
+        notification(correo, 103, info_pago)
+
         return jsonify({"message": "Pago exitoso", "redirect": url_for('api_index')})
     except mysql.connector.Error as err:
         return jsonify({"error": f"Error al procesar el pago: {err}"}), 500
