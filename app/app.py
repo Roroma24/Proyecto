@@ -75,6 +75,14 @@ def notification(correo, id_notificacion, extra_texto=""):
 
     except Exception as e:
         print(f"❌ Error al enviar notificación: {e}")
+
+def validar_curp(curp):
+    patron = r'^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]\d$'
+    return bool(re.match(patron, curp.upper()))
+
+def validar_rfc(rfc):
+    patron = r'^[A-ZÑ&]{3,4}\d{6}[A-Z0-9]{3}$'
+    return bool(re.match(patron, rfc.upper()))
     
 load_dotenv()
 
@@ -236,7 +244,13 @@ def api_newdoc():
     
     if not password_valid.validate(password):
         return jsonify({"error": "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minuscula y un simbolo especial."}), 400
-        
+    
+    if not validar_curp(curp):
+        return jsonify({"error": "CURP inválido"}), 400
+
+    if not validar_rfc(rfc):
+        return jsonify({"error": "RFC inválido"}), 400
+
     conn = conectar_db()
     if conn:
         try:
@@ -309,6 +323,9 @@ def api_reserva():
 
     if not all([nombre, apellido1, apellido2, curp, edad, telefono, alergias, discapacidad, fecha, horarios, ubicacion, correo_reserva, especialidad_nombre]):
         return jsonify({"error": "Faltan campos requeridos "}), 400
+    
+    if not validar_curp(curp):
+        return jsonify({"error": "CURP inválido"}), 400
 
     db = conectar_db()
     cursor = db.cursor()
