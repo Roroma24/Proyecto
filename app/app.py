@@ -516,7 +516,8 @@ def api_file():
         return jsonify({"error": "Debes iniciar sesión para buscar cita"}), 401
     
     id_usuario = session['id_usuario']
-    opcion = session['opcion']
+    opcion = session.get('opcion')
+    rol = session['rol']
 
     data = request.get_json()
 
@@ -532,29 +533,36 @@ def api_file():
     if not all([nombre, apellido1, apellido2, correo, folio]):
         return jsonify({"error": "Faltan campos requeridos "}), 400
 
-    opcion = session.get('opcion')
-
     if not opcion:
         return jsonify({"error": "No se especificó una opción válida"}), 400
     
     db = conectar_db()
     cursor = db.cursor()
 
-    cursor.execute("""
-        SELECT id_usuario
-        FROM usuario
-        WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s AND correo = %s
-    """, (nombre, apellido1, apellido2, correo))
+    # --- Cambios aquí ---
+    if rol == 'Doctor':
+        # El doctor puede buscar cualquier paciente por sus datos
+        cursor.execute("""
+            SELECT id_usuario
+            FROM usuario
+            WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s AND correo = %s
+        """, (nombre, apellido1, apellido2, correo))
+        us = cursor.fetchone()
+        if not us:
+            cursor.close()
+            db.close()
+            return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
+        id_usuario_db = us[0]
+    elif rol == 'Paciente':
+        # El paciente solo puede buscar sus propias citas
+        id_usuario_db = id_usuario
+        # Opcional: podrías validar que los datos coincidan con el usuario autenticado
+    else:
+        cursor.close()
+        db.close()
+        return jsonify({"error": "Rol no permitido"}), 403
 
-    us = cursor.fetchone()
-
-    if not us:
-        return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
-
-    id_usuario_db = us[0]
-    if id_usuario != id_usuario_db:
-        return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
-
+    # Buscar la cita por folio y usuario
     cursor.execute("""
         SELECT id_cita
         FROM cita
@@ -567,15 +575,15 @@ def api_file():
     db.close()
 
     if not ci:
-        return jsonify({"error": "No se encontraron citas con ese folio"}), 404
+        return jsonify({"error": "No se encontraron citas con ese folio para el usuario/paciente"}), 404
 
     folio = ci[0]
     session['folio'] = folio
 
     if opcion == "modification":
-        return jsonify({"redirect": url_for('api_modification', folio = folio)})
+        return jsonify({"redirect": url_for('api_modification', folio=folio)})
     elif opcion == "cancel":
-        return jsonify({"redirect": url_for('api_cancel', folio = folio)})
+        return jsonify({"redirect": url_for('api_cancel', folio=folio)})
     else:
         return jsonify({"error": "Opción no válida"}), 400
 
