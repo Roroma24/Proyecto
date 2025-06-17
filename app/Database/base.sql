@@ -378,4 +378,6 @@ INSERT INTO notificacion(mensaje) VALUES
 ("Paciente registrado con exito, su ID de paciente es: "),
 ("Doctor registrado con exito, su ID de doctor es: "),
 ("Su cita se reservo correctamente. Adjuntamos la información de su cita:"),
-("Su pago se reservo correctamente. Adjuntamos la información de confirmación:");
+("Su pago se reservo correctamente. Adjuntamos la información de confirmación:"),
+("Su cita se modifico con exito. Adjuntamos su nueva información:"),
+("Su cita se cancelo con exito.");
