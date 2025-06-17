@@ -276,7 +276,7 @@ def api_reserva():
         return jsonify({"error": "Debes iniciar sesión para reservar"}), 401
     
     id_usuario = session['id_usuario']
-    correo = session['correo']
+    rol = session['rol']
 
     data = request.get_json()
 
@@ -304,9 +304,10 @@ def api_reserva():
     except ValueError:
         return jsonify({"error": "Horario debe tener el formato válido HH:MM, por ejemplo '09:00'"}), 400
     ubicacion = data.get('ubicacion')
+    correo_reserva = data.get('correo')
     especialidad_nombre = data.get('especialidad')
 
-    if not all([nombre, apellido1, apellido2, curp, edad, telefono, alergias, discapacidad, fecha, horarios, ubicacion, especialidad_nombre]):
+    if not all([nombre, apellido1, apellido2, curp, edad, telefono, alergias, discapacidad, fecha, horarios, ubicacion, correo_reserva, especialidad_nombre]):
         return jsonify({"error": "Faltan campos requeridos "}), 400
 
     db = conectar_db()
@@ -324,8 +325,14 @@ def api_reserva():
         return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
     
     id_usuario_db = us[0]
-    if id_usuario != id_usuario_db:
-        return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+
+    if rol == 'Doctor':
+        pass
+    elif rol == 'Paciente':
+        if id_usuario != id_usuario_db:
+            return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+    else:
+        return jsonify({"error": "Rol no permitido"}), 403
 
     cursor.execute("SELECT id_especialidad FROM especialidad WHERE nombre_especialidad = %s", (especialidad_nombre,))
     especialidad = cursor.fetchone()
@@ -351,7 +358,7 @@ def api_reserva():
 
         db.commit()
 
-        notification(correo, 100, f"{id_paciente}")
+        notification(correo_reserva, 100, f"{id_paciente}")
 
         info_cita = (
             f"\nID de cita: {id_cita}\n"
@@ -367,7 +374,7 @@ def api_reserva():
             f"Especialidad: {especialidad_nombre}\n"
         )
 
-        notification(correo, 102, info_cita)
+        notification(correo_reserva, 102, info_cita)
 
         return jsonify({"message": "Cita reservada correctamente", "redirect": url_for('api_pago')})
     except mysql.connector.Error as err:
@@ -386,6 +393,7 @@ def api_pago():
         return jsonify({"error": "Debes iniciar sesión para buscar cita"}), 401
     
     id_usuario = session['id_usuario']
+    rol = session['rol']
 
     data = request.get_json()
 
@@ -399,12 +407,12 @@ def api_pago():
     apellido2 = data.get('apellido2')
     ubicacion = data.get('ubicacion')
     cuenta = data.get('cuenta')
-    correo = data.get('correo')
+    correo_pago = data.get('correo')
     concepto = data.get('concepto')
     monto = data.get('monto')
     metodo = data.get('metodo')
 
-    if not all([nombre, apellido1, apellido2, ubicacion, cuenta, correo, concepto, monto, metodo]):
+    if not all([nombre, apellido1, apellido2, ubicacion, cuenta, correo_pago, concepto, monto, metodo]):
         return jsonify({"error": "Faltan campos requeridos "}), 400
 
     db = conectar_db()
@@ -414,7 +422,7 @@ def api_pago():
         SELECT id_usuario
         FROM usuario
         WHERE nombre = %s AND primer_apellido = %s AND segundo_apellido = %s AND correo = %s
-    """, (nombre, apellido1, apellido2, correo))
+    """, (nombre, apellido1, apellido2, correo_pago))
 
     user = cursor.fetchone()
 
@@ -422,8 +430,14 @@ def api_pago():
         return jsonify({"error": "Usuario con ese nombre no está registrado"}), 404
     
     id_usuario_db = user[0]
-    if id_usuario != id_usuario_db:
-        return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+
+    if rol == 'Doctor':
+        pass
+    elif rol == 'Paciente':
+        if id_usuario != id_usuario_db:
+            return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+    else:
+        return jsonify({"error": "Rol no permitido"}), 403
     
     cursor.execute("""
         SELECT id_clinica
@@ -466,9 +480,9 @@ def api_pago():
             f"Método de pago: {metodo}\n"
         )
 
-        notification(correo, 103, info_pago)
+        notification(correo_pago, 103, info_pago)
 
-        return jsonify({"message": "Pago exitoso", "redirect": url_for('api_index')})
+        return jsonify({"message": "Pago exitoso", "redirect": url_for('api_exit')})
     except mysql.connector.Error as err:
         return jsonify({"error": f"Error al procesar el pago: {err}"}), 500
     finally:
@@ -571,9 +585,9 @@ def api_pacient():
     if not data:
         return jsonify({"error": "Faltan campos requeridos "}), 400
 
-    idpaciente = data.get('id_paciente')
+    id_paciente = data.get('id_paciente')
 
-    if not idpaciente:
+    if not id_paciente:
         return jsonify({"error": "Faltan campos requeridos"}), 400
     
     conn = conectar_db()
@@ -585,7 +599,7 @@ def api_pacient():
                 FROM paciente p
                 JOIN usuario u ON p.id_usuario = u.id_usuario
                 WHERE p.id_paciente = %s
-            """, (idpaciente,))
+            """, (id_paciente,))
             paciente = cursor.fetchone()
             if paciente:
                 return jsonify({
@@ -616,6 +630,7 @@ def api_modification():
 
     id_usuario = session['id_usuario']
     folio = session['folio']
+    rol = session['rol']
 
     data = request.get_json()
     if not data:
@@ -634,7 +649,7 @@ def api_modification():
     except ValueError:
         return jsonify({"error": "Edad debe ser un número válido"}), 400
     telefono = data.get('telefono')
-    correo = data.get('correo')
+    correo_mod = data.get('correo')
     discapacidad = data.get('discapacidad')
     alergias = data.get('alergias')
     horarios = data.get('horarios', '')
@@ -649,8 +664,8 @@ def api_modification():
         datetime.strptime(fecha, '%Y-%m-%d')
     except ValueError:
         return jsonify({"error": "La fecha debe tener el formato YYYY-MM-DD"}), 400
-    
-    if not all([nombre, apellido1, apellido2, edad_str, telefono, correo, discapacidad, alergias, horarios, especialidad_nombre, direccion, fecha]):
+
+    if not all([nombre, apellido1, apellido2, edad_str, telefono, correo_mod, discapacidad, alergias, horarios, especialidad_nombre, direccion, fecha]):
         return jsonify({"error": "Faltan campos requeridos "}), 400
 
     db = conectar_db()
@@ -661,7 +676,7 @@ def api_modification():
         FROM usuario u
         JOIN paciente p ON u.id_usuario = p.id_usuario
         WHERE u.nombre = %s AND u.primer_apellido = %s AND u.segundo_apellido = %s AND u.correo = %s AND p.edad = %s
-    """, (nombre, apellido1, apellido2, correo, edad))
+    """, (nombre, apellido1, apellido2, correo_mod, edad))
 
     user = cursor.fetchone()
 
@@ -669,8 +684,14 @@ def api_modification():
         return jsonify({"error": "Nombre, correo o edad del usuario incorrectos"}), 404
     
     id_user_db = user[0]
-    if id_usuario != id_user_db:
-        return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+
+    if rol == 'Doctor':
+        pass
+    elif rol == 'Paciente':
+        if id_usuario != id_user_db:
+            return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+    else:
+        return jsonify({"error": "Rol no permitido"}), 403
     
     cursor.execute("SELECT id_especialidad FROM especialidad WHERE nombre_especialidad = %s", (especialidad_nombre,))
     especialidad = cursor.fetchone()
@@ -680,10 +701,31 @@ def api_modification():
     id_especialidad = especialidad[0]
 
     try:
-        cursor.callproc('modificar_cita', (
+        
+        args = (
             folio, fecha, horarios, telefono, alergias, direccion, id_especialidad, discapacidad
-        ))
+        )
+
+        cursor.callproc('modificar_cita', args)
+        
         db.commit()
+
+        info_mod = (
+            f"\nSu número de cita permanece igual\n"
+            f"Nombre: {nombre} {apellido1} {apellido2}\n"
+            f"Edad: {edad}\n"
+            f"Teléfono: {telefono}\n"
+            f"Correo: {correo_mod}\n"
+            f"Alergias: {alergias}\n"
+            f"Discapacidad: {discapacidad}\n"
+            f"Fecha: {fecha}\n"
+            f"Horario: {horarios}\n"
+            f"Especialidad: {especialidad_nombre}\n"
+            f"Ubicación: {direccion}\n"
+        )
+
+        notification(correo_mod, 104, info_mod)
+
         return jsonify({"message": "Cita modificada correctamente", "redirect": url_for('api_exit')}), 200
     except mysql.connector.Error as err:
         return jsonify({"error": f"Error al modificar cita: {err}"}), 500
@@ -702,6 +744,7 @@ def api_cancel():
 
     id_usuario = session['id_usuario']
     folio = session['folio']
+    rol = session['rol']
 
     data = request.get_json()
     if not data:
@@ -720,7 +763,7 @@ def api_cancel():
         edad = int(edad_str)
     except ValueError:
         return jsonify({"error": "Edad debe ser un número válido"}), 400
-    correo = data.get('correo')
+    correo_cancel = data.get('correo')
     horarios = data.get('horarios', '')
     try:
         datetime.strptime(str(horarios), '%H:%M')
@@ -732,7 +775,7 @@ def api_cancel():
     except ValueError:
         return jsonify({"error": "La fecha debe tener el formato YYYY-MM-DD"}), 400
 
-    if not all([nombre, apellido1, apellido2, telefono, edad_str, correo, horarios, fecha]):
+    if not all([nombre, apellido1, apellido2, telefono, edad_str, correo_cancel, horarios, fecha]):
         return jsonify({"error": "Faltan campos requeridos"}), 400
     
     db = conectar_db()
@@ -743,7 +786,7 @@ def api_cancel():
         FROM usuario u
         JOIN paciente p ON u.id_usuario = p.id_usuario
         WHERE u.nombre = %s AND u.primer_apellido = %s AND u.segundo_apellido = %s AND u.correo = %s AND p.edad = %s AND p.telefono = %s
-    """, (nombre, apellido1, apellido2, correo, edad, telefono))
+    """, (nombre, apellido1, apellido2, correo_cancel, edad, telefono))
 
     user = cursor.fetchone()
 
@@ -751,8 +794,14 @@ def api_cancel():
         return jsonify({"error": "Nombre, correo o edad del usuario incorrectos"}), 404
     
     id_user_db = user[0]
-    if id_usuario != id_user_db:
-        return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+
+    if rol == 'Doctor':
+        pass
+    elif rol == 'Paciente':
+        if id_usuario != id_user_db:
+            return jsonify({"error": "Los datos no coinciden con el usuario autenticado"}), 403
+    else:
+        return jsonify({"error": "Rol no permitido"}), 403
     
     cursor.execute("""
         SELECT id_cita
@@ -769,7 +818,11 @@ def api_cancel():
         cursor.callproc('eliminar_cita', (
             folio,
         ))
+
         db.commit()
+        
+        notification(correo_cancel, 105)
+
         return jsonify({"message": "Cita cancelada exitosamente", "redirect": url_for('api_exit')}), 200
     except mysql.connector.Error as err:
         return jsonify({"error": f"Error al modificar cita: {err}"}), 500
@@ -812,7 +865,10 @@ def api_historial():
             comentario_formateado = f"[{fecha_hora}] {detalle}"
             if row:
                 id_historial, detalle_actual = row
-                nuevo_detalle = (detalle_actual or "") + f"\n{comentario_formateado}"
+                if detalle_actual:
+                    nuevo_detalle = f"{detalle_actual}\n{comentario_formateado}"
+                else:
+                    nuevo_detalle = comentario_formateado
                 cursor.execute("""
                     UPDATE historial_medico
                     SET detalle = %s
@@ -823,6 +879,7 @@ def api_historial():
                     INSERT INTO historial_medico (detalle, id_cita, id_paciente)
                     VALUES (%s, %s, %s)
                 """, (comentario_formateado, id_cita, id_paciente))
+                
             conn.commit()
             cursor.close()
             conn.close()
